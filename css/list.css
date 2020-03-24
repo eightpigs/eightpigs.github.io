@@ -1,0 +1,17 @@
+.posts {}
+
+.posts .item {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.posts .item .date {
+  float: left;
+  display: block;
+  /* margin-right: 16px; */
+  min-width: 100px;
+  color: #666;
+  font-size: 14px;
+}
+
+.posts .item .title {}

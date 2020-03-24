@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Eightpigs</title>
+    <link>https://eightpigs.io/tags/</link>
+    <description>Recent content in Tags on Eightpigs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Dec 2019 14:30:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://eightpigs.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>hardware</title>
+      <link>https://eightpigs.io/tags/hardware/</link>
+      <pubDate>Sun, 15 Dec 2019 14:30:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/tags/hardware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PVE</title>
+      <link>https://eightpigs.io/tags/pve/</link>
+      <pubDate>Sun, 15 Dec 2019 14:30:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/tags/pve/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Virtualization</title>
+      <link>https://eightpigs.io/tags/virtualization/</link>
+      <pubDate>Sun, 15 Dec 2019 14:30:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/tags/virtualization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Neovim</title>
+      <link>https://eightpigs.io/tags/neovim/</link>
+      <pubDate>Tue, 12 Mar 2019 23:00:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/neovim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Productivity</title>
+      <link>https://eightpigs.io/tags/productivity/</link>
+      <pubDate>Tue, 12 Mar 2019 23:00:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/productivity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>https://eightpigs.io/tags/vim/</link>
+      <pubDate>Tue, 12 Mar 2019 23:00:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Leaf</title>
+      <link>https://eightpigs.io/tags/leaf/</link>
+      <pubDate>Thu, 28 Feb 2019 20:52:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/leaf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NUID</title>
+      <link>https://eightpigs.io/tags/nuid/</link>
+      <pubDate>Thu, 28 Feb 2019 20:52:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/nuid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Snowflake</title>
+      <link>https://eightpigs.io/tags/snowflake/</link>
+      <pubDate>Thu, 28 Feb 2019 20:52:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/snowflake/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Twitter</title>
+      <link>https://eightpigs.io/tags/twitter/</link>
+      <pubDate>Thu, 28 Feb 2019 20:52:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/twitter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UUID</title>
+      <link>https://eightpigs.io/tags/uuid/</link>
+      <pubDate>Thu, 28 Feb 2019 20:52:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/uuid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CI</title>
+      <link>https://eightpigs.io/tags/ci/</link>
+      <pubDate>Sat, 23 Feb 2019 17:48:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://eightpigs.io/tags/docker/</link>
+      <pubDate>Sat, 23 Feb 2019 17:48:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker Compose</title>
+      <link>https://eightpigs.io/tags/docker-compose/</link>
+      <pubDate>Sat, 23 Feb 2019 17:48:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/docker-compose/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://eightpigs.io/tags/go/</link>
+      <pubDate>Sat, 23 Feb 2019 17:48:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Algorithm</title>
+      <link>https://eightpigs.io/tags/algorithm/</link>
+      <pubDate>Sat, 23 Feb 2019 13:38:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://eightpigs.io/tags/java/</link>
+      <pubDate>Sat, 23 Feb 2019 13:38:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sorting</title>
+      <link>https://eightpigs.io/tags/sorting/</link>
+      <pubDate>Sat, 23 Feb 2019 13:38:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/sorting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JVM</title>
+      <link>https://eightpigs.io/tags/jvm/</link>
+      <pubDate>Fri, 10 Aug 2018 21:21:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/jvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NAS</title>
+      <link>https://eightpigs.io/tags/nas/</link>
+      <pubDate>Fri, 10 Aug 2018 21:21:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/nas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MacOS</title>
+      <link>https://eightpigs.io/tags/macos/</link>
+      <pubDate>Fri, 20 Apr 2018 10:14:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/macos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>https://eightpigs.io/tags/tools/</link>
+      <pubDate>Fri, 20 Apr 2018 10:14:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://eightpigs.io/tags/windows/</link>
+      <pubDate>Fri, 20 Apr 2018 10:14:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shell</title>
+      <link>https://eightpigs.io/tags/shell/</link>
+      <pubDate>Sat, 14 Apr 2018 13:02:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Groovy</title>
+      <link>https://eightpigs.io/tags/groovy/</link>
+      <pubDate>Thu, 12 Apr 2018 23:04:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/groovy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spring</title>
+      <link>https://eightpigs.io/tags/spring/</link>
+      <pubDate>Fri, 29 Dec 2017 19:40:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/spring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Database</title>
+      <link>https://eightpigs.io/tags/database/</link>
+      <pubDate>Fri, 05 Feb 2016 11:55:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://eightpigs.io/tags/linux/</link>
+      <pubDate>Fri, 05 Feb 2016 11:55:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>.Net</title>
+      <link>https://eightpigs.io/tags/.net/</link>
+      <pubDate>Thu, 23 Jul 2015 06:14:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/.net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VPN</title>
+      <link>https://eightpigs.io/tags/vpn/</link>
+      <pubDate>Thu, 23 Jul 2015 06:14:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/vpn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Third-party</title>
+      <link>https://eightpigs.io/tags/third-party/</link>
+      <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/third-party/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

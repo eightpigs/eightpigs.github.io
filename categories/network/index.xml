@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Network on Eightpigs</title>
+    <link>https://eightpigs.io/categories/network/</link>
+    <description>Recent content in Network on Eightpigs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 10 Aug 2018 21:21:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://eightpigs.io/categories/network/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>自建家用NAS记录 - 硬件篇</title>
+      <link>https://eightpigs.io/2018/08/10/create_yourself_nas/</link>
+      <pubDate>Fri, 10 Aug 2018 21:21:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2018/08/10/create_yourself_nas/</guid>
+      <description>缘由 NAS是种草很久了，迟迟没下手的原因是还差一根“稻草”。终于最近自己乞丐版的 MBP 15 用起来硬盘有些吃紧&amp;hellip; 作用 文档存储 下载机 TimeMachine 准</description>
+    </item>
+    
+  </channel>
+</rss>

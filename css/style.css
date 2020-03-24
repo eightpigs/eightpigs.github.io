@@ -1,0 +1,109 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  color: #2d2d2d;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  color: #2d2d2d;
+  font: 400 1em/1.8 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB",STHeiti,"Microsoft YaHei","Microsoft JhengHei","Source Han Sans SC","Noto Sans CJK SC","Source Han Sans CN","Noto Sans SC","Source Han Sans TC","Noto Sans CJK TC","WenQuanYi Micro Hei",SimSun,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.725;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: auto;
+  width: 85%;
+  max-width: 58rem;
+  margin: 0 auto;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+a {
+  text-decoration: none;
+  color: #2d2d2d;
+}
+
+.indent{
+  margin-left: 15px;
+}
+
+.section-title {
+  display: block;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  color: #212121;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.5em;
+}
+
+.section-title:first-child {
+  margin-top: 0rem;
+}
+
+.footer {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.footer .copyright {
+  color: #777;
+  float: left;
+}
+
+.footer .navbar {
+  float: right;
+}
+
+.footer .navbar ul li {
+  border-right: 1px solid #777;
+}
+
+.footer .navbar ul li:last-child {
+  border-right: 0px;
+}
+
+
+code.has-jax {
+  font: inherit;
+  font-size: 100%;
+  background: inherit;
+  border: inherit;
+  color: #515151;
+}
+
+.horizontal-li {
+  float: left;
+  list-style-type: none;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  color: #777;
+}
+
+
+::selection {
+    background:#d3d3d3; 
+}
+
+::-moz-selection {
+    background:#d3d3d3; 
+}
+
+::-webkit-selection {
+    background:#d3d3d3; 
+}

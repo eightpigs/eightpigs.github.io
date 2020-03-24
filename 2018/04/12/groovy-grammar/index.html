@@ -1,0 +1,527 @@
+
+
+<meta charset="utf-8" />
+<meta name="generator" content="Hugo 0.68.1" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="Eightpigs, eightpigs@outlook.com" />
+<meta property="og:url" content="https://eightpigs.io/2018/04/12/groovy-grammar/" />
+<link rel="canonical" href="https://eightpigs.io/2018/04/12/groovy-grammar/" />
+
+<link rel="stylesheet" href="/css/github-markdown.css?t=1464395400000">
+
+<link rel="stylesheet" href="/css/head.css?t=1464395400000">
+<link rel="stylesheet" href="/css/style.css?t=1464395400000">
+<link rel="stylesheet" href="/css/list.css?t=1464395400000">
+
+<title>Groovy 基础 - 语法 - Eightpigs</title>
+<meta property="og:title" content="Groovy 基础 - 语法 - Eightpigs" />
+<meta property="og:type" content="article" />
+<meta property="og:description" content="介绍 Groovy&hellip; is an agile and dynamic language for the Java Virtual Machine builds upon the strengths of Java but has additional power features inspired by languages like Python, Ruby and Smalltalk makes modern programming features available to Java developers with almost-zero learning curve provides the ability to statically type check and statically compile your code for robustness and performance supports Domain-Specific Languages and other compact syntax so your" />
+<meta name="description" content="介绍 Groovy&hellip; is an agile and dynamic language for the Java Virtual Machine builds upon the strengths of Java but has additional power features inspired by languages like Python, Ruby and Smalltalk makes modern programming features available to Java developers with almost-zero learning curve provides the ability to statically type check and statically compile your code for robustness and performance supports Domain-Specific Languages and other compact syntax so your" />
+<meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm" />
+
+<link rel="stylesheet" href="/css/highlight/gruvbox-light.css">
+
+<link rel="stylesheet" href="/css/post.css?t=1464395400000">
+
+
+
+
+<div class="content markdown-body">
+  <h1>Groovy 基础 - 语法 </h1>
+  <div class="info">
+    <span class="date">
+      2018-04-12
+    </span>
+
+    
+      
+      <span class="categories">
+      
+      <a data-real="LearningNotes" href="/categories/learningnotes/" class="category">
+        笔记
+      </a>
+      ‣
+      </span>
+    
+    
+    <span class="tags">
+      
+      <a data-real="Groovy" href="/tags/groovy/" class="tag">#Groovy</a>
+      
+    </span>
+  </div>
+  </h1>
+
+  
+
+  <h2 id="介绍">介绍</h2>
+<p>Groovy&hellip;</p>
+<ul>
+<li>
+<p>is an agile and dynamic language for the Java Virtual Machine</p>
+</li>
+<li>
+<p>builds upon the strengths of Java but has additional power features inspired by languages like Python, Ruby and Smalltalk</p>
+</li>
+<li>
+<p>makes modern programming features available to Java developers with almost-zero learning curve</p>
+</li>
+<li>
+<p>provides the ability to statically type check and statically compile your code for robustness and performance</p>
+</li>
+<li>
+<p>supports Domain-Specific Languages and other compact syntax so your code becomes easy to read and maintain</p>
+</li>
+<li>
+<p>makes writing shell and build scripts easy with its powerful processing primitives, OO abilities and an Ant DSL</p>
+</li>
+<li>
+<p>increases developer productivity by reducing scaffolding code when developing web, GUI, database or console applications</p>
+</li>
+<li>
+<p>simplifies testing by supporting unit testing and mocking out-of-the-box</p>
+</li>
+<li>
+<p>seamlessly integrates with all existing Java classes and libraries</p>
+</li>
+<li>
+<p>compiles straight to Java bytecode so you can use it anywhere you can use Java</p>
+</li>
+</ul>
+<p>以下内容大部分来自官方文档（version: 2.4.15），可以理解为删减后的翻译版&hellip;</p>
+<h2 id="语法">语法</h2>
+<p>Groovy是一个基于Java 虚拟机的语言，Groovy语法特性源自于Java并参考了Ruby、Python、Smalltalk等语言的特性</p>
+<h3 id="注释">注释</h3>
+<p>因为在Groovy中可以完全使用Java语法，所以在Groovy中，注释与Java一致，其中唯一不同的是Groovy增加了一个特殊的注释：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#75715e">#!/usr/bin/env groovy</span>
+println <span style="color:#e6db74">&#34;Hello from the shebang line&#34;</span>
+</code></pre></div><p>这个注释主要给unix系统用的，用于声明脚本运行的环境。</p>
+<h3 id="关键字">关键字</h3>
+<table>
+<thead>
+<tr>
+<th>as</th>
+<th>assert</th>
+<th>break</th>
+<th>case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>catch</td>
+<td>class</td>
+<td>const</td>
+<td>continue</td>
+</tr>
+<tr>
+<td>def</td>
+<td>default</td>
+<td>do</td>
+<td>else</td>
+</tr>
+<tr>
+<td>enum</td>
+<td>extends</td>
+<td>false</td>
+<td>finally</td>
+</tr>
+<tr>
+<td>for</td>
+<td>goto</td>
+<td>if</td>
+<td>implements</td>
+</tr>
+<tr>
+<td>import</td>
+<td>in</td>
+<td>instanceof</td>
+<td>interface</td>
+</tr>
+<tr>
+<td>new</td>
+<td>null</td>
+<td>package</td>
+<td>return</td>
+</tr>
+<tr>
+<td>super</td>
+<td>switch</td>
+<td>this</td>
+<td>throw</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>trait</td>
+<td>true</td>
+<td>try</td>
+</tr>
+<tr>
+<td>while</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="命名规则">命名规则</h3>
+<p>标识符以字母，$或下划线开头。不能以数字开头。</p>
+<p>在定义变量时，可以不必指明变量类型，直接使用 <strong>def</strong>关键字或者不写来声明</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">
+<span style="color:#75715e">// 使用def
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;张三&#34;</span>
+
+<span style="color:#75715e">// 直接定义
+</span><span style="color:#75715e"></span>age <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>
+
+<span style="color:#75715e">// 使用类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">boolean</span> male <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+
+</code></pre></div><p>在Groovy中，存在一种比较特殊的标识符：引号标识符。引号标识符用于解决在Java语法规范中禁止但Grovvy却支持的操作</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#75715e">// 定义一个Map
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> map <span style="color:#f92672">=</span> <span style="color:#f92672">[:]</span>
+
+<span style="color:#75715e">// Map允许以.的方式调用，但由于Map的Key存在空格， Java语法将直接报错，所以groovy使用引号来处理
+</span><span style="color:#75715e"></span>map<span style="color:#f92672">.</span><span style="color:#e6db74">&#34;an identifier with a space and double quotes&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ALLOWED&#34;</span>
+map<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;with-dash-signs-and-single-quotes&#39;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ALLOWED&#34;</span>
+</code></pre></div><h3 id="与java-的不同">与Java 的不同</h3>
+<h4 id="默认引入的包">默认引入的包</h4>
+<p>在Groovy中，默认引入了以下包：</p>
+<ul>
+<li>java.io.*</li>
+<li>java.lang.*</li>
+<li>java.math.BigDecimal</li>
+<li>java.math.BigInteger</li>
+<li>java.net.*</li>
+<li>java.util.*</li>
+<li>groovy.lang.*</li>
+<li>groovy.util.*</li>
+</ul>
+<p>所以在代码中时，可以直接使用对象而不用引包</p>
+<blockquote>
+<p>其余不同可以看<a href="http://groovy-lang.org/differences.html">官方文档</a></p>
+</blockquote>
+<h3 id="字符串">字符串</h3>
+<p>Groovy的字符串特别强大，提供了各种有意思的特性。Groovy的字符串有两个对象：<strong>java.lang.String</strong> 和 <strong>groovy.lang.GString</strong>，其中 GString 是一种升级的String类型，支持类似与模板变量的定义。</p>
+<h4 id="单引号">单引号</h4>
+<p>在Java中，单引号用于标识char类型，而在Groovy中，则可以直接与这样社用。单引号是不支持 插值（下面会讲到），仅仅是一个普通的String 类型</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#e6db74">&#39;这是单引号符串&#39;</span>
+</code></pre></div><h4 id="三引号">三引号</h4>
+<p>三引号字符串在Python中是很常见的，有时候写Java代码需要支持换行时，就非常苦恼，基本都采用+号连接。而在Groovy中，则可以直接与Python一样，使用三引号处理对行内容。</p>
+<p>三引号字符串有点类似于HTML中的pre标签，如果三引号中存在缩进，使用println时，将会原封不动输出，也就是说，三引号会保留缩进内容。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    行1
+</span><span style="color:#e6db74">    行2
+</span><span style="color:#e6db74">    这是三引号
+</span><span style="color:#e6db74">&#39;&#39;&#39;</span>
+</code></pre></div><h4 id="双引号">双引号</h4>
+<p>双引号字符串中，如果双引号中没有包含插值，则双引号字符串类型是 <strong>java.lang.String</strong> 类型，如果包含插值，则双引号字符串类型是 <strong>groovy.lang.GString</strong></p>
+<h4 id="插值">插值</h4>
+<p>插值实际是一种字符串的模板变量，也可以理解为占位符，插值使用${}包含变量名。插值是不可以在单引号和三引号中使用的，如果其中有插值，将不会被编译，而直接字面输出。</p>
+<p>当字符串包含插值时，类型自动转换为 <strong>groovy.lang.GString</strong> 可以使用 <strong>toString()</strong> 方法转换为String类型(相当于执行完模板变量并返回最终的值)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">def</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;张三&#39;</span>
+<span style="color:#66d9ef">def</span> helloStr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello , ${name} .&#34;</span>
+
+<span style="color:#75715e">// 插值中可以直接使用表达式
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> str2 <span style="color:#f92672">=</span> helloStr <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;I am ${1 + 2 + 3 + 4} years old&#34;</span>
+
+<span style="color:#75715e">// 插值也可以支持语句
+</span><span style="color:#75715e"></span>println <span style="color:#e6db74">&#34;Hello, ${def a = 1; def b = 2; a + b}&#34;</span>
+
+</code></pre></div><p>除了使用${}来定义插值，还可以直接使用$符号来使用变量，但不可以用$来使用方法和算术运算符</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">def</span> person <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>name: <span style="color:#e6db74">&#39;Guillaume&#39;</span><span style="color:#f92672">,</span> age: <span style="color:#ae81ff">36</span><span style="color:#f92672">]</span>
+<span style="color:#66d9ef">assert</span> <span style="color:#e6db74">&#34;$person.name is $person.age years old&#34;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;Guillaume is 36 years old&#39;</span>
+</code></pre></div><h5 id="插值使用闭包">插值使用闭包</h5>
+<p>闭包的概念可以先简单理解为一个没有方法声明的方法体内容（并不一定正确，但大致可以这样理解来看）</p>
+<p>在Groovy中使用闭包作为插值，那么插值的最终结果是在每次调用该字符串时产生，而不是声明时产生。可以看一段官方实例代码理解</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">def</span> number <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> 
+
+<span style="color:#75715e">// 普通插值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> eagerGString <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;value == ${number}&#34;</span>
+<span style="color:#75715e">// 使用闭包
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> lazyGString <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;value == ${ -&gt; number }&#34;</span>
+
+<span style="color:#66d9ef">assert</span> eagerGString <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;value == 1&#34;</span> 
+<span style="color:#66d9ef">assert</span> lazyGString <span style="color:#f92672">==</span>  <span style="color:#e6db74">&#34;value == 1&#34;</span> 
+
+number <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> 
+<span style="color:#66d9ef">assert</span> eagerGString <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;value == 1&#34;</span> 
+<span style="color:#66d9ef">assert</span> lazyGString <span style="color:#f92672">==</span>  <span style="color:#e6db74">&#34;value == 2&#34;</span> 
+
+</code></pre></div><p>上面实例代码中，lazyGString 变量会随着闭包引用变量的变化而变化，在官方的实例中，很形象得使用了：lazy来定义变量名，该插值会每次在调用时得到最终的字符串结果。</p>
+<h5 id="与java代码糅合">与Java代码糅合</h5>
+<p>因为当字符串使用闭包时，字符串类型将从 <strong>java.lang.String</strong> 转换为 <strong>groovy.lang.GString</strong> ，当一个Java或者Groovy方法需要一个 <strong>java.lang.String</strong> 类型的参数时，传入 <strong>groovy.lang.GString</strong> 将会自动转换为 <strong>java.lang.String</strong></p>
+<h4 id="hashcode">hashCode</h4>
+<p>因为 <strong>groovy.lang.GString</strong> 的字符串内容是动态生成的，即便最终生成的值与 <strong>String</strong> 类型的值一致，它们的hashCode也不同。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">assert</span> <span style="color:#e6db74">&#34;one: ${1}&#34;</span><span style="color:#f92672">.</span><span style="color:#a6e22e">hashCode</span><span style="color:#f92672">()</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;one: 1&#34;</span><span style="color:#f92672">.</span><span style="color:#a6e22e">hashCode</span><span style="color:#f92672">()</span>
+</code></pre></div><p>所以，因为上述结论，在Map中不应使用 <strong>String</strong> 来作为Key，如果使用 <strong>GString</strong> 来作为Key，使用字符串取值的时候，会找不到该Key。</p>
+<h4 id="三重双引号">三重双引号</h4>
+<p>三重双引号与双引号的作用类似，可以说是双引号和三引号的结合版，支持双引号和三引号的特性。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">def</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Groovy&#39;</span>
+<span style="color:#66d9ef">def</span> template <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    Dear Mr ${name},
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    You&#39;re the winner of the lottery!
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Yours sincerly,
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Dave
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</code></pre></div><h4 id="斜杠字符串">斜杠字符串</h4>
+<p>在groovy中可以使用斜杠来定义字符串，使用斜杠字符串可以当双引号、三引号使用，也支持插值。斜杠字符串不需要转移反斜杠，可以更加方便编写正则表达式。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">def</span> hello <span style="color:#f92672">=</span> <span style="color:#e6db74">/Hello/</span>
+</code></pre></div><h4 id="美元斜杠字符串dollar-slashy-string">美元斜杠字符串(Dollar slashy string)</h4>
+<p>美元斜杠通过 $/ 和 /$ 定义字符串，主要用于字符串中存在多种需要转义符号的情况下，支持多行、可以使用插值。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">def</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Groovy&#34;</span>
+<span style="color:#66d9ef">def</span> date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;April, 1st&#34;</span>
+
+<span style="color:#66d9ef">def</span> dollarSlashy <span style="color:#f92672">=</span> <span style="color:#e6db74">$/
+</span><span style="color:#e6db74">    Hello $name,
+</span><span style="color:#e6db74">    today we&#39;re ${date}.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    $ dollar sign
+</span><span style="color:#e6db74">    $$ escaped dollar sign
+</span><span style="color:#e6db74">    \ backslash
+</span><span style="color:#e6db74">    / forward slash
+</span><span style="color:#e6db74">    $/ escaped forward slash
+</span><span style="color:#e6db74">    $$$/ escaped opening dollar slashy
+</span><span style="color:#e6db74">    $/$</span>$ escaped closing dollar slashy
+<span style="color:#f92672">/</span>$
+
+</code></pre></div><h4 id="characters">Characters</h4>
+<p>很有意思的是，在Groovy中没有明确的字符串定义，因为单引号可以用于定义字符串。但是可以通过以下三种方式来声明一个char类型</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#75715e">// 使用char类型来声明
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">char</span> c1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>
+
+<span style="color:#75715e">// 使用as转换为char类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> c2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;B&#39;</span> <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">char</span>
+
+<span style="color:#75715e">// 强制转换为char类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> c3 <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#e6db74">&#39;C&#39;</span>
+</code></pre></div><h3 id="数字">数字</h3>
+<p>Groovy中可以使用Java的数字类型，在声明数字类型时，Groovy会根据数字的大小自动转换成相应的类型。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">def</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">assert</span> a <span style="color:#66d9ef">instanceof</span> Integer
+
+<span style="color:#75715e">// Integer.MAX_VALUE
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">2147483647</span>
+<span style="color:#66d9ef">assert</span> b <span style="color:#66d9ef">instanceof</span> Integer
+
+<span style="color:#75715e">// Integer.MAX_VALUE + 1
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">2147483648</span>
+<span style="color:#66d9ef">assert</span> c <span style="color:#66d9ef">instanceof</span> Long
+
+<span style="color:#75715e">// Long.MAX_VALUE
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> d <span style="color:#f92672">=</span> <span style="color:#ae81ff">9223372036854775807</span>
+<span style="color:#66d9ef">assert</span> d <span style="color:#66d9ef">instanceof</span> Long
+
+<span style="color:#75715e">// Long.MAX_VALUE + 1
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> e <span style="color:#f92672">=</span> <span style="color:#ae81ff">9223372036854775808</span>
+<span style="color:#66d9ef">assert</span> e <span style="color:#66d9ef">instanceof</span> BigInteger
+</code></pre></div><p>可以使用 ** 来做乘方运算。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#ae81ff">2</span>    <span style="color:#f92672">**</span>   <span style="color:#ae81ff">3</span>     <span style="color:#75715e">// 8
+</span><span style="color:#75715e"></span><span style="color:#ae81ff">10</span>   <span style="color:#f92672">**</span>  <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>     <span style="color:#75715e">// 0.1
+</span></code></pre></div><h4 id="其他进制的数字">其他进制的数字</h4>
+<h5 id="二进制">二进制</h5>
+<p>二进制数字以前缀 ： 0b 开头</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">int</span> xInt <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>b10101111
+<span style="color:#66d9ef">assert</span> xInt <span style="color:#f92672">==</span> <span style="color:#ae81ff">175</span>
+</code></pre></div><h5 id="八进制">八进制</h5>
+<p>八进制数字以前缀：0 开头</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">int</span> xInt <span style="color:#f92672">=</span> <span style="color:#ae81ff">077</span>
+<span style="color:#66d9ef">assert</span> xInt <span style="color:#f92672">==</span> <span style="color:#ae81ff">63</span>
+</code></pre></div><h5 id="16进制">16进制</h5>
+<p>16进制数字以前缀：0x 开头</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">int</span> xInt <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x77</span>
+<span style="color:#66d9ef">assert</span> xInt <span style="color:#f92672">==</span> <span style="color:#ae81ff">119</span>
+</code></pre></div><h4 id="浮点数">浮点数</h4>
+<p>在Groovy中，浮点数的默认类型为BigDecimal，不过在方法参数是double或者float时，依旧可以传入BigDecimal</p>
+<p>浮点数支持使用指数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">assert</span> <span style="color:#ae81ff">1</span>e3 <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>_000<span style="color:#f92672">.</span><span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">assert</span> <span style="color:#ae81ff">2</span>E4 <span style="color:#f92672">==</span> <span style="color:#ae81ff">20</span>_000<span style="color:#f92672">.</span><span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">assert</span> <span style="color:#ae81ff">3</span>e<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">30.0</span>
+<span style="color:#66d9ef">assert</span> <span style="color:#ae81ff">4</span>E<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0.04</span>
+<span style="color:#66d9ef">assert</span> <span style="color:#ae81ff">5</span>e<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0.5</span>
+</code></pre></div><p>在编写较长的数字时，Groovy允许使用下划线来分组数字，有点类似于我们数字里面常用的逗号</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">long</span> creditCardNumber <span style="color:#f92672">=</span> <span style="color:#ae81ff">1234</span>_5678_9012_3456L
+<span style="color:#66d9ef">long</span> socialSecurityNumbers <span style="color:#f92672">=</span> <span style="color:#ae81ff">999</span>_99_9999L
+<span style="color:#66d9ef">double</span> monetaryAmount <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>_345_132<span style="color:#f92672">.</span><span style="color:#ae81ff">12</span>
+<span style="color:#66d9ef">long</span> hexBytes <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xFF</span>_EC_DE_5E
+<span style="color:#66d9ef">long</span> hexWords <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xFFEC</span>_DE5E
+<span style="color:#66d9ef">long</span> maxLong <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x7fff</span>_ffff_ffff_ffffL
+<span style="color:#66d9ef">long</span> alsoMaxLong <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>_223_372_036_854_775_807L
+<span style="color:#66d9ef">long</span> bytes <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>b11010010_01101001_10010100_10010010
+</code></pre></div><p>在定义数字时，可以通过给值定一个后缀强制定义为指定类型</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>后缀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BigInteger</td>
+<td>G 或 g</td>
+</tr>
+<tr>
+<td>Long</td>
+<td>L 或 l</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>I 或 i</td>
+</tr>
+<tr>
+<td>BigDecimal</td>
+<td>G 或 g</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>D 或 d</td>
+</tr>
+<tr>
+<td>Float</td>
+<td>F 或 f</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lists">Lists</h3>
+<p>在Groovy中，集合默认使用的类型是 <strong>java.util.List</strong> ，因为Groovy中没有自己实现集合类型。</p>
+<p>使用Java中数组的形式定义集合</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">def</span> numbers <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+<span style="color:#66d9ef">assert</span> numbers <span style="color:#66d9ef">instanceof</span> List
+<span style="color:#66d9ef">assert</span> numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>
+
+<span style="color:#75715e">// 类似于Java中二位数组的集合
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> multi <span style="color:#f92672">=</span> <span style="color:#f92672">[[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">],</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">2</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">]]</span>
+<span style="color:#66d9ef">assert</span> multi<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">][</span><span style="color:#ae81ff">0</span><span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>
+</code></pre></div><p>通常，我们定义集合时会使用同一种类型，Groovy也提供了不同类型的集合定义</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">def</span> values <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">22</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;张三&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">]</span>
+</code></pre></div><p>在集合时，可以使用Groovy中的关键字<strong>as</strong>指定集合的类型</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">def</span> linkedList <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">2</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">4</span><span style="color:#f92672">]</span> <span style="color:#66d9ef">as</span> LinkedList
+</code></pre></div><h4 id="取值">取值</h4>
+<p>可以直接使用下标来取值，其中下标分为两种， 正向取值和逆向取值。正向取值意思是使用正数从前往后取，逆向取值意思是使用复数从后往前取</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">def</span> letters <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;b&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;c&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;d&#39;</span><span style="color:#f92672">]</span>
+
+<span style="color:#66d9ef">assert</span> letters<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;a&#39;</span>     
+<span style="color:#66d9ef">assert</span> letters<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;b&#39;</span>
+
+<span style="color:#66d9ef">assert</span> letters<span style="color:#f92672">[-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;d&#39;</span>    
+<span style="color:#66d9ef">assert</span> letters<span style="color:#f92672">[-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;c&#39;</span>
+
+<span style="color:#75715e">// 同时访问2个元素
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">assert</span> letters<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;b&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;d&#39;</span><span style="color:#f92672">]</span>
+
+<span style="color:#75715e">// 访问指定范围的元素
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">assert</span> letters<span style="color:#f92672">[</span><span style="color:#ae81ff">2</span><span style="color:#f92672">..</span><span style="color:#ae81ff">4</span><span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;C&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;d&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;e&#39;</span><span style="color:#f92672">]</span>
+</code></pre></div><h4 id="赋值">赋值</h4>
+<p>给List某个元素赋值直接使用=号即可</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">letters<span style="color:#f92672">[</span><span style="color:#ae81ff">2</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;C&#39;</span>
+</code></pre></div><h4 id="添加">添加</h4>
+<p>使用 <strong>&laquo;</strong>给集合添加元素</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">letters <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;e&#39;</span>
+</code></pre></div><h3 id="数组">数组</h3>
+<p>数组与List的定义方式一样，只不过在定义时需要指定类型</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">String<span style="color:#f92672">[]</span> arrStr <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;Ananas&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;Banana&#39;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#39;Kiwi&#39;</span><span style="color:#f92672">]</span>
+<span style="color:#66d9ef">def</span> numArr <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span> <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span>
+</code></pre></div><h3 id="map">Map</h3>
+<p>Map的定义也是使用中括号，这与Groovy中大括号的使用有关：大括号用于闭包。所以可以使用如下方式创建一个Map</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">def</span> colors <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>red: <span style="color:#e6db74">&#39;#FF0000&#39;</span><span style="color:#f92672">,</span> green: <span style="color:#e6db74">&#39;#00FF00&#39;</span><span style="color:#f92672">,</span> blue: <span style="color:#e6db74">&#39;#0000FF&#39;</span><span style="color:#f92672">]</span>
+</code></pre></div><p>Map支持使用[key] 和 以对象打点的方式进行调用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#66d9ef">assert</span> colors<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;red&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;#FF0000&#39;</span>
+<span style="color:#66d9ef">assert</span> colors<span style="color:#f92672">.</span><span style="color:#a6e22e">green</span>  <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;#00FF00&#39;</span>
+</code></pre></div><p>支持使用变量作为Key，但需要使用()将变量包起来</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">
+<span style="color:#66d9ef">def</span> key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;name&#39;</span>
+<span style="color:#75715e">// 定义一个包含key为name的Map
+</span><span style="color:#75715e"></span>person <span style="color:#f92672">=</span> <span style="color:#f92672">[(</span>key<span style="color:#f92672">):</span> <span style="color:#e6db74">&#39;Guillaume&#39;</span><span style="color:#f92672">]</span>
+</code></pre></div>
+
+  
+    <br />
+    <br />
+    <hr />
+    文章作者：eightpigs
+    <br />
+    创作时间：2018-04-12
+    <br />
+    更新时间：
+    
+      2019-03-04
+    
+    <br />
+    许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
+    <hr />
+  
+</div>
+
+<script charset="utf-8">
+  encode("tag")
+  encode("category")
+  function encode(ele) {
+    var elems = document.getElementsByClassName(ele)
+    if (elems) {
+      for (var i=0; i < elems.length; i++) {
+        var id = elems[i].getAttribute("data-real")
+        var href = elems[i].getAttribute("href")
+        if (href && id) {
+          id = id.toLowerCase()
+          if (href.indexOf(id) != -1) {
+            elems[i].setAttribute("href",  href.replace(id, encodeURIComponent(id)));
+          }
+        }
+      }
+    }
+  }
+</script>
+
+
+
+<div class="footer">
+  
+  <div class="copyright">&copy; 2014 - 
+    
+      2020
+
+    
+      Eightpigs 
+  </div>
+  
+  <div class="navbar">
+  <ul>
+  
+    <li>
+      <a href="/">首页</a>
+    </li>
+  
+    <li>
+      <a href="/archives">归档</a>
+    </li>
+  
+    <li>
+      <a href="/pages/about">关于</a>
+    </li>
+  
+  </ul>
+</div>
+
+</div>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+ 
+
+
+  
+
+
+  
+
+
+  
+
+

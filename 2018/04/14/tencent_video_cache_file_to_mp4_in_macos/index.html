@@ -1,0 +1,244 @@
+
+
+<meta charset="utf-8" />
+<meta name="generator" content="Hugo 0.68.1" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="Eightpigs, eightpigs@outlook.com" />
+<meta property="og:url" content="https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/" />
+<link rel="canonical" href="https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/" />
+
+<link rel="stylesheet" href="/css/github-markdown.css?t=1464395400000">
+
+<link rel="stylesheet" href="/css/head.css?t=1464395400000">
+<link rel="stylesheet" href="/css/style.css?t=1464395400000">
+<link rel="stylesheet" href="/css/list.css?t=1464395400000">
+
+<title>腾讯视频客户端（MacOS）缓存文件转mp4 - Eightpigs</title>
+<meta property="og:title" content="腾讯视频客户端（MacOS）缓存文件转mp4 - Eightpigs" />
+<meta property="og:type" content="article" />
+<meta property="og:description" content="年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有TV版的缘故，其他版本没有给开放投" />
+<meta name="description" content="年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有TV版的缘故，其他版本没有给开放投" />
+<meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm" />
+
+<link rel="stylesheet" href="/css/highlight/gruvbox-light.css">
+
+<link rel="stylesheet" href="/css/post.css?t=1464395400000">
+
+
+
+
+<div class="content markdown-body">
+  <h1>腾讯视频客户端（MacOS）缓存文件转mp4 </h1>
+  <div class="info">
+    <span class="date">
+      2018-04-14
+    </span>
+
+    
+      
+      <span class="categories">
+      
+      <a data-real="Creation" href="/categories/creation/" class="category">
+        作品
+      </a>
+      ‣
+      </span>
+    
+    
+    <span class="tags">
+      
+      <a data-real="Shell" href="/tags/shell/" class="tag">#Shell</a>
+      
+      <a data-real="MacOS" href="/tags/macos/" class="tag">#MacOS</a>
+      
+    </span>
+  </div>
+  </h1>
+
+  
+
+  <p>年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有TV版的缘故，其他版本没有给开放投屏功能。那么这就很尴尬了，TV版会员太贵并且也没必要买，普通客户端不支持投屏并且缓存的资源也不是一个正常可以直接用其他播放器观看的格式。</p>
+<h2 id="思路">思路</h2>
+<p>通过查看客户端缓存的目录发现，视频是被切割为单个小的ts文件，也就是并没有做任何处理，只是一个切割操作而已。最重要的是切割的ts文件是有序的，文件名是以0,1,2,3,4这样的顺序命名的，所以只要想办法把文件按顺序合成就可以正常用其他播放器投屏观看了。</p>
+<p>那么写个简单的shell脚本就可以实现这个操作（将ts文件按顺序合成到mp4)</p>
+<h2 id="步骤">步骤</h2>
+<p>最初尝试使用递归获取.ts文件并合并，这也是最简单的方式，但是由于直接使用 <strong>find . -name &lsquo;*.ts&rsquo;</strong> 的结果是无序的，导致最终合成的视频顺序不正确</p>
+<p>所以最终决定按以下最稳的方式实现</p>
+<ol>
+<li>将指定视频子目录下的所有ts文件放到一个临时目录下，方便处理（因为文件名是有序的）</li>
+<li>进入临时目录，获取文件的数量</li>
+<li>根据文件数量遍历将文件合成到指定文件</li>
+<li>删除临时目录</li>
+</ol>
+<h2 id="脚本">脚本</h2>
+<h3 id="视频路径">视频路径</h3>
+<p>腾讯视频的缓存目录在：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">~/Library/Containers/com.tencent.tenvideo/Data/Library/Application<span style="color:#ae81ff">\ </span>Support/Download/video/
+</code></pre></div><p>video目录下除了ad文件夹之外的所有文件夹都是已经缓存的视频，可以查看子文件夹中.ts文件的内容（可以空格键直接预览）然后确定具体是哪个视频的缓存资源</p>
+<h3 id="使用示例">使用示例</h3>
+<p><a href="https://asciinema.org/a/zWKx9uhvxpUlWsbyZtLo3WSMl"><img src="https://asciinema.org/a/zWKx9uhvxpUlWsbyZtLo3WSMl.png" alt="asciicast"></a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">merge.sh b0025s0ph00.321004.hls ~/Downloads/合成视频1.mp4
+</code></pre></div><ul>
+<li>第一个参数是缓存视频文件夹名称</li>
+<li>第二个参数是合成文件的保存路径</li>
+</ul>
+<h3 id="脚本内容">脚本内容</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
+clear
+
+cat <span style="color:#e6db74">&lt;&lt; EOF
+</span><span style="color:#e6db74">################### 腾讯视频(MacOS)缓存文件合成脚本 ###################
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">Author: eightpigs &lt;isme@lyinlong.me&gt;
+</span><span style="color:#e6db74">Date: 2018-04-14
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">EOF</span>
+
+echo -n <span style="color:#e6db74">&#34;=&gt; 准备数据... &#34;</span>
+
+<span style="color:#75715e"># 生成的目标文件</span>
+target<span style="color:#f92672">=</span>$2
+<span style="color:#75715e"># 源文件（.ts文件的目录）</span>
+source<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/Users/&#39;</span>$USER<span style="color:#e6db74">&#39;/Library/Containers/com.tencent.tenvideo/Data/Library/Application Support/Download/video/&#39;</span>$1<span style="color:#e6db74">&#39;/&#39;</span>
+
+<span style="color:#75715e"># 使用时间戳来做临时目录</span>
+tmpDir<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/tmp/merge_tencent/&#39;</span><span style="color:#e6db74">`</span>date +%s<span style="color:#e6db74">`</span><span style="color:#e6db74">&#39;/&#39;</span>
+mkdir -p $tmpDir
+
+<span style="color:#75715e"># 进入到视频的ts目录</span>
+cd <span style="color:#e6db74">&#34;</span>$source<span style="color:#e6db74">&#34;</span>
+
+echo <span style="color:#e6db74">&#34;完成&#34;</span>
+
+echo -n <span style="color:#e6db74">&#34;=&gt; 合并文件夹... &#34;</span>
+<span style="color:#75715e"># 将文件递归移动到临时目录</span>
+<span style="color:#66d9ef">for</span> i in <span style="color:#66d9ef">$(</span>find ./ -name <span style="color:#e6db74">&#39;*.ts&#39;</span><span style="color:#66d9ef">)</span>;
+<span style="color:#66d9ef">do</span>
+    cp -vf $i $tmpDir &gt; /dev/null 2&gt;&amp;1;
+<span style="color:#66d9ef">done</span>
+
+echo <span style="color:#e6db74">&#34;完成&#34;</span>
+
+cd $tmpDir
+
+
+echo -n <span style="color:#e6db74">&#34;=&gt; 获取需要合成文件数... &#34;</span>
+
+<span style="color:#75715e"># 总共有多少文件</span>
+<span style="color:#75715e"># 因为ts 文件是有顺序的（文件名)</span>
+count<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>ls -l $tmpDir |grep <span style="color:#e6db74">&#34;^-&#34;</span>|wc -l | sed <span style="color:#e6db74">&#39;s/[[:space:]]//g&#39;</span><span style="color:#e6db74">`</span>
+
+echo <span style="color:#e6db74">&#34;完成&#34;</span>
+
+echo -n <span style="color:#e6db74">&#34;=&gt; 合成文件... &#34;</span>
+
+<span style="color:#75715e"># 按顺序合并</span>
+<span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span>i<span style="color:#f92672">=</span>0; i&lt;$count; i ++<span style="color:#f92672">))</span>  
+<span style="color:#66d9ef">do</span>  
+    cat <span style="color:#e6db74">&#34;</span>$tmpDir<span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#39;.ts&#39;</span>&gt;&gt;<span style="color:#e6db74">&#34;</span>$target<span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">done</span>
+
+echo <span style="color:#e6db74">&#34;完成&#34;</span>
+
+cat <span style="color:#e6db74">&lt;&lt; EOF
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">结果：
+</span><span style="color:#e6db74">    文件数: $count
+</span><span style="color:#e6db74">    大小:  `ls -lh $target | awk &#39;{print $5}&#39;`
+</span><span style="color:#e6db74">    路径：$target
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">######################################################################
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">EOF</span>
+
+rm -rf $tmpDir
+</code></pre></div>
+
+  
+    <br />
+    <br />
+    <hr />
+    文章作者：eightpigs
+    <br />
+    创作时间：2018-04-14
+    <br />
+    更新时间：
+    
+      2019-03-04
+    
+    <br />
+    许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
+    <hr />
+  
+</div>
+
+<script charset="utf-8">
+  encode("tag")
+  encode("category")
+  function encode(ele) {
+    var elems = document.getElementsByClassName(ele)
+    if (elems) {
+      for (var i=0; i < elems.length; i++) {
+        var id = elems[i].getAttribute("data-real")
+        var href = elems[i].getAttribute("href")
+        if (href && id) {
+          id = id.toLowerCase()
+          if (href.indexOf(id) != -1) {
+            elems[i].setAttribute("href",  href.replace(id, encodeURIComponent(id)));
+          }
+        }
+      }
+    }
+  }
+</script>
+
+
+
+<div class="footer">
+  
+  <div class="copyright">&copy; 2014 - 
+    
+      2020
+
+    
+      Eightpigs 
+  </div>
+  
+  <div class="navbar">
+  <ul>
+  
+    <li>
+      <a href="/">首页</a>
+    </li>
+  
+    <li>
+      <a href="/archives">归档</a>
+    </li>
+  
+    <li>
+      <a href="/pages/about">关于</a>
+    </li>
+  
+  </ul>
+</div>
+
+</div>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+ 
+
+
+  
+
+
+  
+
+
+  
+
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on Eightpigs</title>
+    <link>https://eightpigs.io/pages/</link>
+    <description>Recent content in Pages on Eightpigs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Feb 2019 20:52:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://eightpigs.io/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>关于</title>
+      <link>https://eightpigs.io/pages/about/</link>
+      <pubDate>Thu, 28 Feb 2019 20:52:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/pages/about/</guid>
+      <description>回头看，有什么。 博客概述 历程: 14年至17年期间频繁处于重建、换域名状态，主要原因是懒、折腾。18年后通过使用Hexo、Hugo减少了管理成</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LearningNotes on Eightpigs</title>
+    <link>https://eightpigs.io/categories/learningnotes/</link>
+    <description>Recent content in LearningNotes on Eightpigs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Feb 2019 20:52:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://eightpigs.io/categories/learningnotes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>常见的统一标识符算法（UUID、NUID、Snowflake）</title>
+      <link>https://eightpigs.io/2019/02/28/unique_identifier/</link>
+      <pubDate>Thu, 28 Feb 2019 20:52:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2019/02/28/unique_identifier/</guid>
+      <description>在日常开发过程中，肯定少不了接触“统一标识符”，一般我们都直接使用各个语言标准库中的实现，例如在Java中可以使用java.util.UUI</description>
+    </item>
+    
+    <item>
+      <title>排序算法 - 选择、冒泡、插入、快排、希尔、归并、堆</title>
+      <link>https://eightpigs.io/2019/02/23/sort_algorithm/</link>
+      <pubDate>Sat, 23 Feb 2019 13:38:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2019/02/23/sort_algorithm/</guid>
+      <description>&lt;p&gt;在编码过程中肯定少不了对数据进行排序，通常做法是使用标准库的实现、使用熟悉的排序算法或直接网上扒一个排序算法，然而却对排序算法的特点和适应场景了解得非常少。本文将从代码实现和不同量级数据的测试两个角度来说说各个排序算法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JAVA 虚拟机栈</title>
+      <link>https://eightpigs.io/2018/08/10/java_virtual_machine_stack/</link>
+      <pubDate>Fri, 10 Aug 2018 21:21:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2018/08/10/java_virtual_machine_stack/</guid>
+      <description>概念 JVM 虚拟机栈与程序计数器和[本地方法栈]一样都是线程私有的。 栈帧可以理解为一个方法的运行空间 栈帧（Stack Frame） 栈帧是用于支持虚拟</description>
+    </item>
+    
+    <item>
+      <title>Groovy 基础 - 语法</title>
+      <link>https://eightpigs.io/2018/04/12/groovy-grammar/</link>
+      <pubDate>Thu, 12 Apr 2018 23:04:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2018/04/12/groovy-grammar/</guid>
+      <description>介绍 Groovy&amp;hellip; is an agile and dynamic language for the Java Virtual Machine builds upon the strengths of Java but has additional power features inspired by languages like Python, Ruby and Smalltalk makes modern programming features available to Java developers with almost-zero learning curve provides the ability to statically type check and statically compile your code for robustness and performance supports Domain-Specific Languages and other compact syntax so your</description>
+    </item>
+    
+    <item>
+      <title>Go语言学习 - 复合数据类型：数组、slice</title>
+      <link>https://eightpigs.io/2018/03/19/go_notes_array_and_slice/</link>
+      <pubDate>Mon, 19 Mar 2018 14:26:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2018/03/19/go_notes_array_and_slice/</guid>
+      <description>复合数据类型 主要分为4种复合数据类型： 数组 slice map 结构体 本次先将数组和slice的相关知识点及理解记录下来，后续再慢慢看Map和结构体。 数组 数组</description>
+    </item>
+    
+    <item>
+      <title>Go学习笔记 - 基本结构</title>
+      <link>https://eightpigs.io/2018/02/10/go_notes_basic_structure/</link>
+      <pubDate>Sat, 10 Feb 2018 17:15:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2018/02/10/go_notes_basic_structure/</guid>
+      <description>基本结构 package main import &amp;#34;fmt&amp;#34; // 变量 // 函数 func main(){ fmt.Println(&amp;#34;Hello Go&amp;#34;) } 每一个.go的文件以package声明开头，表名文件属于哪个包 package 声明后面是import声明 然后是包级别</description>
+    </item>
+    
+    <item>
+      <title>Spring Colud 之 统一配置中心</title>
+      <link>https://eightpigs.io/2017/12/29/spring_cloud_config_server/</link>
+      <pubDate>Fri, 29 Dec 2017 19:40:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2017/12/29/spring_cloud_config_server/</guid>
+      <description>在我们Java项目开发过程中，对于配置文件的多环境配置一般会采用以下方案： 使用maven等构建工具基于resources自定义多环境 使用市面</description>
+    </item>
+    
+  </channel>
+</rss>
