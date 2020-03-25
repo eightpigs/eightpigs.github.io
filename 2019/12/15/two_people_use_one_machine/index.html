@@ -1,7 +1,7 @@
 
 
 <meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.68.1" />
+<meta name="generator" content="Hugo 0.68.3" />
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -201,8 +201,9 @@
 <ol>
 <li>将下载好的ISO写入到U盘</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>archlinux-2019.11.01-x86_64.iso of<span style="color:#f92672">=</span>/dev/rdisk2 bs<span style="color:#f92672">=</span>1m
-</code></pre></div><ol start="2">
+<pre><code class="language-bash">sudo dd if=archlinux-2019.11.01-x86_64.iso of=/dev/rdisk2 bs=1m
+</code></pre>
+<ol start="2">
 <li>将U盘插入到PVE宿主机</li>
 <li>创建一个虚拟机</li>
 <li>记住虚拟机的编号（或者查看详情）</li>
@@ -217,51 +218,55 @@
 <p>修改 <code>/etc/default/grub</code>中的 <code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet&quot;</code> 为: <code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet intel_iommu=on&quot;</code></p>
 <h3 id="2-添加内核模块">2. 添加内核模块</h3>
 <p>添加以下内容到<code>/etc/modules</code>底部</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vfio
+<pre><code class="language-bash">vfio
 vfio_iommu_type1
 vfio_pci
 vfio_virqfd
-</code></pre></div><p>改动之后需要重启系统。</p>
+</code></pre>
+<p>改动之后需要重启系统。</p>
 <h2 id="硬盘直通">硬盘直通</h2>
 <p>将硬盘直接挂载到虚拟机中，不走虚拟化方式，提高硬盘读写性能。</p>
 <h3 id="查看所有硬盘设备">查看所有硬盘设备</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@fighter:~# lsblk
+<pre><code class="language-bash">root@fighter:~# lsblk
 NAME                 MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sda                    8:0    <span style="color:#ae81ff">0</span> 111.8G  <span style="color:#ae81ff">0</span> disk
-├─sda1                 8:1    <span style="color:#ae81ff">0</span>  1007K  <span style="color:#ae81ff">0</span> part
-├─sda2                 8:2    <span style="color:#ae81ff">0</span>   512M  <span style="color:#ae81ff">0</span> part /boot/efi
-└─sda3                 8:3    <span style="color:#ae81ff">0</span> 111.3G  <span style="color:#ae81ff">0</span> part
-  ├─pve-swap         253:0    <span style="color:#ae81ff">0</span>     8G  <span style="color:#ae81ff">0</span> lvm  <span style="color:#f92672">[</span>SWAP<span style="color:#f92672">]</span>
-  ├─pve-root         253:1    <span style="color:#ae81ff">0</span>  27.8G  <span style="color:#ae81ff">0</span> lvm  /
-  ├─pve-data_tmeta   253:2    <span style="color:#ae81ff">0</span>     1G  <span style="color:#ae81ff">0</span> lvm
-  │ └─pve-data-tpool 253:4    <span style="color:#ae81ff">0</span>  59.7G  <span style="color:#ae81ff">0</span> lvm
-  │   └─pve-data     253:5    <span style="color:#ae81ff">0</span>  59.7G  <span style="color:#ae81ff">0</span> lvm
-  └─pve-data_tdata   253:3    <span style="color:#ae81ff">0</span>  59.7G  <span style="color:#ae81ff">0</span> lvm
-    └─pve-data-tpool 253:4    <span style="color:#ae81ff">0</span>  59.7G  <span style="color:#ae81ff">0</span> lvm
-      └─pve-data     253:5    <span style="color:#ae81ff">0</span>  59.7G  <span style="color:#ae81ff">0</span> lvm
-sdb                    8:16   <span style="color:#ae81ff">1</span>  58.4G  <span style="color:#ae81ff">0</span> disk
-├─sdb1                 8:17   <span style="color:#ae81ff">1</span>   635M  <span style="color:#ae81ff">0</span> part
-└─sdb2                 8:18   <span style="color:#ae81ff">1</span>    64M  <span style="color:#ae81ff">0</span> part
-nvme0n1              259:0    <span style="color:#ae81ff">0</span> 465.8G  <span style="color:#ae81ff">0</span> disk
-nvme1n1              259:1    <span style="color:#ae81ff">0</span> 465.8G  <span style="color:#ae81ff">0</span> disk
-├─nvme1n1p1          259:2    <span style="color:#ae81ff">0</span>   499M  <span style="color:#ae81ff">0</span> part
-├─nvme1n1p2          259:3    <span style="color:#ae81ff">0</span>   100M  <span style="color:#ae81ff">0</span> part
-├─nvme1n1p3          259:4    <span style="color:#ae81ff">0</span>    16M  <span style="color:#ae81ff">0</span> part
-├─nvme1n1p4          259:5    <span style="color:#ae81ff">0</span> 264.2G  <span style="color:#ae81ff">0</span> part
-├─nvme1n1p5          259:6    <span style="color:#ae81ff">0</span>     4G  <span style="color:#ae81ff">0</span> part
-└─nvme1n1p6          259:7    <span style="color:#ae81ff">0</span>   197G  <span style="color:#ae81ff">0</span> part
-</code></pre></div><p>其中 nvme0n1 是我的一块新硬盘，还未使用，打算将此盘直通到新虚拟机中</p>
+sda                    8:0    0 111.8G  0 disk
+├─sda1                 8:1    0  1007K  0 part
+├─sda2                 8:2    0   512M  0 part /boot/efi
+└─sda3                 8:3    0 111.3G  0 part
+  ├─pve-swap         253:0    0     8G  0 lvm  [SWAP]
+  ├─pve-root         253:1    0  27.8G  0 lvm  /
+  ├─pve-data_tmeta   253:2    0     1G  0 lvm
+  │ └─pve-data-tpool 253:4    0  59.7G  0 lvm
+  │   └─pve-data     253:5    0  59.7G  0 lvm
+  └─pve-data_tdata   253:3    0  59.7G  0 lvm
+    └─pve-data-tpool 253:4    0  59.7G  0 lvm
+      └─pve-data     253:5    0  59.7G  0 lvm
+sdb                    8:16   1  58.4G  0 disk
+├─sdb1                 8:17   1   635M  0 part
+└─sdb2                 8:18   1    64M  0 part
+nvme0n1              259:0    0 465.8G  0 disk
+nvme1n1              259:1    0 465.8G  0 disk
+├─nvme1n1p1          259:2    0   499M  0 part
+├─nvme1n1p2          259:3    0   100M  0 part
+├─nvme1n1p3          259:4    0    16M  0 part
+├─nvme1n1p4          259:5    0 264.2G  0 part
+├─nvme1n1p5          259:6    0     4G  0 part
+└─nvme1n1p6          259:7    0   197G  0 part
+</code></pre>
+<p>其中 nvme0n1 是我的一块新硬盘，还未使用，打算将此盘直通到新虚拟机中</p>
 <h3 id="确认硬盘id">确认硬盘ID</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@fighter:~# ls -als /dev/disk/by-id | grep nvme0n1
-<span style="color:#ae81ff">0</span> lrwxrwxrwx <span style="color:#ae81ff">1</span> root root  <span style="color:#ae81ff">13</span> Nov <span style="color:#ae81ff">23</span> 17:06 nvme-eui.0025385791b32198 -&gt; ../../nvme0n1
-<span style="color:#ae81ff">0</span> lrwxrwxrwx <span style="color:#ae81ff">1</span> root root  <span style="color:#ae81ff">13</span> Nov <span style="color:#ae81ff">23</span> 17:06 nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF0M758708E -&gt; ../../nvme0n1
-</code></pre></div><p>通过nvme0n1 查询到硬盘ID为: <code>nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF0M758708E</code></p>
+<pre><code class="language-bash">root@fighter:~# ls -als /dev/disk/by-id | grep nvme0n1
+0 lrwxrwxrwx 1 root root  13 Nov 23 17:06 nvme-eui.0025385791b32198 -&gt; ../../nvme0n1
+0 lrwxrwxrwx 1 root root  13 Nov 23 17:06 nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF0M758708E -&gt; ../../nvme0n1
+</code></pre>
+<p>通过nvme0n1 查询到硬盘ID为: <code>nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF0M758708E</code></p>
 <h3 id="执行直通">执行直通</h3>
 <p>使用的Qemu/KVM虚拟机管理器的set命令来挂载物理磁盘到虚拟机中，命令格式如下:</p>
 <p><strong>qm set &lt;vm_id&gt; –&lt;disk_type&gt;[n] /dev/disk/by-id/<!-- raw HTML omitted -->-$brand-$model_$serial_number</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@fighter:~# qm set <span style="color:#ae81ff">100</span> -sata1 /dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF0M758708E
+<pre><code class="language-bash">root@fighter:~# qm set 100 -sata1 /dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF0M758708E
 update VM 100: -sata1 /dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF0M758708E
-</code></pre></div><p>返回update 消息后，刷新网页查看直通情况，其中我最初的安装步骤将USB也直通进去，所以下图有两块硬盘：</p>
+</code></pre>
+<p>返回update 消息后，刷新网页查看直通情况，其中我最初的安装步骤将USB也直通进去，所以下图有两块硬盘：</p>
 <p><img src="./disks.png" alt="刷新网页查看直通情况"></p>
 <p>硬盘直通完成后，启动虚拟机按正常装系统的方式配置即可。</p>
 <p>在我装好系统使用过程中，发现：</p>

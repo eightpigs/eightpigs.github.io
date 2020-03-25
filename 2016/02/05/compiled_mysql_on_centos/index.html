@@ -1,7 +1,7 @@
 
 
 <meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.68.1" />
+<meta name="generator" content="Hugo 0.68.3" />
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -70,97 +70,112 @@
 <li>扩展阅读</li>
 </ol>
 <h3 id="1-检测mysql">1. 检测mysql</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rpm -qa | grep mysql
-</code></pre></div><p>如果有的话 , 执行以下命令卸载</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rpm -e mysql   //普通删除模式
+<pre><code class="language-bash">rpm -qa | grep mysql
+</code></pre>
+<p>如果有的话 , 执行以下命令卸载</p>
+<pre><code class="language-bash">rpm -e mysql   //普通删除模式
 rpm -e --nodeps mysql    // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除
-</code></pre></div><h3 id="2-安装编译环境中需要的基本包">2. 安装编译环境中需要的基本包</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y install make gcc-c++ cmake bison-devel  ncurses-devel
-</code></pre></div><h3 id="3-下载mysql-源码">3. 下载mysql 源码</h3>
+</code></pre>
+<h3 id="2-安装编译环境中需要的基本包">2. 安装编译环境中需要的基本包</h3>
+<pre><code class="language-bash">yum -y install make gcc-c++ cmake bison-devel  ncurses-devel
+</code></pre>
+<h3 id="3-下载mysql-源码">3. 下载mysql 源码</h3>
 <p>进入 <a href="ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/">mysql 5.6 下载地址</a> , 找到 &ldquo;mysql-5.6.xx.tar.gz&rdquo;  , 我目前下载的是<a href="ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/mysql-5.6.28.tar.gz">5.6.28</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 下载</span>
+<pre><code class="language-bash"># 下载
 wget ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/mysql-5.6.28.tar.gz
 
-<span style="color:#75715e"># 解压</span>
+# 解压
 tar zxvf mysql-5.6.28.tar.gz 
 
-<span style="color:#75715e"># 进入mysql目录</span>
+# 进入mysql目录
 cd mysql-5.6.28
 
-</code></pre></div><h3 id="4-编译">4. 编译</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 设置编译参数</span>
-<span style="color:#75715e"># 以下内容其实是一句 , 由于写了注释 ,所以使用\分成多行,便于理解.在使用时, 改成自己需要的后请将注释删除执行.(保留斜杠)</span>
-cmake <span style="color:#ae81ff">\</span>
--DCMAKE_INSTALL_PREFIX<span style="color:#f92672">=</span>/usr/local/mysql <span style="color:#ae81ff">\ </span>  <span style="color:#75715e">#安装路径</span>
--DMYSQL_DATADIR<span style="color:#f92672">=</span>/usr/local/mysql/data   <span style="color:#ae81ff">\ </span>  <span style="color:#75715e">#数据文件存放位置</span>
--DSYSCONFDIR<span style="color:#f92672">=</span>/etc                       <span style="color:#ae81ff">\ </span>  <span style="color:#75715e">#my.cnf路径</span>
--DWITH_MYISAM_STORAGE_ENGINE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>          <span style="color:#ae81ff">\ </span>  <span style="color:#75715e">#支持MyIASM引擎</span>
--DWITH_INNOBASE_STORAGE_ENGINE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>        <span style="color:#ae81ff">\ </span>  <span style="color:#75715e">#支持InnoDB引擎</span>
--DWITH_MEMORY_STORAGE_ENGINE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>          <span style="color:#ae81ff">\ </span>  <span style="color:#75715e">#支持Memory引擎</span>
--DWITH_READLINE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>                       <span style="color:#ae81ff">\ </span>  <span style="color:#75715e">#快捷键功能(我没用过)</span>
--DMYSQL_UNIX_ADDR<span style="color:#f92672">=</span>/tmp/mysqld.sock      <span style="color:#ae81ff">\ </span>  <span style="color:#75715e">#连接数据库socket路径</span>
--DMYSQL_TCP_PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">3306</span>                   <span style="color:#ae81ff">\ </span>  <span style="color:#75715e">#端口</span>
--DENABLED_LOCAL_INFILE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>                <span style="color:#ae81ff">\ </span>  <span style="color:#75715e">#允许从本地导入数据</span>
--DWITH_PARTITION_STORAGE_ENGINE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>       <span style="color:#ae81ff">\ </span>  <span style="color:#75715e">#安装支持数据库分区</span>
--DEXTRA_CHARSETS<span style="color:#f92672">=</span>all                    <span style="color:#ae81ff">\ </span>  <span style="color:#75715e">#安装所有的字符集</span>
--DDEFAULT_CHARSET<span style="color:#f92672">=</span>utf8                  <span style="color:#ae81ff">\ </span>  <span style="color:#75715e">#默认字符</span>
--DDEFAULT_COLLATION<span style="color:#f92672">=</span>utf8_general_ci
+</code></pre>
+<h3 id="4-编译">4. 编译</h3>
+<pre><code class="language-bash"># 设置编译参数
+# 以下内容其实是一句 , 由于写了注释 ,所以使用\分成多行,便于理解.在使用时, 改成自己需要的后请将注释删除执行.(保留斜杠)
+cmake \
+-DCMAKE_INSTALL_PREFIX=/usr/local/mysql \   #安装路径
+-DMYSQL_DATADIR=/usr/local/mysql/data   \   #数据文件存放位置
+-DSYSCONFDIR=/etc                       \   #my.cnf路径
+-DWITH_MYISAM_STORAGE_ENGINE=1          \   #支持MyIASM引擎
+-DWITH_INNOBASE_STORAGE_ENGINE=1        \   #支持InnoDB引擎
+-DWITH_MEMORY_STORAGE_ENGINE=1          \   #支持Memory引擎
+-DWITH_READLINE=1                       \   #快捷键功能(我没用过)
+-DMYSQL_UNIX_ADDR=/tmp/mysqld.sock      \   #连接数据库socket路径
+-DMYSQL_TCP_PORT=3306                   \   #端口
+-DENABLED_LOCAL_INFILE=1                \   #允许从本地导入数据
+-DWITH_PARTITION_STORAGE_ENGINE=1       \   #安装支持数据库分区
+-DEXTRA_CHARSETS=all                    \   #安装所有的字符集
+-DDEFAULT_CHARSET=utf8                  \   #默认字符
+-DDEFAULT_COLLATION=utf8_general_ci
 
 
-<span style="color:#75715e"># 编译&amp;安装</span>
-make <span style="color:#f92672">&amp;&amp;</span> make install
-</code></pre></div><h3 id="5-配置">5. 配置</h3>
+# 编译&amp;安装
+make &amp;&amp; make install
+</code></pre>
+<h3 id="5-配置">5. 配置</h3>
 <p>查看是否有mysql用户/用户组</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 查看用户列表</span>
+<pre><code class="language-bash"># 查看用户列表
 cat /etc/passwd
 
-<span style="color:#75715e"># 查看用户组列表</span>
+# 查看用户组列表
 cat /etc/group
-</code></pre></div><p>没有 , 就创建</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">groupadd mysql
+</code></pre>
+<p>没有 , 就创建</p>
+<pre><code class="language-bash">groupadd mysql
 useradd -g mysql mysql
-</code></pre></div><p>修改/usr/local/mysql权限</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chown -R mysql:mysql /usr/local/mysql
-</code></pre></div><p>初始化配置 , 初始化配置脚本，创建系统自带的数据库和表</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd /usr/local/mysql
-scripts/mysql_install_db --basedir<span style="color:#f92672">=</span>/usr/local/mysql --datadir<span style="color:#f92672">=</span>/usr/local/mysql/data --user<span style="color:#f92672">=</span>mysql
-</code></pre></div><p>添加mysql服务并设置自启</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp support-files/mysql.server /etc/init.d/mysql
+</code></pre>
+<p>修改/usr/local/mysql权限</p>
+<pre><code class="language-bash">chown -R mysql:mysql /usr/local/mysql
+</code></pre>
+<p>初始化配置 , 初始化配置脚本，创建系统自带的数据库和表</p>
+<pre><code class="language-bash">cd /usr/local/mysql
+scripts/mysql_install_db --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --user=mysql
+</code></pre>
+<p>添加mysql服务并设置自启</p>
+<pre><code class="language-bash">cp support-files/mysql.server /etc/init.d/mysql
 chkconfig mysql on
 service mysql start  --启动MySQL
-</code></pre></div><p>设置环境变量</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 编译环境变量文件</span>
+</code></pre>
+<p>设置环境变量</p>
+<pre><code class="language-bash"># 编译环境变量文件
 vim /etc/profile
 
-<span style="color:#75715e"># 追加mysql 环境变量</span>
-PATH<span style="color:#f92672">=</span>/usr/local/mysql/bin:/usr/local/mysql/lib:$PATH
+# 追加mysql 环境变量
+PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:$PATH
 export PATH
 
-<span style="color:#75715e"># 保存并退出 ,生效环境变量</span>
+# 保存并退出 ,生效环境变量
 source /etc/profile
-</code></pre></div><p>为root用户设置新密码</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mysql
-UPDATE mysql.user SET password<span style="color:#f92672">=</span>PASSWORD<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;新密码&#39;</span><span style="color:#f92672">)</span> WHERE User<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;root&#39;</span>;
+</code></pre>
+<p>为root用户设置新密码</p>
+<pre><code class="language-bash">mysql
+UPDATE mysql.user SET password=PASSWORD('新密码') WHERE User='root';
 
-<span style="color:#75715e"># 刷新权限</span>
+# 刷新权限
 FLUSH PRIVILEGES;
-</code></pre></div><p>开启远程访问</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">GRANT ALL PRIVILEGES ON *.* TO <span style="color:#e6db74">&#39;root&#39;</span>@<span style="color:#e6db74">&#39;%&#39;</span> IDENTIFIED BY <span style="color:#e6db74">&#39;root&#39;</span> WITH GRANT OPTION;
+</code></pre>
+<p>开启远程访问</p>
+<pre><code class="language-bash">GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
 
-<span style="color:#75715e"># 刷新权限</span>
+# 刷新权限
 FLUSH PRIVILEGES;
-</code></pre></div><h3 id="6-可能遇到的问题">6. 可能遇到的问题</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Starting MySQL..The server quit without updating PID file <span style="color:#f92672">([</span>FAILED<span style="color:#f92672">]</span>/mysql/AY1404111053020733e2Z.pid<span style="color:#f92672">)</span>. 
+</code></pre>
+<h3 id="6-可能遇到的问题">6. 可能遇到的问题</h3>
+<pre><code class="language-bash">Starting MySQL..The server quit without updating PID file ([FAILED]/mysql/AY1404111053020733e2Z.pid). 
 
-<span style="color:#75715e"># 解决办法 :</span> 
+# 解决办法 : 
 修改/etc/my.cnf 中datadir,指向正确的mysql数据库文件目录  
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ERROR <span style="color:#ae81ff">2002</span> <span style="color:#f92672">(</span>HY000<span style="color:#f92672">)</span>: Can<span style="color:#ae81ff">\&#39;</span>t connect to local MySQL server through socket <span style="color:#e6db74">&#39;/tmp/mysql.sock&#39;</span> <span style="color:#f92672">(</span>2<span style="color:#f92672">)</span>   
+</code></pre>
+<pre><code class="language-bash">ERROR 2002 (HY000): Can\'t connect to local MySQL server through socket '/tmp/mysql.sock' (2)   
 
-<span style="color:#75715e"># 解决办法 :</span> 
+# 解决办法 : 
 新建一个链接或在mysql中加入-S参数，直接指出mysql.sock位置。   
 1. ln -s /usr/local/mysql/data/mysql.sock /tmp/mysql.sock   
 2. /usr/local/mysql/bin/mysql -u root -S /usr/local/mysql/data/mysql.sock 
-</code></pre></div><h3 id="7-扩展阅读">7. 扩展阅读</h3>
+</code></pre>
+<h3 id="7-扩展阅读">7. 扩展阅读</h3>
 <ol>
 <li><a href="http://www.cnblogs.com/xiongpq/p/3384681.html">CentOS 6.4下编译安装MySQL 5.6.14</a></li>
 <li><a href="http://www.centoscn.com/mysql/2014/0924/3833.html">CentOS6.5下编译安装MySQL 5.6.16</a></li>

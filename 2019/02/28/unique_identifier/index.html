@@ -1,7 +1,7 @@
 
 
 <meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.68.1" />
+<meta name="generator" content="Hugo 0.68.3" />
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -182,44 +182,46 @@
 <li>后10位使用伪随机数（使用对伪随机数 /= base 获取到下一次的伪随机数，然后对数进行取余操作获取具体的字符）</li>
 </ol>
 <p>前12位的真随机数：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Generate a new prefix from crypto/rand.
-</span><span style="color:#75715e">// This call *can* drain entropy and will be called automatically when we exhaust the sequential range.
-</span><span style="color:#75715e">// Will panic if it gets an error from rand.Int()
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">n</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">NUID</span>) <span style="color:#a6e22e">RandomizePrefix</span>() {
-  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cb</span> [<span style="color:#a6e22e">preLen</span>]<span style="color:#66d9ef">byte</span>
-  <span style="color:#a6e22e">cbs</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cb</span>[:]
-  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nb</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Read</span>(<span style="color:#a6e22e">cbs</span>); <span style="color:#a6e22e">nb</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">preLen</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-    panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;nuid: failed generating crypto random number: %v\n&#34;</span>, <span style="color:#a6e22e">err</span>))
+<pre><code class="language-go">// Generate a new prefix from crypto/rand.
+// This call *can* drain entropy and will be called automatically when we exhaust the sequential range.
+// Will panic if it gets an error from rand.Int()
+func (n *NUID) RandomizePrefix() {
+  var cb [preLen]byte
+  cbs := cb[:]
+  if nb, err := rand.Read(cbs); nb != preLen || err != nil {
+    panic(fmt.Sprintf(&quot;nuid: failed generating crypto random number: %v\n&quot;, err))
   }
   
-  <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">preLen</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-    <span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">pre</span>[<span style="color:#a6e22e">i</span>] = <span style="color:#a6e22e">digits</span>[int(<span style="color:#a6e22e">cbs</span>[<span style="color:#a6e22e">i</span>])<span style="color:#f92672">%</span><span style="color:#a6e22e">base</span>]
+  for i := 0; i &lt; preLen; i++ {
+    n.pre[i] = digits[int(cbs[i])%base]
   }
 }
-</code></pre></div><p>后10位的伪随机数：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Generate the next NUID string.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">n</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">NUID</span>) <span style="color:#a6e22e">Next</span>() <span style="color:#66d9ef">string</span> {
-  <span style="color:#75715e">// Increment and capture.
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">seq</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">inc</span>
-  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">seq</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">maxSeq</span> {
-    <span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">RandomizePrefix</span>()
-   	<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">resetSequential</span>()
+</code></pre>
+<p>后10位的伪随机数：</p>
+<pre><code class="language-go">// Generate the next NUID string.
+func (n *NUID) Next() string {
+  // Increment and capture.
+  n.seq += n.inc
+  if n.seq &gt;= maxSeq {
+    n.RandomizePrefix()
+   	n.resetSequential()
   }
-  <span style="color:#a6e22e">seq</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">seq</span>
+  seq := n.seq
   
-  <span style="color:#75715e">// Copy prefix
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> [<span style="color:#a6e22e">totalLen</span>]<span style="color:#66d9ef">byte</span>
-  <span style="color:#a6e22e">bs</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">b</span>[:<span style="color:#a6e22e">preLen</span>]
-  copy(<span style="color:#a6e22e">bs</span>, <span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">pre</span>)
+  // Copy prefix
+  var b [totalLen]byte
+  bs := b[:preLen]
+  copy(bs, n.pre)
   
-  <span style="color:#75715e">// copy in the seq in base36.
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">l</span> <span style="color:#f92672">:=</span> len(<span style="color:#a6e22e">b</span>), <span style="color:#a6e22e">seq</span>; <span style="color:#a6e22e">i</span> &gt; <span style="color:#a6e22e">preLen</span>; <span style="color:#a6e22e">l</span> <span style="color:#f92672">/=</span> <span style="color:#a6e22e">base</span> {
-    <span style="color:#a6e22e">i</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
-    <span style="color:#a6e22e">b</span>[<span style="color:#a6e22e">i</span>] = <span style="color:#a6e22e">digits</span>[<span style="color:#a6e22e">l</span><span style="color:#f92672">%</span><span style="color:#a6e22e">base</span>]
+  // copy in the seq in base36.
+  for i, l := len(b), seq; i &gt; preLen; l /= base {
+    i -= 1
+    b[i] = digits[l%base]
   }
-  <span style="color:#66d9ef">return</span> string(<span style="color:#a6e22e">b</span>[:])
+  return string(b[:])
 }
-</code></pre></div><p>生成的结果示例: <code>M4bZr7xyO3toV6T6iC7lWB</code></p>
+</code></pre>
+<p>生成的结果示例: <code>M4bZr7xyO3toV6T6iC7lWB</code></p>
 <p>Benchmark结果：</p>
 <p><img src="nuid_benchmark.png" alt="nuid benchmark"></p>
 <p>适用场景</p>

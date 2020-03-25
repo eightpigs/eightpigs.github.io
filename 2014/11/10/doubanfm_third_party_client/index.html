@@ -1,7 +1,7 @@
 
 
 <meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.68.1" />
+<meta name="generator" content="Hugo 0.68.3" />
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -123,203 +123,204 @@
 <h2 id="代码">代码</h2>
 <p>类比较多 , 就贴豆瓣FM处理的类</p>
 <hr>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">
-<span style="color:#66d9ef">using</span> System;
-<span style="color:#66d9ef">using</span> System.Net;
-<span style="color:#66d9ef">using</span> System.IO;
-<span style="color:#66d9ef">using</span> System.Text;
+<pre><code class="language-cs">
+using System;
+using System.Net;
+using System.IO;
+using System.Text;
 
-<span style="color:#66d9ef">namespace</span> DesireFM
+namespace DesireFM
 {
-    <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// FM歌曲相关操作类
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// 获取歌曲
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// 获取赫兹
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// 暂停歌曲
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// 下一首
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// 红心/取消红心
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// 不再听
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// 下载当前歌曲
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FMUtil</span>
+    /// &lt;summary&gt;
+    /// FM歌曲相关操作类
+    /// 获取歌曲
+    /// 获取赫兹
+    /// 暂停歌曲
+    /// 下一首
+    /// 红心/取消红心
+    /// 不再听
+    /// 下载当前歌曲
+    /// &lt;/summary&gt;
+    class FMUtil
     {
 
-        <span style="color:#75715e">#region 需要重复使用的变量
-</span><span style="color:#75715e"></span>         
+        #region 需要重复使用的变量
+         
 
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 需要用到的地址
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> url;
+        /// &lt;summary&gt;
+        /// 需要用到的地址
+        /// &lt;/summary&gt;
+        private static string url;
         
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 请求响应对象
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> WebClient client;
+        /// &lt;summary&gt;
+        /// 请求响应对象
+        /// &lt;/summary&gt;
+        private static WebClient client;
 
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// JSON结果
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> jsonStr;
+        /// &lt;summary&gt;
+        /// JSON结果
+        /// &lt;/summary&gt;
+        private static string jsonStr;
 
-        <span style="color:#75715e">#endregion
-</span><span style="color:#75715e"></span>
+        #endregion
 
-        <span style="color:#75715e">#region 用户登录
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 用户登录
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> Login()
+
+        #region 用户登录
+        /// &lt;summary&gt;
+        /// 用户登录
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static string Login()
         {
-            <span style="color:#75715e">//登录地址
-</span><span style="color:#75715e"></span>             url= String.Format(<span style="color:#e6db74">&#34;http://www.douban.com/j/app/login?app_name=radio_desktop_win&amp;version=100&amp;email={0}&amp;password={1}&#34;</span>,UserEntity.email,UserEntity.password);
+            //登录地址
+             url= String.Format(&quot;http://www.douban.com/j/app/login?app_name=radio_desktop_win&amp;version=100&amp;email={0}&amp;password={1}&quot;,UserEntity.email,UserEntity.password);
 
-            client = <span style="color:#66d9ef">new</span> WebClient();
+            client = new WebClient();
             client.Credentials = CredentialCache.DefaultCredentials;
-            <span style="color:#75715e">//模拟IE的方式访问
-</span><span style="color:#75715e"></span>            client.Headers.Add(<span style="color:#e6db74">&#34;User-Agent&#34;</span>, <span style="color:#e6db74">&#34;Microsoft Internet Explorer&#34;</span>);
-            client.Encoding = <span style="color:#66d9ef">new</span> UTF8Encoding();
+            //模拟IE的方式访问
+            client.Headers.Add(&quot;User-Agent&quot;, &quot;Microsoft Internet Explorer&quot;);
+            client.Encoding = new UTF8Encoding();
             jsonStr = client.DownloadString(url);
-            <span style="color:#75715e">//返回的Cookie.用来获取红心列表
-</span><span style="color:#75715e"></span>            Global.Cookie = client.ResponseHeaders.Get(<span style="color:#e6db74">&#34;Set-Cookie&#34;</span>);
+            //返回的Cookie.用来获取红心列表
+            Global.Cookie = client.ResponseHeaders.Get(&quot;Set-Cookie&quot;);
 
-            <span style="color:#66d9ef">return</span> jsonStr;
+            return jsonStr;
         }
-        <span style="color:#75715e">#endregion
-</span><span style="color:#75715e"></span>
+        #endregion
+
             
-        <span style="color:#75715e">#region 获取所有赫兹
-</span><span style="color:#75715e"></span>        
-        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 获取所有赫兹
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> getChances()
+        #region 获取所有赫兹
+        
+        /// &lt;summary&gt;
+        /// 获取所有赫兹
+        /// &lt;/summary&gt;
+        public static string getChances()
         {
-            url = <span style="color:#e6db74">&#34;http://www.douban.com/j/app/radio/channels&#34;</span>;
-            client=<span style="color:#66d9ef">new</span> WebClient();
+            url = &quot;http://www.douban.com/j/app/radio/channels&quot;;
+            client=new WebClient();
             client.Credentials = CredentialCache.DefaultCredentials;
-            <span style="color:#75715e">//模拟IE的方式访问
-</span><span style="color:#75715e"></span>            client.Headers.Add(<span style="color:#e6db74">&#34;User-Agent&#34;</span>, <span style="color:#e6db74">&#34;Microsoft Internet Explorer&#34;</span>);
-            client.Encoding = <span style="color:#66d9ef">new</span> UTF8Encoding();
+            //模拟IE的方式访问
+            client.Headers.Add(&quot;User-Agent&quot;, &quot;Microsoft Internet Explorer&quot;);
+            client.Encoding = new UTF8Encoding();
             jsonStr = client.DownloadString(url);
-            <span style="color:#66d9ef">return</span> jsonStr;
+            return jsonStr;
         }
-        <span style="color:#75715e">#endregion
-</span><span style="color:#75715e"></span>
+        #endregion
 
-        <span style="color:#75715e">#region 歌曲操作
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 歌曲操作
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;param name=&#34;channel_id&#34;&gt;&lt;/param&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String getSongs(<span style="color:#66d9ef">int</span> channel_id,<span style="color:#66d9ef">string</span> type,<span style="color:#66d9ef">string</span> sid)
+
+        #region 歌曲操作
+        /// &lt;summary&gt;
+        /// 歌曲操作
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;channel_id&quot;&gt;&lt;/param&gt;
+        public static String getSongs(int channel_id,string type,string sid)
         {
-            <span style="color:#75715e">//获取新歌曲
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (type.Equals(<span style="color:#e6db74">&#34;n&#34;</span>))
+            //获取新歌曲
+            if (type.Equals(&quot;n&quot;))
             {
                 
-                <span style="color:#66d9ef">if</span>(UserEntity.userName!=<span style="color:#66d9ef">null</span>)
-                    url = <span style="color:#66d9ef">string</span>.Format(<span style="color:#e6db74">&#34;http://www.douban.com/j/app/radio/people?type=n&amp;app_name=radio_desktop_win&amp;version=100&amp;channel={0}&amp;user_id={1}&amp;expire={2}&amp;token={3}&#34;</span>, channel_id, UserEntity.userId, UserEntity.expire, UserEntity.token);
-                <span style="color:#66d9ef">else</span>
-                    url = <span style="color:#66d9ef">string</span>.Format(<span style="color:#e6db74">&#34;http://www.douban.com/j/app/radio/people?app_name=radio_desktop_win&amp;version=100&amp;type=n&amp;channel={0}&#34;</span>, channel_id);
+                if(UserEntity.userName!=null)
+                    url = string.Format(&quot;http://www.douban.com/j/app/radio/people?type=n&amp;app_name=radio_desktop_win&amp;version=100&amp;channel={0}&amp;user_id={1}&amp;expire={2}&amp;token={3}&quot;, channel_id, UserEntity.userId, UserEntity.expire, UserEntity.token);
+                else
+                    url = string.Format(&quot;http://www.douban.com/j/app/radio/people?app_name=radio_desktop_win&amp;version=100&amp;type=n&amp;channel={0}&quot;, channel_id);
 
-                client = <span style="color:#66d9ef">new</span> WebClient();
+                client = new WebClient();
                 client.Credentials = CredentialCache.DefaultCredentials;
-                <span style="color:#75715e">//模拟IE的方式访问
-</span><span style="color:#75715e"></span>                client.Headers.Add(<span style="color:#e6db74">&#34;User-Agent&#34;</span>, <span style="color:#e6db74">&#34;Microsoft Internet Explorer&#34;</span>);
-                client.Encoding = <span style="color:#66d9ef">new</span> UTF8Encoding();
+                //模拟IE的方式访问
+                client.Headers.Add(&quot;User-Agent&quot;, &quot;Microsoft Internet Explorer&quot;);
+                client.Encoding = new UTF8Encoding();
                 jsonStr = client.DownloadString(url);
             }
-                <span style="color:#75715e">//不再听
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (type.Equals(<span style="color:#e6db74">&#34;b&#34;</span>))
+                //不再听
+            else if (type.Equals(&quot;b&quot;))
             {
-                url = <span style="color:#66d9ef">string</span>.Format(<span style="color:#e6db74">&#34;http://www.douban.com/j/app/radio/people?app_name=radio_desktop_win&amp;version=100&amp;sid={0}&amp;type=b&amp;user_id={1}&amp;expire={2}&amp;token={3}&amp;channel={4}&#34;</span>, sid, UserEntity.userId, UserEntity.expire, UserEntity.token, channel_id);
-                client = <span style="color:#66d9ef">new</span> WebClient();
+                url = string.Format(&quot;http://www.douban.com/j/app/radio/people?app_name=radio_desktop_win&amp;version=100&amp;sid={0}&amp;type=b&amp;user_id={1}&amp;expire={2}&amp;token={3}&amp;channel={4}&quot;, sid, UserEntity.userId, UserEntity.expire, UserEntity.token, channel_id);
+                client = new WebClient();
                 client.Credentials = CredentialCache.DefaultCredentials;
-                <span style="color:#75715e">//模拟IE的方式访问
-</span><span style="color:#75715e"></span>                client.Headers.Add(<span style="color:#e6db74">&#34;User-Agent&#34;</span>, <span style="color:#e6db74">&#34;Microsoft Internet Explorer&#34;</span>);
-                client.Encoding = <span style="color:#66d9ef">new</span> UTF8Encoding();
+                //模拟IE的方式访问
+                client.Headers.Add(&quot;User-Agent&quot;, &quot;Microsoft Internet Explorer&quot;);
+                client.Encoding = new UTF8Encoding();
                 jsonStr = client.DownloadString(url);
             }
-                <span style="color:#75715e">//加红心
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (type.Equals(<span style="color:#e6db74">&#34;r&#34;</span>))
+                //加红心
+            else if (type.Equals(&quot;r&quot;))
             {
-                url = <span style="color:#66d9ef">string</span>.Format(<span style="color:#e6db74">&#34;http://www.douban.com/j/app/radio/people?app_name=radio_desktop_win&amp;version=100&amp;sid={0}&amp;type=r&amp;user_id={1}&amp;expire={2}&amp;token={3}&amp;channel={4}&#34;</span>, sid, UserEntity.userId, UserEntity.expire, UserEntity.token,channel_id);
-                client = <span style="color:#66d9ef">new</span> WebClient();
+                url = string.Format(&quot;http://www.douban.com/j/app/radio/people?app_name=radio_desktop_win&amp;version=100&amp;sid={0}&amp;type=r&amp;user_id={1}&amp;expire={2}&amp;token={3}&amp;channel={4}&quot;, sid, UserEntity.userId, UserEntity.expire, UserEntity.token,channel_id);
+                client = new WebClient();
                 client.Credentials = CredentialCache.DefaultCredentials;
-                <span style="color:#75715e">//模拟IE的方式访问
-</span><span style="color:#75715e"></span>                client.Headers.Add(<span style="color:#e6db74">&#34;User-Agent&#34;</span>, <span style="color:#e6db74">&#34;Microsoft Internet Explorer&#34;</span>);
-                client.Encoding = <span style="color:#66d9ef">new</span> UTF8Encoding();
+                //模拟IE的方式访问
+                client.Headers.Add(&quot;User-Agent&quot;, &quot;Microsoft Internet Explorer&quot;);
+                client.Encoding = new UTF8Encoding();
                 jsonStr = client.DownloadString(url);
             }
-                <span style="color:#75715e">//取消红心
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(type.Equals(<span style="color:#e6db74">&#34;u&#34;</span>))
+                //取消红心
+            else if(type.Equals(&quot;u&quot;))
             {
-                url = <span style="color:#66d9ef">string</span>.Format(<span style="color:#e6db74">&#34;http://www.douban.com/j/app/radio/people?app_name=radio_desktop_win&amp;version=100&amp;sid={0}&amp;type=u&amp;user_id={1}&amp;expire={2}&amp;token={3}&amp;channel={4}&#34;</span>, sid, UserEntity.userId, UserEntity.expire, UserEntity.token, channel_id);
-                client = <span style="color:#66d9ef">new</span> WebClient();
+                url = string.Format(&quot;http://www.douban.com/j/app/radio/people?app_name=radio_desktop_win&amp;version=100&amp;sid={0}&amp;type=u&amp;user_id={1}&amp;expire={2}&amp;token={3}&amp;channel={4}&quot;, sid, UserEntity.userId, UserEntity.expire, UserEntity.token, channel_id);
+                client = new WebClient();
                 client.Credentials = CredentialCache.DefaultCredentials;
-                <span style="color:#75715e">//模拟IE的方式访问
-</span><span style="color:#75715e"></span>                client.Headers.Add(<span style="color:#e6db74">&#34;User-Agent&#34;</span>, <span style="color:#e6db74">&#34;Microsoft Internet Explorer&#34;</span>);
-                client.Encoding = <span style="color:#66d9ef">new</span> UTF8Encoding();
+                //模拟IE的方式访问
+                client.Headers.Add(&quot;User-Agent&quot;, &quot;Microsoft Internet Explorer&quot;);
+                client.Encoding = new UTF8Encoding();
                 jsonStr = client.DownloadString(url);
             }
 
-            <span style="color:#66d9ef">return</span> jsonStr;
+            return jsonStr;
         }
-        <span style="color:#75715e">#endregion
-</span><span style="color:#75715e"></span>
+        #endregion
 
-        <span style="color:#75715e">#region 下载单首
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 下载单首流并播放
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;param name=&#34;songUrl&#34;&gt;&lt;/param&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> downOneSongStream()
+
+        #region 下载单首
+        /// &lt;summary&gt;
+        /// 下载单首流并播放
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;songUrl&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static void downOneSongStream()
         {
-            client = <span style="color:#66d9ef">new</span> WebClient(); 
-            client.Headers.Add(<span style="color:#e6db74">&#34;User-Agent&#34;</span>, <span style="color:#e6db74">&#34;Microsoft Internet Explorer&#34;</span>);
-            client.Encoding = <span style="color:#66d9ef">new</span> UTF8Encoding();
-            client.DownloadFile(Global.Songs[frmMain.SongListIndex].url, Global.downLoadPath+<span style="color:#e6db74">&#34;/&#34;</span> + Global.Songs[frmMain.SongListIndex].title+<span style="color:#e6db74">&#34;.mp3&#34;</span>);
+            client = new WebClient(); 
+            client.Headers.Add(&quot;User-Agent&quot;, &quot;Microsoft Internet Explorer&quot;);
+            client.Encoding = new UTF8Encoding();
+            client.DownloadFile(Global.Songs[frmMain.SongListIndex].url, Global.downLoadPath+&quot;/&quot; + Global.Songs[frmMain.SongListIndex].title+&quot;.mp3&quot;);
         }
-        <span style="color:#75715e">#endregion
-</span><span style="color:#75715e"></span>
+        #endregion
 
-        <span style="color:#75715e">#region 得到流
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// 得到流
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;param name=&#34;streamUrl&#34;&gt;&lt;/param&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Stream downStream(<span style="color:#66d9ef">string</span> streamUrl)
+
+        #region 得到流
+        /// &lt;summary&gt;
+        /// 得到流
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;streamUrl&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static Stream downStream(string streamUrl)
         {
-            client = <span style="color:#66d9ef">new</span> WebClient();
-            client.Headers.Add(<span style="color:#e6db74">&#34;User-Agent&#34;</span>, <span style="color:#e6db74">&#34;Microsoft Internet Explorer&#34;</span>);
-            client.Encoding = <span style="color:#66d9ef">new</span> UTF8Encoding();
-            <span style="color:#66d9ef">return</span> client.OpenRead(streamUrl);
+            client = new WebClient();
+            client.Headers.Add(&quot;User-Agent&quot;, &quot;Microsoft Internet Explorer&quot;);
+            client.Encoding = new UTF8Encoding();
+            return client.OpenRead(streamUrl);
         }
-        <span style="color:#75715e">#endregion
-</span><span style="color:#75715e"></span>
-        <span style="color:#75715e">#region 获取红心列表
-</span><span style="color:#75715e"></span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> GetRedHreats()
-        {
-            <span style="color:#75715e">//登录地址
-</span><span style="color:#75715e"></span>            url = String.Format(<span style="color:#e6db74">&#34;http://douban.fm/mine#!type=liked&amp;start=1&#34;</span>);
+        #endregion
 
-            client = <span style="color:#66d9ef">new</span> WebClient();
+        #region 获取红心列表
+
+        public static void GetRedHreats()
+        {
+            //登录地址
+            url = String.Format(&quot;http://douban.fm/mine#!type=liked&amp;start=1&quot;);
+
+            client = new WebClient();
             client.Credentials = CredentialCache.DefaultCredentials;
-            <span style="color:#75715e">//模拟IE的方式访问
-</span><span style="color:#75715e"></span>            client.Headers.Add(<span style="color:#e6db74">&#34;User-Agent&#34;</span>, <span style="color:#e6db74">&#34;Microsoft Internet Explorer&#34;</span>);
-            client.Headers.Add(<span style="color:#e6db74">&#34;Cookie&#34;</span>,Global.Cookie);
-            client.Encoding = <span style="color:#66d9ef">new</span> UTF8Encoding();
+            //模拟IE的方式访问
+            client.Headers.Add(&quot;User-Agent&quot;, &quot;Microsoft Internet Explorer&quot;);
+            client.Headers.Add(&quot;Cookie&quot;,Global.Cookie);
+            client.Encoding = new UTF8Encoding();
             jsonStr = client.DownloadString(url);
         }
-        <span style="color:#75715e">#endregion
-</span><span style="color:#75715e"></span>    }
+        #endregion
+    }
 }
-</code></pre></div><p><strong>如果有bug可以随时提出来 .^_^</strong></p>
+</code></pre>
+<p><strong>如果有bug可以随时提出来 .^_^</strong></p>
 <p><strong>需要 .Net 4 或 以上的环境</strong></p>
 <h2 id="下载">下载</h2>
 <ul>

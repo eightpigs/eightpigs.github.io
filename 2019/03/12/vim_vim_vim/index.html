@@ -1,7 +1,7 @@
 
 
 <meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.68.1" />
+<meta name="generator" content="Hugo 0.68.3" />
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -121,17 +121,19 @@
 <p>如想实现在Normal模式下按<code>-</code>删除当前行，那么可以定义<code>nmap - dd</code>来实现。每个<code>*map</code>都有一个对应的非递归按键映射<code>*noremap</code>（<code>noremap</code>, <code>nnoremap</code>, <code>vnoremap</code>, 和 <code>inoremap</code>）。使用<code>*noremap</code>来定义快捷键，将不会将按键事件继续传递下去，可以理解为只执行当前noremap定义的映射。</p>
 <p>VIM按键系统中还设计了一个非常优秀的按键：<strong>Leader Key（前缀键）</strong>。顾名思义，前缀键就是在你按其他键之前先按的一个键，可以通过Leader Key + 其他按键实现自定义的按键组合。刚接触VIM时可能不好理解Leader Key是什么，我们可以将Leader Key比作在VIM中的功能键，例如系统中<code>Ctrl</code>、<code>Alt</code>等功能键。</p>
 <p>在使用Leader Key之前，首先需要定义Leader Key，一般我们会选择一个非常方便的位置，例如我使用<code>&lt;Space&gt;</code>来作为Leader Key的。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; 定义快捷键的前缀，即&lt;leader&gt;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">mapleader</span>=<span style="color:#e6db74">&#34;\&lt;Space&gt;&#34;</span><span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>定义好Leader Key之后，我们可以定义<code>nnoremap &lt;silent&gt; &lt;leader&gt;fj ddp</code>来实现在Normal模式下按“空格fj”将当前行与下一行交换位置。</p>
+<pre><code class="language-vim">&quot; 定义快捷键的前缀，即&lt;leader&gt;
+let mapleader=&quot;\&lt;Space&gt;&quot;
+</code></pre>
+<p>定义好Leader Key之后，我们可以定义<code>nnoremap &lt;silent&gt; &lt;leader&gt;fj ddp</code>来实现在Normal模式下按“空格fj”将当前行与下一行交换位置。</p>
 <p>可以通过<code>verbose map</code>来查看具体定义好的快捷键：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; 查看&lt;Leader&gt;fj映射的行为</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">verbose</span> <span style="color:#a6e22e">map</span> &lt;<span style="color:#a6e22e">Leader</span>&gt;<span style="color:#a6e22e">fj</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
-</span><span style="color:#75715e">&#34; 输出如下：</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">n</span>  &lt;<span style="color:#a6e22e">Space</span>&gt;<span style="color:#a6e22e">fj</span>   * <span style="color:#a6e22e">ddp</span>&gt;<span style="color:#a6e22e">fj</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">Last</span> <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">from</span> ~<span style="color:#e6db74">/.dotfiles/</span><span style="color:#a6e22e">vim</span>/<span style="color:#a6e22e">keymappings</span>.<span style="color:#a6e22e">vim</span><span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><h2 id="插件">插件</h2>
+<pre><code class="language-vim">&quot; 查看&lt;Leader&gt;fj映射的行为
+verbose map &lt;Leader&gt;fj
+
+&quot; 输出如下：
+n  &lt;Space&gt;fj   * ddp&gt;fj
+        Last set from ~/.dotfiles/vim/keymappings.vim
+</code></pre>
+<h2 id="插件">插件</h2>
 <p>在VIM中除了通过组合实现操作外，还可以通过VimScript来编写VIM的插件。VIM之所以能够脱离编辑器，迈向IDE很大程度是靠VimScript来实现的。例如可以在VIM中实现目录树侧边栏、文档结构显示、Git history、文件搜索等一系列复杂的操作。</p>
 <p>以下是我Neovim在Iterm2中的展示效果，有左侧的目录树、右边还展示了语法提示的窗口。</p>
 <p><img src="vim-interface.png" alt="vim复杂界面"></p>

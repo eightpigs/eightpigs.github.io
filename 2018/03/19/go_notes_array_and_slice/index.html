@@ -1,7 +1,7 @@
 
 
 <meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.68.1" />
+<meta name="generator" content="Hugo 0.68.3" />
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -68,22 +68,25 @@
 <p>本次先将数组和slice的相关知识点及理解记录下来，后续再慢慢看Map和结构体。</p>
 <h2 id="数组">数组</h2>
 <p>数组是具有固定长度且拥有零个或多个相同数据类型元素的序列。由于数组的长度固定，所以在Go里面很少直接使用。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">arr</span> [<span style="color:#ae81ff">3</span>]<span style="color:#66d9ef">int</span>                  <span style="color:#75715e">// 3个整数的数组
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">arr</span>[len(<span style="color:#a6e22e">arr</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])    <span style="color:#75715e">// 输出数组最后一个元素
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// 遍历数组并输出索引和元素
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">arr</span> {
-    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;%d %d\n&#34;</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">v</span>)
+<pre><code class="language-go">var arr [3]int                  // 3个整数的数组
+fmt.Println(arr[len(arr)-1])    // 输出数组最后一个元素
+
+// 遍历数组并输出索引和元素
+for i, v := range arr {
+    fmt.Println(&quot;%d %d\n&quot;, i, v)
 }
-</code></pre></div><ul>
+</code></pre>
+<ul>
 <li>数组支持在定义时初始化值</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">arr</span> [<span style="color:#ae81ff">3</span>]<span style="color:#66d9ef">int</span> = [<span style="color:#ae81ff">3</span>]{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>}
-</code></pre></div><ul>
+<pre><code class="language-go">var arr [3]int = [3]{1, 2, 3}
+</code></pre>
+<ul>
 <li>数组支持根据定义时设置的初始化值自动推导数组长度</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">arr</span> <span style="color:#f92672">:=</span> [<span style="color:#f92672">...</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>}
-</code></pre></div><ul>
+<pre><code class="language-go">arr := [...]int{1, 2, 3}
+</code></pre>
+<ul>
 <li>
 <p>数组的长度是数组类型的一部分，数组的长度不同，类型不相等。</p>
 </li>
@@ -92,29 +95,32 @@
 算，而且根据最大索引值计算，例如：</p>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 定义一个长度100的数组，第99个元素(最后一个)的值为 2
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> [<span style="color:#f92672">...</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">99</span>: <span style="color:#ae81ff">2</span>}
-</code></pre></div><ul>
+<pre><code class="language-go">// 定义一个长度100的数组，第99个元素(最后一个)的值为 2
+r := [...]int{99: 2}
+</code></pre>
+<ul>
 <li>如果一个数组的元素类型是可比的（元素类型一致），那么该数组
 也是可比的。数组可以使用 == 或者 != 进行比较，例如：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> [<span style="color:#ae81ff">2</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>}
-<span style="color:#a6e22e">b</span> <span style="color:#f92672">:=</span> [<span style="color:#f92672">...</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>}
-<span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> [<span style="color:#ae81ff">3</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>}
-<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>( <span style="color:#a6e22e">a</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">b</span> )   <span style="color:#75715e">// true
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>( <span style="color:#a6e22e">a</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">c</span> )   <span style="color:#75715e">// 编译错误：数组类型不一致    
-</span></code></pre></div><p><strong>当调用一个函数时，每个传入的参数都会创建一个副本，然后赋值给对应的函数变量，所以函数接受的是一个副本，而不是原始的参数。使用这种方式传递大的数组会变得很低效，并且在函数内部对数组的任何修改都仅影响副本，而不是原始数组。这种情况下，Go把数组和其他的类型都看成了值传递。在其他语言中，例如Java数组是隐式地使用引用传递。需要传递数组引用可以使用指针方式</strong></p>
+<pre><code class="language-go">a := [2]int{1, 2}
+b := [...]int{1, 2}
+c := [3]int{1, 2, 3}
+fmt.Println( a == b )   // true
+fmt.Println( a == c )   // 编译错误：数组类型不一致    
+</code></pre>
+<p><strong>当调用一个函数时，每个传入的参数都会创建一个副本，然后赋值给对应的函数变量，所以函数接受的是一个副本，而不是原始的参数。使用这种方式传递大的数组会变得很低效，并且在函数内部对数组的任何修改都仅影响副本，而不是原始数组。这种情况下，Go把数组和其他的类型都看成了值传递。在其他语言中，例如Java数组是隐式地使用引用传递。需要传递数组引用可以使用指针方式</strong></p>
 <h2 id="slice">slice</h2>
 <blockquote>
 <p>理解：在看到slice前面部分时，自动带入了Java中List的概念去看，导致反复看也不是很清楚。最终看到make函数、append函数 让我理解了，的确可以理解为List来使用。</p>
 </blockquote>
 <p>slice：切片，是对数组一段内容的引用。切片的定义与数组基本一致，但不需要在[]中填写数组的长度。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 数组定义
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> [<span style="color:#f92672">...</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>}
+<pre><code class="language-go">// 数组定义
+a := [...]int{1, 2, 3, 4, 5}
 
-<span style="color:#75715e">// 切片定义
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>}
-</code></pre></div><p>slice有3个属性：指针、长度和容量。</p>
+// 切片定义
+s := []int{1, 2, 3, 4, 5}
+</code></pre>
+<p>slice有3个属性：指针、长度和容量。</p>
 <ul>
 <li>指针指向数组的第一个可以从slice中访问的元素（并不一定是数组的第一个元素，具体看切片如何“切” 的数组）</li>
 <li>长度是指slice中的元素个数，它不能超过slice的容量</li>
@@ -123,18 +129,19 @@
 <p>可以使用内置的len() 和 cap() 函数来计算切片的长度和容量。</p>
 <p>如果slice的引用超过了被引用对象的容量，即cap(被引用对象)，那么会导致程序报错。
 如果slice的引用超过了被引用都对象的长度，即len(被引用对象)，那么最终slice会比原slice长。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 月份
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">months</span> <span style="color:#f92672">:=</span> [<span style="color:#f92672">...</span>]<span style="color:#66d9ef">string</span>{<span style="color:#ae81ff">1</span>: <span style="color:#e6db74">&#34;January&#34;</span>, <span style="color:#ae81ff">2</span>: <span style="color:#e6db74">&#34;February&#34;</span>, <span style="color:#ae81ff">3</span>: <span style="color:#e6db74">&#34;March&#34;</span>, <span style="color:#ae81ff">4</span>: <span style="color:#e6db74">&#34;April&#34;</span>, <span style="color:#ae81ff">5</span>: <span style="color:#e6db74">&#34;May&#34;</span>, <span style="color:#ae81ff">6</span>: <span style="color:#e6db74">&#34;June&#34;</span>, <span style="color:#ae81ff">7</span>: <span style="color:#e6db74">&#34;July&#34;</span>, <span style="color:#ae81ff">8</span>: <span style="color:#e6db74">&#34;August&#34;</span>, <span style="color:#ae81ff">9</span>: <span style="color:#e6db74">&#34;September&#34;</span>, <span style="color:#ae81ff">10</span>: <span style="color:#e6db74">&#34;October&#34;</span>, <span style="color:#ae81ff">11</span>: <span style="color:#e6db74">&#34;Novemeber&#34;</span>, <span style="color:#ae81ff">12</span>: <span style="color:#e6db74">&#34;Decemeber&#34;</span>}
+<pre><code class="language-go">// 月份
+months := [...]string{1: &quot;January&quot;, 2: &quot;February&quot;, 3: &quot;March&quot;, 4: &quot;April&quot;, 5: &quot;May&quot;, 6: &quot;June&quot;, 7: &quot;July&quot;, 8: &quot;August&quot;, 9: &quot;September&quot;, 10: &quot;October&quot;, 11: &quot;Novemeber&quot;, 12: &quot;Decemeber&quot;}
 
-<span style="color:#75715e">// 实际夏季的月份
-</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">summer</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">months</span>[<span style="color:#ae81ff">6</span>:<span style="color:#ae81ff">9</span>]
+// 实际夏季的月份
+summer := months[6:9]
 
-<span style="color:#75715e">// 超出cap(summer) ，报错
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">summer</span>[:<span style="color:#ae81ff">20</span>])
+// 超出cap(summer) ，报错
+fmt.Println(summer[:20])
 
-<span style="color:#75715e">// 扩充长度
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">summer1</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">summer</span>[:<span style="color:#ae81ff">5</span>]     <span style="color:#75715e">//summer1 = [June July August September October]
-</span></code></pre></div><p>在看了上面最后一句代码，可以更清晰认为slice只是引用了数组，所有变化也是数组，所以slice可以理解为数组的一个别名（一个区域的别名）</p>
+// 扩充长度
+summer1 := summer[:5]     //summer1 = [June July August September October]
+</code></pre>
+<p>在看了上面最后一句代码，可以更清晰认为slice只是引用了数组，所有变化也是数组，所以slice可以理解为数组的一个别名（一个区域的别名）</p>
 <h3 id="比较">比较</h3>
 <p>slice和数组基本一致，除初始化方式不需要填写长度之外，slice也不可以直接用 == 或者 !=比较。如果是[]bytes的slice，可以使用bytes.Equal 进行比较，其余类型需要自己写函数实现。</p>
 <p>slice不支持直接使用 == 或者 != 比较的原因有以下2点：</p>
@@ -145,46 +152,50 @@
 <h3 id="make-函数">make 函数</h3>
 <p>内置的make函数可以创建一个具有指定元素类型、长度和容量的slice。如果省略容量参数，则容量 == 长度。</p>
 <p>在make函数的内部实现中，make函数创建了一个无名的数组并返回了它的一个slice，这个数组进可以通过这个slice访问。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// slice引用的无名数组长度 == 传入的len
-</span><span style="color:#75715e"></span>make([]<span style="color:#a6e22e">T</span>, <span style="color:#a6e22e">len</span>)
+<pre><code class="language-go">// slice引用的无名数组长度 == 传入的len
+make([]T, len)
 
-<span style="color:#75715e">// slice引用的无名数组长度 == cap, 并返回指定len的slice
-</span><span style="color:#75715e"></span>make([]<span style="color:#a6e22e">T</span>, <span style="color:#a6e22e">len</span>, <span style="color:#a6e22e">cap</span>)
-</code></pre></div><h3 id="append-函数">append 函数</h3>
+// slice引用的无名数组长度 == cap, 并返回指定len的slice
+make([]T, len, cap)
+</code></pre>
+<h3 id="append-函数">append 函数</h3>
 <p>内置的append函数用于将元素追加到slice的后面。append函数可以同时给slice添加多个元素，甚至添加另一个slice里的所有元素。</p>
 <p>通过slice.go源码中的growslice函数查看slice的扩充策略：当旧的容量小于1024，则新容量直接*2 (doublecap := newcap + newcap )，反之，每次增加1/4。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">newcap</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">old</span>.<span style="color:#a6e22e">cap</span>
-<span style="color:#a6e22e">doublecap</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">newcap</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">newcap</span>
-<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">cap</span> &gt; <span style="color:#a6e22e">doublecap</span> {
-    <span style="color:#a6e22e">newcap</span> = <span style="color:#a6e22e">cap</span>
-} <span style="color:#66d9ef">else</span> {
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">old</span>.<span style="color:#a6e22e">len</span> &lt; <span style="color:#ae81ff">1024</span> {
-        <span style="color:#a6e22e">newcap</span> = <span style="color:#a6e22e">doublecap</span>
-    } <span style="color:#66d9ef">else</span> {
-        <span style="color:#75715e">// Check 0 &lt; newcap to detect overflow
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">// and prevent an infinite loop.
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">0</span> &lt; <span style="color:#a6e22e">newcap</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">newcap</span> &lt; <span style="color:#a6e22e">cap</span> {
-            <span style="color:#a6e22e">newcap</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">newcap</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">4</span>
+<pre><code class="language-go">newcap := old.cap
+doublecap := newcap + newcap
+if cap &gt; doublecap {
+    newcap = cap
+} else {
+    if old.len &lt; 1024 {
+        newcap = doublecap
+    } else {
+        // Check 0 &lt; newcap to detect overflow
+        // and prevent an infinite loop.
+        for 0 &lt; newcap &amp;&amp; newcap &lt; cap {
+            newcap += newcap / 4
         }
-        <span style="color:#75715e">// Set newcap to the requested cap when
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">// the newcap calculation overflowed.
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">newcap</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span> {
-            <span style="color:#a6e22e">newcap</span> = <span style="color:#a6e22e">cap</span>
+        // Set newcap to the requested cap when
+        // the newcap calculation overflowed.
+        if newcap &lt;= 0 {
+            newcap = cap
         }
     }
 }
-</code></pre></div><p>在slice每次扩充时，会返回一个新的slice，而旧的slice有可能指向了底层数组，也有可能没有指向底层数组，如果slice的容量完全能够存在新的内容，则指向了旧数组，否则返回的新slice与原slice不一致（底层数组不一致）。所以为了保证在后面能够继续使用变量操作，可以将append的结果赋值给原slice</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">runes</span> = append(<span style="color:#a6e22e">runes</span>, <span style="color:#a6e22e">r</span>)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 思考以下代码的输出
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-	<span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">3</span>}
-	<span style="color:#a6e22e">s</span> = append(<span style="color:#a6e22e">s</span>, <span style="color:#ae81ff">4</span>)
-	<span style="color:#a6e22e">s</span> = append(<span style="color:#a6e22e">s</span>, <span style="color:#ae81ff">5</span>)
-	<span style="color:#a6e22e">x</span> <span style="color:#f92672">:=</span> append(<span style="color:#a6e22e">s</span>, <span style="color:#ae81ff">6</span>)
-	<span style="color:#a6e22e">y</span> <span style="color:#f92672">:=</span> append(<span style="color:#a6e22e">s</span>, <span style="color:#ae81ff">7</span>)
-	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">s</span>, <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>)
+</code></pre>
+<p>在slice每次扩充时，会返回一个新的slice，而旧的slice有可能指向了底层数组，也有可能没有指向底层数组，如果slice的容量完全能够存在新的内容，则指向了旧数组，否则返回的新slice与原slice不一致（底层数组不一致）。所以为了保证在后面能够继续使用变量操作，可以将append的结果赋值给原slice</p>
+<pre><code class="language-go">runes = append(runes, r)
+</code></pre>
+<pre><code class="language-go">// 思考以下代码的输出
+func main() {
+	s := []int{3}
+	s = append(s, 4)
+	s = append(s, 5)
+	x := append(s, 6)
+	y := append(s, 7)
+	fmt.Println(s, x, y)
 }
-</code></pre></div><p>// @TODO 后面学完Go基础后，将slice.go源码仔细阅读一遍。</p>
+</code></pre>
+<p>// @TODO 后面学完Go基础后，将slice.go源码仔细阅读一遍。</p>
 
 
   

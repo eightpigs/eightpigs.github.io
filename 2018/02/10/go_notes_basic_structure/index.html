@@ -1,7 +1,7 @@
 
 
 <meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.68.1" />
+<meta name="generator" content="Hugo 0.68.3" />
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,8 +18,8 @@
 <title>Go学习笔记 - 基本结构 - Eightpigs</title>
 <meta property="og:title" content="Go学习笔记 - 基本结构 - Eightpigs" />
 <meta property="og:type" content="article" />
-<meta property="og:description" content="基本结构 package main import &#34;fmt&#34; // 变量 // 函数 func main(){ fmt.Println(&#34;Hello Go&#34;) } 每一个.go的文件以package声明开头，表名文件属于哪个包 package 声明后面是import声明 然后是包级别" />
-<meta name="description" content="基本结构 package main import &#34;fmt&#34; // 变量 // 函数 func main(){ fmt.Println(&#34;Hello Go&#34;) } 每一个.go的文件以package声明开头，表名文件属于哪个包 package 声明后面是import声明 然后是包级别" />
+<meta property="og:description" content="基本结构 package main import &quot;fmt&quot; // 变量 // 函数 func main(){ fmt.Println(&quot;Hello Go&quot;) } 每一个.go的文件以package声明开头，表名文件属于哪个包 package 声明后面是import声明 然后是包级别" />
+<meta name="description" content="基本结构 package main import &quot;fmt&quot; // 变量 // 函数 func main(){ fmt.Println(&quot;Hello Go&quot;) } 每一个.go的文件以package声明开头，表名文件属于哪个包 package 声明后面是import声明 然后是包级别" />
 <meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm" />
 
 <link rel="stylesheet" href="/css/highlight/gruvbox-light.css">
@@ -58,17 +58,18 @@
   
 
   <h2 id="基本结构">基本结构</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+<pre><code class="language-Go">package main
 
-<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+import &quot;fmt&quot;
 
-<span style="color:#75715e">// 变量
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// 函数
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>(){
-    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Hello Go&#34;</span>)
+// 变量
+
+// 函数
+func main(){
+    fmt.Println(&quot;Hello Go&quot;)
 }
-</code></pre></div><ul>
+</code></pre>
+<ul>
 <li>每一个.go的文件以<strong>package</strong>声明开头，表名文件属于哪个包</li>
 <li>package 声明后面是import声明</li>
 <li>然后是<strong>包级别</strong>的类型、变量、常量、函数的声明，不区分顺序</li>
@@ -86,20 +87,22 @@ case    defer   go      map         struct
 chan    else    goto    package     switch
 const   if      range   type        fallthrough
 contine for     import  return      var
-</code></pre><h2 id="变量">变量</h2>
+</code></pre>
+<h2 id="变量">变量</h2>
 <h3 id="声明">声明</h3>
 <p>使用关键字var声明变量。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">name</span> <span style="color:#66d9ef">type</span> = <span style="color:#a6e22e">expression</span>
-<span style="color:#75715e">// 例如
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span> = <span style="color:#e6db74">&#34;张三&#34;</span>
+<pre><code class="language-Go">var name type = expression
+// 例如
+var name string = &quot;张三&quot;
 
 
-<span style="color:#75715e">// 短变量声明, 使用 := 自动推导结果到变量
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">name</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">expression</span>
-<span style="color:#75715e">// 例如
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">name</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;李四&#34;</span>
+// 短变量声明, 使用 := 自动推导结果到变量
+name := expression
+// 例如
+name := &quot;李四&quot;
 
-</code></pre></div><h3 id="类型">类型</h3>
+</code></pre>
+<h3 id="类型">类型</h3>
 <h4 id="整数">整数</h4>
 <p>Go 同时具备有符号整数和无符号整数，有符号可以理解为：支持表示正负数，无符号可以理解为全是正数。</p>
 <p>有符号整数分4种大小：8位、16位、32位、64位，用int8、int16、int32、int64表示，对应的无符号整数是uint8、uint16、uint32、uint64。</p>
@@ -109,20 +112,22 @@ contine for     import  return      var
 <h4 id="浮点数">浮点数</h4>
 <p>Go具有两种大小的浮点数，float32 和 float64。可以通过math包的<strong>math.MaxFloat32</strong> 和 <strong>math.MaxFloat64</strong> 常量来查看两种类型的最大值。</p>
 <p>十进制情况下，float32的有效数字大约是6位，float64的有效数字大约是15位。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">f</span> <span style="color:#66d9ef">float32</span> = <span style="color:#ae81ff">2.3453</span>
+<pre><code class="language-Go">var f float32 = 2.3453
 
-<span style="color:#75715e">// 支持小数点前后不写
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">f1</span> <span style="color:#66d9ef">float32</span> = <span style="color:#ae81ff">.234</span>
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">f2</span> <span style="color:#66d9ef">float32</span> = <span style="color:#ae81ff">2344.</span>
+// 支持小数点前后不写
+var f1 float32 = .234
+var f2 float32 = 2344.
 
-<span style="color:#75715e">// 非常大或非常小的数字使用科学记数法，在数量级指数前写字母e或E
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Avogadro</span> = <span style="color:#ae81ff">6.0214553e23</span>
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Planck</span> =  <span style="color:#ae81ff">5.73245345e-34</span>
+// 非常大或非常小的数字使用科学记数法，在数量级指数前写字母e或E
+const Avogadro = 6.0214553e23
+const Planck =  5.73245345e-34
 
-</code></pre></div><h4 id="复数">复数</h4>
+</code></pre>
+<h4 id="复数">复数</h4>
 <p>Go 具备两种大小的复数 complex64 和 complex128，二者分别由float32和float64构成。内置的complex函数根据给定的实部和虚部创建复数，内置的real函数和imag函数分别提取复数的实部和虚部。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">x</span> <span style="color:#66d9ef">complex128</span> = complex(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>)
-</code></pre></div><h3 id="指针">指针</h3>
+<pre><code class="language-Go">var x complex128 = complex(1,2)
+</code></pre>
+<h3 id="指针">指针</h3>
 <ul>
 <li>指针的值是一个变量的地址。</li>
 <li>使用&amp;符(取地址操作符)获取一个变量的指针</li>
@@ -163,16 +168,17 @@ contine for     import  return      var
 </ul>
 <h2 id="类型声明">类型声明</h2>
 <p>使用type关键字声明命名类型，它和某个已有的类型使用相同的底层类型。语法如下</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">name</span> <span style="color:#a6e22e">underlying</span><span style="color:#f92672">-</span><span style="color:#66d9ef">type</span>
+<pre><code class="language-go">type name underlying-type
 
-<span style="color:#75715e">// 示例
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// 定义一个摄氏度的类型
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Celsius</span> <span style="color:#66d9ef">float64</span>
+// 示例
 
-<span style="color:#75715e">// 定义一个华氏度的类型
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Fahrenheit</span> <span style="color:#66d9ef">float64</span>
-</code></pre></div><ul>
+// 定义一个摄氏度的类型
+type Celsius float64
+
+// 定义一个华氏度的类型
+type Fahrenheit float64
+</code></pre>
+<ul>
 <li>type定义的命名类型是一种语法和逻辑上的便利，方便使用相同底层类型控制不同的逻辑。</li>
 <li>命名类型提供了类型转换：typeName(T) ， 将T转换为typeName 类型</li>
 </ul>
@@ -184,25 +190,26 @@ contine for     import  return      var
 <li>任何一个文件可以包含多个init() 函数，该函数用于初始化操作，不能被调用和引用。init() 函数会按照声明顺序自动执行。</li>
 <li>包的初始化是按照依赖顺序进行的，每次初始化一个包。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go">
-<span style="color:#75715e">// 方式1
-</span><span style="color:#75715e"></span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
-<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;math&#34;</span>
+<pre><code class="language-Go">
+// 方式1
+import &quot;fmt&quot;
+import &quot;math&quot;
 
-<span style="color:#75715e">// 方式2
-</span><span style="color:#75715e"></span><span style="color:#f92672">import</span> (
-    <span style="color:#e6db74">&#34;fmt&#34;</span>
-    <span style="color:#e6db74">&#34;math&#34;</span>
+// 方式2
+import (
+    &quot;fmt&quot;
+    &quot;math&quot;
 )
 
-<span style="color:#75715e">// 方式3:短名称（解决多个包名相同冲突问题
-</span><span style="color:#75715e">// 其中，使用. 代表直接可以调用，不需要用包名（不推荐）
-</span><span style="color:#75715e"></span><span style="color:#f92672">import</span> (
-    <span style="color:#a6e22e">std</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
-    . <span style="color:#e6db74">&#34;math&#34;</span>
+// 方式3:短名称（解决多个包名相同冲突问题
+// 其中，使用. 代表直接可以调用，不需要用包名（不推荐）
+import (
+    std &quot;fmt&quot;
+    . &quot;math&quot;
 )
 
-</code></pre></div>
+</code></pre>
+
 
   
     <br />

@@ -62,7 +62,7 @@
       <pubDate>Sat, 10 Feb 2018 17:15:00 +0000</pubDate>
       
       <guid>https://eightpigs.io/2018/02/10/go_notes_basic_structure/</guid>
-      <description>基本结构 package main import &amp;#34;fmt&amp;#34; // 变量 // 函数 func main(){ fmt.Println(&amp;#34;Hello Go&amp;#34;) } 每一个.go的文件以package声明开头，表名文件属于哪个包 package 声明后面是import声明 然后是包级别</description>
+      <description>基本结构 package main import &amp;quot;fmt&amp;quot; // 变量 // 函数 func main(){ fmt.Println(&amp;quot;Hello Go&amp;quot;) } 每一个.go的文件以package声明开头，表名文件属于哪个包 package 声明后面是import声明 然后是包级别</description>
     </item>
     
     <item>

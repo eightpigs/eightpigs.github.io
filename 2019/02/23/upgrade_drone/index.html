@@ -1,7 +1,7 @@
 
 
 <meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.68.1" />
+<meta name="generator" content="Hugo 0.68.3" />
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -103,43 +103,44 @@ Drone 是一个基于容器的持续交付平台。</p>
 <li><a href="https://docs.drone.io/reference/server/">drone-server 配置项文档</a></li>
 <li><a href="https://docs.drone.io/reference/agent/">drone-agent  配置项文档</a></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># file name: docker-compose.yaml</span>
+<pre><code class="language-yaml"># file name: docker-compose.yaml
 
-<span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#39;2&#39;</span>
+version: '2'
 
-<span style="color:#66d9ef">services</span>:
+services:
 
-  <span style="color:#66d9ef">drone-server</span>:
-    <span style="color:#66d9ef">image</span>: drone/drone:<span style="color:#ae81ff">1.0.0</span>-rc<span style="color:#ae81ff">.5</span>  <span style="color:#75715e"># 使用最新的版本</span>
-    <span style="color:#66d9ef">ports</span>:
-      - <span style="color:#e6db74">&#34;8888:80&#34;</span>                   <span style="color:#75715e"># web 访问的端口</span>
-      - <span style="color:#ae81ff">9000</span>                        <span style="color:#75715e"># 用于与drone-agent通信</span>
-    <span style="color:#66d9ef">volumes</span>:
-      - /data/drone:/var/lib/drone/               <span style="color:#75715e"># 持久化到宿主的/data/drone目录下</span>
-      - /var/run/docker.sock:/var/run/docker.sock <span style="color:#75715e"># 与docker进行通信</span>
-    <span style="color:#66d9ef">restart</span>: <span style="color:#e6db74">&#34;always&#34;</span>
-    <span style="color:#66d9ef">environment</span>:
-      - DRONE_GIT_ALWAYS_AUTH=<span style="color:#66d9ef">false</span>
-      - DRONE_GOGS_SERVER=http://gogs.admin.com  <span style="color:#75715e"># 集成gogs</span>
-      - DRONE_RUNNER_CAPACITY=<span style="color:#ae81ff">2</span>
+  drone-server:
+    image: drone/drone:1.0.0-rc.5  # 使用最新的版本
+    ports:
+      - &quot;8888:80&quot;                   # web 访问的端口
+      - 9000                        # 用于与drone-agent通信
+    volumes:
+      - /data/drone:/var/lib/drone/               # 持久化到宿主的/data/drone目录下
+      - /var/run/docker.sock:/var/run/docker.sock # 与docker进行通信
+    restart: &quot;always&quot;
+    environment:
+      - DRONE_GIT_ALWAYS_AUTH=false
+      - DRONE_GOGS_SERVER=http://gogs.admin.com  # 集成gogs
+      - DRONE_RUNNER_CAPACITY=2
       - DRONE_SERVER_HOST=drone.admin.com
       - DRONE_SERVER_PROTO=https
-      - DRONE_RPC_SECRET=da19cfd2-33ed-44d2<span style="color:#ae81ff">-8e60</span>-5c987e780f36
-      - DRONE_USER_CREATE=username:zhangsan,admin:<span style="color:#66d9ef">true</span> <span style="color:#75715e"># 设置用户zhangsan为管理员</span>
-      - DRONE_LOGS_DEBUG=<span style="color:#66d9ef">true</span>
+      - DRONE_RPC_SECRET=da19cfd2-33ed-44d2-8e60-5c987e780f36
+      - DRONE_USER_CREATE=username:zhangsan,admin:true # 设置用户zhangsan为管理员
+      - DRONE_LOGS_DEBUG=true
 
-  <span style="color:#66d9ef">drone-agent</span>:
-    <span style="color:#66d9ef">image</span>: drone/agent:<span style="color:#ae81ff">1.0.0</span>-rc<span style="color:#ae81ff">.5</span>
-    <span style="color:#66d9ef">restart</span>: <span style="color:#e6db74">&#34;always&#34;</span>
-    <span style="color:#66d9ef">depends_on</span>:
+  drone-agent:
+    image: drone/agent:1.0.0-rc.5
+    restart: &quot;always&quot;
+    depends_on:
       - drone-server
-    <span style="color:#66d9ef">volumes</span>:
-      - /var/run/docker.sock:/var/run/docker.sock <span style="color:#75715e"># 与docker进行通信</span>
-    <span style="color:#66d9ef">environment</span>:
-      - DRONE_RPC_SERVER=drone-server:<span style="color:#ae81ff">9000</span> <span style="color:#75715e"># 连接到drone-server服务</span>
-      - DRONE_RPC_SECRET=da19cfd2-33ed-44d2<span style="color:#ae81ff">-8e60</span>-5c987e780f36 <span style="color:#75715e"># 与drone-server保持一致 </span>
-      - DRONE_LOGS_DEBUG=<span style="color:#66d9ef">true</span>
-</code></pre></div><hr>
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # 与docker进行通信
+    environment:
+      - DRONE_RPC_SERVER=drone-server:9000 # 连接到drone-server服务
+      - DRONE_RPC_SECRET=da19cfd2-33ed-44d2-8e60-5c987e780f36 # 与drone-server保持一致 
+      - DRONE_LOGS_DEBUG=true
+</code></pre>
+<hr>
 <p>执行 <strong>docker-compose up</strong> 启动server和agent，启动完成后可以访问在配置中指定的地址进入后台管理，由于前面配置了Gogs集成，所以登录的帐号和密码均是Gogs的帐号和密码。</p>
 <p>每个项目的设置界面分为4个设置区域：Main、Secrets、Cron Jobs、Badges。</p>
 <p><strong>注意</strong>：_如果该项目的Project Settings 一栏没有 <strong>Trusted</strong> 选项，代表在Docker Compose的启动配置中未将当前登录用户设置为Drone的管理员。若项目不设置为 <strong>Trusted</strong>，则不能进行构建。</p>
@@ -153,29 +154,30 @@ Drone 是一个基于容器的持续交付平台。</p>
 <li><a href="https://docs.drone.io/examples/language/">Language Examples</a></li>
 <li><a href="https://docs.drone.io/examples/service/">Service Examples</a></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># node构建并挂载目录的示例</span>
+<pre><code class="language-yaml"># node构建并挂载目录的示例
 
-<span style="color:#66d9ef">kind</span>: pipeline
-<span style="color:#66d9ef">name</span>: default
+kind: pipeline
+name: default
 
-<span style="color:#66d9ef">steps</span>:
-- <span style="color:#66d9ef">name</span>: build
-  <span style="color:#66d9ef">image</span>: node:<span style="color:#ae81ff">8</span>-alpine  <span style="color:#75715e"># 使用 node:8-alpine 镜像</span>
-  <span style="color:#66d9ef">volumes</span>:              <span style="color:#75715e"># 挂载目录</span>
-    - <span style="color:#66d9ef">name</span>: volData
-      <span style="color:#66d9ef">path</span>: /data/
-  <span style="color:#66d9ef">commands</span>:             <span style="color:#75715e"># 所有linux命令（正确说法是：镜像所支持的所有命令）</span>
+steps:
+- name: build
+  image: node:8-alpine  # 使用 node:8-alpine 镜像
+  volumes:              # 挂载目录
+    - name: volData
+      path: /data/
+  commands:             # 所有linux命令（正确说法是：镜像所支持的所有命令）
     - npm install
     - npm test
     - ls -als /data/
     - echo Hello
 
-<span style="color:#75715e"># 挂载目录的具体配置</span>
-<span style="color:#66d9ef">volumes</span>: 
-  - <span style="color:#66d9ef">name</span>: volData
-    <span style="color:#66d9ef">host</span>:
-      <span style="color:#66d9ef">path</span>: /data/
-</code></pre></div>
+# 挂载目录的具体配置
+volumes: 
+  - name: volData
+    host:
+      path: /data/
+</code></pre>
+
 
   
     <br />

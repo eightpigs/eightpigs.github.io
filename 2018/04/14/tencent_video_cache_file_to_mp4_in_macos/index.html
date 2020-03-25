@@ -1,7 +1,7 @@
 
 
 <meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.68.1" />
+<meta name="generator" content="Hugo 0.68.3" />
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -75,87 +75,90 @@
 <h2 id="脚本">脚本</h2>
 <h3 id="视频路径">视频路径</h3>
 <p>腾讯视频的缓存目录在：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">~/Library/Containers/com.tencent.tenvideo/Data/Library/Application<span style="color:#ae81ff">\ </span>Support/Download/video/
-</code></pre></div><p>video目录下除了ad文件夹之外的所有文件夹都是已经缓存的视频，可以查看子文件夹中.ts文件的内容（可以空格键直接预览）然后确定具体是哪个视频的缓存资源</p>
+<pre><code class="language-bash">~/Library/Containers/com.tencent.tenvideo/Data/Library/Application\ Support/Download/video/
+</code></pre>
+<p>video目录下除了ad文件夹之外的所有文件夹都是已经缓存的视频，可以查看子文件夹中.ts文件的内容（可以空格键直接预览）然后确定具体是哪个视频的缓存资源</p>
 <h3 id="使用示例">使用示例</h3>
 <p><a href="https://asciinema.org/a/zWKx9uhvxpUlWsbyZtLo3WSMl"><img src="https://asciinema.org/a/zWKx9uhvxpUlWsbyZtLo3WSMl.png" alt="asciicast"></a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">merge.sh b0025s0ph00.321004.hls ~/Downloads/合成视频1.mp4
-</code></pre></div><ul>
+<pre><code class="language-bash">merge.sh b0025s0ph00.321004.hls ~/Downloads/合成视频1.mp4
+</code></pre>
+<ul>
 <li>第一个参数是缓存视频文件夹名称</li>
 <li>第二个参数是合成文件的保存路径</li>
 </ul>
 <h3 id="脚本内容">脚本内容</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
-</span><span style="color:#75715e"></span>
+<pre><code class="language-bash">#!/bin/bash
+
 clear
 
-cat <span style="color:#e6db74">&lt;&lt; EOF
-</span><span style="color:#e6db74">################### 腾讯视频(MacOS)缓存文件合成脚本 ###################
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">Author: eightpigs &lt;isme@lyinlong.me&gt;
-</span><span style="color:#e6db74">Date: 2018-04-14
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">EOF</span>
+cat &lt;&lt; EOF
+################### 腾讯视频(MacOS)缓存文件合成脚本 ###################
 
-echo -n <span style="color:#e6db74">&#34;=&gt; 准备数据... &#34;</span>
+Author: eightpigs &lt;isme@lyinlong.me&gt;
+Date: 2018-04-14
 
-<span style="color:#75715e"># 生成的目标文件</span>
-target<span style="color:#f92672">=</span>$2
-<span style="color:#75715e"># 源文件（.ts文件的目录）</span>
-source<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/Users/&#39;</span>$USER<span style="color:#e6db74">&#39;/Library/Containers/com.tencent.tenvideo/Data/Library/Application Support/Download/video/&#39;</span>$1<span style="color:#e6db74">&#39;/&#39;</span>
+EOF
 
-<span style="color:#75715e"># 使用时间戳来做临时目录</span>
-tmpDir<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/tmp/merge_tencent/&#39;</span><span style="color:#e6db74">`</span>date +%s<span style="color:#e6db74">`</span><span style="color:#e6db74">&#39;/&#39;</span>
+echo -n &quot;=&gt; 准备数据... &quot;
+
+# 生成的目标文件
+target=$2
+# 源文件（.ts文件的目录）
+source='/Users/'$USER'/Library/Containers/com.tencent.tenvideo/Data/Library/Application Support/Download/video/'$1'/'
+
+# 使用时间戳来做临时目录
+tmpDir='/tmp/merge_tencent/'`date +%s`'/'
 mkdir -p $tmpDir
 
-<span style="color:#75715e"># 进入到视频的ts目录</span>
-cd <span style="color:#e6db74">&#34;</span>$source<span style="color:#e6db74">&#34;</span>
+# 进入到视频的ts目录
+cd &quot;$source&quot;
 
-echo <span style="color:#e6db74">&#34;完成&#34;</span>
+echo &quot;完成&quot;
 
-echo -n <span style="color:#e6db74">&#34;=&gt; 合并文件夹... &#34;</span>
-<span style="color:#75715e"># 将文件递归移动到临时目录</span>
-<span style="color:#66d9ef">for</span> i in <span style="color:#66d9ef">$(</span>find ./ -name <span style="color:#e6db74">&#39;*.ts&#39;</span><span style="color:#66d9ef">)</span>;
-<span style="color:#66d9ef">do</span>
+echo -n &quot;=&gt; 合并文件夹... &quot;
+# 将文件递归移动到临时目录
+for i in $(find ./ -name '*.ts');
+do
     cp -vf $i $tmpDir &gt; /dev/null 2&gt;&amp;1;
-<span style="color:#66d9ef">done</span>
+done
 
-echo <span style="color:#e6db74">&#34;完成&#34;</span>
+echo &quot;完成&quot;
 
 cd $tmpDir
 
 
-echo -n <span style="color:#e6db74">&#34;=&gt; 获取需要合成文件数... &#34;</span>
+echo -n &quot;=&gt; 获取需要合成文件数... &quot;
 
-<span style="color:#75715e"># 总共有多少文件</span>
-<span style="color:#75715e"># 因为ts 文件是有顺序的（文件名)</span>
-count<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>ls -l $tmpDir |grep <span style="color:#e6db74">&#34;^-&#34;</span>|wc -l | sed <span style="color:#e6db74">&#39;s/[[:space:]]//g&#39;</span><span style="color:#e6db74">`</span>
+# 总共有多少文件
+# 因为ts 文件是有顺序的（文件名)
+count=`ls -l $tmpDir |grep &quot;^-&quot;|wc -l | sed 's/[[:space:]]//g'`
 
-echo <span style="color:#e6db74">&#34;完成&#34;</span>
+echo &quot;完成&quot;
 
-echo -n <span style="color:#e6db74">&#34;=&gt; 合成文件... &#34;</span>
+echo -n &quot;=&gt; 合成文件... &quot;
 
-<span style="color:#75715e"># 按顺序合并</span>
-<span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span>i<span style="color:#f92672">=</span>0; i&lt;$count; i ++<span style="color:#f92672">))</span>  
-<span style="color:#66d9ef">do</span>  
-    cat <span style="color:#e6db74">&#34;</span>$tmpDir<span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#39;.ts&#39;</span>&gt;&gt;<span style="color:#e6db74">&#34;</span>$target<span style="color:#e6db74">&#34;</span>
-<span style="color:#66d9ef">done</span>
+# 按顺序合并
+for ((i=0; i&lt;$count; i ++))  
+do  
+    cat &quot;$tmpDir&quot;$i'.ts'&gt;&gt;&quot;$target&quot;
+done
 
-echo <span style="color:#e6db74">&#34;完成&#34;</span>
+echo &quot;完成&quot;
 
-cat <span style="color:#e6db74">&lt;&lt; EOF
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">结果：
-</span><span style="color:#e6db74">    文件数: $count
-</span><span style="color:#e6db74">    大小:  `ls -lh $target | awk &#39;{print $5}&#39;`
-</span><span style="color:#e6db74">    路径：$target
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">######################################################################
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">EOF</span>
+cat &lt;&lt; EOF
+
+结果：
+    文件数: $count
+    大小:  `ls -lh $target | awk '{print $5}'`
+    路径：$target
+
+######################################################################
+
+EOF
 
 rm -rf $tmpDir
-</code></pre></div>
+</code></pre>
+
 
   
     <br />

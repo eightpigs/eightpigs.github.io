@@ -1,7 +1,7 @@
 
 
 <meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.68.1" />
+<meta name="generator" content="Hugo 0.68.3" />
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -97,114 +97,124 @@
 <p>创建好仓库后，我们以开发中常见的4中环境（dev、test、pre、prod）作为例子，创建以下4个不同环境的配置文件并提交到仓库。</p>
 <p>本文为了测试简单方便，只加入了一个name配置，不同环境显示不同name值。</p>
 <p><strong>mimosa-dev.properties</strong></p>
-<pre><code class="language-properties" data-lang="properties">name=dev
-</code></pre><p><strong>mimosa-test.properties</strong></p>
-<pre><code class="language-properties" data-lang="properties">name=test
-</code></pre><p><strong>mimosa-pre.properties</strong></p>
-<pre><code class="language-properties" data-lang="properties">name=pre
-</code></pre><p><strong>mimosa-prod.properties</strong></p>
-<pre><code class="language-properties" data-lang="properties">name=prod
-</code></pre><h2 id="config-server">Config Server</h2>
+<pre><code class="language-properties">name=dev
+</code></pre>
+<p><strong>mimosa-test.properties</strong></p>
+<pre><code class="language-properties">name=test
+</code></pre>
+<p><strong>mimosa-pre.properties</strong></p>
+<pre><code class="language-properties">name=pre
+</code></pre>
+<p><strong>mimosa-prod.properties</strong></p>
+<pre><code class="language-properties">name=prod
+</code></pre>
+<h2 id="config-server">Config Server</h2>
 <p>Config Server 是管理配置文件并对外提供配置文件的地方。</p>
 <h2 id="gradle-config">Gradle Config</h2>
 <p>除了强制指定使用Maven外，所有项目我都使用Gradle，配置更简单、明了。</p>
 <blockquote>
 <p>较之于Maven或者Ant的XML配置脚本，Gradle使用的Grovvy脚本杀伤力太大了，爱美之心，人皆有之，相比于七旬老妇松松垮垮的皱纹，大家肯定都喜欢少女紧致的脸蛋，XML就是那老妇的皱纹。(引用至<a href="http://www.infoq.com/cn/news/2011/04/xxb-maven-6-gradle">Gradle，构建工具的未来？</a>)</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Groovy" data-lang="Groovy">group <span style="color:#e6db74">&#39;me.lyinlong.mimosa&#39;</span>
-version <span style="color:#e6db74">&#39;1.0-SNAPSHOT&#39;</span>
+<pre><code class="language-Groovy">group 'me.lyinlong.mimosa'
+version '1.0-SNAPSHOT'
 
-repositories <span style="color:#f92672">{</span>
-    maven <span style="color:#f92672">{</span>
-        url <span style="color:#e6db74">&#39;https://repo.spring.io/libs-snapshot&#39;</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
+repositories {
+    maven {
+        url 'https://repo.spring.io/libs-snapshot'
+    }
+}
 
-buildscript <span style="color:#f92672">{</span>
-    ext <span style="color:#f92672">{</span>
-        springBootVersion <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2.0.0.M3&#39;</span>
-    <span style="color:#f92672">}</span>
-    repositories <span style="color:#f92672">{</span>
-        mavenCentral<span style="color:#f92672">()</span>
-        maven<span style="color:#f92672">{</span>url <span style="color:#e6db74">&#39;https://repo.spring.io/libs-snapshot&#39;</span><span style="color:#f92672">}</span>
-        maven<span style="color:#f92672">{</span> url <span style="color:#e6db74">&#39;https://repo.spring.io/snapshot&#39;</span> <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-    dependencies <span style="color:#f92672">{</span>
-        classpath<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}&#34;</span><span style="color:#f92672">)</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
+buildscript {
+    ext {
+        springBootVersion = '2.0.0.M3'
+    }
+    repositories {
+        mavenCentral()
+        maven{url 'https://repo.spring.io/libs-snapshot'}
+        maven{ url 'https://repo.spring.io/snapshot' }
+    }
+    dependencies {
+        classpath(&quot;org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}&quot;)
+    }
+}
 
-apply plugin: <span style="color:#e6db74">&#39;java&#39;</span>
-apply plugin: <span style="color:#e6db74">&#39;org.springframework.boot&#39;</span>
-apply plugin: <span style="color:#e6db74">&#34;io.spring.dependency-management&#34;</span>
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: &quot;io.spring.dependency-management&quot;
 
-dependencyManagement <span style="color:#f92672">{</span>
-    imports <span style="color:#f92672">{</span>
-        mavenBom <span style="color:#e6db74">&#39;:spring-cloud-dependencies:Finchley.BUILD-SNAPSHOT&#39;</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
+dependencyManagement {
+    imports {
+        mavenBom ':spring-cloud-dependencies:Finchley.BUILD-SNAPSHOT'
+    }
+}
 
-dependencies <span style="color:#f92672">{</span>
-    compile group: <span style="color:#e6db74">&#39;org.springframework.cloud&#39;</span><span style="color:#f92672">,</span> name: <span style="color:#e6db74">&#39;spring-cloud-config-server&#39;</span><span style="color:#f92672">,</span> version: <span style="color:#e6db74">&#39;2.0.0.M2&#39;</span>
-<span style="color:#f92672">}</span>
-repositories <span style="color:#f92672">{</span>
-    maven <span style="color:#f92672">{</span> url <span style="color:#e6db74">&#39;https://repo.spring.io/libs-snapshot&#39;</span> <span style="color:#f92672">}</span>
-    maven<span style="color:#f92672">{</span> url <span style="color:#e6db74">&#39;https://repo.spring.io/snapshot&#39;</span> <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><h2 id="配置">配置</h2>
+dependencies {
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-config-server', version: '2.0.0.M2'
+}
+repositories {
+    maven { url 'https://repo.spring.io/libs-snapshot' }
+    maven{ url 'https://repo.spring.io/snapshot' }
+}
+</code></pre>
+<h2 id="配置">配置</h2>
 <p>在项目的resources目录新建：<strong>application.yml</strong> 文件并写入以下内容，如果创建的仓库是公共的，可以删除 <strong>username</strong> 和 <strong>password</strong> 配置项。
 当然，如果你觉得直接使用密码不是你的做事风格，我们也可以使用ssh方式：只需要将uri改为具体的ssh风格地址。(<a href="#">使用SSH可能会遇到的问题</a> , <a href="http://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html#_git_ssh_configuration_using_properties">更详细的SSH配置</a> )</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">spring</span>:
-  <span style="color:#66d9ef">cloud</span>:
-    <span style="color:#66d9ef">config</span>:
-      <span style="color:#66d9ef">server</span>:
-        <span style="color:#66d9ef">git</span>:
-          <span style="color:#66d9ef">uri</span>: https://github.com/eightpigs/spring-cloud-config-repo.git
-        <span style="color:#66d9ef">username</span>: admin
-        <span style="color:#66d9ef">password</span>: <span style="color:#ae81ff">123</span>
-  <span style="color:#66d9ef">application</span>:
-    <span style="color:#66d9ef">name</span>: config-server
-<span style="color:#66d9ef">server</span>:
-  <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">8888</span>
-</code></pre></div><h2 id="application">Application</h2>
+<pre><code class="language-yml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/eightpigs/spring-cloud-config-repo.git
+        username: admin
+        password: 123
+  application:
+    name: config-server
+server:
+  port: 8888
+</code></pre>
+<h2 id="application">Application</h2>
 <p>Spring Boot以开箱即用为理念，在配置好Gradle引入配置之后，只需添加一个启动类并添加好相应的注解即可。使用<code>@EnableConfigServer</code> 启用Spring Config Server。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> me.lyinlong.mimosa<span style="color:#f92672">;</span>
+<pre><code class="language-java">package me.lyinlong.mimosa;
 
-<span style="color:#f92672">import</span> org.springframework.boot.SpringApplication<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> org.springframework.boot.autoconfigure.SpringBootApplication<span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> org.springframework.cloud.config.server.EnableConfigServer<span style="color:#f92672">;</span>
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.config.server.EnableConfigServer;
 
-<span style="color:#a6e22e">@EnableConfigServer</span>
-<span style="color:#a6e22e">@SpringBootApplication</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Application</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>Application<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> args<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>以上配置正确后，供配置中心正常运行的配置项就已经完全写完了。访问 http://localhost:8888/mimosa/dev/ 即可得到Spring Cloud Config转换后的配置内容：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;mimosa&#34;</span>,
-    <span style="color:#f92672">&#34;profiles&#34;</span>: [<span style="color:#e6db74">&#34;dev&#34;</span>],
-    <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#66d9ef">null</span>,
-    <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;4d1561220245ab2ed56a6a39a070e16c5cd20ea4&#34;</span>,
-    <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#66d9ef">null</span>,
-    <span style="color:#f92672">&#34;propertySources&#34;</span>: [{
-        <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;github:eightpigs/spring-cloud-config-repo.git/mimosa-dev.properties&#34;</span>,
-        <span style="color:#f92672">&#34;source&#34;</span>: {
-            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;dev&#34;</span>
+@EnableConfigServer
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+</code></pre>
+<p>以上配置正确后，供配置中心正常运行的配置项就已经完全写完了。访问 http://localhost:8888/mimosa/dev/ 即可得到Spring Cloud Config转换后的配置内容：</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;mimosa&quot;,
+    &quot;profiles&quot;: [&quot;dev&quot;],
+    &quot;label&quot;: null,
+    &quot;version&quot;: &quot;4d1561220245ab2ed56a6a39a070e16c5cd20ea4&quot;,
+    &quot;state&quot;: null,
+    &quot;propertySources&quot;: [{
+        &quot;name&quot;: &quot;github:eightpigs/spring-cloud-config-repo.git/mimosa-dev.properties&quot;,
+        &quot;source&quot;: {
+            &quot;name&quot;: &quot;dev&quot;
         }
     }]
 }
-</code></pre></div><p>其中：<strong>propertySources.source</strong> 部分就是刚刚我们配置文件的具体内容。</p>
+</code></pre>
+<p>其中：<strong>propertySources.source</strong> 部分就是刚刚我们配置文件的具体内容。</p>
 <p>当然，如果你想更获取精简的内容，你可以直接使用文件名访问 http://localhost:8888/mimosa-dev.properties
 得到的内容将会是这样的：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">name: dev
-</code></pre></div><p>带着成功的喜悦，我们接下来好好看看其中的一些细节和其他特性。</p>
+<pre><code class="language-java">name: dev
+</code></pre>
+<p>带着成功的喜悦，我们接下来好好看看其中的一些细节和其他特性。</p>
 <h2 id="实时更新">实时更新</h2>
 <p>启动Config Server之后，在不停止项目的情况下，修改 <strong>mimosa-dev.properties</strong> 配置文件：</p>
-<pre><code class="language-properties" data-lang="properties">name=dev
+<pre><code class="language-properties">name=dev
 intro=这是开发环境的配置
-</code></pre><p>刷新页面看看内容是不是也实时变化了？通过Config Server 的实时更新特性，大大降低了以前更动配置文件必须重启系统的次数。</p>
+</code></pre>
+<p>刷新页面看看内容是不是也实时变化了？通过Config Server 的实时更新特性，大大降低了以前更动配置文件必须重启系统的次数。</p>
 <h2 id="占位符">占位符</h2>
 <p>Spring Cloud Config 在对应多系统多环境的情况下，提供以下占位符，增加系统的灵活性：</p>
 <ul>
@@ -233,21 +243,22 @@ intro=这是开发环境的配置
 <p>回过头看看之前为了获取精简内容而使用的方式，是不是能够对应上。</p>
 <h2 id="模式匹配">模式匹配</h2>
 <p>模式匹配使用<strong>pattern</strong>配置项进行配置。我们来看看官方的例子：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">spring</span>:
-  <span style="color:#66d9ef">cloud</span>:
-    <span style="color:#66d9ef">config</span>:
-      <span style="color:#66d9ef">server</span>:
-        <span style="color:#66d9ef">git</span>:
-          <span style="color:#66d9ef">uri</span>: https://github.com/spring-cloud-samples/config-repo
-          <span style="color:#66d9ef">repos</span>:
-            <span style="color:#66d9ef">simple</span>: https://github.com/simple/config-repo
-            <span style="color:#66d9ef">special</span>:
-              <span style="color:#66d9ef">pattern</span>: special<span style="color:#75715e">*/dev*,*special*/dev*</span>
-              <span style="color:#66d9ef">uri</span>: https://github.com/special/config-repo
-            <span style="color:#66d9ef">local</span>:
-              <span style="color:#66d9ef">pattern</span>: local*
-              <span style="color:#66d9ef">uri</span>: file:/home/configsvc/config-repo
-</code></pre></div><p>我们先理解一下模式匹配的基本规则：
+<pre><code class="language-yml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          repos:
+            simple: https://github.com/simple/config-repo
+            special:
+              pattern: special*/dev*,*special*/dev*
+              uri: https://github.com/special/config-repo
+            local:
+              pattern: local*
+              uri: file:/home/configsvc/config-repo
+</code></pre>
+<p>我们先理解一下模式匹配的基本规则：
 <strong>pattern</strong> 配置项的内容是通配符 与 <strong>{application}</strong> 和 <strong>{profile}</strong> 组合的一组匹配规则，将调用配置中心的应用程序（调用方 / config client）与具体仓库匹配起来。如果调用方的 <strong>{application}</strong> 与定义的仓库模式没有一个匹配上，则使用默认的仓库地址，也就是 <code>spring.cloud.config.server.git.uri</code></p>
 <p>知道了上面的基本规则，很好理解上面3个仓库的匹配模式：</p>
 <ul>
@@ -262,41 +273,44 @@ intro=这是开发环境的配置
 </li>
 </ul>
 <p>以上的pattern的内容可以使用YAML数组语法改写为一下样子：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">spring</span>:
-  <span style="color:#66d9ef">cloud</span>:
-    <span style="color:#66d9ef">config</span>:
-      <span style="color:#66d9ef">server</span>:
-        <span style="color:#66d9ef">git</span>:
-          <span style="color:#66d9ef">uri</span>: https://github.com/spring-cloud-samples/config-repo
-          <span style="color:#66d9ef">repos</span>:
-            <span style="color:#66d9ef">special</span>:
-              <span style="color:#66d9ef">pattern</span>: 
-                - <span style="color:#e6db74">&#39;special*/dev*&#39;</span>
-                - <span style="color:#e6db74">&#39;*special*/dev*&#39;</span>
-              <span style="color:#66d9ef">uri</span>: https://github.com/special/config-repo
-</code></pre></div><p>推荐使用YAML数组的形式，配置文件的结果更清晰。</p>
+<pre><code class="language-yml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          repos:
+            special:
+              pattern: 
+                - 'special*/dev*'
+                - '*special*/dev*'
+              uri: https://github.com/special/config-repo
+</code></pre>
+<p>推荐使用YAML数组的形式，配置文件的结果更清晰。</p>
 <h2 id="启动时检查">启动时检查</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">spring</span>:
-  <span style="color:#66d9ef">cloud</span>:
-    <span style="color:#66d9ef">config</span>:
-      <span style="color:#66d9ef">server</span>:
-        <span style="color:#66d9ef">git</span>:
-          <span style="color:#66d9ef">uri</span>: https://github.com/eightpigs/spring-cloud-config-repo.git
-          <span style="color:#66d9ef">clone-on-start</span>: <span style="color:#66d9ef">true</span>
-  <span style="color:#66d9ef">application</span>:
-    <span style="color:#66d9ef">name</span>: config-server
-<span style="color:#66d9ef">server</span>:
-  <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">8888</span>
-</code></pre></div><p>可以看到在上面的配置中，使用了 <strong>clone-on-start</strong> 配置项，该配置项的作用是在启动是就克隆仓库信息，可以实现在启动是检测配置的仓库是否能够正常访问。</p>
+<pre><code class="language-yml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/eightpigs/spring-cloud-config-repo.git
+          clone-on-start: true
+  application:
+    name: config-server
+server:
+  port: 8888
+</code></pre>
+<p>可以看到在上面的配置中，使用了 <strong>clone-on-start</strong> 配置项，该配置项的作用是在启动是就克隆仓库信息，可以实现在启动是检测配置的仓库是否能够正常访问。</p>
 <p>如果是一个不可访问的仓库，系统将无法正常系统。</p>
 <p>如果没有使用该配置项，仓库将会在被首次请求时克隆。</p>
 <h2 id="security">Security</h2>
 <p>Spring Cloud Config Server 可以很方便与同系的 <code>spring security</code> 集成。只需要在添加在gradle中添加引入 <code>spring-boot-starter-security</code> 依赖并在 <code>application.yml</code> 中加入以下代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">security</span>:
-  <span style="color:#66d9ef">user</span>:
-    <span style="color:#66d9ef">name</span>: root
-    <span style="color:#66d9ef">password</span>: root
-</code></pre></div><p>然后打开浏览器访问，即可看到需要输入用户名、密码的效果了。</p>
+<pre><code class="language-yml">security:
+  user:
+    name: root
+    password: root
+</code></pre>
+<p>然后打开浏览器访问，即可看到需要输入用户名、密码的效果了。</p>
 
 
   

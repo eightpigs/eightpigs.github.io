@@ -1,7 +1,7 @@
 
 
 <meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.68.1" />
+<meta name="generator" content="Hugo 0.68.3" />
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -162,8 +162,9 @@
 <h3 id="批量替换">批量替换</h3>
 <p>在Vim中，批量替换可以使用正则实现。
 例如要将 &ldquo;学习要多看看&rdquo; 替换为 &ldquo;学习要多试试&rdquo;</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">:%<span style="color:#a6e22e">s</span><span style="color:#e6db74">/学习要多看看/</span><span style="color:#a6e22e">学习要多试试</span>/<span style="color:#a6e22e">g</span><span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p><strong>替换的多种方式</strong></p>
+<pre><code class="language-vim">:%s/学习要多看看/学习要多试试/g
+</code></pre>
+<p><strong>替换的多种方式</strong></p>
 <ul>
 <li>:%s/原内容/新内容/g : 全局替换</li>
 <li>:s/原内容/新内容/g : 替换本行</li>
@@ -184,8 +185,9 @@
 <h3 id="无权限保存">无权限保存</h3>
 <p>在编辑无权限操作的文件后，提示无权限保存，在最开始我都是复制修改的内容，然后重新sudo 打开。
 其实在Vim内部可以实现直接保存：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">:<span style="color:#a6e22e">w</span> !<span style="color:#a6e22e">sudo</span> <span style="color:#a6e22e">tee</span> %<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>具体实现方式请自行了解</p>
+<pre><code class="language-vim">:w !sudo tee %
+</code></pre>
+<p>具体实现方式请自行了解</p>
 
 
   
