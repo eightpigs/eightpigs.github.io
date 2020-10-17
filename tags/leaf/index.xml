@@ -6,11 +6,7 @@
     <description>Recent content in Leaf on Eightpigs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Feb 2019 20:52:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://eightpigs.io/tags/leaf/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 28 Feb 2019 20:52:00 +0000</lastBuildDate><atom:link href="https://eightpigs.io/tags/leaf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>常见的统一标识符算法（UUID、NUID、Snowflake）</title>
       <link>https://eightpigs.io/2019/02/28/unique_identifier/</link>

@@ -6,11 +6,7 @@
     <description>Recent content in CI on Eightpigs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Feb 2019 17:48:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://eightpigs.io/tags/ci/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 23 Feb 2019 17:48:00 +0000</lastBuildDate><atom:link href="https://eightpigs.io/tags/ci/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用Drone进行持续集成</title>
       <link>https://eightpigs.io/2019/02/23/upgrade_drone/</link>
