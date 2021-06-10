@@ -6,7 +6,16 @@
     <description>Recent content on Eightpigs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Oct 2020 10:00:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Jun 2021 18:37:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gitlab API 自动拉取有权限的所有仓库</title>
+      <link>https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/</link>
+      <pubDate>Thu, 10 Jun 2021 18:37:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/</guid>
+      <description>Gitlab 提供了完善的 HTTP API 来获取分组、项目信息。 API 信息 获取分组: GET /api/v4/groups 文档 获取分组下的项目: GET /api/v4/groups/:id/projects 文档 依赖 jq: 安装jq 脚本 获取分组列表 依次获取每个分组下的</description>
+    </item>
+    
     <item>
       <title>选购钻石的基本知识</title>
       <link>https://eightpigs.io/2020/10/17/diamond/</link>

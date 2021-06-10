@@ -4,16 +4,46 @@
   
   <url>
     <loc>https://eightpigs.io/categories/</loc>
-    <lastmod>2020-10-17T10:00:00+08:00</lastmod>
+    <lastmod>2021-06-10T18:37:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://eightpigs.io/tags/diamond/</loc>
-    <lastmod>2020-10-17T10:00:00+08:00</lastmod>
+    <loc>https://eightpigs.io/categories/creation/</loc>
+    <lastmod>2021-06-10T18:37:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://eightpigs.io/</loc>
+    <lastmod>2021-06-10T18:37:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://eightpigs.io/tags/gitlab/</loc>
+    <lastmod>2021-06-10T18:37:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/</loc>
+    <lastmod>2021-06-10T18:37:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://eightpigs.io/posts/</loc>
+    <lastmod>2021-06-10T18:37:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://eightpigs.io/tags/shell/</loc>
+    <lastmod>2021-06-10T18:37:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://eightpigs.io/tags/</loc>
+    <lastmod>2021-06-10T18:37:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://eightpigs.io/tags/diamond/</loc>
     <lastmod>2020-10-17T10:00:00+08:00</lastmod>
   </url>
   
@@ -23,17 +53,7 @@
   </url>
   
   <url>
-    <loc>https://eightpigs.io/posts/</loc>
-    <lastmod>2020-10-17T10:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://eightpigs.io/tags/shopping/</loc>
-    <lastmod>2020-10-17T10:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://eightpigs.io/tags/</loc>
     <lastmod>2020-10-17T10:00:00+08:00</lastmod>
   </url>
   
@@ -235,16 +255,6 @@
   <url>
     <loc>https://eightpigs.io/2018/04/20/efficiency_tools_on_macos_and_windows/</loc>
     <lastmod>2019-03-04T00:21:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://eightpigs.io/categories/creation/</loc>
-    <lastmod>2019-03-04T00:53:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://eightpigs.io/tags/shell/</loc>
-    <lastmod>2019-03-04T00:43:00+00:00</lastmod>
   </url>
   
   <url>
