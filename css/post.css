@@ -3,8 +3,7 @@
 }
 
 .content .info * {
-  color: #777;
-  font-size: 14px;
+  color: #6c757d;
   margin-right: 8px;
 }
 
@@ -39,12 +38,10 @@
 }
 
 .content .changelogs span.note {
-  font-size: 14px;
-  color: #777;
+  color: #6c757d;
   display: inline-block;
   margin-left: 10px;
 }
 
 .content .changelogs span.time {
-  font-size: 14px;
 }

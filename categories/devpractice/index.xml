@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>devpractice on Eightpigs</title>
+    <link>https://eightpigs.io/categories/devpractice/</link>
+    <description>Recent content in devpractice on Eightpigs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 23 Feb 2019 17:48:00 +0000</lastBuildDate><atom:link href="https://eightpigs.io/categories/devpractice/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用Drone进行持续集成</title>
+      <link>https://eightpigs.io/2019/02/23/upgrade_drone/</link>
+      <pubDate>Sat, 23 Feb 2019 17:48:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2019/02/23/upgrade_drone/</guid>
+      <description>介绍 Drone is a Container-Native, Continuous Delivery Platform. Drone 是一个基于容器的持续交付平台。 工作原理 通过Web Hook接受相关事件（推送、创建分支、合并请求等&amp;hellip;) 读取并</description>
+    </item>
+    
+    <item>
+      <title>Spring Colud 之 统一配置中心</title>
+      <link>https://eightpigs.io/2017/12/29/spring_cloud_config_server/</link>
+      <pubDate>Fri, 29 Dec 2017 19:40:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2017/12/29/spring_cloud_config_server/</guid>
+      <description>在我们Java项目开发过程中，对于配置文件的多环境配置一般会采用以下方案： 使用maven等构建工具基于resources自定义多环境 使用市面</description>
+    </item>
+    
+  </channel>
+</rss>

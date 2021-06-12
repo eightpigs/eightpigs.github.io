@@ -8,25 +8,25 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 10 Jun 2021 18:37:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Creation</title>
-      <link>https://eightpigs.io/categories/creation/</link>
+      <title>Works</title>
+      <link>https://eightpigs.io/categories/works/</link>
       <pubDate>Thu, 10 Jun 2021 18:37:00 +0800</pubDate>
       
-      <guid>https://eightpigs.io/categories/creation/</guid>
+      <guid>https://eightpigs.io/categories/works/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>learningnotes</title>
-      <link>https://eightpigs.io/categories/learningnotes/</link>
+      <title>Life</title>
+      <link>https://eightpigs.io/categories/life/</link>
       <pubDate>Sat, 17 Oct 2020 10:00:00 +0800</pubDate>
       
-      <guid>https://eightpigs.io/categories/learningnotes/</guid>
+      <guid>https://eightpigs.io/categories/life/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>hardware</title>
+      <title>Hardware</title>
       <link>https://eightpigs.io/categories/hardware/</link>
       <pubDate>Sun, 15 Dec 2019 14:30:00 +0800</pubDate>
       
@@ -35,11 +35,11 @@
     </item>
     
     <item>
-      <title>TTE</title>
-      <link>https://eightpigs.io/categories/tte/</link>
+      <title>vim</title>
+      <link>https://eightpigs.io/categories/vim/</link>
       <pubDate>Tue, 12 Mar 2019 23:00:00 +0000</pubDate>
       
-      <guid>https://eightpigs.io/categories/tte/</guid>
+      <guid>https://eightpigs.io/categories/vim/</guid>
       <description></description>
     </item>
     
@@ -53,38 +53,38 @@
     </item>
     
     <item>
-      <title>Develop</title>
-      <link>https://eightpigs.io/categories/develop/</link>
+      <title>devpractice</title>
+      <link>https://eightpigs.io/categories/devpractice/</link>
       <pubDate>Sat, 23 Feb 2019 17:48:00 +0000</pubDate>
       
-      <guid>https://eightpigs.io/categories/develop/</guid>
+      <guid>https://eightpigs.io/categories/devpractice/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Network</title>
-      <link>https://eightpigs.io/categories/network/</link>
+      <title>devlang</title>
+      <link>https://eightpigs.io/categories/devlang/</link>
       <pubDate>Fri, 10 Aug 2018 21:21:00 +0000</pubDate>
       
-      <guid>https://eightpigs.io/categories/network/</guid>
+      <guid>https://eightpigs.io/categories/devlang/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Misc</title>
-      <link>https://eightpigs.io/categories/misc/</link>
+      <title>Tech</title>
+      <link>https://eightpigs.io/categories/tech/</link>
       <pubDate>Fri, 20 Apr 2018 10:14:00 +0000</pubDate>
       
-      <guid>https://eightpigs.io/categories/misc/</guid>
+      <guid>https://eightpigs.io/categories/tech/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Linux</title>
-      <link>https://eightpigs.io/categories/linux/</link>
+      <title>Database</title>
+      <link>https://eightpigs.io/categories/database/</link>
       <pubDate>Fri, 05 Feb 2016 11:55:00 +0000</pubDate>
       
-      <guid>https://eightpigs.io/categories/linux/</guid>
+      <guid>https://eightpigs.io/categories/database/</guid>
       <description></description>
     </item>
     

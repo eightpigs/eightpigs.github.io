@@ -1,34 +1,25 @@
-
-
-<meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.80.0" />
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="author" content="Eightpigs, eightpigs@outlook.com" />
-<meta property="og:url" content="https://eightpigs.io/2014/11/10/doubanfm_third_party_client/" />
-<link rel="canonical" href="https://eightpigs.io/2014/11/10/doubanfm_third_party_client/" />
-
-<link rel="stylesheet" href="/css/github-markdown.css?t=1464395400000">
-
-<link rel="stylesheet" href="/css/head.css?t=1464395400000">
-<link rel="stylesheet" href="/css/style.css?t=1464395400000">
-<link rel="stylesheet" href="/css/list.css?t=1464395400000">
-
-<title>豆瓣FM第三方客户端 - Eightpigs</title>
-<meta property="og:title" content="豆瓣FM第三方客户端 - Eightpigs" />
-<meta property="og:type" content="article" />
-<meta property="og:description" content="更新说明
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Eightpigs, eightpigs@outlook.com" />
+  <meta property="og:url" content="https://eightpigs.io/2014/11/10/doubanfm_third_party_client/" />
+  <link rel="canonical" href="https://eightpigs.io/2014/11/10/doubanfm_third_party_client/" /><link rel="stylesheet" href="/css/github-markdown.css?t=1464395400000"><link rel="stylesheet" href="/css/head.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/style.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/list.css?t=1464395400000"><title>豆瓣FM第三方客户端 - Eightpigs</title>
+  <meta property="og:title" content="豆瓣FM第三方客户端 - Eightpigs" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="更新说明
 2018-03-15：该代码在14年下半年完成，所以略丑陋。已经转网易云音乐多年了，如果有人在使用本客户端或想使用，可以给我提issues，会花时间重构代码。" />
-<meta name="description" content="更新说明
+  <meta name="description" content="更新说明
 2018-03-15：该代码在14年下半年完成，所以略丑陋。已经转网易云音乐多年了，如果有人在使用本客户端或想使用，可以给我提issues，会花时间重构代码。" />
-<meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm" />
-
-<link rel="stylesheet" href="/css/highlight/gruvbox-light.css">
-
-<link rel="stylesheet" href="/css/post.css?t=1464395400000">
-
-
+  <meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm,Runner" />
+  
+  <link rel="stylesheet" href="/css/highlight/gruvbox-light.css">
+  
+  <link rel="stylesheet" href="/css/post.css?t=1464395400000">
+</head>
 
 
 <div class="content markdown-body">
@@ -42,8 +33,8 @@
       
       <span class="categories">
       
-      <a data-real="Creation" href="/categories/creation/" class="category">
-        作品
+      <a data-real="Works" href="/categories/works/" class="category">
+        输出/作品
       </a>
       ‣
       </span>
@@ -55,10 +46,24 @@
       
       <a data-real="Third-party" href="/tags/third-party/" class="tag">#Third-party</a>
       
+      <a data-real="DoubanFM" href="/tags/doubanfm/" class="tag">#DoubanFM</a>
+      
     </span>
   </div>
   </h1>
 
+  
+  <div class="changelogs">
+    <div class="title">更新日志</div>
+    
+      
+      <div class="changelog">
+        <span class="time">2021-06-11</span>
+        <span class="note">更新分类、标签</span>
+      </div>
+      
+    
+  </div>
   
 
   <h2 id="更新说明">更新说明</h2>
@@ -329,42 +334,22 @@ namespace DesireFM
 </ul>
 
   
-    <br />
-    <br />
-    <hr />
-    文章作者：eightpigs
-    <br />
-    创作时间：2014-11-10
-    <br />
-    更新时间：
-    
-      2019-03-04
-    
-    <br />
-    许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
-    <hr />
+  <br />
+  <br />
+  <hr />
+  文章作者：eightpigs
+  <br />
+  创作时间：2014-11-10
+  <br />
+  更新时间：
+  
+    2021-06-11
+  
+  <br />
+  许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
+  <hr />
   
 </div>
-
-<script charset="utf-8">
-  encode("tag")
-  encode("category")
-  function encode(ele) {
-    var elems = document.getElementsByClassName(ele)
-    if (elems) {
-      for (var i=0; i < elems.length; i++) {
-        var id = elems[i].getAttribute("data-real")
-        var href = elems[i].getAttribute("href")
-        if (href && id) {
-          id = id.toLowerCase()
-          if (href.indexOf(id) != -1) {
-            elems[i].setAttribute("href",  href.replace(id, encodeURIComponent(id)));
-          }
-        }
-      }
-    }
-  }
-</script>
 
 
 
@@ -399,17 +384,12 @@ namespace DesireFM
 </div>
 
 
-<script src="/js/highlight.pack.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
  
 
 
-  
 
 
-  
-
-
-  
 
 

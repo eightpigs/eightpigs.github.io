@@ -1,32 +1,23 @@
-
-
-<meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.80.0" />
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="author" content="Eightpigs, eightpigs@outlook.com" />
-<meta property="og:url" content="https://eightpigs.io/2018/02/04/vim_basic/" />
-<link rel="canonical" href="https://eightpigs.io/2018/02/04/vim_basic/" />
-
-<link rel="stylesheet" href="/css/github-markdown.css?t=1464395400000">
-
-<link rel="stylesheet" href="/css/head.css?t=1464395400000">
-<link rel="stylesheet" href="/css/style.css?t=1464395400000">
-<link rel="stylesheet" href="/css/list.css?t=1464395400000">
-
-<title>Vim 基础使用 - Eightpigs</title>
-<meta property="og:title" content="Vim 基础使用 - Eightpigs" />
-<meta property="og:type" content="article" />
-<meta property="og:description" content="接触Vim快一个月了，喜欢上了Vim多模式操作的特性。 在艰难地适应Vim后（其他开发工具使用插件模拟Vim键位），效率有明显的提高。 Vim 快捷键" />
-<meta name="description" content="接触Vim快一个月了，喜欢上了Vim多模式操作的特性。 在艰难地适应Vim后（其他开发工具使用插件模拟Vim键位），效率有明显的提高。 Vim 快捷键" />
-<meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm" />
-
-<link rel="stylesheet" href="/css/highlight/gruvbox-light.css">
-
-<link rel="stylesheet" href="/css/post.css?t=1464395400000">
-
-
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Eightpigs, eightpigs@outlook.com" />
+  <meta property="og:url" content="https://eightpigs.io/2018/02/04/vim_basic/" />
+  <link rel="canonical" href="https://eightpigs.io/2018/02/04/vim_basic/" /><link rel="stylesheet" href="/css/github-markdown.css?t=1464395400000"><link rel="stylesheet" href="/css/head.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/style.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/list.css?t=1464395400000"><title>Vim 基础使用 - Eightpigs</title>
+  <meta property="og:title" content="Vim 基础使用 - Eightpigs" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="接触Vim快一个月了，喜欢上了Vim多模式操作的特性。 在艰难地适应Vim后（其他开发工具使用插件模拟Vim键位），效率有明显的提高。 Vim 快捷键" />
+  <meta name="description" content="接触Vim快一个月了，喜欢上了Vim多模式操作的特性。 在艰难地适应Vim后（其他开发工具使用插件模拟Vim键位），效率有明显的提高。 Vim 快捷键" />
+  <meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm,Runner" />
+  
+  <link rel="stylesheet" href="/css/highlight/gruvbox-light.css">
+  
+  <link rel="stylesheet" href="/css/post.css?t=1464395400000">
+</head>
 
 
 <div class="content markdown-body">
@@ -40,8 +31,8 @@
       
       <span class="categories">
       
-      <a data-real="Develop" href="/categories/develop/" class="category">
-        开发和实践
+      <a data-real="vim" href="/categories/vim/" class="category">
+        Vim
       </a>
       ‣
       </span>
@@ -65,7 +56,7 @@
     
       
       <div class="changelog">
-        <span class="time">2019-07-20</span>
+        <span class="time">2021-06-11</span>
         <span class="note">更新所属分类</span>
       </div>
       
@@ -191,42 +182,22 @@
 
 
   
-    <br />
-    <br />
-    <hr />
-    文章作者：eightpigs
-    <br />
-    创作时间：2018-02-04
-    <br />
-    更新时间：
-    
-      2019-03-04
-    
-    <br />
-    许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
-    <hr />
+  <br />
+  <br />
+  <hr />
+  文章作者：eightpigs
+  <br />
+  创作时间：2018-02-04
+  <br />
+  更新时间：
+  
+    2021-06-11
+  
+  <br />
+  许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
+  <hr />
   
 </div>
-
-<script charset="utf-8">
-  encode("tag")
-  encode("category")
-  function encode(ele) {
-    var elems = document.getElementsByClassName(ele)
-    if (elems) {
-      for (var i=0; i < elems.length; i++) {
-        var id = elems[i].getAttribute("data-real")
-        var href = elems[i].getAttribute("href")
-        if (href && id) {
-          id = id.toLowerCase()
-          if (href.indexOf(id) != -1) {
-            elems[i].setAttribute("href",  href.replace(id, encodeURIComponent(id)));
-          }
-        }
-      }
-    }
-  }
-</script>
 
 
 
@@ -261,17 +232,12 @@
 </div>
 
 
-<script src="/js/highlight.pack.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
  
 
 
-  
 
 
-  
-
-
-  
 
 

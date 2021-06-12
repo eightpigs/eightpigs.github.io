@@ -35,11 +35,38 @@
     </item>
     
     <item>
+      <title>Note</title>
+      <link>https://eightpigs.io/tags/note/</link>
+      <pubDate>Sat, 17 Oct 2020 10:00:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/tags/note/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Shopping</title>
       <link>https://eightpigs.io/tags/shopping/</link>
       <pubDate>Sat, 17 Oct 2020 10:00:00 +0800</pubDate>
       
       <guid>https://eightpigs.io/tags/shopping/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Archlinux</title>
+      <link>https://eightpigs.io/tags/archlinux/</link>
+      <pubDate>Sun, 15 Dec 2019 14:30:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/tags/archlinux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Debian</title>
+      <link>https://eightpigs.io/tags/debian/</link>
+      <pubDate>Sun, 15 Dec 2019 14:30:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/tags/debian/</guid>
       <description></description>
     </item>
     
@@ -94,6 +121,15 @@
       <pubDate>Tue, 12 Mar 2019 23:00:00 +0000</pubDate>
       
       <guid>https://eightpigs.io/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Algorithm</title>
+      <link>https://eightpigs.io/tags/algorithm/</link>
+      <pubDate>Thu, 28 Feb 2019 20:52:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/algorithm/</guid>
       <description></description>
     </item>
     
@@ -179,15 +215,6 @@
     </item>
     
     <item>
-      <title>Algorithm</title>
-      <link>https://eightpigs.io/tags/algorithm/</link>
-      <pubDate>Sat, 23 Feb 2019 13:38:00 +0000</pubDate>
-      
-      <guid>https://eightpigs.io/tags/algorithm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Java</title>
       <link>https://eightpigs.io/tags/java/</link>
       <pubDate>Sat, 23 Feb 2019 13:38:00 +0000</pubDate>
@@ -220,6 +247,15 @@
       <pubDate>Fri, 10 Aug 2018 21:21:00 +0000</pubDate>
       
       <guid>https://eightpigs.io/tags/nas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network</title>
+      <link>https://eightpigs.io/tags/network/</link>
+      <pubDate>Fri, 10 Aug 2018 21:21:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/network/</guid>
       <description></description>
     </item>
     
@@ -260,6 +296,15 @@
     </item>
     
     <item>
+      <title>Notes</title>
+      <link>https://eightpigs.io/tags/notes/</link>
+      <pubDate>Thu, 12 Apr 2018 23:04:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/notes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Spring</title>
       <link>https://eightpigs.io/tags/spring/</link>
       <pubDate>Fri, 29 Dec 2017 19:40:00 +0000</pubDate>
@@ -287,6 +332,15 @@
     </item>
     
     <item>
+      <title>SourceComplie</title>
+      <link>https://eightpigs.io/tags/sourcecomplie/</link>
+      <pubDate>Fri, 05 Feb 2016 11:55:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/sourcecomplie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>.Net</title>
       <link>https://eightpigs.io/tags/.net/</link>
       <pubDate>Thu, 23 Jul 2015 06:14:00 +0000</pubDate>
@@ -301,6 +355,15 @@
       <pubDate>Thu, 23 Jul 2015 06:14:00 +0000</pubDate>
       
       <guid>https://eightpigs.io/tags/vpn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DoubanFM</title>
+      <link>https://eightpigs.io/tags/doubanfm/</link>
+      <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/tags/doubanfm/</guid>
       <description></description>
     </item>
     

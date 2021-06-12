@@ -1,32 +1,23 @@
-
-
-<meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.80.0" />
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="author" content="Eightpigs, eightpigs@outlook.com" />
-<meta property="og:url" content="https://eightpigs.io/2019/12/15/two_people_use_one_machine/" />
-<link rel="canonical" href="https://eightpigs.io/2019/12/15/two_people_use_one_machine/" />
-
-<link rel="stylesheet" href="/css/github-markdown.css?t=1464395400000">
-
-<link rel="stylesheet" href="/css/head.css?t=1464395400000">
-<link rel="stylesheet" href="/css/style.css?t=1464395400000">
-<link rel="stylesheet" href="/css/list.css?t=1464395400000">
-
-<title>两人一机的搭建方案 - Eightpigs</title>
-<meta property="og:title" content="两人一机的搭建方案 - Eightpigs" />
-<meta property="og:type" content="article" />
-<meta property="og:description" content="动机 家里的台式机装了双系统: Windows / Archlinux，使用rEFInd在开机时选择要启动的系统。因笔记本长时间放公司且女友总占用电脑，遂萌生了" />
-<meta name="description" content="动机 家里的台式机装了双系统: Windows / Archlinux，使用rEFInd在开机时选择要启动的系统。因笔记本长时间放公司且女友总占用电脑，遂萌生了" />
-<meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm" />
-
-<link rel="stylesheet" href="/css/highlight/gruvbox-light.css">
-
-<link rel="stylesheet" href="/css/post.css?t=1464395400000">
-
-
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Eightpigs, eightpigs@outlook.com" />
+  <meta property="og:url" content="https://eightpigs.io/2019/12/15/two_people_use_one_machine/" />
+  <link rel="canonical" href="https://eightpigs.io/2019/12/15/two_people_use_one_machine/" /><link rel="stylesheet" href="/css/github-markdown.css?t=1464395400000"><link rel="stylesheet" href="/css/head.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/style.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/list.css?t=1464395400000"><title>两人一机的搭建方案 - Eightpigs</title>
+  <meta property="og:title" content="两人一机的搭建方案 - Eightpigs" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="动机 家里的台式机装了双系统: Windows / Archlinux，使用rEFInd在开机时选择要启动的系统。因笔记本长时间放公司且女友总占用电脑，遂萌生了" />
+  <meta name="description" content="动机 家里的台式机装了双系统: Windows / Archlinux，使用rEFInd在开机时选择要启动的系统。因笔记本长时间放公司且女友总占用电脑，遂萌生了" />
+  <meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm,Runner" />
+  
+  <link rel="stylesheet" href="/css/highlight/gruvbox-light.css">
+  
+  <link rel="stylesheet" href="/css/post.css?t=1464395400000">
+</head>
 
 
 <div class="content markdown-body">
@@ -40,7 +31,7 @@
       
       <span class="categories">
       
-      <a data-real="hardware" href="/categories/hardware/" class="category">
+      <a data-real="Hardware" href="/categories/hardware/" class="category">
         硬件
       </a>
       ‣
@@ -55,10 +46,26 @@
       
       <a data-real="PVE" href="/tags/pve/" class="tag">#PVE</a>
       
+      <a data-real="Debian" href="/tags/debian/" class="tag">#Debian</a>
+      
+      <a data-real="Archlinux" href="/tags/archlinux/" class="tag">#Archlinux</a>
+      
     </span>
   </div>
   </h1>
 
+  
+  <div class="changelogs">
+    <div class="title">更新日志</div>
+    
+      
+      <div class="changelog">
+        <span class="time">2021-06-11</span>
+        <span class="note">更新分类、标签</span>
+      </div>
+      
+    
+  </div>
   
 
   <h2 id="动机">动机</h2>
@@ -298,42 +305,22 @@ update VM 100: -sata1 /dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF
 
 
   
-    <br />
-    <br />
-    <hr />
-    文章作者：eightpigs
-    <br />
-    创作时间：2019-12-15
-    <br />
-    更新时间：
-    
-      2019-12-15
-    
-    <br />
-    许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
-    <hr />
+  <br />
+  <br />
+  <hr />
+  文章作者：eightpigs
+  <br />
+  创作时间：2019-12-15
+  <br />
+  更新时间：
+  
+    2021-06-11
+  
+  <br />
+  许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
+  <hr />
   
 </div>
-
-<script charset="utf-8">
-  encode("tag")
-  encode("category")
-  function encode(ele) {
-    var elems = document.getElementsByClassName(ele)
-    if (elems) {
-      for (var i=0; i < elems.length; i++) {
-        var id = elems[i].getAttribute("data-real")
-        var href = elems[i].getAttribute("href")
-        if (href && id) {
-          id = id.toLowerCase()
-          if (href.indexOf(id) != -1) {
-            elems[i].setAttribute("href",  href.replace(id, encodeURIComponent(id)));
-          }
-        }
-      }
-    }
-  }
-</script>
 
 
 
@@ -368,17 +355,12 @@ update VM 100: -sata1 /dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF
 </div>
 
 
-<script src="/js/highlight.pack.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
  
 
 
-  
 
 
-  
-
-
-  
 
 

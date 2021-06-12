@@ -1,30 +1,21 @@
-
-
-<meta charset="utf-8" />
-<meta name="generator" content="Hugo 0.80.0" />
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="author" content="Eightpigs, eightpigs@outlook.com" />
-<meta property="og:url" content="https://eightpigs.io/2018/04/20/efficiency_tools_on_macos_and_windows/" />
-<link rel="canonical" href="https://eightpigs.io/2018/04/20/efficiency_tools_on_macos_and_windows/" />
-
-<link rel="stylesheet" href="/css/github-markdown.css?t=1464395400000">
-
-<link rel="stylesheet" href="/css/head.css?t=1464395400000">
-<link rel="stylesheet" href="/css/style.css?t=1464395400000">
-<link rel="stylesheet" href="/css/list.css?t=1464395400000">
-
-<title>在MacOS和Windows上的效率工具 - Eightpigs</title>
-<meta property="og:title" content="在MacOS和Windows上的效率工具 - Eightpigs" />
-<meta property="og:type" content="article" />
-<meta property="og:description" content="终端模拟器 Windows Cmder WSL Hyper(Electron) MacOS Iterm2 &#43; zsh(oh-my-zsh) Hyper(Electron) 查找 Windows Everything MacOS Alfred Shell Command 快速启动 Windows Listary (可以配合EveryThing） Wox（插件多） MacOS Alfred 快捷键（自动化） Windows AHK （AutoH" />
-<meta name="description" content="终端模拟器 Windows Cmder WSL Hyper(Electron) MacOS Iterm2 &#43; zsh(oh-my-zsh) Hyper(Electron) 查找 Windows Everything MacOS Alfred Shell Command 快速启动 Windows Listary (可以配合EveryThing） Wox（插件多） MacOS Alfred 快捷键（自动化） Windows AHK （AutoH" />
-<meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm" />
-
-<link rel="stylesheet" href="/css/post.css?t=1464395400000">
-
-
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Eightpigs, eightpigs@outlook.com" />
+  <meta property="og:url" content="https://eightpigs.io/2018/04/20/efficiency_tools_on_macos_and_windows/" />
+  <link rel="canonical" href="https://eightpigs.io/2018/04/20/efficiency_tools_on_macos_and_windows/" /><link rel="stylesheet" href="/css/github-markdown.css?t=1464395400000"><link rel="stylesheet" href="/css/head.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/style.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/list.css?t=1464395400000"><title>在MacOS和Windows上的效率工具 - Eightpigs</title>
+  <meta property="og:title" content="在MacOS和Windows上的效率工具 - Eightpigs" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="终端模拟器 Windows Cmder WSL Hyper(Electron) MacOS Iterm2 &#43; zsh(oh-my-zsh) Hyper(Electron) 查找 Windows Everything MacOS Alfred Shell Command 快速启动 Windows Listary (可以配合EveryThing） Wox（插件多） MacOS Alfred 快捷键（自动化） Windows AHK （AutoH" />
+  <meta name="description" content="终端模拟器 Windows Cmder WSL Hyper(Electron) MacOS Iterm2 &#43; zsh(oh-my-zsh) Hyper(Electron) 查找 Windows Everything MacOS Alfred Shell Command 快速启动 Windows Listary (可以配合EveryThing） Wox（插件多） MacOS Alfred 快捷键（自动化） Windows AHK （AutoH" />
+  <meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm,Runner" />
+  
+  <link rel="stylesheet" href="/css/post.css?t=1464395400000">
+</head>
 
 
 <div class="content markdown-body">
@@ -38,8 +29,8 @@
       
       <span class="categories">
       
-      <a data-real="Misc" href="/categories/misc/" class="category">
-        杂烩
+      <a data-real="Tech" href="/categories/tech/" class="category">
+        科技
       </a>
       ‣
       </span>
@@ -59,6 +50,18 @@
   </div>
   </h1>
 
+  
+  <div class="changelogs">
+    <div class="title">更新日志</div>
+    
+      
+      <div class="changelog">
+        <span class="time">2021-06-11</span>
+        <span class="note">更新分类、标签</span>
+      </div>
+      
+    
+  </div>
   
 
   <h2 id="终端模拟器">终端模拟器</h2>
@@ -106,42 +109,22 @@
 
 
   
-    <br />
-    <br />
-    <hr />
-    文章作者：eightpigs
-    <br />
-    创作时间：2018-04-20
-    <br />
-    更新时间：
-    
-      2019-03-04
-    
-    <br />
-    许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
-    <hr />
+  <br />
+  <br />
+  <hr />
+  文章作者：eightpigs
+  <br />
+  创作时间：2018-04-20
+  <br />
+  更新时间：
+  
+    2021-06-11
+  
+  <br />
+  许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
+  <hr />
   
 </div>
-
-<script charset="utf-8">
-  encode("tag")
-  encode("category")
-  function encode(ele) {
-    var elems = document.getElementsByClassName(ele)
-    if (elems) {
-      for (var i=0; i < elems.length; i++) {
-        var id = elems[i].getAttribute("data-real")
-        var href = elems[i].getAttribute("href")
-        if (href && id) {
-          id = id.toLowerCase()
-          if (href.indexOf(id) != -1) {
-            elems[i].setAttribute("href",  href.replace(id, encodeURIComponent(id)));
-          }
-        }
-      }
-    }
-  }
-</script>
 
 
 
@@ -178,12 +161,7 @@
  
 
 
-  
 
 
-  
-
-
-  
 
 
