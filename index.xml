@@ -44,21 +44,21 @@
     </item>
     
     <item>
-      <title>关于</title>
-      <link>https://eightpigs.io/pages/about/</link>
-      <pubDate>Thu, 28 Feb 2019 20:52:00 +0000</pubDate>
-      
-      <guid>https://eightpigs.io/pages/about/</guid>
-      <description>回头看，有什么。 博客概述 历程: 14年至17年期间频繁处于重建、换域名状态，主要原因是懒、折腾。18年后通过使用Hexo、Hugo减少了管理成</description>
-    </item>
-    
-    <item>
       <title>常见的统一标识符算法（UUID、NUID、Snowflake）</title>
       <link>https://eightpigs.io/2019/02/28/unique_identifier/</link>
       <pubDate>Thu, 28 Feb 2019 20:52:00 +0000</pubDate>
       
       <guid>https://eightpigs.io/2019/02/28/unique_identifier/</guid>
       <description>在日常开发过程中，肯定少不了接触“统一标识符”，一般我们都直接使用各个语言标准库中的实现，例如在Java中可以使用java.util.UUI</description>
+    </item>
+    
+    <item>
+      <title>关于</title>
+      <link>https://eightpigs.io/pages/about/</link>
+      <pubDate>Thu, 28 Feb 2019 20:52:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/pages/about/</guid>
+      <description>回头看，有什么。 博客概述 历程: 14年至17年期间频繁处于重建、换域名状态，主要原因是懒、折腾。18年后通过使用Hexo、Hugo减少了管理成</description>
     </item>
     
     <item>
