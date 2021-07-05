@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>10G on Eightpigs</title>
+    <link>https://eightpigs.io/tags/10g/</link>
+    <description>Recent content in 10G on Eightpigs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 05 Jul 2021 12:30:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/tags/10g/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PVE 中虚拟化万兆网卡</title>
+      <link>https://eightpigs.io/2021/07/05/pve_10g_nic/</link>
+      <pubDate>Mon, 05 Jul 2021 12:30:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/2021/07/05/pve_10g_nic/</guid>
+      <description>去年自己攒了一台 E5 2680v4 * 2, 16G RECC * 8 的机器，一开始主要作为远程开发机 &amp;amp; Docker-Compose。 最近跑 k3s 集群并把 Docker-Compose 的服务迁到 k3s 上，于是重新规</description>
+    </item>
+    
+  </channel>
+</rss>

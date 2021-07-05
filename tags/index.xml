@@ -6,7 +6,43 @@
     <description>Recent content in Tags on Eightpigs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Jun 2021 18:37:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Jul 2021 12:30:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10G</title>
+      <link>https://eightpigs.io/tags/10g/</link>
+      <pubDate>Mon, 05 Jul 2021 12:30:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/tags/10g/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NCI</title>
+      <link>https://eightpigs.io/tags/nci/</link>
+      <pubDate>Mon, 05 Jul 2021 12:30:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/tags/nci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network Interface Controller</title>
+      <link>https://eightpigs.io/tags/network-interface-controller/</link>
+      <pubDate>Mon, 05 Jul 2021 12:30:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/tags/network-interface-controller/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PVE</title>
+      <link>https://eightpigs.io/tags/pve/</link>
+      <pubDate>Mon, 05 Jul 2021 12:30:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/tags/pve/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Gitlab</title>
       <link>https://eightpigs.io/tags/gitlab/</link>
@@ -76,15 +112,6 @@
       <pubDate>Sun, 15 Dec 2019 14:30:00 +0800</pubDate>
       
       <guid>https://eightpigs.io/tags/hardware/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>PVE</title>
-      <link>https://eightpigs.io/tags/pve/</link>
-      <pubDate>Sun, 15 Dec 2019 14:30:00 +0800</pubDate>
-      
-      <guid>https://eightpigs.io/tags/pve/</guid>
       <description></description>
     </item>
     
