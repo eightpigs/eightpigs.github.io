@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JVM on Eightpigs</title>
+    <link>https://eightpigs.io/tags/jvm/</link>
+    <description>Recent content in JVM on Eightpigs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 10 Aug 2018 21:21:00 +0000</lastBuildDate><atom:link href="https://eightpigs.io/tags/jvm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JAVA 虚拟机栈</title>
+      <link>https://eightpigs.io/2018/08/10/java_virtual_machine_stack/</link>
+      <pubDate>Fri, 10 Aug 2018 21:21:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2018/08/10/java_virtual_machine_stack/</guid>
+      <description>概念 JVM 虚拟机栈与程序计数器和[本地方法栈]一样都是线程私有的。 栈帧可以理解为一个方法的运行空间 栈帧（Stack Frame） 栈帧是用于支持虚拟</description>
+    </item>
+    
+  </channel>
+</rss>

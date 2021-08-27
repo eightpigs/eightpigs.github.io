@@ -1,0 +1,196 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Eightpigs, eightpigs@outlook.com" />
+  <meta property="og:url" content="https://eightpigs.io/2019/03/12/vim_vim_vim/" />
+  <link rel="canonical" href="https://eightpigs.io/2019/03/12/vim_vim_vim/" /><link rel="stylesheet" href="/css/github-markdown.css?t=1464395400000"><link rel="stylesheet" href="/css/head.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/style.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/list.css?t=1464395400000"><title>简单谈谈VIM设计的优点 - Eightpigs</title>
+  <meta property="og:title" content="简单谈谈VIM设计的优点 - Eightpigs" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="我接触VIM的时间较短，从正式学习到现在也就一年半不到的时间，期间我将所有使用到的编辑器、IDE的键位都修改为了VIM模式，这对我快速掌握V" />
+  <meta name="description" content="我接触VIM的时间较短，从正式学习到现在也就一年半不到的时间，期间我将所有使用到的编辑器、IDE的键位都修改为了VIM模式，这对我快速掌握V" />
+  <meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm,Runner" />
+  
+  <link rel="stylesheet" href="/css/highlight/gruvbox-light.css">
+  
+  <link rel="stylesheet" href="/css/post.css?t=1464395400000">
+</head>
+
+
+<div class="content markdown-body">
+  <h1>简单谈谈VIM设计的优点 </h1>
+  <div class="info">
+    <span class="date">
+      2019-03-12
+    </span>
+
+    
+      
+      <span class="categories">
+      
+      <a data-real="Vim" href="/categories/vim/" class="category">
+        Vim
+      </a>
+      ‣
+      </span>
+    
+    
+    <span class="tags">
+      
+      <a data-real="Vim" href="/tags/vim/" class="tag">#Vim</a>
+      
+      <a data-real="Neovim" href="/tags/neovim/" class="tag">#Neovim</a>
+      
+      <a data-real="Productivity" href="/tags/productivity/" class="tag">#Productivity</a>
+      
+    </span>
+  </div>
+  </h1>
+
+  
+  <div class="changelogs">
+    <div class="title">更新日志</div>
+    
+      
+      <div class="changelog">
+        <span class="time">2021-06-11</span>
+        <span class="note">更新所属分类</span>
+      </div>
+      
+    
+  </div>
+  
+
+  <p>我接触VIM的时间较短，从正式学习到现在也就一年半不到的时间，期间我将所有使用到的编辑器、IDE的键位都修改为了VIM模式，这对我快速掌握VIM很有帮助（相当于强行适应+学习）。</p>
+<p>在VIM的使用过程中，VIM设计的优点随处可见：</p>
+<ul>
+<li>组合（模式切换、按键映射）</li>
+<li>精细（按键映射控制）</li>
+<li>开放（插件）</li>
+</ul>
+<h2 id="模式切换">模式切换</h2>
+<p>VIM模式编辑的设计真的是非常惊艳，通过模式编辑可以使手几乎不离开键盘。当然，如果仅仅是实现了大多数的键盘流操作，那VIM被称为“编辑器之神”肯定是不够格的。</p>
+<p>VIM的模式编辑之所以惊艳，主要有有以下亮点：</p>
+<ol>
+<li><strong>一个键可以在不同模式下拥有不同的行为。</strong></li>
+<li><strong>可以通过组合的形式实现更复杂的操作。</strong></li>
+</ol>
+<p>VIM中的模式有：</p>
+<ul>
+<li>插入模式: Insert</li>
+<li>正常模式: Normal</li>
+<li>可视模式: Visual
+<ul>
+<li>普通可视模式: plain visual mode</li>
+<li>块级可视模式: block visual mode</li>
+<li>行级可视模式: linewise visual mode</li>
+</ul>
+</li>
+<li>命令行: Command line</li>
+</ul>
+<p>其中，前三个模式（Insert、Normal、可视化）是我们通常编辑过程中最常用的模式。使用VIM打开一个文件后是进入Normal模式，该模式可以使用h、j、k、l来表示光标移动的：左、下、上、右。</p>
+<p>Normal模式是VIM的基本操作，要掌握不少按键在该模式下的行为（快捷键），这也是大多数人接触VIM后的第一感觉：要背快捷键、太难。</p>
+<p>下图是经常用来调侃第一次使用VIM的遭遇：不会退出VIM。我想第一次接触VIM的人，都会至少搜索一次：如何退出VIM，StackOverflow也统计过：问题“<a href="https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/">how-to-exit-the-vim-editor</a>”帮助了至少一百万开发者退出VIM。</p>
+<p><img src="exit-vim-for-the-first-time.png" alt="exit-vim-for-the-first-time">  <img src="how-to-exit-vim.jpg" alt="how-to-exit-vim"></p>
+<p>其实Normal模式下的快捷键没有想象中的那么复杂，因为大多都是有规律的，例如：</p>
+<ul>
+<li><strong>j</strong> 代表光标向下移动一行，<strong>20j</strong> 则代表光标向下移动20行。</li>
+<li><strong>dd</strong> 代表删除当前行，<strong>20dd</strong> 则代表删除当前行和当前行下面的19行。</li>
+</ul>
+<p>当然，以上举的例子虽然比较简单，但可以体现出Normal模式下各个按键的行为是设计得非常优秀，大多情况下只需要记住基础按键的行为，其余都是根据需要自行<strong>组合</strong>。</p>
+<h2 id="按键映射">按键映射</h2>
+<p>VIM作为一个成熟的编辑器，自定义按键行为肯定是少不了的，在VIM中可以对一个按键在多个模式映射不同的行为：</p>
+<ul>
+<li>nmap: Normal Mode</li>
+<li>imap: Insert Mode</li>
+<li>vmap: Visual Mode</li>
+<li>map: Normal + Visual Mode</li>
+</ul>
+<p>如想实现在Normal模式下按<code>-</code>删除当前行，那么可以定义<code>nmap - dd</code>来实现。每个<code>*map</code>都有一个对应的非递归按键映射<code>*noremap</code>（<code>noremap</code>, <code>nnoremap</code>, <code>vnoremap</code>, 和 <code>inoremap</code>）。使用<code>*noremap</code>来定义快捷键，将不会将按键事件继续传递下去，可以理解为只执行当前noremap定义的映射。</p>
+<p>VIM按键系统中还设计了一个非常优秀的按键：<strong>Leader Key（前缀键）</strong>。顾名思义，前缀键就是在你按其他键之前先按的一个键，可以通过Leader Key + 其他按键实现自定义的按键组合。刚接触VIM时可能不好理解Leader Key是什么，我们可以将Leader Key比作在VIM中的功能键，例如系统中<code>Ctrl</code>、<code>Alt</code>等功能键。</p>
+<p>在使用Leader Key之前，首先需要定义Leader Key，一般我们会选择一个非常方便的位置，例如我使用<code>&lt;Space&gt;</code>来作为Leader Key的。</p>
+<pre><code class="language-vim">&quot; 定义快捷键的前缀，即&lt;leader&gt;
+let mapleader=&quot;\&lt;Space&gt;&quot;
+</code></pre>
+<p>定义好Leader Key之后，我们可以定义<code>nnoremap &lt;silent&gt; &lt;leader&gt;fj ddp</code>来实现在Normal模式下按“空格fj”将当前行与下一行交换位置。</p>
+<p>可以通过<code>verbose map</code>来查看具体定义好的快捷键：</p>
+<pre><code class="language-vim">&quot; 查看&lt;Leader&gt;fj映射的行为
+verbose map &lt;Leader&gt;fj
+
+&quot; 输出如下：
+n  &lt;Space&gt;fj   * ddp&gt;fj
+        Last set from ~/.dotfiles/vim/keymappings.vim
+</code></pre>
+<h2 id="插件">插件</h2>
+<p>在VIM中除了通过组合实现操作外，还可以通过VimScript来编写VIM的插件。VIM之所以能够脱离编辑器，迈向IDE很大程度是靠VimScript来实现的。例如可以在VIM中实现目录树侧边栏、文档结构显示、Git history、文件搜索等一系列复杂的操作。</p>
+<p>以下是我Neovim在Iterm2中的展示效果，有左侧的目录树、右边还展示了语法提示的窗口。</p>
+<p><img src="vim-interface.png" alt="vim复杂界面"></p>
+<p>VIM8之前的插件管理比较简陋，在8.0版本之后，官方提供了<code>package</code>概念来管理插件，并且开源社区也有非常多的插件管理：<a href="https://github.com/VundleVim/Vundle.vim">Vundle</a>、<a href="https://github.com/MarcWeber/vim-addon-manager">VAM</a>、<a href="https://github.com/junegunn/vim-plug">vim-plug</a>等</p>
+<p>通过官方或者开源社区提供的优秀插件管理，可以非常方便安装、更新插件。并且像vim-plug这样的插件还提供了按需加载，不但提供了高级的特性还优化了速度。</p>
+<p>正是因为VIM的优秀设计，使软件几乎可以控制VIM中的所有内容，也就是说，VIM中的插件几乎可以实现任何事情。</p>
+<p>只要愿意花时间，将VIM配置为一个IDE也是完全没有问题的。</p>
+
+
+  
+  <br />
+  <br />
+  <hr />
+  文章作者：eightpigs
+  <br />
+  创作时间：2019-03-12
+  <br />
+  更新时间：
+  
+    2021-06-11
+  
+  <br />
+  许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
+  <hr />
+  
+</div>
+
+
+
+<div class="footer">
+  
+  <div class="copyright">&copy; 2014 - 
+    
+      2021
+
+    
+      Eightpigs 
+  </div>
+  
+  <div class="navbar">
+  <ul>
+  
+    <li>
+      <a href="/">首页</a>
+    </li>
+  
+    <li>
+      <a href="/archives">归档</a>
+    </li>
+  
+    <li>
+      <a href="/pages/about">关于</a>
+    </li>
+  
+  </ul>
+</div>
+
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+ 
+
+
+
+
+
+

@@ -1,0 +1,166 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Eightpigs, eightpigs@outlook.com" />
+  <meta property="og:url" content="https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/" />
+  <link rel="canonical" href="https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/" /><link rel="stylesheet" href="/css/github-markdown.css?t=1464395400000"><link rel="stylesheet" href="/css/head.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/style.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/list.css?t=1464395400000"><title>Gitlab API 自动拉取有权限的所有仓库 - Eightpigs</title>
+  <meta property="og:title" content="Gitlab API 自动拉取有权限的所有仓库 - Eightpigs" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="Gitlab 提供了完善的 HTTP API 来获取分组、项目信息。 API 信息 获取分组: GET /api/v4/groups 文档 获取分组下的项目: GET /api/v4/groups/:id/projects 文档 依赖 jq: 安装jq 脚本 获取分组列表 依次获取每个分组下的" />
+  <meta name="description" content="Gitlab 提供了完善的 HTTP API 来获取分组、项目信息。 API 信息 获取分组: GET /api/v4/groups 文档 获取分组下的项目: GET /api/v4/groups/:id/projects 文档 依赖 jq: 安装jq 脚本 获取分组列表 依次获取每个分组下的" />
+  <meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm,Runner" />
+  
+  <link rel="stylesheet" href="/css/highlight/gruvbox-light.css">
+  
+  <link rel="stylesheet" href="/css/post.css?t=1464395400000">
+</head>
+
+
+<div class="content markdown-body">
+  <h1>Gitlab API 自动拉取有权限的所有仓库 </h1>
+  <div class="info">
+    <span class="date">
+      2021-06-10
+    </span>
+
+    
+      
+      <span class="categories">
+      
+      <a data-real="works" href="/categories/works/" class="category">
+        输出/作品
+      </a>
+      ‣
+      </span>
+    
+    
+    <span class="tags">
+      
+      <a data-real="Shell" href="/tags/shell/" class="tag">#Shell</a>
+      
+      <a data-real="Gitlab" href="/tags/gitlab/" class="tag">#Gitlab</a>
+      
+    </span>
+  </div>
+  </h1>
+
+  
+  <div class="changelogs">
+    <div class="title">更新日志</div>
+    
+      
+      <div class="changelog">
+        <span class="time">2021-06-11</span>
+        <span class="note">更新分类、标签</span>
+      </div>
+      
+    
+  </div>
+  
+
+  <p>Gitlab 提供了完善的 HTTP API 来获取分组、项目信息。</p>
+<h3 id="api-信息">API 信息</h3>
+<ul>
+<li>获取分组: <code>GET /api/v4/groups</code> <a href="https://docs.gitlab.com/ee/api/groups.html#list-groups">文档</a></li>
+<li>获取分组下的项目: <code>GET /api/v4/groups/:id/projects</code> <a href="https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects">文档</a></li>
+</ul>
+<h3 id="依赖">依赖</h3>
+<ul>
+<li>jq: <a href="https://stedolan.github.io/jq/download/">安装jq</a></li>
+</ul>
+<h3 id="脚本">脚本</h3>
+<ol>
+<li>获取分组列表</li>
+<li>依次获取每个分组下的有权限的所有仓库</li>
+</ol>
+<p><strong>暂不支持翻页: 若分组超过100或者分组下的项目超过100个，则会被忽略。</strong></p>
+<pre><code class="language-bash">#!/bin/bash
+
+# Gitlab 服务地址
+GITLAB_HOST=&quot;Gitlab.org&quot;
+
+# 去 $GITLAB_HOST/profile/personal_access_tokens 创建一个TOKEN
+TOKEN=&quot;你的TOKEN&quot;
+
+QUERY_PARAM=&quot;min_access_level=30&amp;simple=true&amp;per_page=100&amp;page=1&quot;
+GROUPS_URL=&quot;$GITLAB_HOST/api/v4/groups?all_available=false&amp;top_level_only=false&amp;$QUERY_PARAM&quot;
+PROJECTS_URL=&quot;$GITLAB_HOST/api/v4/groups/%s/projects?$QUERY_PARAM&quot;
+
+fetch() {
+  curl --silent --header &quot;PRIVATE-TOKEN: $TOKEN&quot; &quot;$GROUPS_URL&quot; \
+    | jq .[].name | sed 's/&quot;//g' | sort | uniq \
+    | xargs printf $PROJECTS_URL'\n' $1 \
+    | xargs curl --silent --header &quot;PRIVATE-TOKEN: $TOKEN&quot; $1 \
+    | jq '. | select(type == &quot;array&quot;) | .[] | select(has(&quot;ssh_url_to_repo&quot;)) | .ssh_url_to_repo' \
+    | sed 's/&quot;//g' | sort | uniq \
+    | awk '{ git_cmd=&quot;git clone --depth 1 &quot;$1; system(git_cmd)}'
+}
+
+fetch
+</code></pre>
+
+
+  
+  <br />
+  <br />
+  <hr />
+  文章作者：eightpigs
+  <br />
+  创作时间：2021-06-10
+  <br />
+  更新时间：
+  
+    2021-06-10
+  
+  <br />
+  许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
+  <hr />
+  
+</div>
+
+
+
+<div class="footer">
+  
+  <div class="copyright">&copy; 2014 - 
+    
+      2021
+
+    
+      Eightpigs 
+  </div>
+  
+  <div class="navbar">
+  <ul>
+  
+    <li>
+      <a href="/">首页</a>
+    </li>
+  
+    <li>
+      <a href="/archives">归档</a>
+    </li>
+  
+    <li>
+      <a href="/pages/about">关于</a>
+    </li>
+  
+  </ul>
+</div>
+
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+ 
+
+
+
+
+
+

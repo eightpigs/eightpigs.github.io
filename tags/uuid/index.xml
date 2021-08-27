@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UUID on Eightpigs</title>
+    <link>https://eightpigs.io/tags/uuid/</link>
+    <description>Recent content in UUID on Eightpigs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Feb 2019 20:52:00 +0000</lastBuildDate><atom:link href="https://eightpigs.io/tags/uuid/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>常见的统一标识符算法（UUID、NUID、Snowflake）</title>
+      <link>https://eightpigs.io/2019/02/28/unique_identifier/</link>
+      <pubDate>Thu, 28 Feb 2019 20:52:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2019/02/28/unique_identifier/</guid>
+      <description>在日常开发过程中，肯定少不了接触“统一标识符”，一般我们都直接使用各个语言标准库中的实现，例如在Java中可以使用java.util.UUI</description>
+    </item>
+    
+  </channel>
+</rss>

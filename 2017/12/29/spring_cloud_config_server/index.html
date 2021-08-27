@@ -1,0 +1,378 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Eightpigs, eightpigs@outlook.com" />
+  <meta property="og:url" content="https://eightpigs.io/2017/12/29/spring_cloud_config_server/" />
+  <link rel="canonical" href="https://eightpigs.io/2017/12/29/spring_cloud_config_server/" /><link rel="stylesheet" href="/css/github-markdown.css?t=1464395400000"><link rel="stylesheet" href="/css/head.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/style.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/list.css?t=1464395400000"><title>Spring Colud 之 统一配置中心 - Eightpigs</title>
+  <meta property="og:title" content="Spring Colud 之 统一配置中心 - Eightpigs" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="在我们Java项目开发过程中，对于配置文件的多环境配置一般会采用以下方案： 使用maven等构建工具基于resources自定义多环境 使用市面" />
+  <meta name="description" content="在我们Java项目开发过程中，对于配置文件的多环境配置一般会采用以下方案： 使用maven等构建工具基于resources自定义多环境 使用市面" />
+  <meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm,Runner" />
+  
+  <link rel="stylesheet" href="/css/highlight/gruvbox-light.css">
+  
+  <link rel="stylesheet" href="/css/post.css?t=1464395400000">
+</head>
+
+
+<div class="content markdown-body">
+  <h1>Spring Colud 之 统一配置中心 </h1>
+  <div class="info">
+    <span class="date">
+      2017-12-29
+    </span>
+
+    
+      
+      <span class="categories">
+      
+      <a data-real="devpractice" href="/categories/devpractice/" class="category">
+        开发实践
+      </a>
+      ‣
+      </span>
+    
+    
+    <span class="tags">
+      
+      <a data-real="Java" href="/tags/java/" class="tag">#Java</a>
+      
+      <a data-real="Spring" href="/tags/spring/" class="tag">#Spring</a>
+      
+    </span>
+  </div>
+  </h1>
+
+  
+  <div class="changelogs">
+    <div class="title">更新日志</div>
+    
+      
+      <div class="changelog">
+        <span class="time">2021-06-11</span>
+        <span class="note">更新分类、标签</span>
+      </div>
+      
+    
+  </div>
+  
+
+  <p>在我们Java项目开发过程中，对于配置文件的多环境配置一般会采用以下方案：</p>
+<ol>
+<li>使用maven等构建工具基于resources自定义多环境</li>
+<li>使用市面上开源的统一配置中心，例如百度的disconf、淘宝的Diamond等</li>
+</ol>
+<p>那么本文将讲述第二个方案中一个能为任何项目提供统一配置的管理方式：Spring Cloud Config。</p>
+<h2 id="介绍">介绍</h2>
+<p>客户端和服务端上映射的概念与Spring Environment和PropertySource抽象相同，因此适用于任何Spring应用程序。</p>
+<p>由于配置文件通常是可读文本格式，所以Spring Cloud Config理论能为任何应用程序提供支持。</p>
+<h2 id="核心">核心</h2>
+<p>Spring Colud Config 作为 Spring Cloud 中不可缺少的一份子，拥有以下核心功能：</p>
+<ul>
+<li>多存储方式</li>
+<li>提供服务端和客户端支持</li>
+<li>支持任何程序</li>
+<li>修改实时同步</li>
+<li>版本管理（与存储方式）</li>
+<li>支持加密</li>
+</ul>
+<p>接下来，我们就一一讲解以上特性。</p>
+<h2 id="多存储方式">多存储方式</h2>
+<p>Spring Cloud Config 支持将配置文件存放在以下环境：</p>
+<ul>
+<li>GIT（默认）</li>
+<li>SVN</li>
+<li>FileSystem</li>
+<li>Vault</li>
+</ul>
+<p>使用 Spring Cloud Config 管理配置文件，使配置文件与具体应用程序分离，有助于更加清晰对项目进行管理。</p>
+<p>下面，通过Spring Cloud Config的主要功能以及代码实现来了解并掌握Spring Cloud Config的基本使用。</p>
+<h1 id="quick-start">Quick Start</h1>
+<p>Spring Cloud Config 是对多环境配置文件进行统一管理，我们先把配置文件准备好。在目前开发中，我们使用最多的肯定是Git作为版本管理，Spring Cloud Config默认也使用Git进行配置文件的版本管理。</p>
+<h2 id="git-backend">Git Backend</h2>
+<p>新建一个配置文件存放的仓库，选择有很多：Github、Gitlab、码云，按自己喜欢选
+择即可。</p>
+<p>创建好仓库后，我们以开发中常见的4中环境（dev、test、pre、prod）作为例子，创建以下4个不同环境的配置文件并提交到仓库。</p>
+<p>本文为了测试简单方便，只加入了一个name配置，不同环境显示不同name值。</p>
+<p><strong>mimosa-dev.properties</strong></p>
+<pre><code class="language-properties">name=dev
+</code></pre>
+<p><strong>mimosa-test.properties</strong></p>
+<pre><code class="language-properties">name=test
+</code></pre>
+<p><strong>mimosa-pre.properties</strong></p>
+<pre><code class="language-properties">name=pre
+</code></pre>
+<p><strong>mimosa-prod.properties</strong></p>
+<pre><code class="language-properties">name=prod
+</code></pre>
+<h2 id="config-server">Config Server</h2>
+<p>Config Server 是管理配置文件并对外提供配置文件的地方。</p>
+<h2 id="gradle-config">Gradle Config</h2>
+<p>除了强制指定使用Maven外，所有项目我都使用Gradle，配置更简单、明了。</p>
+<blockquote>
+<p>较之于Maven或者Ant的XML配置脚本，Gradle使用的Grovvy脚本杀伤力太大了，爱美之心，人皆有之，相比于七旬老妇松松垮垮的皱纹，大家肯定都喜欢少女紧致的脸蛋，XML就是那老妇的皱纹。(引用至<a href="http://www.infoq.com/cn/news/2011/04/xxb-maven-6-gradle">Gradle，构建工具的未来？</a>)</p>
+</blockquote>
+<pre><code class="language-Groovy">group 'me.lyinlong.mimosa'
+version '1.0-SNAPSHOT'
+
+repositories {
+    maven {
+        url 'https://repo.spring.io/libs-snapshot'
+    }
+}
+
+buildscript {
+    ext {
+        springBootVersion = '2.0.0.M3'
+    }
+    repositories {
+        mavenCentral()
+        maven{url 'https://repo.spring.io/libs-snapshot'}
+        maven{ url 'https://repo.spring.io/snapshot' }
+    }
+    dependencies {
+        classpath(&quot;org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}&quot;)
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: &quot;io.spring.dependency-management&quot;
+
+dependencyManagement {
+    imports {
+        mavenBom ':spring-cloud-dependencies:Finchley.BUILD-SNAPSHOT'
+    }
+}
+
+dependencies {
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-config-server', version: '2.0.0.M2'
+}
+repositories {
+    maven { url 'https://repo.spring.io/libs-snapshot' }
+    maven{ url 'https://repo.spring.io/snapshot' }
+}
+</code></pre>
+<h2 id="配置">配置</h2>
+<p>在项目的resources目录新建：<strong>application.yml</strong> 文件并写入以下内容，如果创建的仓库是公共的，可以删除 <strong>username</strong> 和 <strong>password</strong> 配置项。
+当然，如果你觉得直接使用密码不是你的做事风格，我们也可以使用ssh方式：只需要将uri改为具体的ssh风格地址。(<a href="#">使用SSH可能会遇到的问题</a> , <a href="http://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html#_git_ssh_configuration_using_properties">更详细的SSH配置</a> )</p>
+<pre><code class="language-yml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/eightpigs/spring-cloud-config-repo.git
+        username: admin
+        password: 123
+  application:
+    name: config-server
+server:
+  port: 8888
+</code></pre>
+<h2 id="application">Application</h2>
+<p>Spring Boot以开箱即用为理念，在配置好Gradle引入配置之后，只需添加一个启动类并添加好相应的注解即可。使用<code>@EnableConfigServer</code> 启用Spring Config Server。</p>
+<pre><code class="language-java">package me.lyinlong.mimosa;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.config.server.EnableConfigServer;
+
+@EnableConfigServer
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+</code></pre>
+<p>以上配置正确后，供配置中心正常运行的配置项就已经完全写完了。访问 http://localhost:8888/mimosa/dev/ 即可得到Spring Cloud Config转换后的配置内容：</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;mimosa&quot;,
+    &quot;profiles&quot;: [&quot;dev&quot;],
+    &quot;label&quot;: null,
+    &quot;version&quot;: &quot;4d1561220245ab2ed56a6a39a070e16c5cd20ea4&quot;,
+    &quot;state&quot;: null,
+    &quot;propertySources&quot;: [{
+        &quot;name&quot;: &quot;github:eightpigs/spring-cloud-config-repo.git/mimosa-dev.properties&quot;,
+        &quot;source&quot;: {
+            &quot;name&quot;: &quot;dev&quot;
+        }
+    }]
+}
+</code></pre>
+<p>其中：<strong>propertySources.source</strong> 部分就是刚刚我们配置文件的具体内容。</p>
+<p>当然，如果你想更获取精简的内容，你可以直接使用文件名访问 http://localhost:8888/mimosa-dev.properties
+得到的内容将会是这样的：</p>
+<pre><code class="language-java">name: dev
+</code></pre>
+<p>带着成功的喜悦，我们接下来好好看看其中的一些细节和其他特性。</p>
+<h2 id="实时更新">实时更新</h2>
+<p>启动Config Server之后，在不停止项目的情况下，修改 <strong>mimosa-dev.properties</strong> 配置文件：</p>
+<pre><code class="language-properties">name=dev
+intro=这是开发环境的配置
+</code></pre>
+<p>刷新页面看看内容是不是也实时变化了？通过Config Server 的实时更新特性，大大降低了以前更动配置文件必须重启系统的次数。</p>
+<h2 id="占位符">占位符</h2>
+<p>Spring Cloud Config 在对应多系统多环境的情况下，提供以下占位符，增加系统的灵活性：</p>
+<ul>
+<li>
+<p><strong>{application}</strong> 应用名称占位符</p>
+</li>
+<li>
+<p><strong>{profile}</strong> 可以理解为一个项目的附属信息占位，可以用于对应用程序的环境区分（dev、test、prod等）</p>
+</li>
+<li>
+<p><strong>{label}</strong> 可选的git标签，可以是git的commit id、分支名、和标签</p>
+</li>
+</ul>
+<p>配置中心是对其他应用程序提供配置服务，每个配置信息应该要标识出属于哪个应用、属于应用的哪个环境，所以不难理解 <strong>{application}</strong> 和 <strong>{profile}</strong> 的具体作用。当然，<strong>{profile}</strong> 不一定是作为应用部署环境的标识，在上面也说明了，<strong>{profile}</strong> 可以理解为应用程序的附属信息，你可以用它来标识任何内容。</p>
+<h3 id="资源格式在请求地址中使用占位符">资源格式（在请求地址中使用占位符）</h3>
+<p>因为统一配置中心是对其他应用程序提供服务的，所以在资源请求方面制定了非常清晰的规范（Web接口的访问形式）：</p>
+<ul>
+<li>/{application}/{profile}[/{label}]</li>
+<li>/{application}-{profile}.yml</li>
+<li>/{label}/{application}-{profile}.yml</li>
+<li>/{application}-{profile}.properties</li>
+<li>/{label}/{application}-{profile}.properties</li>
+</ul>
+<p>其中，<strong>yml</strong> 和 <strong>properties</strong> 的各两种方式是一样的，这是因为Spring Boot开始，配置文件就只有 <strong>properties</strong> 和 <strong>yml</strong> 两种格式。所以，不同的资源格式排除资源的扩展名后只有3种。</p>
+<p>我更为推荐使用第一种方式，除了提供更多信息供程序处理外，该资源的访问形式也是更加清晰明了，因为我们使用 Config Server 之后，并不是特别关心资源的文件格式，最终的返回内容格式都是一致的。</p>
+<p>回过头看看之前为了获取精简内容而使用的方式，是不是能够对应上。</p>
+<h2 id="模式匹配">模式匹配</h2>
+<p>模式匹配使用<strong>pattern</strong>配置项进行配置。我们来看看官方的例子：</p>
+<pre><code class="language-yml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          repos:
+            simple: https://github.com/simple/config-repo
+            special:
+              pattern: special*/dev*,*special*/dev*
+              uri: https://github.com/special/config-repo
+            local:
+              pattern: local*
+              uri: file:/home/configsvc/config-repo
+</code></pre>
+<p>我们先理解一下模式匹配的基本规则：
+<strong>pattern</strong> 配置项的内容是通配符 与 <strong>{application}</strong> 和 <strong>{profile}</strong> 组合的一组匹配规则，将调用配置中心的应用程序（调用方 / config client）与具体仓库匹配起来。如果调用方的 <strong>{application}</strong> 与定义的仓库模式没有一个匹配上，则使用默认的仓库地址，也就是 <code>spring.cloud.config.server.git.uri</code></p>
+<p>知道了上面的基本规则，很好理解上面3个仓库的匹配模式：</p>
+<ul>
+<li>
+<p><strong>simple</strong> 仅匹配 <strong>{application}</strong> 为 simple 的调用方</p>
+</li>
+<li>
+<p><strong>special</strong> 匹配 <strong>{application}</strong> 以 &ldquo;special&rdquo; 开头 或者 <strong>{application}</strong> 包含 &ldquo;special&rdquo; 和 <strong>{profile}</strong> 以 &ldquo;dev&rdquo; 开头 的调用方</p>
+</li>
+<li>
+<p><strong>local</strong> 匹配 <strong>{application}</strong> 以 &ldquo;local&rdquo; 开头的所有调用方</p>
+</li>
+</ul>
+<p>以上的pattern的内容可以使用YAML数组语法改写为一下样子：</p>
+<pre><code class="language-yml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          repos:
+            special:
+              pattern: 
+                - 'special*/dev*'
+                - '*special*/dev*'
+              uri: https://github.com/special/config-repo
+</code></pre>
+<p>推荐使用YAML数组的形式，配置文件的结果更清晰。</p>
+<h2 id="启动时检查">启动时检查</h2>
+<pre><code class="language-yml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/eightpigs/spring-cloud-config-repo.git
+          clone-on-start: true
+  application:
+    name: config-server
+server:
+  port: 8888
+</code></pre>
+<p>可以看到在上面的配置中，使用了 <strong>clone-on-start</strong> 配置项，该配置项的作用是在启动是就克隆仓库信息，可以实现在启动是检测配置的仓库是否能够正常访问。</p>
+<p>如果是一个不可访问的仓库，系统将无法正常系统。</p>
+<p>如果没有使用该配置项，仓库将会在被首次请求时克隆。</p>
+<h2 id="security">Security</h2>
+<p>Spring Cloud Config Server 可以很方便与同系的 <code>spring security</code> 集成。只需要在添加在gradle中添加引入 <code>spring-boot-starter-security</code> 依赖并在 <code>application.yml</code> 中加入以下代码：</p>
+<pre><code class="language-yml">security:
+  user:
+    name: root
+    password: root
+</code></pre>
+<p>然后打开浏览器访问，即可看到需要输入用户名、密码的效果了。</p>
+
+
+  
+  <br />
+  <br />
+  <hr />
+  文章作者：eightpigs
+  <br />
+  创作时间：2017-12-29
+  <br />
+  更新时间：
+  
+    2021-06-11
+  
+  <br />
+  许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
+  <hr />
+  
+</div>
+
+
+
+<div class="footer">
+  
+  <div class="copyright">&copy; 2014 - 
+    
+      2021
+
+    
+      Eightpigs 
+  </div>
+  
+  <div class="navbar">
+  <ul>
+  
+    <li>
+      <a href="/">首页</a>
+    </li>
+  
+    <li>
+      <a href="/archives">归档</a>
+    </li>
+  
+    <li>
+      <a href="/pages/about">关于</a>
+    </li>
+  
+  </ul>
+</div>
+
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+ 
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Creation on Eightpigs</title>
+    <link>https://eightpigs.io/categories/creation/</link>
+    <description>Recent content in Creation on Eightpigs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 10 Jun 2021 18:37:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/categories/creation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gitlab API 自动拉取有权限的所有仓库</title>
+      <link>https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/</link>
+      <pubDate>Thu, 10 Jun 2021 18:37:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/</guid>
+      <description>Gitlab 提供了完善的 HTTP API 来获取分组、项目信息。 API 信息 获取分组: GET /api/v4/groups 文档 获取分组下的项目: GET /api/v4/groups/:id/projects 文档 依赖 jq: 安装jq 脚本 获取分组列表 依次获取每个分组下的</description>
+    </item>
+    
+    <item>
+      <title>腾讯视频客户端（MacOS）缓存文件转mp4</title>
+      <link>https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/</link>
+      <pubDate>Sat, 14 Apr 2018 13:02:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/</guid>
+      <description>年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有TV版的缘故，其他版本没有给开放投</description>
+    </item>
+    
+    <item>
+      <title>C#写的windows下快捷管理VPN工具</title>
+      <link>https://eightpigs.io/2015/07/23/windows_vpn_tools_by_csharp/</link>
+      <pubDate>Thu, 23 Jul 2015 06:14:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2015/07/23/windows_vpn_tools_by_csharp/</guid>
+      <description>简介 使用C#写的windows 下快捷管理VPN工具，可以实现对本地VPN的增加,修改,删除管理 原理 windows有自带的连接管理工具 rasphone ,可以</description>
+    </item>
+    
+    <item>
+      <title>豆瓣FM第三方客户端</title>
+      <link>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</link>
+      <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</guid>
+      <description>&lt;h2 id=&#34;更新说明&#34;&gt;更新说明&lt;/h2&gt;
+&lt;p&gt;2018-03-15：该代码在14年下半年完成，所以略丑陋。已经转网易云音乐多年了，如果有人在使用本客户端或想使用，可以给我提issues，会花时间重构代码。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TTE on Eightpigs</title>
+    <link>https://eightpigs.io/categories/tte/</link>
+    <description>Recent content in TTE on Eightpigs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 12 Mar 2019 23:00:00 +0000</lastBuildDate><atom:link href="https://eightpigs.io/categories/tte/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>简单谈谈VIM设计的优点</title>
+      <link>https://eightpigs.io/2019/03/12/vim_vim_vim/</link>
+      <pubDate>Tue, 12 Mar 2019 23:00:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2019/03/12/vim_vim_vim/</guid>
+      <description>我接触VIM的时间较短，从正式学习到现在也就一年半不到的时间，期间我将所有使用到的编辑器、IDE的键位都修改为了VIM模式，这对我快速掌握V</description>
+    </item>
+    
+  </channel>
+</rss>

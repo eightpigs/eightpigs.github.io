@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MacOS on Eightpigs</title>
+    <link>https://eightpigs.io/tags/macos/</link>
+    <description>Recent content in MacOS on Eightpigs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Apr 2018 10:14:00 +0000</lastBuildDate><atom:link href="https://eightpigs.io/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在MacOS和Windows上的效率工具</title>
+      <link>https://eightpigs.io/2018/04/20/efficiency_tools_on_macos_and_windows/</link>
+      <pubDate>Fri, 20 Apr 2018 10:14:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2018/04/20/efficiency_tools_on_macos_and_windows/</guid>
+      <description>终端模拟器 Windows Cmder WSL Hyper(Electron) MacOS Iterm2 + zsh(oh-my-zsh) Hyper(Electron) 查找 Windows Everything MacOS Alfred Shell Command 快速启动 Windows Listary (可以配合EveryThing） Wox（插件多） MacOS Alfred 快捷键（自动化） Windows AHK （AutoH</description>
+    </item>
+    
+    <item>
+      <title>腾讯视频客户端（MacOS）缓存文件转mp4</title>
+      <link>https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/</link>
+      <pubDate>Sat, 14 Apr 2018 13:02:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/</guid>
+      <description>年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有TV版的缘故，其他版本没有给开放投</description>
+    </item>
+    
+  </channel>
+</rss>
