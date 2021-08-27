@@ -1,0 +1,201 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Eightpigs, eightpigs@outlook.com" />
+  <meta property="og:url" content="https://eightpigs.io/2021/08/27/k3s_use_nfs/" />
+  <link rel="canonical" href="https://eightpigs.io/2021/08/27/k3s_use_nfs/" /><link rel="stylesheet" href="/css/github-markdown.css?t=1464395400000"><link rel="stylesheet" href="/css/head.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/style.css?t=1464395400000">
+  <link rel="stylesheet" href="/css/list.css?t=1464395400000"><title>K3s 上手 - NFS 存储配置 - Eightpigs</title>
+  <meta property="og:title" content="K3s 上手 - NFS 存储配置 - Eightpigs" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="在上一篇文章《K3s 上手 - 集群搭建》 我有提到所有节点的数据存储均使用 NFS，本文分享下 TrueNAS 的配置及 K3s 使用 NFS 的方式。 创建 NFS 服务 在 TrueNAS 上我添加一块 1T" />
+  <meta name="description" content="在上一篇文章《K3s 上手 - 集群搭建》 我有提到所有节点的数据存储均使用 NFS，本文分享下 TrueNAS 的配置及 K3s 使用 NFS 的方式。 创建 NFS 服务 在 TrueNAS 上我添加一块 1T" />
+  <meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm,Runner" />
+  
+  <link rel="stylesheet" href="/css/highlight/gruvbox-light.css">
+  
+  <link rel="stylesheet" href="/css/post.css?t=1464395400000">
+</head>
+
+
+<div class="content markdown-body">
+  <h1>K3s 上手 - NFS 存储配置 </h1>
+  <div class="info">
+    <span class="date">
+      2021-08-27
+    </span>
+
+    
+      
+      <span class="categories">
+      
+      <a data-real="Infrastructure" href="/categories/infrastructure/" class="category">
+        基础设施
+      </a>
+      ‣
+      </span>
+    
+    
+    <span class="tags">
+      
+      <a data-real="K3s" href="/tags/k3s/" class="tag">#K3s</a>
+      
+      <a data-real="K8s" href="/tags/k8s/" class="tag">#K8s</a>
+      
+      <a data-real="Kubernetes" href="/tags/kubernetes/" class="tag">#Kubernetes</a>
+      
+      <a data-real="Homelab" href="/tags/homelab/" class="tag">#Homelab</a>
+      
+      <a data-real="NFS" href="/tags/nfs/" class="tag">#NFS</a>
+      
+    </span>
+  </div>
+  </h1>
+
+  
+
+  <p>在上一篇文章<a href="https://eightpigs.io/2021/07/06/using_k3s/">《K3s 上手 - 集群搭建》</a> 我有提到所有节点的数据存储均使用 NFS，本文分享下 TrueNAS 的配置及 K3s 使用 NFS 的方式。</p>
+<h2 id="创建-nfs-服务">创建 NFS 服务</h2>
+<p>在 TrueNAS 上我添加一块 1T 的 SSD 作为 K3s 专用的硬盘，并以 NFS 服务提供出去，TrueNAS 上关于 NFS 相关的配置如下：</p>
+<ol>
+<li>
+<p>创建 uid: 1000 和 gid: 1000 的用户，以对应大部分容器默认的 uid:gid，减少权限相关问题</p>
+<p><code>操作路径: Accounts - Groups &amp; Users</code></p>
+</li>
+<li>
+<p>为 K3s 的 Pool 设置 1000:1000 对应的用户和组</p>
+<p><code>操作路径: Storage - Pool - 你的DataSet - Edit Permissions - Owner &amp; Group</code></p>
+</li>
+<li>
+<p>将 DataSet 添加到 NFS 共享</p>
+<p><code>操作路径: Sharing - Unix Sharing(NFS) - Add - 选择DataSet路径 - Mapall User &amp; Mapall Group 设置为 1000:1000 对应的用户和组</code></p>
+</li>
+</ol>
+<h2 id="k3s-配置-nfs">K3s 配置 NFS</h2>
+<h3 id="使用-nfs-subdir-external-provisioner">使用 nfs-subdir-external-provisioner</h3>
+<p>可以使用 helm 添加  <a href="https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner/blob/master/charts/nfs-subdir-external-provisioner/README.md">nfs-subdir-external-provisioner</a> 来为集群提供 NFS 存储。</p>
+<pre><code class="language-bash">helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+helm repo update
+helm install nfs-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
+    --set nfs.server=nas \
+    --set nfs.path=/mnt/ssd-doc-01/k3s \
+    --set &quot;nfs.mountOptions={nfsvers=4.1,rsize=1048576,wsize=1048576}&quot; \
+    --set storageClass.name=nfs-ssd-doc-01 \
+    --set storageClass.reclaimPolicy=Delete \
+    --set storageClass.accessModes=ReadWriteMany \
+    --set storageClass.pathPattern=&quot;\${.PVC.namespace}/\${.PVC.name}&quot;
+</code></pre>
+<ul>
+<li><code>nfs.server=nas</code>: 你的 NFS server 的地址，我每个节点都给 NFS server 配置了 host: nas</li>
+<li><code>nfs.path=/mnt/ssd-doc-01/k3s</code>: 你的 NFS 服务共享的 路径</li>
+<li><code>nfs.mountOptions={nfsvers=4.1,rsize=1048576,wsize=1048576}</code>: NFS 挂载参数</li>
+<li><code>storageClass.name=nfs-ssd-doc-01</code>: 自定义的 storageClass，定义 PVC 时使用</li>
+<li><code>storageClass.reclaimPolicy=Delete</code>: 回收废弃卷的方式，默认为 Delete</li>
+<li><code>storageClass.accessModes=ReadWriteMany</code>: PV 的访问方式</li>
+<li><code>storageClass.pathPattern=&quot;\${.PVC.namespace}/\${.PVC.name}&quot;</code>: 在 NFS 使用时创建路径的规则</li>
+</ul>
+<p>执行完成后，可以通过 <code>kubectl get storageclasses.storage.k8s.io</code> 查看目前支持的 PROVISIONER</p>
+<pre><code>~ &gt; kubectl get storageclasses.storage.k8s.io
+NAME                   PROVISIONER                                                     RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+local-path (default)   rancher.io/local-path                                           Delete          WaitForFirstConsumer   false                  46d
+nfs-ssd-doc-01         cluster.local/nfs-provisioner-nfs-subdir-external-provisioner   Delete          Immediate              true                   3d19h
+</code></pre>
+<h3 id="使用-mount">使用 mount</h3>
+<p>该方式没有实践过，不过从主观来看，比上一种方法简单直接：</p>
+<p>使用 ansible 为每台机器 mount nfs 作为本地目录，然后 k3s 使用 local-path。</p>
+<h2 id="使用-nfs">使用 NFS</h2>
+<p>例如 Gitea 服务，需要使用 NFS 做存储，可以如下定义:</p>
+<pre><code># gitea-pvc.yaml
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gitea-pvc
+  namespace: gitea
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-ssd-doc-01    # 上一步定义的 storageClass
+  resources:
+    requests:
+      storage: 80Gi 
+</code></pre>
+
+
+  
+  <br />
+  <br />
+  <hr />
+  文章作者：eightpigs
+  <br />
+  创作时间：2021-08-27
+  <br />
+  更新时间：
+  
+    2021-08-27
+  
+  <br />
+  许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
+  <hr />
+  
+</div>
+
+
+
+<div class="footer">
+  
+  <div class="copyright">&copy; 2014 - 
+    
+      2021
+
+    
+      Eightpigs 
+  </div>
+  
+  <div class="navbar">
+  <ul>
+  
+    <li>
+      <a href="/">首页</a>
+    </li>
+  
+    <li>
+      <a href="/archives">归档</a>
+    </li>
+  
+    <li>
+      <a href="/pages/about">关于</a>
+    </li>
+  
+  </ul>
+</div>
+
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+ 
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', "sup"],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+
+
+
+
+

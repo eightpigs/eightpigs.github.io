@@ -6,7 +6,16 @@
     <description>Recent content on Eightpigs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Jul 2021 12:30:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Aug 2021 16:30:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K3s 上手 - NFS 存储配置</title>
+      <link>https://eightpigs.io/2021/08/27/k3s_use_nfs/</link>
+      <pubDate>Fri, 27 Aug 2021 16:30:00 +0800</pubDate>
+      
+      <guid>https://eightpigs.io/2021/08/27/k3s_use_nfs/</guid>
+      <description>在上一篇文章《K3s 上手 - 集群搭建》 我有提到所有节点的数据存储均使用 NFS，本文分享下 TrueNAS 的配置及 K3s 使用 NFS 的方式。 创建 NFS 服务 在 TrueNAS 上我添加一块 1T</description>
+    </item>
+    
     <item>
       <title>K3s 上手 - 集群搭建</title>
       <link>https://eightpigs.io/2021/07/06/using_k3s/</link>
