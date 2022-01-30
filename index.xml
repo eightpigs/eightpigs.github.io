@@ -215,5 +215,14 @@
 &lt;p&gt;2018-03-15：该代码在14年下半年完成，所以略丑陋。已经转网易云音乐多年了，如果有人在使用本客户端或想使用，可以给我提issues，会花时间重构代码。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://eightpigs.io/1/01/01/disk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://eightpigs.io/1/01/01/disk/</guid>
+      <description>expand disk qm resize root@pve:~# qm resize 102 scsi0 +5G Size of logical volume pve/vm-102-disk-0 changed from 5.00 GiB (1280 extents) to 10.00 GiB (2560 extents). Logical volume pve/vm-102-disk-0 successfully resized.  NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME k3s-worker-02 Ready &amp;lt;none&amp;gt; 97d v1.21.2+k3s1 192.168.2.23 &amp;lt;none&amp;gt; Debian GNU/Linux 10 (buster) 5.10.0-0.bpo.7-amd64 containerd://1.4.4-k3s2 k3s-worker-03 Ready &amp;lt;none&amp;gt; 97d v1.21.2+k3s1 192.168.2.24 &amp;lt;none&amp;gt; Debian GNU/Linux 10 (buster) 5.10.0-0.bpo.7-amd64 containerd://1.4.4-k3s2 k3s-master Ready control-plane,master 97d v1.</description>
+    </item>
+    
   </channel>
 </rss>

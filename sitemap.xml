@@ -1,454 +1,276 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://eightpigs.io/categories/</loc>
     <lastmod>2021-08-27T16:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/</loc>
     <lastmod>2021-08-27T16:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/homelab/</loc>
     <lastmod>2021-08-27T16:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/categories/infrastructure/</loc>
     <lastmod>2021-08-27T16:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/k3s/</loc>
     <lastmod>2021-08-27T16:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2021/08/27/k3s_use_nfs/</loc>
     <lastmod>2021-08-27T16:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/k8s/</loc>
     <lastmod>2021-08-27T16:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/kubernetes/</loc>
     <lastmod>2021-08-27T16:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/nfs/</loc>
     <lastmod>2021-08-27T16:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/posts/</loc>
     <lastmod>2021-08-27T16:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/</loc>
     <lastmod>2021-08-27T16:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2021/07/06/using_k3s/</loc>
     <lastmod>2021-08-27T16:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/traefik/</loc>
     <lastmod>2021-08-27T16:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/wireguard/</loc>
     <lastmod>2021-08-27T16:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/10g/</loc>
     <lastmod>2021-07-05T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/categories/hardware/</loc>
     <lastmod>2021-07-05T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/nci/</loc>
     <lastmod>2021-07-05T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/network-interface-controller/</loc>
     <lastmod>2021-07-05T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/pve/</loc>
     <lastmod>2021-07-05T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2021/07/05/pve_10g_nic/</loc>
     <lastmod>2021-07-05T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/gitlab/</loc>
     <lastmod>2021-06-10T18:37:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/</loc>
     <lastmod>2021-06-10T18:37:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/shell/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/categories/works/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/diamond/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/categories/life/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/note/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/shopping/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2020/10/17/diamond/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/archlinux/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/debian/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/hardware/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/virtualization/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2019/12/15/two_people_use_one_machine/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/neovim/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/productivity/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/vim/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/categories/vim/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2019/03/12/vim_vim_vim/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/algorithm/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/categories/algorithm/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/leaf/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/nuid/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/snowflake/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/twitter/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/uuid/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2019/02/28/unique_identifier/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/pages/</loc>
     <lastmod>2021-06-12T17:11:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/pages/about/</loc>
     <lastmod>2021-06-12T17:11:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/ci/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/categories/devpractice/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/docker/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/docker-compose/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/go/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2019/02/23/upgrade_drone/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/java/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/sorting/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2019/02/23/sort_algorithm/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/categories/devlang/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2018/08/10/java_virtual_machine_stack/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/jvm/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/nas/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/network/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2018/08/10/create_yourself_nas/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/macos/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/categories/tech/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/tools/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/windows/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2018/04/20/efficiency_tools_on_macos_and_windows/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/groovy/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2018/04/12/groovy-grammar/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/notes/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2018/03/19/go_notes_array_and_slice/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2018/02/10/go_notes_basic_structure/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2018/02/04/vim_basic/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/spring/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2017/12/29/spring_cloud_config_server/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/database/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/categories/database/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/linux/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/sourcecomplie/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/.net/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2015/07/23/windows_vpn_tools_by_csharp/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/vpn/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/doubanfm/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/tags/third-party/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</loc>
     <lastmod>2021-06-11T12:30:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://eightpigs.io/1/01/01/disk/</loc>
+  </url><url>
     <loc>https://eightpigs.io/archives/</loc>
   </url>
-  
 </urlset>

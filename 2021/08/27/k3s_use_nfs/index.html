@@ -1,6 +1,6 @@
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.92.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Eightpigs, eightpigs@outlook.com" />
@@ -55,6 +55,18 @@
   </h1>
 
   
+  <div class="changelogs">
+    <div class="title">更新日志</div>
+    
+      
+      <div class="changelog">
+        <span class="time">2022-01-30</span>
+        <span class="note">添加 TrueNAS 配置截图; 完善 NFS 使用示例</span>
+      </div>
+      
+    
+  </div>
+  
 
   <p>在上一篇文章<a href="https://eightpigs.io/2021/07/06/using_k3s/">《K3s 上手 - 集群搭建》</a> 我有提到所有节点的数据存储均使用 NFS，本文分享下 TrueNAS 的配置及 K3s 使用 NFS 的方式。</p>
 <h2 id="创建-nfs-服务">创建 NFS 服务</h2>
@@ -67,17 +79,25 @@
 <li>
 <p>为 K3s 的 Pool 设置 1000:1000 对应的用户和组</p>
 <p><code>操作路径: Storage - Pool - 你的DataSet - Edit Permissions - Owner &amp; Group</code></p>
+<p><img src="storage_k3s_permissions.png" alt="stroage_k3s_permissions"></p>
 </li>
 <li>
 <p>将 DataSet 添加到 NFS 共享</p>
 <p><code>操作路径: Sharing - Unix Sharing(NFS) - Add - 选择DataSet路径 - Mapall User &amp; Mapall Group 设置为 1000:1000 对应的用户和组</code></p>
+<p><img src="sharing_nfs_k3s.png" alt="sharing_nfs_k3s"></p>
 </li>
 </ol>
 <h2 id="k3s-配置-nfs">K3s 配置 NFS</h2>
-<h3 id="使用-nfs-subdir-external-provisioner">使用 nfs-subdir-external-provisioner</h3>
-<p>可以使用 helm 添加  <a href="https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner/blob/master/charts/nfs-subdir-external-provisioner/README.md">nfs-subdir-external-provisioner</a> 来为集群提供 NFS 存储。</p>
+<p>在 Kubernetes 中使用 NFS 有两种方式:</p>
+<ol>
+<li>使用 nfs-subdir-external-provisioner</li>
+<li>使用 ansible 为每个 Worker mount nfs 作为本地目录，然后 k3s 使用 local-path。</li>
+</ol>
+<p>Pod 应该避免依赖宿主，能在 Kubernetes 配置的，应该都在 Kubernetes 中进行，所以建议采用第一种方案。</p>
+<p>使用 helm 添加  <a href="https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner/blob/master/charts/nfs-subdir-external-provisioner/README.md">nfs-subdir-external-provisioner</a> 来为集群提供 NFS 存储支持。</p>
 <pre><code class="language-bash">helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
 helm repo update
+
 helm install nfs-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
     --set nfs.server=nas \
     --set nfs.path=/mnt/ssd-doc-01/k3s \
@@ -88,8 +108,8 @@ helm install nfs-provisioner nfs-subdir-external-provisioner/nfs-subdir-external
     --set storageClass.pathPattern=&quot;\${.PVC.namespace}/\${.PVC.name}&quot;
 </code></pre>
 <ul>
-<li><code>nfs.server=nas</code>: 你的 NFS server 的地址，我每个节点都给 NFS server 配置了 host: nas</li>
-<li><code>nfs.path=/mnt/ssd-doc-01/k3s</code>: 你的 NFS 服务共享的 路径</li>
+<li><code>nfs.server=nas</code>: 你的 NFS server 的地址，可以用 ansible 给所有 Worker 配置上 hosts，也可以在路由器层面绑定。</li>
+<li><code>nfs.path=/mnt/ssd-doc-01/k3s</code>: 你的 NFS 服务共享的路径</li>
 <li><code>nfs.mountOptions={nfsvers=4.1,rsize=1048576,wsize=1048576}</code>: NFS 挂载参数</li>
 <li><code>storageClass.name=nfs-ssd-doc-01</code>: 自定义的 storageClass，定义 PVC 时使用</li>
 <li><code>storageClass.reclaimPolicy=Delete</code>: 回收废弃卷的方式，默认为 Delete</li>
@@ -102,9 +122,6 @@ NAME                   PROVISIONER                                              
 local-path (default)   rancher.io/local-path                                           Delete          WaitForFirstConsumer   false                  46d
 nfs-ssd-doc-01         cluster.local/nfs-provisioner-nfs-subdir-external-provisioner   Delete          Immediate              true                   3d19h
 </code></pre>
-<h3 id="使用-mount">使用 mount</h3>
-<p>该方式没有实践过，不过从主观来看，比上一种方法简单直接：</p>
-<p>使用 ansible 为每台机器 mount nfs 作为本地目录，然后 k3s 使用 local-path。</p>
 <h2 id="使用-nfs">使用 NFS</h2>
 <p>例如 Gitea 服务，需要使用 NFS 做存储，可以如下定义:</p>
 <pre><code># gitea-pvc.yaml
@@ -113,14 +130,36 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: gitea-pvc
-  namespace: gitea
+  namespace: selfhosts
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: nfs-ssd-doc-01    # 上一步定义的 storageClass
+  storageClassName: nfs-ssd-doc-01 # 上一步定义的 storageClass
   resources:
     requests:
-      storage: 80Gi 
+      storage: 80Gi
+
+---
+
+# pod-gitea.yaml
+...
+    spec:
+      containers:
+      - name: gitea
+        image: gitea/gitea:latest
+        ...
+        volumeMounts:
+        - name: nfs
+          mountPath: /data
+      volumes:
+      - name: nfs
+        persistentVolumeClaim:
+          claimName: gitea-pvc
+</code></pre>
+<pre><code class="language-bash"># 查看pvc
+$ → kubectl get pvc -n selfhosts
+NAME            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS     AGE
+gitea-pvc       Bound    pvc-ad30480c-45db-49bf-b3fa-4e730a5bf189   80Gi       RWX            nfs-ssd-doc-01   46h
 </code></pre>
 
 
@@ -134,7 +173,7 @@ spec:
   <br />
   更新时间：
   
-    2021-08-27
+    2022-01-30
   
   <br />
   许可协议：<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="cc">CC by-nc-nd 4.0</a>
@@ -148,7 +187,7 @@ spec:
   
   <div class="copyright">&copy; 2014 - 
     
-      2021
+      2022
 
     
       Eightpigs 
@@ -178,21 +217,6 @@ spec:
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
  
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$'], ['\[','\]']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', "sup"],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
-  }
-});
-</script>
 
 
 

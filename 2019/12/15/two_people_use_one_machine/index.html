@@ -1,6 +1,6 @@
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.92.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Eightpigs, eightpigs@outlook.com" />
@@ -269,7 +269,7 @@ nvme1n1              259:1    0 465.8G  0 disk
 <p>通过nvme0n1 查询到硬盘ID为: <code>nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF0M758708E</code></p>
 <h3 id="执行直通">执行直通</h3>
 <p>使用的Qemu/KVM虚拟机管理器的set命令来挂载物理磁盘到虚拟机中，命令格式如下:</p>
-<p>**qm set &lt;vm_id&gt; –&lt;disk_type&gt;[n] /dev/disk/by-id/<!-- raw HTML omitted -->-$brand-$model_$serial_number**</p>
+<p><strong>qm set &lt;vm_id&gt; –&lt;disk_type&gt;[n] /dev/disk/by-id/<!-- raw HTML omitted -->-$brand-$model_$serial_number</strong></p>
 <pre><code class="language-bash">root@fighter:~# qm set 100 -sata1 /dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF0M758708E
 update VM 100: -sata1 /dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF0M758708E
 </code></pre>
@@ -328,7 +328,7 @@ update VM 100: -sata1 /dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF
   
   <div class="copyright">&copy; 2014 - 
     
-      2021
+      2022
 
     
       Eightpigs 
