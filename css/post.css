@@ -3,7 +3,7 @@
 }
 
 .content .info * {
-  color: #6c757d;
+  color: #212529;
   margin-right: 8px;
 }
 
@@ -35,10 +35,10 @@
    margin: 0px 0px 10px -10px;
    display: inline-block;
    padding: 2px 10px;
+   font-weight: bold;
 }
 
 .content .changelogs span.note {
-  color: #6c757d;
   display: inline-block;
   margin-left: 10px;
 }

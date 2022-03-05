@@ -1,21 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>DoubanFM on Eightpigs</title>
-    <link>https://eightpigs.io/tags/doubanfm/</link>
-    <description>Recent content in DoubanFM on Eightpigs</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 10 Nov 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://eightpigs.io/tags/doubanfm/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>豆瓣FM第三方客户端</title>
-      <link>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</link>
-      <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</guid>
-      <description>&lt;h2 id=&#34;更新说明&#34;&gt;更新说明&lt;/h2&gt;
-&lt;p&gt;2018-03-15：该代码在14年下半年完成，所以略丑陋。已经转网易云音乐多年了，如果有人在使用本客户端或想使用，可以给我提issues，会花时间重构代码。&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DoubanFM on Eightpigs</title><link>https://eightpigs.io/tags/doubanfm/</link><description>Recent content in DoubanFM on Eightpigs</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 10 Nov 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://eightpigs.io/tags/doubanfm/index.xml" rel="self" type="application/rss+xml"/><item><title>豆瓣FM第三方客户端</title><link>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</link><pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate><guid>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</guid><description>&lt;h2 id="更新说明">更新说明&lt;/h2>
+&lt;p>2018-03-15：该代码在14年下半年完成，所以略丑陋。已经转网易云音乐多年了，如果有人在使用本客户端或想使用，可以给我提issues，会花时间重构代码。&lt;/p></description></item></channel></rss>
