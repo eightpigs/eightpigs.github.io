@@ -309,14 +309,12 @@
 
 .markdown-body code {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 12px;
 }
 
 .markdown-body pre {
   margin-top: 0;
   margin-bottom: 0;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 12px;
 }
 
 .markdown-body .octicon {
@@ -569,8 +567,18 @@
   max-width: 100%;
   box-sizing: content-box;
   background-color: #fff;
-  /* display: block; */
-  /* margin: 0 auto; */
+}
+
+.markdown-body img[src*="#block"] {
+  display: block;
+  margin: 0 auto;
+}
+
+.markdown-body img[src*="#thumbnail"] {
+  width: 50%;
+  max-width: 50%;
+  box-sizing: content-box;
+  background-color: #fff;
 }
 
 .markdown-body img[align=right] {
@@ -584,8 +592,8 @@
 .markdown-body code {
   padding: 0.2em 0.4em;
   margin: 0;
-  font-size: 85%;
-  background-color: rgba(27,31,35,0.05);
+  /* font-size: 85%; */
+  background-color: #e7eaec;
   border-radius: 3px;
 }
 

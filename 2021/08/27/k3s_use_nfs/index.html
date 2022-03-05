@@ -1,6 +1,6 @@
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Hugo 0.92.0" />
+  <meta name="generator" content="Hugo 0.92.1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Eightpigs, eightpigs@outlook.com" />
@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="/css/list.css?t=1464395400000"><title>K3s 上手 - NFS 存储配置 - Eightpigs</title>
   <meta property="og:title" content="K3s 上手 - NFS 存储配置 - Eightpigs" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="在上一篇文章《K3s 上手 - 集群搭建》 我有提到所有节点的数据存储均使用 NFS，本文分享下 TrueNAS 的配置及 K3s 使用 NFS 的方式。 创建 NFS 服务 在 TrueNAS 上我添加一块 1T" />
-  <meta name="description" content="在上一篇文章《K3s 上手 - 集群搭建》 我有提到所有节点的数据存储均使用 NFS，本文分享下 TrueNAS 的配置及 K3s 使用 NFS 的方式。 创建 NFS 服务 在 TrueNAS 上我添加一块 1T" />
+  <meta property="og:description" content="在上一篇文章《K3s 上手 - 集群搭建》 我有提到容器的所有数据存储均使用 NFS：在我的 TrueNAS 有一块 1T SSD 作为容器数据的专用硬盘，并通过 NFS 共享给 K3s。" />
+  <meta name="description" content="在上一篇文章《K3s 上手 - 集群搭建》 我有提到容器的所有数据存储均使用 NFS：在我的 TrueNAS 有一块 1T SSD 作为容器数据的专用硬盘，并通过 NFS 共享给 K3s。" />
   <meta name="keywords" content="IT,Java,Go,Web,Programmer,Algorithm,Runner" />
   
   <link rel="stylesheet" href="/css/highlight/gruvbox-light.css">
@@ -65,28 +65,45 @@
       </div>
       
     
+      
+      <div class="changelog">
+        <span class="time">2022-03-05</span>
+        <span class="note">更正 TrueNAS 中 NFS 权限配置说明</span>
+      </div>
+      
+    
   </div>
   
 
-  <p>在上一篇文章<a href="https://eightpigs.io/2021/07/06/using_k3s/">《K3s 上手 - 集群搭建》</a> 我有提到所有节点的数据存储均使用 NFS，本文分享下 TrueNAS 的配置及 K3s 使用 NFS 的方式。</p>
+  <p>在上一篇文章<a href="https://eightpigs.io/2021/07/06/using_k3s/">《K3s 上手 - 集群搭建》</a> 我有提到容器的所有数据存储均使用 NFS：在我的 TrueNAS 有一块 1T SSD 作为容器数据的专用硬盘，并通过 NFS 共享给 K3s。本文分享下 TrueNAS 的配置及 K3s 使用 NFS 的方式。</p>
 <h2 id="创建-nfs-服务">创建 NFS 服务</h2>
-<p>在 TrueNAS 上我添加一块 1T 的 SSD 作为 K3s 专用的硬盘，并以 NFS 服务提供出去，TrueNAS 上关于 NFS 相关的配置如下：</p>
+<p>在 TrueNAS 创建 NFS 服务时，需要注意下权限配置，主要有两个方式：</p>
+<ol>
+<li>添加一个专属用户</li>
+<li>使用 ACL 设置 Everyone Read/Write</li>
+</ol>
+<h3 id="方式一专属用户方式">方式一：专属用户方式</h3>
 <ol>
 <li>
-<p>创建 uid: 1000 和 gid: 1000 的用户，以对应大部分容器默认的 uid:gid，减少权限相关问题</p>
+<p><strong>创建 uid: 1000 和 gid: 1000 的用户，以对应大部分容器默认的 uid:gid</strong></p>
 <p><code>操作路径: Accounts - Groups &amp; Users</code></p>
 </li>
 <li>
-<p>为 K3s 的 Pool 设置 1000:1000 对应的用户和组</p>
+<p><strong>为 K3s 的 Pool 设置 1000:1000 对应的用户和组</strong></p>
 <p><code>操作路径: Storage - Pool - 你的DataSet - Edit Permissions - Owner &amp; Group</code></p>
-<p><img src="storage_k3s_permissions.png" alt="stroage_k3s_permissions"></p>
+<p><img src="storage_k3s_permissions.jpg#thumbnail" alt="stroage_k3s_permissions"></p>
 </li>
 <li>
-<p>将 DataSet 添加到 NFS 共享</p>
+<p><strong>将 DataSet 添加到 NFS 共享</strong></p>
 <p><code>操作路径: Sharing - Unix Sharing(NFS) - Add - 选择DataSet路径 - Mapall User &amp; Mapall Group 设置为 1000:1000 对应的用户和组</code></p>
-<p><img src="sharing_nfs_k3s.png" alt="sharing_nfs_k3s"></p>
+<p><img src="sharing_nfs_k3s.jpg#thumbnail" alt="sharing_nfs_k3s"></p>
 </li>
 </ol>
+<h3 id="方式二acl-配置">方式二：ACL 配置</h3>
+<p>在 Pool 中找到自己指定的 DataSet -&gt; Edit Permissions，添加一个 ACL为：<code>everyone &amp; Allow &amp; Basic &amp; Full Control &amp; Basic &amp; Inherit</code> 的配置。
+Permissions 可以是 Full Control 也可以设置为指定的读或写权限，具体看自己这个 DataSet 分享出去的作用。</p>
+<p>例如我的音乐文件夹需要映射给 Jellyfin 读/写，则可以添加一个如下配置：</p>
+<p><img src="./nfs_dataset_acl.jpg#thumbnail" alt="nfs_dataset_acl"></p>
 <h2 id="k3s-配置-nfs">K3s 配置 NFS</h2>
 <p>在 Kubernetes 中使用 NFS 有两种方式:</p>
 <ol>
