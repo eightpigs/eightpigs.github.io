@@ -1,22 +1,21 @@
 <head>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.92.1">
+<meta name=generator content="Hugo 0.92.2">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Eightpigs, eightpigs@outlook.com">
 <meta property="og:url" content="https://eightpigs.io/2018/03/19/go_notes_array_and_slice/">
 <link rel=canonical href=https://eightpigs.io/2018/03/19/go_notes_array_and_slice/>
-<link rel=stylesheet href="/css/github-markdown.css?t=1464395400000">
-<link rel=stylesheet href="/css/head.css?t=1464395400000">
-<link rel=stylesheet href="/css/style.css?t=1464395400000">
-<link rel=stylesheet href="/css/list.css?t=1464395400000"><title>Go语言学习 - 复合数据类型：数组、slice - Eightpigs</title>
+<link rel=stylesheet href="/css/github-markdown.css?t=1647830831">
+<link rel=stylesheet href="/css/head.css?t=1647830831">
+<link rel=stylesheet href="/css/style.css?t=1647830831"><title>Go语言学习 - 复合数据类型：数组、slice - Eightpigs</title>
 <meta property="og:title" content="Go语言学习 - 复合数据类型：数组、slice - Eightpigs">
 <meta property="og:type" content="article">
 <meta property="og:description" content="复合数据类型 主要分为4种复合数据类型： 数组 slice map 结构体 本次先将数组和slice的相关知识点及理解记录下来，后续再慢慢看Map和结构体。 数组 数组">
 <meta name=description content="复合数据类型 主要分为4种复合数据类型： 数组 slice map 结构体 本次先将数组和slice的相关知识点及理解记录下来，后续再慢慢看Map和结构体。 数组 数组">
 <meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner">
 <link rel=stylesheet href=/css/highlight/github.css>
-<link rel=stylesheet href="/css/post.css?t=1464395400000">
+<link rel=stylesheet href="/css/post.css?t=1647830831">
 </head>
 <div class="content markdown-body">
 <h1>Go语言学习 - 复合数据类型：数组、slice </h1>
@@ -42,6 +41,21 @@
 <span class=time>2021-06-11</span>
 <span class=note>更新分类、标签</span>
 </div>
+</div>
+<div class=outline>
+<h4>大纲</h4>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#数组>数组</a></li>
+<li><a href=#slice>slice</a>
+<ul>
+<li><a href=#比较>比较</a></li>
+<li><a href=#make-函数>make 函数</a></li>
+<li><a href=#append-函数>append 函数</a></li>
+</ul>
+</li>
+</ul>
+</nav>
 </div>
 <h1 id=复合数据类型>复合数据类型</h1>
 <p>主要分为4种复合数据类型：</p>

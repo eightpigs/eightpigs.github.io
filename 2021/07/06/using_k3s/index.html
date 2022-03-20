@@ -1,22 +1,21 @@
 <head>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.92.1">
+<meta name=generator content="Hugo 0.92.2">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Eightpigs, eightpigs@outlook.com">
 <meta property="og:url" content="https://eightpigs.io/2021/07/06/using_k3s/">
 <link rel=canonical href=https://eightpigs.io/2021/07/06/using_k3s/>
-<link rel=stylesheet href="/css/github-markdown.css?t=1464395400000">
-<link rel=stylesheet href="/css/head.css?t=1464395400000">
-<link rel=stylesheet href="/css/style.css?t=1464395400000">
-<link rel=stylesheet href="/css/list.css?t=1464395400000"><title>K3s 上手 - 集群搭建 - Eightpigs</title>
+<link rel=stylesheet href="/css/github-markdown.css?t=1647830831">
+<link rel=stylesheet href="/css/head.css?t=1647830831">
+<link rel=stylesheet href="/css/style.css?t=1647830831"><title>K3s 上手 - 集群搭建 - Eightpigs</title>
 <meta property="og:title" content="K3s 上手 - 集群搭建 - Eightpigs">
 <meta property="og:type" content="article">
 <meta property="og:description" content="在《PVE 中虚拟化万兆网卡》中我有提到自己攒了台双路的机器放在家里，长期以来作为我远程的 Power 机器，在上面用 Docker-Compose 跑我的各种服务。从攒好机器到现在，">
 <meta name=description content="在《PVE 中虚拟化万兆网卡》中我有提到自己攒了台双路的机器放在家里，长期以来作为我远程的 Power 机器，在上面用 Docker-Compose 跑我的各种服务。从攒好机器到现在，">
 <meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner">
 <link rel=stylesheet href=/css/highlight/github.css>
-<link rel=stylesheet href="/css/post.css?t=1464395400000">
+<link rel=stylesheet href="/css/post.css?t=1647830831">
 </head>
 <div class="content markdown-body">
 <h1>K3s 上手 - 集群搭建 </h1>
@@ -40,6 +39,21 @@
 </span>
 </div>
 </h1>
+<div class=outline>
+<h4>大纲</h4>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#集群规划>集群规划</a></li>
+<li><a href=#前期准备>前期准备</a>
+<ul>
+<li><a href=#节点间互相访问>节点间互相访问</a></li>
+<li><a href=#能顺畅访问-docker-hub-gcrio-k8s-gcrio>能顺畅访问 docker-hub, gcr.io, k8s-gcr.io</a></li>
+</ul>
+</li>
+<li><a href=#搭建-k3s-单-master-集群>搭建 K3s 单 Master 集群</a></li>
+</ul>
+</nav>
+</div>
 <p>在<a href=https://eightpigs.io/2021/07/05/pve_10g_nic/>《PVE 中虚拟化万兆网卡》</a>中我有提到自己攒了台双路的机器放在家里，长期以来作为我远程的 Power 机器，在上面用 Docker-Compose 跑我的各种服务。从攒好机器到现在，反复多次搭建 Kubernetes，最终都放弃了：<strong>上手成本的确高</strong>。</p>
 <blockquote>
 <p>是否要用 Kubernetes 取代 Docker-Compose ?</p>

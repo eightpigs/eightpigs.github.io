@@ -1,22 +1,21 @@
 <head>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.92.1">
+<meta name=generator content="Hugo 0.92.2">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Eightpigs, eightpigs@outlook.com">
 <meta property="og:url" content="https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/">
 <link rel=canonical href=https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/>
-<link rel=stylesheet href="/css/github-markdown.css?t=1464395400000">
-<link rel=stylesheet href="/css/head.css?t=1464395400000">
-<link rel=stylesheet href="/css/style.css?t=1464395400000">
-<link rel=stylesheet href="/css/list.css?t=1464395400000"><title>centos 编译安装mysql 5.6 - Eightpigs</title>
+<link rel=stylesheet href="/css/github-markdown.css?t=1647830831">
+<link rel=stylesheet href="/css/head.css?t=1647830831">
+<link rel=stylesheet href="/css/style.css?t=1647830831"><title>centos 编译安装mysql 5.6 - Eightpigs</title>
 <meta property="og:title" content="centos 编译安装mysql 5.6 - Eightpigs">
 <meta property="og:type" content="article">
 <meta property="og:description" content="概览 检测是否已经存在mysql ,如果存在:卸载 安装编译环境中需要的基本包 下载mysql 源码&解压 编译 配置 可能遇到的问题 扩展阅读 1. 检测">
 <meta name=description content="概览 检测是否已经存在mysql ,如果存在:卸载 安装编译环境中需要的基本包 下载mysql 源码&解压 编译 配置 可能遇到的问题 扩展阅读 1. 检测">
 <meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner">
 <link rel=stylesheet href=/css/highlight/github.css>
-<link rel=stylesheet href="/css/post.css?t=1464395400000">
+<link rel=stylesheet href="/css/post.css?t=1647830831">
 </head>
 <div class="content markdown-body">
 <h1>centos 编译安装mysql 5.6 </h1>
@@ -43,6 +42,24 @@
 <span class=time>2021-06-11</span>
 <span class=note>更新分类、标签</span>
 </div>
+</div>
+<div class=outline>
+<h4>大纲</h4>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#概览>概览</a>
+<ul>
+<li><a href=#1-检测mysql>1. 检测mysql</a></li>
+<li><a href=#2-安装编译环境中需要的基本包>2. 安装编译环境中需要的基本包</a></li>
+<li><a href=#3-下载mysql-源码>3. 下载mysql 源码</a></li>
+<li><a href=#4-编译>4. 编译</a></li>
+<li><a href=#5-配置>5. 配置</a></li>
+<li><a href=#6-可能遇到的问题>6. 可能遇到的问题</a></li>
+<li><a href=#7-扩展阅读>7. 扩展阅读</a></li>
+</ul>
+</li>
+</ul>
+</nav>
 </div>
 <h2 id=概览>概览</h2>
 <ol>

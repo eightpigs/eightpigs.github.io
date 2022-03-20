@@ -1,22 +1,21 @@
 <head>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.92.1">
+<meta name=generator content="Hugo 0.92.2">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Eightpigs, eightpigs@outlook.com">
 <meta property="og:url" content="https://eightpigs.io/2021/08/27/k3s_use_nfs/">
 <link rel=canonical href=https://eightpigs.io/2021/08/27/k3s_use_nfs/>
-<link rel=stylesheet href="/css/github-markdown.css?t=1464395400000">
-<link rel=stylesheet href="/css/head.css?t=1464395400000">
-<link rel=stylesheet href="/css/style.css?t=1464395400000">
-<link rel=stylesheet href="/css/list.css?t=1464395400000"><title>K3s 上手 - NFS 存储配置 - Eightpigs</title>
+<link rel=stylesheet href="/css/github-markdown.css?t=1647830831">
+<link rel=stylesheet href="/css/head.css?t=1647830831">
+<link rel=stylesheet href="/css/style.css?t=1647830831"><title>K3s 上手 - NFS 存储配置 - Eightpigs</title>
 <meta property="og:title" content="K3s 上手 - NFS 存储配置 - Eightpigs">
 <meta property="og:type" content="article">
 <meta property="og:description" content="在上一篇文章《K3s 上手 - 集群搭建》 我有提到容器的所有数据存储均使用 NFS：在我的 TrueNAS 有一块 1T SSD 作为容器数据的专用硬盘，并通过 NFS 共享给 K3s。">
 <meta name=description content="在上一篇文章《K3s 上手 - 集群搭建》 我有提到容器的所有数据存储均使用 NFS：在我的 TrueNAS 有一块 1T SSD 作为容器数据的专用硬盘，并通过 NFS 共享给 K3s。">
 <meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner">
 <link rel=stylesheet href=/css/highlight/github.css>
-<link rel=stylesheet href="/css/post.css?t=1464395400000">
+<link rel=stylesheet href="/css/post.css?t=1647830831">
 </head>
 <div class="content markdown-body">
 <h1>K3s 上手 - NFS 存储配置 </h1>
@@ -49,6 +48,21 @@
 <span class=time>2022-03-05</span>
 <span class=note>更正 TrueNAS 中 NFS 权限配置说明</span>
 </div>
+</div>
+<div class=outline>
+<h4>大纲</h4>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#创建-nfs-服务>创建 NFS 服务</a>
+<ul>
+<li><a href=#方式一专属用户方式>方式一：专属用户方式</a></li>
+<li><a href=#方式二acl-配置>方式二：ACL 配置</a></li>
+</ul>
+</li>
+<li><a href=#k3s-配置-nfs>K3s 配置 NFS</a></li>
+<li><a href=#使用-nfs>使用 NFS</a></li>
+</ul>
+</nav>
 </div>
 <p>在上一篇文章<a href=https://eightpigs.io/2021/07/06/using_k3s/>《K3s 上手 - 集群搭建》</a> 我有提到容器的所有数据存储均使用 NFS：在我的 TrueNAS 有一块 1T SSD 作为容器数据的专用硬盘，并通过 NFS 共享给 K3s。本文分享下 TrueNAS 的配置及 K3s 使用 NFS 的方式。</p>
 <h2 id=创建-nfs-服务>创建 NFS 服务</h2>

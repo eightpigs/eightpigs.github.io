@@ -1,22 +1,21 @@
 <head>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.92.1">
+<meta name=generator content="Hugo 0.92.2">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Eightpigs, eightpigs@outlook.com">
 <meta property="og:url" content="https://eightpigs.io/2018/02/10/go_notes_basic_structure/">
 <link rel=canonical href=https://eightpigs.io/2018/02/10/go_notes_basic_structure/>
-<link rel=stylesheet href="/css/github-markdown.css?t=1464395400000">
-<link rel=stylesheet href="/css/head.css?t=1464395400000">
-<link rel=stylesheet href="/css/style.css?t=1464395400000">
-<link rel=stylesheet href="/css/list.css?t=1464395400000"><title>Go学习笔记 - 基本结构 - Eightpigs</title>
+<link rel=stylesheet href="/css/github-markdown.css?t=1647830831">
+<link rel=stylesheet href="/css/head.css?t=1647830831">
+<link rel=stylesheet href="/css/style.css?t=1647830831"><title>Go学习笔记 - 基本结构 - Eightpigs</title>
 <meta property="og:title" content="Go学习笔记 - 基本结构 - Eightpigs">
 <meta property="og:type" content="article">
 <meta property="og:description" content="基本结构 package main import &#34;fmt&#34; // 变量 // 函数 func main(){ fmt.Println(&#34;Hello Go&#34;) } 每一个.go的文件以package声明开头，表名文件属于哪个包 package 声明后面是import声明 然后是包级别">
 <meta name=description content="基本结构 package main import &#34;fmt&#34; // 变量 // 函数 func main(){ fmt.Println(&#34;Hello Go&#34;) } 每一个.go的文件以package声明开头，表名文件属于哪个包 package 声明后面是import声明 然后是包级别">
 <meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner">
 <link rel=stylesheet href=/css/highlight/github.css>
-<link rel=stylesheet href="/css/post.css?t=1464395400000">
+<link rel=stylesheet href="/css/post.css?t=1647830831">
 </head>
 <div class="content markdown-body">
 <h1>Go学习笔记 - 基本结构 </h1>
@@ -42,6 +41,32 @@
 <span class=time>2021-06-11</span>
 <span class=note>更新分类、标签</span>
 </div>
+</div>
+<div class=outline>
+<h4>大纲</h4>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#基本结构>基本结构</a></li>
+<li><a href=#名称规范>名称规范</a></li>
+<li><a href=#变量>变量</a>
+<ul>
+<li><a href=#声明>声明</a></li>
+<li><a href=#类型>类型</a></li>
+<li><a href=#指针>指针</a></li>
+<li><a href=#new-函数>new 函数</a></li>
+<li><a href=#变量的生命周期>变量的生命周期</a></li>
+</ul>
+</li>
+<li><a href=#赋值>赋值</a>
+<ul>
+<li><a href=#多重赋值>多重赋值</a></li>
+<li><a href=#可赋值性>可赋值性</a></li>
+</ul>
+</li>
+<li><a href=#类型声明>类型声明</a></li>
+<li><a href=#包和文件>包和文件</a></li>
+</ul>
+</nav>
 </div>
 <h2 id=基本结构>基本结构</h2>
 <pre><code class=language-Go>package main

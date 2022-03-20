@@ -1,22 +1,21 @@
 <head>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.92.1">
+<meta name=generator content="Hugo 0.92.2">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Eightpigs, eightpigs@outlook.com">
 <meta property="og:url" content="https://eightpigs.io/2019/12/15/two_people_use_one_machine/">
 <link rel=canonical href=https://eightpigs.io/2019/12/15/two_people_use_one_machine/>
-<link rel=stylesheet href="/css/github-markdown.css?t=1464395400000">
-<link rel=stylesheet href="/css/head.css?t=1464395400000">
-<link rel=stylesheet href="/css/style.css?t=1464395400000">
-<link rel=stylesheet href="/css/list.css?t=1464395400000"><title>两人一机的搭建方案 - Eightpigs</title>
+<link rel=stylesheet href="/css/github-markdown.css?t=1647830831">
+<link rel=stylesheet href="/css/head.css?t=1647830831">
+<link rel=stylesheet href="/css/style.css?t=1647830831"><title>两人一机的搭建方案 - Eightpigs</title>
 <meta property="og:title" content="两人一机的搭建方案 - Eightpigs">
 <meta property="og:type" content="article">
 <meta property="og:description" content="动机 家里的台式机装了双系统: Windows / Archlinux，使用rEFInd在开机时选择要启动的系统。因笔记本长时间放公司且女友总占用电脑，遂萌生了">
 <meta name=description content="动机 家里的台式机装了双系统: Windows / Archlinux，使用rEFInd在开机时选择要启动的系统。因笔记本长时间放公司且女友总占用电脑，遂萌生了">
 <meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner">
 <link rel=stylesheet href=/css/highlight/github.css>
-<link rel=stylesheet href="/css/post.css?t=1464395400000">
+<link rel=stylesheet href="/css/post.css?t=1647830831">
 </head>
 <div class="content markdown-body">
 <h1>两人一机的搭建方案 </h1>
@@ -36,6 +35,7 @@
 <a data-real=PVE href=/tags/pve/ class=tag>#PVE</a>
 <a data-real=Debian href=/tags/debian/ class=tag>#Debian</a>
 <a data-real=Archlinux href=/tags/archlinux/ class=tag>#Archlinux</a>
+<a data-real=Passthrough href=/tags/passthrough/ class=tag>#Passthrough</a>
 </span>
 </div>
 </h1>
@@ -45,6 +45,41 @@
 <span class=time>2021-06-11</span>
 <span class=note>更新分类、标签</span>
 </div>
+<div class=changelog>
+<span class=time>2022-03-20</span>
+<span class=note>更新标签</span>
+</div>
+</div>
+<div class=outline>
+<h4>大纲</h4>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#动机>动机</a></li>
+<li><a href=#方案>方案</a>
+<ul>
+<li><a href=#当前硬件配置>当前硬件配置</a></li>
+<li><a href=#最终配置>最终配置</a></li>
+</ul>
+</li>
+<li><a href=#创建虚拟机>创建虚拟机</a></li>
+<li><a href=#pve的直通配置>PVE的直通配置</a>
+<ul>
+<li><a href=#1-编辑引导>1. 编辑引导</a></li>
+<li><a href=#2-添加内核模块>2. 添加内核模块</a></li>
+</ul>
+</li>
+<li><a href=#硬盘直通>硬盘直通</a>
+<ul>
+<li><a href=#查看所有硬盘设备>查看所有硬盘设备</a></li>
+<li><a href=#确认硬盘id>确认硬盘ID</a></li>
+<li><a href=#执行直通>执行直通</a></li>
+</ul>
+</li>
+<li><a href=#显卡usb>显卡、USB</a></li>
+<li><a href=#网卡>网卡</a></li>
+<li><a href=#结语>结语</a></li>
+</ul>
+</nav>
 </div>
 <h2 id=动机>动机</h2>
 <p>家里的台式机装了双系统: Windows / Archlinux，使用<a href=https://wiki.archlinux.org/index.php/REFInd>rEFInd</a>在开机时选择要启动的系统。因笔记本长时间放公司且女友总占用电脑，遂萌生了搭建多人一机的想法（不可否认有<del>Linus</del>白嫖王的影响）。</p>

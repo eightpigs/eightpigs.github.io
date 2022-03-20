@@ -1,22 +1,21 @@
 <head>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.92.1">
+<meta name=generator content="Hugo 0.92.2">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Eightpigs, eightpigs@outlook.com">
 <meta property="og:url" content="https://eightpigs.io/2017/12/29/spring_cloud_config_server/">
 <link rel=canonical href=https://eightpigs.io/2017/12/29/spring_cloud_config_server/>
-<link rel=stylesheet href="/css/github-markdown.css?t=1464395400000">
-<link rel=stylesheet href="/css/head.css?t=1464395400000">
-<link rel=stylesheet href="/css/style.css?t=1464395400000">
-<link rel=stylesheet href="/css/list.css?t=1464395400000"><title>Spring Colud 之 统一配置中心 - Eightpigs</title>
+<link rel=stylesheet href="/css/github-markdown.css?t=1647830831">
+<link rel=stylesheet href="/css/head.css?t=1647830831">
+<link rel=stylesheet href="/css/style.css?t=1647830831"><title>Spring Colud 之 统一配置中心 - Eightpigs</title>
 <meta property="og:title" content="Spring Colud 之 统一配置中心 - Eightpigs">
 <meta property="og:type" content="article">
 <meta property="og:description" content="在我们Java项目开发过程中，对于配置文件的多环境配置一般会采用以下方案： 使用maven等构建工具基于resources自定义多环境 使用市面">
 <meta name=description content="在我们Java项目开发过程中，对于配置文件的多环境配置一般会采用以下方案： 使用maven等构建工具基于resources自定义多环境 使用市面">
 <meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner">
 <link rel=stylesheet href=/css/highlight/github.css>
-<link rel=stylesheet href="/css/post.css?t=1464395400000">
+<link rel=stylesheet href="/css/post.css?t=1647830831">
 </head>
 <div class="content markdown-body">
 <h1>Spring Colud 之 统一配置中心 </h1>
@@ -42,6 +41,32 @@
 <span class=time>2021-06-11</span>
 <span class=note>更新分类、标签</span>
 </div>
+</div>
+<div class=outline>
+<h4>大纲</h4>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#介绍>介绍</a></li>
+<li><a href=#核心>核心</a></li>
+<li><a href=#多存储方式>多存储方式</a></li>
+</ul>
+<ul>
+<li><a href=#git-backend>Git Backend</a></li>
+<li><a href=#config-server>Config Server</a></li>
+<li><a href=#gradle-config>Gradle Config</a></li>
+<li><a href=#配置>配置</a></li>
+<li><a href=#application>Application</a></li>
+<li><a href=#实时更新>实时更新</a></li>
+<li><a href=#占位符>占位符</a>
+<ul>
+<li><a href=#资源格式在请求地址中使用占位符>资源格式（在请求地址中使用占位符）</a></li>
+</ul>
+</li>
+<li><a href=#模式匹配>模式匹配</a></li>
+<li><a href=#启动时检查>启动时检查</a></li>
+<li><a href=#security>Security</a></li>
+</ul>
+</nav>
 </div>
 <p>在我们Java项目开发过程中，对于配置文件的多环境配置一般会采用以下方案：</p>
 <ol>

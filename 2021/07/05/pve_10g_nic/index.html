@@ -1,22 +1,21 @@
 <head>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.92.1">
+<meta name=generator content="Hugo 0.92.2">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Eightpigs, eightpigs@outlook.com">
 <meta property="og:url" content="https://eightpigs.io/2021/07/05/pve_10g_nic/">
 <link rel=canonical href=https://eightpigs.io/2021/07/05/pve_10g_nic/>
-<link rel=stylesheet href="/css/github-markdown.css?t=1464395400000">
-<link rel=stylesheet href="/css/head.css?t=1464395400000">
-<link rel=stylesheet href="/css/style.css?t=1464395400000">
-<link rel=stylesheet href="/css/list.css?t=1464395400000"><title>PVE 中虚拟化万兆网卡 - Eightpigs</title>
+<link rel=stylesheet href="/css/github-markdown.css?t=1647830831">
+<link rel=stylesheet href="/css/head.css?t=1647830831">
+<link rel=stylesheet href="/css/style.css?t=1647830831"><title>PVE 中虚拟化万兆网卡 - Eightpigs</title>
 <meta property="og:title" content="PVE 中虚拟化万兆网卡 - Eightpigs">
 <meta property="og:type" content="article">
 <meta property="og:description" content="去年自己攒了一台 E5 2680v4 * 2, 16G RECC * 8 的机器，一开始主要作为远程开发机 & Docker-Compose。 最近跑 k3s 集群并把 Docker-Compose 的服务迁到 k3s 上，于是重新规">
 <meta name=description content="去年自己攒了一台 E5 2680v4 * 2, 16G RECC * 8 的机器，一开始主要作为远程开发机 & Docker-Compose。 最近跑 k3s 集群并把 Docker-Compose 的服务迁到 k3s 上，于是重新规">
 <meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner">
 <link rel=stylesheet href=/css/highlight/github.css>
-<link rel=stylesheet href="/css/post.css?t=1464395400000">
+<link rel=stylesheet href="/css/post.css?t=1647830831">
 </head>
 <div class="content markdown-body">
 <h1>PVE 中虚拟化万兆网卡 </h1>
@@ -45,6 +44,18 @@
 <span class=time>2021-07-09</span>
 <span class=note>添加标签: Homelab</span>
 </div>
+</div>
+<div class=outline>
+<h4>大纲</h4>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#安装open_vswitch>安装Open_vSwitch</a></li>
+<li><a href=#创建虚拟网卡>创建虚拟网卡</a></li>
+<li><a href=#为虚拟机添加网卡>为虚拟机添加网卡</a></li>
+<li><a href=#虚拟机配置多网卡>虚拟机配置多网卡</a></li>
+<li><a href=#测试虚拟速度>测试虚拟速度</a></li>
+</ul>
+</nav>
 </div>
 <p>去年自己攒了一台 <code>E5 2680v4 * 2, 16G RECC * 8</code> 的机器，一开始主要作为远程开发机 & Docker-Compose。
 最近跑 k3s 集群并把 Docker-Compose 的服务迁到 k3s 上，于是重新规划系统资源，本文记录在搭建过程中关于在PVE中网络的配置。</p>

@@ -1,22 +1,21 @@
 <head>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.92.1">
+<meta name=generator content="Hugo 0.92.2">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Eightpigs, eightpigs@outlook.com">
 <meta property="og:url" content="https://eightpigs.io/2018/08/10/java_virtual_machine_stack/">
 <link rel=canonical href=https://eightpigs.io/2018/08/10/java_virtual_machine_stack/>
-<link rel=stylesheet href="/css/github-markdown.css?t=1464395400000">
-<link rel=stylesheet href="/css/head.css?t=1464395400000">
-<link rel=stylesheet href="/css/style.css?t=1464395400000">
-<link rel=stylesheet href="/css/list.css?t=1464395400000"><title>JAVA 虚拟机栈 - Eightpigs</title>
+<link rel=stylesheet href="/css/github-markdown.css?t=1647830831">
+<link rel=stylesheet href="/css/head.css?t=1647830831">
+<link rel=stylesheet href="/css/style.css?t=1647830831"><title>JAVA 虚拟机栈 - Eightpigs</title>
 <meta property="og:title" content="JAVA 虚拟机栈 - Eightpigs">
 <meta property="og:type" content="article">
 <meta property="og:description" content="概念 JVM 虚拟机栈与程序计数器和[本地方法栈]一样都是线程私有的。 栈帧可以理解为一个方法的运行空间 栈帧（Stack Frame） 栈帧是用于支持虚拟">
 <meta name=description content="概念 JVM 虚拟机栈与程序计数器和[本地方法栈]一样都是线程私有的。 栈帧可以理解为一个方法的运行空间 栈帧（Stack Frame） 栈帧是用于支持虚拟">
 <meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner">
 <link rel=stylesheet href=/css/highlight/github.css>
-<link rel=stylesheet href="/css/post.css?t=1464395400000">
+<link rel=stylesheet href="/css/post.css?t=1647830831">
 </head>
 <div class="content markdown-body">
 <h1>JAVA 虚拟机栈 </h1>
@@ -42,6 +41,22 @@
 <span class=time>2021-06-11</span>
 <span class=note>更新分类、标签</span>
 </div>
+</div>
+<div class=outline>
+<h4>大纲</h4>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#概念>概念</a></li>
+<li><a href=#栈帧stack-frame>栈帧（Stack Frame）</a>
+<ul>
+<li><a href=#构成>构成</a></li>
+<li><a href=#局部变量表local-variable-table>局部变量表（Local Variable Table）</a></li>
+<li><a href=#操作数栈operand-stack>操作数栈（Operand Stack）</a></li>
+</ul>
+</li>
+<li><a href=#参考资料>参考资料</a></li>
+</ul>
+</nav>
 </div>
 <h2 id=概念>概念</h2>
 <ul>
