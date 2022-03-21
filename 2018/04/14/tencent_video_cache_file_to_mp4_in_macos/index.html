@@ -6,19 +6,19 @@
 <meta name=author content="Eightpigs, eightpigs@outlook.com">
 <meta property="og:url" content="https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/">
 <link rel=canonical href=https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/>
-<link rel=stylesheet href="/css/github-markdown.css?t=1647830831">
-<link rel=stylesheet href="/css/head.css?t=1647830831">
-<link rel=stylesheet href="/css/style.css?t=1647830831"><title>腾讯视频客户端（MacOS）缓存文件转mp4 - Eightpigs</title>
-<meta property="og:title" content="腾讯视频客户端（MacOS）缓存文件转mp4 - Eightpigs">
+<link rel=stylesheet href="/css/github-markdown.css?t=1647832712">
+<link rel=stylesheet href="/css/head.css?t=1647832712">
+<link rel=stylesheet href="/css/style.css?t=1647832712"><title>腾讯视频客户端（MacOS）缓存文件合成/导出 - Eightpigs</title>
+<meta property="og:title" content="腾讯视频客户端（MacOS）缓存文件合成/导出 - Eightpigs">
 <meta property="og:type" content="article">
-<meta property="og:description" content="年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有TV版的缘故，其他版本没有给开放投">
-<meta name=description content="年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有TV版的缘故，其他版本没有给开放投">
+<meta property="og:description" content="年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有 TV 版的缘故，其他版本没有给开放投屏">
+<meta name=description content="年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有 TV 版的缘故，其他版本没有给开放投屏">
 <meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner">
 <link rel=stylesheet href=/css/highlight/github.css>
-<link rel=stylesheet href="/css/post.css?t=1647830831">
+<link rel=stylesheet href="/css/post.css?t=1647832712">
 </head>
 <div class="content markdown-body">
-<h1>腾讯视频客户端（MacOS）缓存文件转mp4 </h1>
+<h1>腾讯视频客户端（MacOS）缓存文件合成/导出 </h1>
 <div class=info>
 <span class=date>
 2018-04-14
@@ -58,12 +58,12 @@
 </ul>
 </nav>
 </div>
-<p>年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有TV版的缘故，其他版本没有给开放投屏功能。那么这就很尴尬了，TV版会员太贵并且也没必要买，普通客户端不支持投屏并且缓存的资源也不是一个正常可以直接用其他播放器观看的格式。</p>
+<p>年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有 TV 版的缘故，其他版本没有给开放投屏功能。那么这就很尴尬了，TV 版会员太贵并且也没必要买，普通客户端不支持投屏并且缓存的资源也不是一个正常可以直接用其他播放器观看的格式。</p>
 <h2 id=思路>思路</h2>
-<p>通过查看客户端缓存的目录发现，视频是被切割为单个小的ts文件，也就是并没有做任何处理，只是一个切割操作而已。最重要的是切割的ts文件是有序的，文件名是以0,1,2,3,4这样的顺序命名的，所以只要想办法把文件按顺序合成就可以正常用其他播放器投屏观看了。</p>
-<p>那么写个简单的shell脚本就可以实现这个操作（将ts文件按顺序合成到mp4)</p>
+<p>通过查看客户端缓存的目录发现，视频是被切割为单个小的 ts 文件，也就是并没有做任何处理，只是一个切割操作而已。最重要的是切割的 ts 文件是有序的，文件名是以0,1,2,3,4这样的顺序命名的，所以只要想办法把文件按顺序合成就可以正常用其他播放器投屏观看了。</p>
+<p>那么写个简单的 shell 脚本就可以实现这个操作（将ts文件按顺序合成为单文件)</p>
 <h2 id=步骤>步骤</h2>
-<p>最初尝试使用递归获取.ts文件并合并，这也是最简单的方式，但是由于直接使用 <strong>find . -name &lsquo;*.ts&rsquo;</strong> 的结果是无序的，导致最终合成的视频顺序不正确</p>
+<p>最初尝试使用递归获取 .ts 文件并合并，这也是最简单的方式，但是由于直接使用 <strong>find . -name &lsquo;*.ts&rsquo;</strong> 的结果是无序的，导致最终合成的视频顺序不正确</p>
 <p>所以最终决定按以下最稳的方式实现</p>
 <ol>
 <li>将指定视频子目录下的所有ts文件放到一个临时目录下，方便处理（因为文件名是有序的）</li>
@@ -76,7 +76,7 @@
 <p>腾讯视频的缓存目录在：</p>
 <pre><code class=language-bash>~/Library/Containers/com.tencent.tenvideo/Data/Library/Application\ Support/Download/video/
 </code></pre>
-<p>video目录下除了ad文件夹之外的所有文件夹都是已经缓存的视频，可以查看子文件夹中.ts文件的内容（可以空格键直接预览）然后确定具体是哪个视频的缓存资源</p>
+<p>video 目录下除了 ad 文件夹之外的所有文件夹都是已经缓存的视频，可以查看子文件夹中 .ts 文件的内容（可以空格键直接预览）然后确定具体是哪个视频的缓存资源</p>
 <h3 id=使用示例>使用示例</h3>
 <p><a href=https://asciinema.org/a/zWKx9uhvxpUlWsbyZtLo3WSMl><img src=https://asciinema.org/a/zWKx9uhvxpUlWsbyZtLo3WSMl.png alt=asciicast></a></p>
 <pre><code class=language-bash>merge.sh b0025s0ph00.321004.hls ~/Downloads/合成视频1.mp4

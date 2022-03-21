@@ -6,16 +6,16 @@
 <meta name=author content="Eightpigs, eightpigs@outlook.com">
 <meta property="og:url" content="https://eightpigs.io/2018/02/04/vim_basic/">
 <link rel=canonical href=https://eightpigs.io/2018/02/04/vim_basic/>
-<link rel=stylesheet href="/css/github-markdown.css?t=1647830831">
-<link rel=stylesheet href="/css/head.css?t=1647830831">
-<link rel=stylesheet href="/css/style.css?t=1647830831"><title>Vim 基础使用 - Eightpigs</title>
+<link rel=stylesheet href="/css/github-markdown.css?t=1647832712">
+<link rel=stylesheet href="/css/head.css?t=1647832712">
+<link rel=stylesheet href="/css/style.css?t=1647832712"><title>Vim 基础使用 - Eightpigs</title>
 <meta property="og:title" content="Vim 基础使用 - Eightpigs">
 <meta property="og:type" content="article">
-<meta property="og:description" content="接触Vim快一个月了，喜欢上了Vim多模式操作的特性。 在艰难地适应Vim后（其他开发工具使用插件模拟Vim键位），效率有明显的提高。 Vim 快捷键">
-<meta name=description content="接触Vim快一个月了，喜欢上了Vim多模式操作的特性。 在艰难地适应Vim后（其他开发工具使用插件模拟Vim键位），效率有明显的提高。 Vim 快捷键">
+<meta property="og:description" content="接触 Vim 快一个月了，喜欢上了 Vim 多模式操作的特性。 在艰难地适应 Vim 后（其他开发工具使用插件模拟 Vim 键位），效率有明显的提高。 Vim 快捷键文字版 Vim 快捷键图">
+<meta name=description content="接触 Vim 快一个月了，喜欢上了 Vim 多模式操作的特性。 在艰难地适应 Vim 后（其他开发工具使用插件模拟 Vim 键位），效率有明显的提高。 Vim 快捷键文字版 Vim 快捷键图">
 <meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner">
 <link rel=stylesheet href=/css/highlight/github.css>
-<link rel=stylesheet href="/css/post.css?t=1647830831">
+<link rel=stylesheet href="/css/post.css?t=1647832712">
 </head>
 <div class="content markdown-body">
 <h1>Vim 基础使用 </h1>
@@ -41,6 +41,10 @@ Vim
 <div class=changelog>
 <span class=time>2021-06-11</span>
 <span class=note>更新所属分类</span>
+</div>
+<div class=changelog>
+<span class=time>2022-03-21</span>
+<span class=note>更新文章中中英文间隔</span>
 </div>
 </div>
 <div class=outline>
@@ -70,13 +74,13 @@ Vim
 </ul>
 </nav>
 </div>
-<p>接触Vim快一个月了，喜欢上了Vim多模式操作的特性。</p>
-<p>在艰难地适应Vim后（其他开发工具使用插件模拟Vim键位），效率有明显的提高。</p>
+<p>接触 Vim 快一个月了，喜欢上了 Vim 多模式操作的特性。</p>
+<p>在艰难地适应 Vim 后（其他开发工具使用插件模拟 Vim 键位），效率有明显的提高。</p>
 <p><a href=https://github.com/rtorr/vim-cheat-sheet>Vim 快捷键文字版</a>
 <a href=http://cenalulu.github.io/linux/all-vim-cheatsheat/>Vim 快捷键图，多个版本</a></p>
 <h2 id=光标移动>光标移动</h2>
 <h3 id=字符间跳转>字符间跳转</h3>
-<p>在Vim中，使用 <strong>h, j, k, l</strong> 实现字符间的移动，也就是正常使用中的方向键。具体对应关系为：</p>
+<p>在 Vim 中，使用 <strong>h, j, k, l</strong> 实现字符间的移动，也就是正常使用中的方向键。具体对应关系为：</p>
 <ul>
 <li>h : 左</li>
 <li>j : 下</li>
@@ -157,7 +161,7 @@ Vim
 </ul>
 <p>可以自己尝试将复制+跳转实现多行快捷复制！！！</p>
 <h3 id=批量替换>批量替换</h3>
-<p>在Vim中，批量替换可以使用正则实现。
+<p>在 Vim 中，批量替换可以使用正则实现。
 例如要将 &ldquo;学习要多看看&rdquo; 替换为 &ldquo;学习要多试试&rdquo;</p>
 <pre><code class=language-vim>:%s/学习要多看看/学习要多试试/g
 </code></pre>
@@ -168,7 +172,7 @@ Vim
 <li>:10, 100s/原内容/新内容/g : 替换10 到 100 行的内容</li>
 </ul>
 <h3 id=查找>查找</h3>
-<p>在Vim中，使用 / 开始查找，如需要查找 Hello , 则在Normal下输入 /Hello 即可。使用</p>
+<p>在 Vim 中，使用 / 开始查找，如需要查找 Hello , 则在 Normal 下输入 /Hello 即可。使用</p>
 <ul>
 <li>n : 下一个查找结果</li>
 <li>N : 上一个查找结果</li>
@@ -180,8 +184,8 @@ Vim
 </ul>
 <h2 id=部分情况处理>部分情况处理</h2>
 <h3 id=无权限保存>无权限保存</h3>
-<p>在编辑无权限操作的文件后，提示无权限保存，在最开始我都是复制修改的内容，然后重新sudo 打开。
-其实在Vim内部可以实现直接保存：</p>
+<p>在编辑无权限操作的文件后，提示无权限保存，在最开始我都是复制修改的内容，然后重新 sudo 打开。
+其实在 Vim 内部可以实现直接保存：</p>
 <pre><code class=language-vim>:w !sudo tee %
 </code></pre>
 <p>具体实现方式请自行了解</p>

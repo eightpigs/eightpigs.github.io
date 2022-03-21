@@ -6,16 +6,16 @@
 <meta name=author content="Eightpigs, eightpigs@outlook.com">
 <meta property="og:url" content="https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/">
 <link rel=canonical href=https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/>
-<link rel=stylesheet href="/css/github-markdown.css?t=1647830831">
-<link rel=stylesheet href="/css/head.css?t=1647830831">
-<link rel=stylesheet href="/css/style.css?t=1647830831"><title>centos 编译安装mysql 5.6 - Eightpigs</title>
+<link rel=stylesheet href="/css/github-markdown.css?t=1647832712">
+<link rel=stylesheet href="/css/head.css?t=1647832712">
+<link rel=stylesheet href="/css/style.css?t=1647832712"><title>centos 编译安装mysql 5.6 - Eightpigs</title>
 <meta property="og:title" content="centos 编译安装mysql 5.6 - Eightpigs">
 <meta property="og:type" content="article">
-<meta property="og:description" content="概览 检测是否已经存在mysql ,如果存在:卸载 安装编译环境中需要的基本包 下载mysql 源码&解压 编译 配置 可能遇到的问题 扩展阅读 1. 检测">
-<meta name=description content="概览 检测是否已经存在mysql ,如果存在:卸载 安装编译环境中需要的基本包 下载mysql 源码&解压 编译 配置 可能遇到的问题 扩展阅读 1. 检测">
+<meta property="og:description" content="1. 检测mysql rpm -qa | grep mysql 如果有的话 , 执行以下命令卸载 rpm -e mysql //普通删除模式 rpm -e --nodeps mysql // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它">
+<meta name=description content="1. 检测mysql rpm -qa | grep mysql 如果有的话 , 执行以下命令卸载 rpm -e mysql //普通删除模式 rpm -e --nodeps mysql // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它">
 <meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner">
 <link rel=stylesheet href=/css/highlight/github.css>
-<link rel=stylesheet href="/css/post.css?t=1647830831">
+<link rel=stylesheet href="/css/post.css?t=1647832712">
 </head>
 <div class="content markdown-body">
 <h1>centos 编译安装mysql 5.6 </h1>
@@ -24,8 +24,8 @@
 2016-02-05
 </span>
 <span class=categories>
-<a data-real=Database href=/categories/database/ class=category>
-数据库
+<a data-real=devpractice href=/categories/devpractice/ class=category>
+开发实践
 </a>
 ⯈
 </span>
@@ -42,46 +42,43 @@
 <span class=time>2021-06-11</span>
 <span class=note>更新分类、标签</span>
 </div>
+<div class=changelog>
+<span class=time>2022-03-21</span>
+<ul>
+<li>
+<span class=note> 从 Database 分类更新到 DevPractice </span>
+</li>
+<li>
+<span class=note> 更新文章结构 </span>
+</li>
+</ul>
+</div>
 </div>
 <div class=outline>
 <h4>大纲</h4>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#概览>概览</a>
-<ul>
 <li><a href=#1-检测mysql>1. 检测mysql</a></li>
-<li><a href=#2-安装编译环境中需要的基本包>2. 安装编译环境中需要的基本包</a></li>
+<li><a href=#2-安装依赖>2. 安装依赖</a></li>
 <li><a href=#3-下载mysql-源码>3. 下载mysql 源码</a></li>
 <li><a href=#4-编译>4. 编译</a></li>
 <li><a href=#5-配置>5. 配置</a></li>
 <li><a href=#6-可能遇到的问题>6. 可能遇到的问题</a></li>
 <li><a href=#7-扩展阅读>7. 扩展阅读</a></li>
 </ul>
-</li>
-</ul>
 </nav>
 </div>
-<h2 id=概览>概览</h2>
-<ol>
-<li>检测是否已经存在mysql ,如果存在:卸载</li>
-<li>安装编译环境中需要的基本包</li>
-<li>下载mysql 源码&解压</li>
-<li>编译</li>
-<li>配置</li>
-<li>可能遇到的问题</li>
-<li>扩展阅读</li>
-</ol>
-<h3 id=1-检测mysql>1. 检测mysql</h3>
+<h2 id=1-检测mysql>1. 检测mysql</h2>
 <pre><code class=language-bash>rpm -qa | grep mysql
 </code></pre>
 <p>如果有的话 , 执行以下命令卸载</p>
 <pre><code class=language-bash>rpm -e mysql   //普通删除模式
 rpm -e --nodeps mysql    // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除
 </code></pre>
-<h3 id=2-安装编译环境中需要的基本包>2. 安装编译环境中需要的基本包</h3>
+<h2 id=2-安装依赖>2. 安装依赖</h2>
 <pre><code class=language-bash>yum -y install make gcc-c++ cmake bison-devel  ncurses-devel
 </code></pre>
-<h3 id=3-下载mysql-源码>3. 下载mysql 源码</h3>
+<h2 id=3-下载mysql-源码>3. 下载mysql 源码</h2>
 <p>进入 <a href=ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/>mysql 5.6 下载地址</a> , 找到 &ldquo;mysql-5.6.xx.tar.gz&rdquo; , 我目前下载的是<a href=ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/mysql-5.6.28.tar.gz>5.6.28</a></p>
 <pre><code class=language-bash># 下载
 wget ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/mysql-5.6.28.tar.gz
@@ -93,7 +90,7 @@ tar zxvf mysql-5.6.28.tar.gz
 cd mysql-5.6.28
 
 </code></pre>
-<h3 id=4-编译>4. 编译</h3>
+<h2 id=4-编译>4. 编译</h2>
 <pre><code class=language-bash># 设置编译参数
 # 以下内容其实是一句 , 由于写了注释 ,所以使用\分成多行,便于理解.在使用时, 改成自己需要的后请将注释删除执行.(保留斜杠)
 cmake \
@@ -116,7 +113,7 @@ cmake \
 # 编译&amp;安装
 make &amp;&amp; make install
 </code></pre>
-<h3 id=5-配置>5. 配置</h3>
+<h2 id=5-配置>5. 配置</h2>
 <p>查看是否有mysql用户/用户组</p>
 <pre><code class=language-bash># 查看用户列表
 cat /etc/passwd
@@ -164,7 +161,7 @@ FLUSH PRIVILEGES;
 # 刷新权限
 FLUSH PRIVILEGES;
 </code></pre>
-<h3 id=6-可能遇到的问题>6. 可能遇到的问题</h3>
+<h2 id=6-可能遇到的问题>6. 可能遇到的问题</h2>
 <pre><code class=language-bash>Starting MySQL..The server quit without updating PID file ([FAILED]/mysql/AY1404111053020733e2Z.pid). 
 
 # 解决办法 : 
@@ -177,7 +174,7 @@ FLUSH PRIVILEGES;
 1. ln -s /usr/local/mysql/data/mysql.sock /tmp/mysql.sock   
 2. /usr/local/mysql/bin/mysql -u root -S /usr/local/mysql/data/mysql.sock 
 </code></pre>
-<h3 id=7-扩展阅读>7. 扩展阅读</h3>
+<h2 id=7-扩展阅读>7. 扩展阅读</h2>
 <ol>
 <li><a href=http://www.cnblogs.com/xiongpq/p/3384681.html>CentOS 6.4下编译安装MySQL 5.6.14</a></li>
 <li><a href=http://www.centoscn.com/mysql/2014/0924/3833.html>CentOS6.5下编译安装MySQL 5.6.16</a></li>
