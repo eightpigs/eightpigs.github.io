@@ -1,86 +1,14 @@
-<head>
-<meta charset=utf-8>
-<meta name=generator content="Hugo 0.92.2">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=author content="Eightpigs, eightpigs@outlook.com">
-<meta property="og:url" content="https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/">
-<link rel=canonical href=https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/>
-<link rel=stylesheet href="/css/github-markdown.css?t=1647832712">
-<link rel=stylesheet href="/css/head.css?t=1647832712">
-<link rel=stylesheet href="/css/style.css?t=1647832712"><title>centos 编译安装mysql 5.6 - Eightpigs</title>
-<meta property="og:title" content="centos 编译安装mysql 5.6 - Eightpigs">
-<meta property="og:type" content="article">
-<meta property="og:description" content="1. 检测mysql rpm -qa | grep mysql 如果有的话 , 执行以下命令卸载 rpm -e mysql //普通删除模式 rpm -e --nodeps mysql // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它">
-<meta name=description content="1. 检测mysql rpm -qa | grep mysql 如果有的话 , 执行以下命令卸载 rpm -e mysql //普通删除模式 rpm -e --nodeps mysql // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它">
-<meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner">
-<link rel=stylesheet href=/css/highlight/github.css>
-<link rel=stylesheet href="/css/post.css?t=1647832712">
-</head>
-<div class="content markdown-body">
-<h1>centos 编译安装mysql 5.6 </h1>
-<div class=info>
-<span class=date>
-2016-02-05
-</span>
-<span class=categories>
-<a data-real=devpractice href=/categories/devpractice/ class=category>
-开发实践
-</a>
-⯈
-</span>
-<span class=tags>
-<a data-real=Linux href=/tags/linux/ class=tag>#Linux</a>
+<head><meta charset=utf-8><meta name=generator content="Hugo 0.101.0"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Eightpigs, eightpigs@outlook.com"><meta property="og:url" content="https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/"><link rel=canonical href=https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/><link rel=stylesheet href="/css/github-markdown.css?t=1660182658"><link rel=stylesheet href="/css/head.css?t=1660182658"><link rel=stylesheet href="/css/style.css?t=1660182658"><title>centos 编译安装mysql 5.6 - Eightpigs</title><meta property="og:title" content="centos 编译安装mysql 5.6 - Eightpigs"><meta property="og:type" content="article"><meta property="og:description" content="1. 检测mysql rpm -qa | grep mysql 如果有的话 , 执行以下命令卸载 rpm -e mysql //普通删除模式 rpm -e --nodeps mysql // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它"><meta name=description content="1. 检测mysql rpm -qa | grep mysql 如果有的话 , 执行以下命令卸载 rpm -e mysql //普通删除模式 rpm -e --nodeps mysql // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它"><meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner"><link rel=stylesheet href=/css/highlight/github.css><link rel=stylesheet href="/css/post.css?t=1660182658"></head><div class="content markdown-body"><h1>centos 编译安装mysql 5.6</h1><div class=info><span class=date>2016-02-05</span>
+<span class=categories><a data-real=devpractice href=/categories/devpractice/ class=category>开发实践</a>
+⯈</span>
+<span class=tags><a data-real=Linux href=/tags/linux/ class=tag>#Linux</a>
 <a data-real=Database href=/tags/database/ class=tag>#Database</a>
-<a data-real=SourceComplie href=/tags/sourcecomplie/ class=tag>#SourceComplie</a>
-</span>
-</div>
-</h1>
-<div class=changelogs>
-<div class=title>更新日志</div>
-<div class=changelog>
-<span class=time>2021-06-11</span>
-<span class=note>更新分类、标签</span>
-</div>
-<div class=changelog>
-<span class=time>2022-03-21</span>
-<ul>
-<li>
-<span class=note> 从 Database 分类更新到 DevPractice </span>
-</li>
-<li>
-<span class=note> 更新文章结构 </span>
-</li>
-</ul>
-</div>
-</div>
-<div class=outline>
-<h4>大纲</h4>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#1-检测mysql>1. 检测mysql</a></li>
-<li><a href=#2-安装依赖>2. 安装依赖</a></li>
-<li><a href=#3-下载mysql-源码>3. 下载mysql 源码</a></li>
-<li><a href=#4-编译>4. 编译</a></li>
-<li><a href=#5-配置>5. 配置</a></li>
-<li><a href=#6-可能遇到的问题>6. 可能遇到的问题</a></li>
-<li><a href=#7-扩展阅读>7. 扩展阅读</a></li>
-</ul>
-</nav>
-</div>
-<h2 id=1-检测mysql>1. 检测mysql</h2>
-<pre><code class=language-bash>rpm -qa | grep mysql
-</code></pre>
-<p>如果有的话 , 执行以下命令卸载</p>
-<pre><code class=language-bash>rpm -e mysql   //普通删除模式
+<a data-real=SourceComplie href=/tags/sourcecomplie/ class=tag>#SourceComplie</a></span></div></h1><div class=changelogs><div class=title>更新日志</div><div class=changelog><span class=time>2021-06-11</span>
+<span class=note>更新分类、标签</span></div><div class=changelog><span class=time>2022-03-21</span><ul><li><span class=note>从 Database 分类更新到 DevPractice</span></li><li><span class=note>更新文章结构</span></li></ul></div></div><div class=outline><h4>大纲</h4><nav id=TableOfContents><ul><li><a href=#1-检测mysql>1. 检测mysql</a></li><li><a href=#2-安装依赖>2. 安装依赖</a></li><li><a href=#3-下载mysql-源码>3. 下载mysql 源码</a></li><li><a href=#4-编译>4. 编译</a></li><li><a href=#5-配置>5. 配置</a></li><li><a href=#6-可能遇到的问题>6. 可能遇到的问题</a></li><li><a href=#7-扩展阅读>7. 扩展阅读</a></li></ul></nav></div><h2 id=1-检测mysql>1. 检测mysql</h2><pre><code class=language-bash>rpm -qa | grep mysql
+</code></pre><p>如果有的话 , 执行以下命令卸载</p><pre><code class=language-bash>rpm -e mysql   //普通删除模式
 rpm -e --nodeps mysql    // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除
-</code></pre>
-<h2 id=2-安装依赖>2. 安装依赖</h2>
-<pre><code class=language-bash>yum -y install make gcc-c++ cmake bison-devel  ncurses-devel
-</code></pre>
-<h2 id=3-下载mysql-源码>3. 下载mysql 源码</h2>
-<p>进入 <a href=ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/>mysql 5.6 下载地址</a> , 找到 &ldquo;mysql-5.6.xx.tar.gz&rdquo; , 我目前下载的是<a href=ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/mysql-5.6.28.tar.gz>5.6.28</a></p>
-<pre><code class=language-bash># 下载
+</code></pre><h2 id=2-安装依赖>2. 安装依赖</h2><pre><code class=language-bash>yum -y install make gcc-c++ cmake bison-devel  ncurses-devel
+</code></pre><h2 id=3-下载mysql-源码>3. 下载mysql 源码</h2><p>进入 <a href=ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/>mysql 5.6 下载地址</a> , 找到 &ldquo;mysql-5.6.xx.tar.gz&rdquo; , 我目前下载的是<a href=ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/mysql-5.6.28.tar.gz>5.6.28</a></p><pre><code class=language-bash># 下载
 wget ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/mysql-5.6.28.tar.gz
 
 # 解压
@@ -89,9 +17,7 @@ tar zxvf mysql-5.6.28.tar.gz
 # 进入mysql目录
 cd mysql-5.6.28
 
-</code></pre>
-<h2 id=4-编译>4. 编译</h2>
-<pre><code class=language-bash># 设置编译参数
+</code></pre><h2 id=4-编译>4. 编译</h2><pre><code class=language-bash># 设置编译参数
 # 以下内容其实是一句 , 由于写了注释 ,所以使用\分成多行,便于理解.在使用时, 改成自己需要的后请将注释删除执行.(保留斜杠)
 cmake \
 -DCMAKE_INSTALL_PREFIX=/usr/local/mysql \   #安装路径
@@ -112,33 +38,20 @@ cmake \
 
 # 编译&amp;安装
 make &amp;&amp; make install
-</code></pre>
-<h2 id=5-配置>5. 配置</h2>
-<p>查看是否有mysql用户/用户组</p>
-<pre><code class=language-bash># 查看用户列表
+</code></pre><h2 id=5-配置>5. 配置</h2><p>查看是否有mysql用户/用户组</p><pre><code class=language-bash># 查看用户列表
 cat /etc/passwd
 
 # 查看用户组列表
 cat /etc/group
-</code></pre>
-<p>没有 , 就创建</p>
-<pre><code class=language-bash>groupadd mysql
+</code></pre><p>没有 , 就创建</p><pre><code class=language-bash>groupadd mysql
 useradd -g mysql mysql
-</code></pre>
-<p>修改/usr/local/mysql权限</p>
-<pre><code class=language-bash>chown -R mysql:mysql /usr/local/mysql
-</code></pre>
-<p>初始化配置 , 初始化配置脚本，创建系统自带的数据库和表</p>
-<pre><code class=language-bash>cd /usr/local/mysql
+</code></pre><p>修改/usr/local/mysql权限</p><pre><code class=language-bash>chown -R mysql:mysql /usr/local/mysql
+</code></pre><p>初始化配置 , 初始化配置脚本，创建系统自带的数据库和表</p><pre><code class=language-bash>cd /usr/local/mysql
 scripts/mysql_install_db --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --user=mysql
-</code></pre>
-<p>添加mysql服务并设置自启</p>
-<pre><code class=language-bash>cp support-files/mysql.server /etc/init.d/mysql
+</code></pre><p>添加mysql服务并设置自启</p><pre><code class=language-bash>cp support-files/mysql.server /etc/init.d/mysql
 chkconfig mysql on
 service mysql start  --启动MySQL
-</code></pre>
-<p>设置环境变量</p>
-<pre><code class=language-bash># 编译环境变量文件
+</code></pre><p>设置环境变量</p><pre><code class=language-bash># 编译环境变量文件
 vim /etc/profile
 
 # 追加mysql 环境变量
@@ -147,71 +60,26 @@ export PATH
 
 # 保存并退出 ,生效环境变量
 source /etc/profile
-</code></pre>
-<p>为root用户设置新密码</p>
-<pre><code class=language-bash>mysql
+</code></pre><p>为root用户设置新密码</p><pre><code class=language-bash>mysql
 UPDATE mysql.user SET password=PASSWORD('新密码') WHERE User='root';
 
 # 刷新权限
 FLUSH PRIVILEGES;
-</code></pre>
-<p>开启远程访问</p>
-<pre><code class=language-bash>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
+</code></pre><p>开启远程访问</p><pre><code class=language-bash>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
 
 # 刷新权限
 FLUSH PRIVILEGES;
-</code></pre>
-<h2 id=6-可能遇到的问题>6. 可能遇到的问题</h2>
-<pre><code class=language-bash>Starting MySQL..The server quit without updating PID file ([FAILED]/mysql/AY1404111053020733e2Z.pid). 
+</code></pre><h2 id=6-可能遇到的问题>6. 可能遇到的问题</h2><pre><code class=language-bash>Starting MySQL..The server quit without updating PID file ([FAILED]/mysql/AY1404111053020733e2Z.pid). 
 
 # 解决办法 : 
 修改/etc/my.cnf 中datadir,指向正确的mysql数据库文件目录  
-</code></pre>
-<pre><code class=language-bash>ERROR 2002 (HY000): Can\'t connect to local MySQL server through socket '/tmp/mysql.sock' (2)   
+</code></pre><pre><code class=language-bash>ERROR 2002 (HY000): Can\'t connect to local MySQL server through socket '/tmp/mysql.sock' (2)   
 
 # 解决办法 : 
 新建一个链接或在mysql中加入-S参数，直接指出mysql.sock位置。   
 1. ln -s /usr/local/mysql/data/mysql.sock /tmp/mysql.sock   
 2. /usr/local/mysql/bin/mysql -u root -S /usr/local/mysql/data/mysql.sock 
-</code></pre>
-<h2 id=7-扩展阅读>7. 扩展阅读</h2>
-<ol>
-<li><a href=http://www.cnblogs.com/xiongpq/p/3384681.html>CentOS 6.4下编译安装MySQL 5.6.14</a></li>
-<li><a href=http://www.centoscn.com/mysql/2014/0924/3833.html>CentOS6.5下编译安装MySQL 5.6.16</a></li>
-<li><a href=http://dev.mysql.com/doc/refman/5.5/en/source-configuration-options.html>mysql cmake 参数</a></li>
-</ol>
-<hr>
-<p>此文主要参考扩展阅读的1, 2.</p>
-<br>
-<br>
-<hr>
-文章作者：eightpigs
-<br>
-创作时间：2016-02-05
-<br>
-更新时间：2021-06-11
-<br>
-许可协议：<a href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank class=cc>CC by-nc-nd 4.0</a>
-<hr>
-</div>
-<div class=footer>
-<div class=copyright>&copy; 2014 -
+</code></pre><h2 id=7-扩展阅读>7. 扩展阅读</h2><ol><li><a href=http://www.cnblogs.com/xiongpq/p/3384681.html>CentOS 6.4下编译安装MySQL 5.6.14</a></li><li><a href=http://www.centoscn.com/mysql/2014/0924/3833.html>CentOS6.5下编译安装MySQL 5.6.16</a></li><li><a href=http://dev.mysql.com/doc/refman/5.5/en/source-configuration-options.html>mysql cmake 参数</a></li></ol><hr><p>此文主要参考扩展阅读的1, 2.</p><br><br><hr>文章作者：eightpigs<br>创作时间：2016-02-05<br>更新时间：2021-06-11<br>许可协议：<a href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank class=cc>CC by-nc-nd 4.0</a><hr></div><div class=footer><div class=copyright>&copy; 2014 -
 2022
-Eightpigs
-</div>
-<div class=navbar>
-<ul>
-<li>
-<a href=/>首页</a>
-</li>
-<li>
-<a href=/archives>归档</a>
-</li>
-<li>
-<a href=/pages/about>关于</a>
-</li>
-</ul>
-</div>
-</div>
-<script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js></script>
+Eightpigs</div><div class=navbar><ul><li><a href=/>首页</a></li><li><a href=/archives>归档</a></li><li><a href=/pages/about>关于</a></li></ul></div></div><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js></script>
 <script>hljs.initHighlightingOnLoad()</script>

@@ -1,100 +1,11 @@
-<head>
-<meta charset=utf-8>
-<meta name=generator content="Hugo 0.92.2">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=author content="Eightpigs, eightpigs@outlook.com">
-<meta property="og:url" content="https://eightpigs.io/2019/02/23/sort_algorithm/">
-<link rel=canonical href=https://eightpigs.io/2019/02/23/sort_algorithm/>
-<link rel=stylesheet href="/css/github-markdown.css?t=1647832712">
-<link rel=stylesheet href="/css/head.css?t=1647832712">
-<link rel=stylesheet href="/css/style.css?t=1647832712"><title>排序算法 - 选择、冒泡、插入、快排、希尔、归并、堆 - Eightpigs</title>
-<meta property="og:title" content="排序算法 - 选择、冒泡、插入、快排、希尔、归并、堆 - Eightpigs">
-<meta property="og:type" content="article">
-<meta property="og:description" content="在编码过程中肯定少不了对数据进行排序，通常做法是使用标准库的实现、使用熟悉的排序算法或直接网上扒一个排序算法，然而却对排序算法的特点和适应场景了解得非常少。本文将从代码实现和不同量级数据的测试两个角度来说说各个排序算法。">
-<meta name=description content="在编码过程中肯定少不了对数据进行排序，通常做法是使用标准库的实现、使用熟悉的排序算法或直接网上扒一个排序算法，然而却对排序算法的特点和适应场景了解得非常少。本文将从代码实现和不同量级数据的测试两个角度来说说各个排序算法。">
-<meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner">
-<link rel=stylesheet href=/css/highlight/github.css>
-<link rel=stylesheet href="/css/post.css?t=1647832712">
-</head>
-<div class="content markdown-body">
-<h1>排序算法 - 选择、冒泡、插入、快排、希尔、归并、堆 </h1>
-<div class=info>
-<span class=date>
-2019-02-23
-</span>
-<span class=categories>
-<a data-real=Algorithm href=/categories/algorithm/ class=category>
-算法
-</a>
-⯈
-</span>
-<span class=tags>
-<a data-real=Java href=/tags/java/ class=tag>#Java</a>
+<head><meta charset=utf-8><meta name=generator content="Hugo 0.101.0"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Eightpigs, eightpigs@outlook.com"><meta property="og:url" content="https://eightpigs.io/2019/02/23/sort_algorithm/"><link rel=canonical href=https://eightpigs.io/2019/02/23/sort_algorithm/><link rel=stylesheet href="/css/github-markdown.css?t=1660182658"><link rel=stylesheet href="/css/head.css?t=1660182658"><link rel=stylesheet href="/css/style.css?t=1660182658"><title>排序算法 - 选择、冒泡、插入、快排、希尔、归并、堆 - Eightpigs</title><meta property="og:title" content="排序算法 - 选择、冒泡、插入、快排、希尔、归并、堆 - Eightpigs"><meta property="og:type" content="article"><meta property="og:description" content="在编码过程中肯定少不了对数据进行排序，通常做法是使用标准库的实现、使用熟悉的排序算法或直接网上扒一个排序算法，然而却对排序算法的特点和适应场景了解得非常少。本文将从代码实现和不同量级数据的测试两个角度来说说各个排序算法。"><meta name=description content="在编码过程中肯定少不了对数据进行排序，通常做法是使用标准库的实现、使用熟悉的排序算法或直接网上扒一个排序算法，然而却对排序算法的特点和适应场景了解得非常少。本文将从代码实现和不同量级数据的测试两个角度来说说各个排序算法。"><meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner"><link rel=stylesheet href=/css/highlight/github.css><link rel=stylesheet href="/css/post.css?t=1660182658"></head><div class="content markdown-body"><h1>排序算法 - 选择、冒泡、插入、快排、希尔、归并、堆</h1><div class=info><span class=date>2019-02-23</span>
+<span class=categories><a data-real=Algorithm href=/categories/algorithm/ class=category>算法</a>
+⯈</span>
+<span class=tags><a data-real=Java href=/tags/java/ class=tag>#Java</a>
 <a data-real=Algorithm href=/tags/algorithm/ class=tag>#Algorithm</a>
 <a data-real=Sorting href=/tags/sorting/ class=tag>#Sorting</a>
-<a data-real=Algorithm href=/tags/algorithm/ class=tag>#Algorithm</a>
-</span>
-</div>
-</h1>
-<div class=changelogs>
-<div class=title>更新日志</div>
-<div class=changelog>
-<span class=time>2021-06-11</span>
-<span class=note>更新分类、标签</span>
-</div>
-</div>
-<div class=outline>
-<h4>大纲</h4>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#选择排序>选择排序</a>
-<ul>
-<li><a href=#实现>实现</a></li>
-</ul>
-</li>
-<li><a href=#冒泡排序>冒泡排序</a>
-<ul>
-<li><a href=#实现-1>实现</a></li>
-</ul>
-</li>
-<li><a href=#插入排序>插入排序</a>
-<ul>
-<li><a href=#版本1>版本1</a></li>
-<li><a href=#版本2>版本2</a></li>
-</ul>
-</li>
-<li><a href=#希尔排序>希尔排序</a>
-<ul>
-<li><a href=#实现-2>实现</a></li>
-</ul>
-</li>
-<li><a href=#快速排序>快速排序</a>
-<ul>
-<li><a href=#实现-3>实现</a></li>
-</ul>
-</li>
-<li><a href=#归并排序>归并排序</a>
-<ul>
-<li><a href=#实现-4>实现</a></li>
-</ul>
-</li>
-<li><a href=#堆排序>堆排序</a></li>
-<li><a href=#测试>测试</a></li>
-<li><a href=#参考资料>参考资料</a></li>
-</ul>
-</nav>
-</div>
-<p>在编码过程中肯定少不了对数据进行排序，通常做法是使用标准库的实现、使用熟悉的排序算法或直接网上扒一个排序算法，然而却对排序算法的特点和适应场景了解得非常少。本文将从代码实现和不同量级数据的测试两个角度来说说各个排序算法。</p>
-<p><a href=https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95#%E7%AE%80%E8%A6%81%E6%AF%94%E8%BE%83>各排序算法的复杂度一览表</a></p>
-<p><img src=sort_algorithm_table.png alt=各排序算法的复杂度一览表></p>
-<h2 id=选择排序>选择排序</h2>
-<blockquote>
-<p>选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理如下。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。 <a href=https://zh.wikipedia.org/wiki/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F>《选择排序 - Wikipedia》</a></p>
-</blockquote>
-<p><strong>主要逻辑</strong>: 找到数组中最值（小、大）的数，依次交换位置</p>
-<h3 id=实现>实现</h3>
-<pre><code class=language-java>public static void sort(Comparable[] arr) {
+<a data-real=Algorithm href=/tags/algorithm/ class=tag>#Algorithm</a></span></div></h1><div class=changelogs><div class=title>更新日志</div><div class=changelog><span class=time>2021-06-11</span>
+<span class=note>更新分类、标签</span></div></div><div class=outline><h4>大纲</h4><nav id=TableOfContents><ul><li><a href=#选择排序>选择排序</a><ul><li><a href=#实现>实现</a></li></ul></li><li><a href=#冒泡排序>冒泡排序</a><ul><li><a href=#实现-1>实现</a></li></ul></li><li><a href=#插入排序>插入排序</a><ul><li><a href=#版本1>版本1</a></li><li><a href=#版本2>版本2</a></li></ul></li><li><a href=#希尔排序>希尔排序</a><ul><li><a href=#实现-2>实现</a></li></ul></li><li><a href=#快速排序>快速排序</a><ul><li><a href=#实现-3>实现</a></li></ul></li><li><a href=#归并排序>归并排序</a><ul><li><a href=#实现-4>实现</a></li></ul></li><li><a href=#堆排序>堆排序</a></li><li><a href=#测试>测试</a></li><li><a href=#参考资料>参考资料</a></li></ul></nav></div><p>在编码过程中肯定少不了对数据进行排序，通常做法是使用标准库的实现、使用熟悉的排序算法或直接网上扒一个排序算法，然而却对排序算法的特点和适应场景了解得非常少。本文将从代码实现和不同量级数据的测试两个角度来说说各个排序算法。</p><p><a href=https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95#%E7%AE%80%E8%A6%81%E6%AF%94%E8%BE%83>各排序算法的复杂度一览表</a></p><p><img src=sort_algorithm_table.png alt=各排序算法的复杂度一览表></p><h2 id=选择排序>选择排序</h2><blockquote><p>选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理如下。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。 <a href=https://zh.wikipedia.org/wiki/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F>《选择排序 - Wikipedia》</a></p></blockquote><p><strong>主要逻辑</strong>: 找到数组中最值（小、大）的数，依次交换位置</p><h3 id=实现>实现</h3><pre><code class=language-java>public static void sort(Comparable[] arr) {
     if (arr != null &amp;&amp; arr.length &gt; 1) {
         for (int i = 0; i &lt; arr.length; i++) {
             // 记录下当前遍历的最小值
@@ -115,13 +26,7 @@
         }
     }
 }
-</code></pre>
-<h2 id=冒泡排序>冒泡排序</h2>
-<blockquote>
-<p>冒泡排序（英语：Bubble Sort）是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。<strong>这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端</strong>。<a href=https://zh.wikipedia.org/wiki/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F>《冒泡排序》- Wikipedia</a></p>
-</blockquote>
-<h3 id=实现-1>实现</h3>
-<pre><code class=language-java>public static void sort(Comparable[] arr) {
+</code></pre><h2 id=冒泡排序>冒泡排序</h2><blockquote><p>冒泡排序（英语：Bubble Sort）是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。<strong>这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端</strong>。<a href=https://zh.wikipedia.org/wiki/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F>《冒泡排序》- Wikipedia</a></p></blockquote><h3 id=实现-1>实现</h3><pre><code class=language-java>public static void sort(Comparable[] arr) {
     if (arr != null &amp;&amp; arr.length &gt; 0) {
         // 依次比较每一个元素
         for (int i = 0; i &lt; arr.length; i++) {
@@ -137,24 +42,7 @@
         }
     }
 }
-</code></pre>
-<h2 id=插入排序>插入排序</h2>
-<blockquote>
-<p>插入排序（英语：Insertion Sort）是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用in-place排序（原地排序：即只需用到$O(1)$的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p>
-<p>具体算法描述如下：</p>
-<ol>
-<li>从第一个元素开始，该元素可以认为已经被排序</li>
-<li>取出下一个元素，在已经排序的元素序列中从后向前扫描</li>
-<li>如果该元素（已排序）大于新元素，将该元素移到下一位置</li>
-<li>重复步骤3，直到找到已排序的元素小于或者等于新元素的位置</li>
-<li>将新元素插入到该位置后</li>
-<li>重复步骤2~5</li>
-</ol>
-<p><a href=https://zh.wikipedia.org/wiki/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F>《插入排序》- Wikipedia</a></p>
-</blockquote>
-<h3 id=版本1>版本1</h3>
-<p>每次都与前面的所有元素比较，遇到比当前元素大的元素就交换双方位置，直到找到第一个元素</p>
-<pre><code class=language-java>public static void sort(Comparable[] arr) {
+</code></pre><h2 id=插入排序>插入排序</h2><blockquote><p>插入排序（英语：Insertion Sort）是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用in-place排序（原地排序：即只需用到$O(1)$的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p><p>具体算法描述如下：</p><ol><li>从第一个元素开始，该元素可以认为已经被排序</li><li>取出下一个元素，在已经排序的元素序列中从后向前扫描</li><li>如果该元素（已排序）大于新元素，将该元素移到下一位置</li><li>重复步骤3，直到找到已排序的元素小于或者等于新元素的位置</li><li>将新元素插入到该位置后</li><li>重复步骤2~5</li></ol><p><a href=https://zh.wikipedia.org/wiki/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F>《插入排序》- Wikipedia</a></p></blockquote><h3 id=版本1>版本1</h3><p>每次都与前面的所有元素比较，遇到比当前元素大的元素就交换双方位置，直到找到第一个元素</p><pre><code class=language-java>public static void sort(Comparable[] arr) {
     if (arr != null &amp;&amp; arr.length &gt; 0) {
         // 因为默认第一个元素（下标为0的元素）是已经排序的，所以直接从第二个元素（下标为1的元素）开始进行比较
         for (int i = 1; i &lt; arr.length; i++) {
@@ -170,14 +58,7 @@
         }
     }
 }
-</code></pre>
-<h3 id=版本2>版本2</h3>
-<p>该版本算是比较有意思的一种，主要做两件事：</p>
-<ol>
-<li>将比当前元素大的元素全部往后移</li>
-<li>找到该元素符合的位置</li>
-</ol>
-<pre><code class=language-java>public static void sort(Comparable[] arr) {
+</code></pre><h3 id=版本2>版本2</h3><p>该版本算是比较有意思的一种，主要做两件事：</p><ol><li>将比当前元素大的元素全部往后移</li><li>找到该元素符合的位置</li></ol><pre><code class=language-java>public static void sort(Comparable[] arr) {
     int j;
     // 每次实际的比较元素
     Comparable temp;
@@ -196,22 +77,7 @@
         arr[j] = temp;
     }
 }
-</code></pre>
-<h2 id=希尔排序>希尔排序</h2>
-<blockquote>
-<p>希尔排序，也称递减增量排序算法，是插入排序的一种更高效的改进版本。希尔排序是非稳定排序算法。</p>
-<p>希尔排序是基于插入排序的以下两点性质而提出改进方法的：</p>
-<ol>
-<li>插入排序在对几乎已经排好序的数据操作时，效率高，即可以达到线性排序的效率</li>
-<li>但插入排序一般来说是低效的，因为插入排序每次只能将数据移动一位</li>
-</ol>
-<p><a href=https://zh.wikipedia.org/wiki/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F>《希尔排序》- Wikipedia</a></p>
-</blockquote>
-<p>希尔排序的实现是将一个数组以递减长度（步长）来分为多个子数组，对这多个子数组进行插入排序。当步长为1时，该数据已经大致保持顺序了，只需要较少得调整顺序就能保持有序。</p>
-<p>实际上，可以把希尔排序理解为在插入排序的外层再套了一个实现递减步长的循环。</p>
-<p>在希尔排序中最重要的部分就是确定步长值，步长值将影响算法执行的时间。步长值每次的变化形成了一个步长序列，例如步长定义为n/2，则步长序列为<code>[ n/2, (n/2)/2, ((n/2)/2)/2 ]</code>。步长序列的相关定义和说明可以看<a href=https://zh.wikipedia.org/wiki/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F#%E6%AD%A5%E9%95%BF%E5%BA%8F%E5%88%97>《希尔排序 - 步长序列》- Wikipedia</a></p>
-<h3 id=实现-2>实现</h3>
-<pre><code class=language-java>/**
+</code></pre><h2 id=希尔排序>希尔排序</h2><blockquote><p>希尔排序，也称递减增量排序算法，是插入排序的一种更高效的改进版本。希尔排序是非稳定排序算法。</p><p>希尔排序是基于插入排序的以下两点性质而提出改进方法的：</p><ol><li>插入排序在对几乎已经排好序的数据操作时，效率高，即可以达到线性排序的效率</li><li>但插入排序一般来说是低效的，因为插入排序每次只能将数据移动一位</li></ol><p><a href=https://zh.wikipedia.org/wiki/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F>《希尔排序》- Wikipedia</a></p></blockquote><p>希尔排序的实现是将一个数组以递减长度（步长）来分为多个子数组，对这多个子数组进行插入排序。当步长为1时，该数据已经大致保持顺序了，只需要较少得调整顺序就能保持有序。</p><p>实际上，可以把希尔排序理解为在插入排序的外层再套了一个实现递减步长的循环。</p><p>在希尔排序中最重要的部分就是确定步长值，步长值将影响算法执行的时间。步长值每次的变化形成了一个步长序列，例如步长定义为n/2，则步长序列为<code>[ n/2, (n/2)/2, ((n/2)/2)/2 ]</code>。步长序列的相关定义和说明可以看<a href=https://zh.wikipedia.org/wiki/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F#%E6%AD%A5%E9%95%BF%E5%BA%8F%E5%88%97>《希尔排序 - 步长序列》- Wikipedia</a></p><h3 id=实现-2>实现</h3><pre><code class=language-java>/**
  * 希尔排序 - 版本1
  * 版本说明：每次都对比较的两个元素交互位置
  *
@@ -257,26 +123,7 @@ public static void sort1(Comparable[] arr) {
         }
     }
 }
-</code></pre>
-<h2 id=快速排序>快速排序</h2>
-<blockquote>
-<p>快速排序采用分支法（Divide and conquer）策略来把一个序列（list）分为两个子序列（sub-lists）。</p>
-<p>步骤为：</p>
-<ol>
-<li>从数列中挑出一个元素，称为“<strong>基准</strong>”（pivot）。</li>
-<li>重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面（相同的数可以到任何一边）。在这个分割结束之后，该基准就处于数列的中间位置。这个称为**分割（partition）**操作。</li>
-<li>**递归地（recursively）**把小于基准值元素的子数列和大于基准值元素的子数列排序。</li>
-</ol>
-<p><a href=https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F#%E6%BC%94%E7%AE%97%E6%B3%95>《快速排序》- Wikipedia</a></p>
-</blockquote>
-<p>快速排序有三个核心，分别是：</p>
-<ol>
-<li>找基准</li>
-<li>从基准分割</li>
-<li>递归处理分割的子序列</li>
-</ol>
-<h3 id=实现-3>实现</h3>
-<pre><code class=language-java>/**
+</code></pre><h2 id=快速排序>快速排序</h2><blockquote><p>快速排序采用分支法（Divide and conquer）策略来把一个序列（list）分为两个子序列（sub-lists）。</p><p>步骤为：</p><ol><li>从数列中挑出一个元素，称为“<strong>基准</strong>”（pivot）。</li><li>重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面（相同的数可以到任何一边）。在这个分割结束之后，该基准就处于数列的中间位置。这个称为**分割（partition）**操作。</li><li>**递归地（recursively）**把小于基准值元素的子数列和大于基准值元素的子数列排序。</li></ol><p><a href=https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F#%E6%BC%94%E7%AE%97%E6%B3%95>《快速排序》- Wikipedia</a></p></blockquote><p>快速排序有三个核心，分别是：</p><ol><li>找基准</li><li>从基准分割</li><li>递归处理分割的子序列</li></ol><h3 id=实现-3>实现</h3><pre><code class=language-java>/**
  * 快速排序
  *
  * @param arr  要排序的数据
@@ -330,19 +177,7 @@ public static void sort(Comparable[] arr, int head, int tail) {
     // 处理i-&gt; tail的子序列
     sort(arr, i, tail);
 }
-</code></pre>
-<h2 id=归并排序>归并排序</h2>
-<blockquote>
-<p>归并排序（英语：Merge sort，或mergesort），是创建在归并操作上的一种有效的排序算法，效率为 $O(n log n)$ 。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。</p>
-<p>采用分治法:</p>
-<ul>
-<li>分割（分）：递归地把当前序列平均分割成两半。</li>
-<li>集成（治）：在保持元素顺序的同时将上一步得到的子序列集成到一起（归并）。</li>
-</ul>
-<p><a href=https://zh.wikipedia.org/wiki/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F>《归并排序》- Wikipedia</a></p>
-</blockquote>
-<h3 id=实现-4>实现</h3>
-<pre><code class=language-java>/**
+</code></pre><h2 id=归并排序>归并排序</h2><blockquote><p>归并排序（英语：Merge sort，或mergesort），是创建在归并操作上的一种有效的排序算法，效率为 $O(n log n)$ 。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。</p><p>采用分治法:</p><ul><li>分割（分）：递归地把当前序列平均分割成两半。</li><li>集成（治）：在保持元素顺序的同时将上一步得到的子序列集成到一起（归并）。</li></ul><p><a href=https://zh.wikipedia.org/wiki/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F>《归并排序》- Wikipedia</a></p></blockquote><h3 id=实现-4>实现</h3><pre><code class=language-java>/**
  * 归并排序
  *
  * @param arr 要排序的数据
@@ -418,25 +253,10 @@ private static void merge(Comparable[] arr, int head, int tail, int pivot, Compa
         }
     }
 }
-</code></pre>
-<h2 id=堆排序>堆排序</h2>
-<blockquote>
-<p>堆排序（英语：Heapsort）是指利用堆这种数据结构所设计的一种排序算法。
+</code></pre><h2 id=堆排序>堆排序</h2><blockquote><p>堆排序（英语：Heapsort）是指利用堆这种数据结构所设计的一种排序算法。
 堆是一个近似完全二叉树的结构，并同时满足堆积的性质：即子节点的键值或索引总是小于（或者大于）它的父节点。
 通常堆是通过一维数组来实现的。
-<a href=https://zh.wikipedia.org/wiki/%E5%A0%86%E6%8E%92%E5%BA%8F>《堆排序》- Wikipedia</a></p>
-</blockquote>
-<p>在数组起始位置为0的情形中，父子节点的关系如下：</p>
-<ul>
-<li>父节点i的左子节点在位置: $(2i+1)$</li>
-<li>父节点i的右子节点在位置: $(2i+2)$</li>
-<li>子节点i的父节点在位置: $floor((i-1)/2)$</li>
-<li>最后一个非叶子节点在位置: $(n / 2 - 1)$</li>
-</ul>
-<blockquote>
-<p>堆排序的基本思想是<a href=https://www.cnblogs.com/chengxiao/p/6129630.html>《图解排序算法(三)之堆排序》- dreamcatcher-cx</a> ：将待排序序列构造成一个大顶堆，此时，整个序列的最大值就是堆顶的根节点。将其与末尾元素进行交换，此时末尾就为最大值。然后将剩余n-1个元素重新构造成一个堆，这样会得到n个元素的次小值。如此反复执行，便能得到一个有序序列了。</p>
-</blockquote>
-<pre><code class=language-java>/**
+<a href=https://zh.wikipedia.org/wiki/%E5%A0%86%E6%8E%92%E5%BA%8F>《堆排序》- Wikipedia</a></p></blockquote><p>在数组起始位置为0的情形中，父子节点的关系如下：</p><ul><li>父节点i的左子节点在位置: $(2i+1)$</li><li>父节点i的右子节点在位置: $(2i+2)$</li><li>子节点i的父节点在位置: $floor((i-1)/2)$</li><li>最后一个非叶子节点在位置: $(n / 2 - 1)$</li></ul><blockquote><p>堆排序的基本思想是<a href=https://www.cnblogs.com/chengxiao/p/6129630.html>《图解排序算法(三)之堆排序》- dreamcatcher-cx</a> ：将待排序序列构造成一个大顶堆，此时，整个序列的最大值就是堆顶的根节点。将其与末尾元素进行交换，此时末尾就为最大值。然后将剩余n-1个元素重新构造成一个堆，这样会得到n个元素的次小值。如此反复执行，便能得到一个有序序列了。</p></blockquote><pre><code class=language-java>/**
  * 堆排序
  *
  * @param arr 需要排序的数据
@@ -485,66 +305,10 @@ private static void buildMaxHeap(Comparable[] arr, int i, int len) {
         }
     }
 }
-</code></pre>
-<h2 id=测试>测试</h2>
-<p><strong>测试说明</strong></p>
-<ul>
-<li>使用Java随机数(0-999999999)生成的测试数据</li>
-<li>每个数据量级都对所有算法测试一遍</li>
-<li>只测试了不同量级各个排序算法的耗时</li>
-<li>运行在4核8G服务器上（GCP）</li>
-<li>本想测试到500W数据的，但部分算法耗时太长，所以只测试到50W</li>
-<li>由于冒泡排序太耗时，数据量 > 10W 则直接跳过冒泡排序</li>
-</ul>
-<p><img src=sort_benchmark.png alt=数据量测试></p>
-<h2 id=参考资料>参考资料</h2>
-<p><strong>希尔排序</strong></p>
-<ul>
-<li><a href=https://www.cnblogs.com/chengxiao/p/6104371.html>《图解排序算法(二)之希尔排序》- dreamcatcher-cx</a></li>
-</ul>
-<p><strong>归并排序</strong></p>
-<ul>
-<li><a href=https://www.cnblogs.com/chengxiao/p/6194356.html>《图解排序算法(四)之归并排序》- dreamcatcher-cx</a></li>
-</ul>
-<p><strong>堆排序</strong></p>
-<ul>
-<li><a href=https://www.cnblogs.com/chengxiao/p/6129630.html>《图解排序算法(三)之堆排序》- dreamcatcher-cx</a></li>
-</ul>
-<br>
-<br>
-<hr>
-文章作者：eightpigs
-<br>
-创作时间：2019-02-23
-<br>
-更新时间：2021-06-11
-<br>
-许可协议：<a href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank class=cc>CC by-nc-nd 4.0</a>
-<hr>
-</div>
-<div class=footer>
-<div class=copyright>&copy; 2014 -
+</code></pre><h2 id=测试>测试</h2><p><strong>测试说明</strong></p><ul><li>使用Java随机数(0-999999999)生成的测试数据</li><li>每个数据量级都对所有算法测试一遍</li><li>只测试了不同量级各个排序算法的耗时</li><li>运行在4核8G服务器上（GCP）</li><li>本想测试到500W数据的，但部分算法耗时太长，所以只测试到50W</li><li>由于冒泡排序太耗时，数据量 > 10W 则直接跳过冒泡排序</li></ul><p><img src=sort_benchmark.png alt=数据量测试></p><h2 id=参考资料>参考资料</h2><p><strong>希尔排序</strong></p><ul><li><a href=https://www.cnblogs.com/chengxiao/p/6104371.html>《图解排序算法(二)之希尔排序》- dreamcatcher-cx</a></li></ul><p><strong>归并排序</strong></p><ul><li><a href=https://www.cnblogs.com/chengxiao/p/6194356.html>《图解排序算法(四)之归并排序》- dreamcatcher-cx</a></li></ul><p><strong>堆排序</strong></p><ul><li><a href=https://www.cnblogs.com/chengxiao/p/6129630.html>《图解排序算法(三)之堆排序》- dreamcatcher-cx</a></li></ul><br><br><hr>文章作者：eightpigs<br>创作时间：2019-02-23<br>更新时间：2021-06-11<br>许可协议：<a href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank class=cc>CC by-nc-nd 4.0</a><hr></div><div class=footer><div class=copyright>&copy; 2014 -
 2022
-Eightpigs
-</div>
-<div class=navbar>
-<ul>
-<li>
-<a href=/>首页</a>
-</li>
-<li>
-<a href=/archives>归档</a>
-</li>
-<li>
-<a href=/pages/about>关于</a>
-</li>
-</ul>
-</div>
-</div>
-<script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js></script>
-<script>hljs.initHighlightingOnLoad()</script>
-<script type=text/javascript src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type=text/x-mathjax-config>
+Eightpigs</div><div class=navbar><ul><li><a href=/>首页</a></li><li><a href=/archives>归档</a></li><li><a href=/pages/about>关于</a></li></ul></div></div><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js></script>
+<script>hljs.initHighlightingOnLoad()</script><script type=text/javascript src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type=text/x-mathjax-config>
 MathJax.Hub.Config({
   tex2jax: {
     inlineMath: [['$','$'], ['\\(','\\)']],

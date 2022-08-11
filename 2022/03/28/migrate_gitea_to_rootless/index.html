@@ -1,0 +1,102 @@
+<head><meta charset=utf-8><meta name=generator content="Hugo 0.101.0"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Eightpigs, eightpigs@outlook.com"><meta property="og:url" content="https://eightpigs.io/2022/03/28/migrate_gitea_to_rootless/"><link rel=canonical href=https://eightpigs.io/2022/03/28/migrate_gitea_to_rootless/><link rel=stylesheet href="/css/github-markdown.css?t=1660182658"><link rel=stylesheet href="/css/head.css?t=1660182658"><link rel=stylesheet href="/css/style.css?t=1660182658"><title>迁移 Gitea 到 Gitea-rootless - Eightpigs</title><meta property="og:title" content="迁移 Gitea 到 Gitea-rootless - Eightpigs"><meta property="og:type" content="article"><meta property="og:description" content="最近重新配置过一遍 Homelab 环境（PVE、NFS、Kubernetes），粗略检查各个自建服务的 Web 访问后迁移工作就告一段落了。直到今天提交代码到 Gitea 时"><meta name=description content="最近重新配置过一遍 Homelab 环境（PVE、NFS、Kubernetes），粗略检查各个自建服务的 Web 访问后迁移工作就告一段落了。直到今天提交代码到 Gitea 时"><meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner"><link rel=stylesheet href=/css/highlight/github.css><link rel=stylesheet href="/css/post.css?t=1660182658"></head><div class="content markdown-body"><h1>迁移 Gitea 到 Gitea-rootless</h1><div class=info><span class=date>2022-03-28</span>
+<span class=categories><a data-real=Infrastructure href=/categories/infrastructure/ class=category>基础设施</a>
+⯈</span>
+<span class=tags><a data-real=K3s href=/tags/k3s/ class=tag>#K3s</a>
+<a data-real=K8s href=/tags/k8s/ class=tag>#K8s</a>
+<a data-real=Kubernetes href=/tags/kubernetes/ class=tag>#Kubernetes</a>
+<a data-real=Homelab href=/tags/homelab/ class=tag>#Homelab</a>
+<a data-real=NFS href=/tags/nfs/ class=tag>#NFS</a>
+<a data-real=Virtualization href=/tags/virtualization/ class=tag>#Virtualization</a></span></div></h1><div class=outline><h4>大纲</h4><nav id=TableOfContents><ul><li><a href=#备份>备份</a></li><li><a href=#迁移>迁移</a><ul><li><a href=#目录结构调整>目录结构调整</a></li><li><a href=#端口调整>端口调整</a></li></ul></li></ul></nav></div><p>最近重新配置过一遍 Homelab 环境（PVE、NFS、Kubernetes），粗略检查各个自建服务的 Web 访问后迁移工作就告一段落了。直到今天提交代码到 Gitea 时出现 SSH 无法访问，排查后得知是因为无权限读取 keys 导致 SSH 服务启动失败：</p><pre><code class=language-log>$ kubectl logs -f -n selfhosts deploy/gitea
+chown: /data/ssh/ssh_host_dsa_key: Operation not permitted
+chown: /data/ssh/ssh_host_dsa_key.pub: Operation not permitted
+...
+Unable to load host key: /data/ssh/ssh_host_ed25519_key
+Unable to load host key: /data/ssh/ssh_host_dsa_key
+sshd: no hostkeys available -- exiting.
+</code></pre><p>查看 <code>/data/ssh/</code> 目录后发现里面 key 的所有者都是 root，直接改为 1000:1000 是无效的，因为容器中进程是默认以 root 权限运行的，并且在 Gitea 源码 <a href=https://github.com/go-gitea/gitea/blob/d4c789dfc1c341413b77a2f21fe7339982102bed/docker/root/etc/s6/openssh/setup#L57>docker/root/etc/s6/openssh/setup#L57</a> 显式将 <code>/data/ssh/</code> 设置为所有者设置为 root: <code>chown root:root /data/ssh/*</code>。</p><p>本想着先简单将权限问题解决好就行，但想着 Gitea 有 rootless 的镜像，之前迟迟犯懒不肯更换，正好借着本次机会做个迁移。</p><h2 id=备份>备份</h2><p>做任何迁移前肯定少不了都原数据的备份， Gitea 主要备份步骤为：</p><ol><li>导出数据库SQL</li><li>备份 NFS 挂载的 /data/ 目录</li></ol><p>具体备份操作就不一一展开了，数据库可以运行个 mysql-client 进去 dump 出来，/data/ 目录可以打个包或者创建个 Snapshot。</p><h2 id=迁移>迁移</h2><p>思路很简单：相关目录和端口普通用户有权限管理。</p><p>官方文档中有关于 <a href=https://docs.gitea.io/en-us/install-with-docker-rootless/#upgrading-from-standard-image>从标准镜像迁移到 rootless 镜像的步骤</a>，主要变更为:</p><ul><li>镜像<ul><li>gitea/gitea:latest -> gitea/gitea:latest-rootless</li></ul></li><li>目录结构<ul><li>/data/ -> /var/lib/gitea</li><li>/data/gitea -> /var/lib/gitea/custom</li><li>/data/gitea/conf/app.ini -> /etc/gitea/app.ini</li></ul></li><li>使用内置的 SSH<ul><li>START_SSH_SERVER = true</li></ul></li></ul><p>先贴出本次迁移 pod-gitea.yaml 的变更：</p><pre><code class=language-diff>diff --git a/selfhosts/gitea/pod-gitea.yaml b/selfhosts/gitea/pod-gitea.yaml
+index 380636f..112bdae 100644
+--- a/selfhosts/gitea/pod-gitea.yaml
++++ b/selfhosts/gitea/pod-gitea.yaml
+@@ -13,7 +13,7 @@ spec:
+     kind: Rule
+     services:
+     - name: gitea-ssh
+-      port: 22
++      port: 2222
+       weight: 10
+       terminationDelay: 400
+
+@@ -85,8 +85,8 @@ spec:
+   ports:
+     - name: gitea-ssh
+       protocol: TCP
+-      port: 22
+-      targetPort: 22
++      port: 2222
++      targetPort: 2222
+
+
+ ---
+@@ -111,17 +111,19 @@ spec:
+     spec:
+       containers:
+       - name: gitea
+-        image: gitea/gitea:latest
++        image: gitea/gitea:latest-rootless
+         ports:
+         - name: gitea-web
+           containerPort: 3000
+           protocol: TCP
+         - name: gitea-ssh
+-          containerPort: 22
++          containerPort: 2222
+           protocol: TCP
+         volumeMounts:
+         - name: nfs
+-          mountPath: /data
++          mountPath: /var/lib/gitea
++        - name: nfs
++          mountPath: /etc/gitea
+       volumes:
+       - name: nfs
+         persistentVolumeClaim:
+</code></pre><h3 id=目录结构调整>目录结构调整</h3><p>先根据官方文档的描述，将原来卷中的 gitea 目录更名为 custom。</p><p>rootless 镜像将配置文件和数据目录拆分到了两个卷，由于我的数据目录是走 NFS，并且是一个 PVC，虽然可以按正常步骤再单独创建一个 PVC 并挂载来实现，但我还是想将 Gitea 的数据按原来一个 PVC 方式管理（nfs-provisioner 的 配置为: <code>storageClass.pathPattern="\${.PVC.namespace}/\${.PVC.name}"</code>），于是就对配置文件目录做了个调整：</p><ul><li><p>将原来卷中 /gitea/conf/app.ini 复制到 gitea 同级目录：保证配置在 NFS 挂载的根目录</p></li><li><p>使用一个 PVC，挂载两次：保证数据和 app.ini 可以同时被读取到:</p><pre><code class=language-yaml>...
+spec:
+containers:
+- name: gitea
+    image: gitea/gitea:latest-rootless
+  volumeMounts:
+  - name: nfs
+    mountPath: /var/lib/gitea
+  - name: nfs
+    mountPath: /etc/gitea
+volumes:
+- name: nfs
+  persistentVolumeClaim:
+    claimName: gitea-pvc
+</code></pre></li></ul><p>修改完卷挂载后，还需要调整原配置文件 app.ini 中关于目录的相关配置项:</p><pre><code class=language-bash># 直接使用正则将原来的 /data/ 目录替换为 /var/lib/gitea/
+$ vim app.ini
+:%s/\/data/\/var\/lib\/gitea/g
+</code></pre><p>最后确认下 app.ini 的权限(1000:1000)，若权限不正确，会遇到以下日志：</p><pre><code class=language-log>2022/03/28 20:03:19 ...nvironment-to-ini.go:106:runEnvironmentToIni() [F] Failed to load custom conf '/etc/gitea/app.ini': open /etc/gitea/app.ini: permission denied
+</code></pre><h3 id=端口调整>端口调整</h3><p>在 Linux 中 1024 以下的端口默认只能由 root 帐号使用，切换到 rootless 镜像后，原来给 gitea 配置的默认 22 端口将无法使用：</p><pre><code class=language-log>2022/03/28 20:15:20 ...s/graceful/server.go:61:NewServer() [I] Starting new SSH server: tcp::22 on PID: 1
+2022/03/28 20:15:20 ...s/graceful/server.go:87:ListenAndServe() [E] Unable to GetListener: listen tcp :22: bind: permission denied
+2022/03/28 20:15:20 .../ssh/ssh_graceful.go:26:listen() [F] Failed to start SSH server: listen tcp :22: bind: permission denied
+</code></pre><p>需要将端口改为 > 1024 的端口：</p><pre><code class=language-yaml># 批量将 22 端口 改为 2222 端口
+$ vim pod-gitea.yaml
+:%s/: 22/: 2222/g
+</code></pre><br><br><hr>文章作者：eightpigs<br>创作时间：2022-03-28<br>更新时间：2022-03-28<br>许可协议：<a href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank class=cc>CC by-nc-nd 4.0</a><hr></div><div class=footer><div class=copyright>&copy; 2014 -
+2022
+Eightpigs</div><div class=navbar><ul><li><a href=/>首页</a></li><li><a href=/archives>归档</a></li><li><a href=/pages/about>关于</a></li></ul></div></div><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js></script>
+<script>hljs.initHighlightingOnLoad()</script><script type=text/javascript src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type=text/x-mathjax-config>
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', "sup"],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
