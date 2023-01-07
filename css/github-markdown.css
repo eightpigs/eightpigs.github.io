@@ -5,7 +5,6 @@
 
 .markdown-body {
   word-wrap: break-word;
-  text-rendering: optimizeLegibility;
 }
 
 .markdown-body .pl-c {
@@ -203,7 +202,7 @@
 }
 
 .markdown-body strong {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .markdown-body hr {
@@ -439,11 +438,21 @@
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
+  margin-top: 24px;
   margin-bottom: 16px;
   line-height: 1.25;
   font-weight: 500;
   font-style: normal;
 }
+
+/* .markdown-body h2:before, */
+/* .markdown-body h3:before, */
+/* .markdown-body h4:before, */
+/* .markdown-body h5:before, */
+/* .markdown-body h6:before { */
+  /* content: "# "; */
+  /* color: #C1C1C1; */
+/* } */
 
 .markdown-body h1 .octicon-link,
 .markdown-body h2 .octicon-link,
@@ -475,18 +484,31 @@
 }
 
 .markdown-body h1 {
+  padding-bottom: 0.3em;
   font-size: 2em;
 }
 
 .markdown-body h2 {
-  margin-top: 1.5em;
+  padding-bottom: 0.3em;
+  font-size: 1.7em;
+  margin-top: 2.5em;
 }
 
 .markdown-body h3 {
+  font-size: 1.3em;
   margin-top: 1.2em;
 }
 
+.markdown-body h4 {
+  font-size: 1.1em;
+}
+
+.markdown-body h5 {
+  font-size: 0.875em;
+}
+
 .markdown-body h6 {
+  font-size: 0.85em;
   color: #6a737d;
 }
 
@@ -509,6 +531,10 @@
 
 .markdown-body li>p {
   margin-top: 16px;
+}
+
+.markdown-body li+li {
+  margin-top: 0.25em;
 }
 
 .markdown-body dl {
