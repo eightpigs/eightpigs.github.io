@@ -1,2 +1,3671 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Eightpigs</title><link>https://eightpigs.io/</link><description>Recent content on Eightpigs</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 28 Mar 2022 20:30:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/index.xml" rel="self" type="application/rss+xml"/><item><title>迁移 Gitea 到 Gitea-rootless</title><link>https://eightpigs.io/2022/03/28/migrate_gitea_to_rootless/</link><pubDate>Mon, 28 Mar 2022 20:30:00 +0800</pubDate><guid>https://eightpigs.io/2022/03/28/migrate_gitea_to_rootless/</guid><description>最近重新配置过一遍 Homelab 环境（PVE、NFS、Kubernetes），粗略检查各个自建服务的 Web 访问后迁移工作就告一段落了。直到今天提交代码到 Gitea 时</description></item><item><title>PVE 直通网卡</title><link>https://eightpigs.io/2022/03/20/pve_passthrough_network/</link><pubDate>Sun, 20 Mar 2022 10:30:00 +0800</pubDate><guid>https://eightpigs.io/2022/03/20/pve_passthrough_network/</guid><description>今天梳理并重新配置了一遍机器及虚拟机，对 Supermicro X10DRL-i 主板的2个可用网口进行了调整：从原来直通给 Dev（开发环境虚拟机），更换到直通给 TrueNAS，</description></item><item><title>K3s 上手 - NFS 存储配置</title><link>https://eightpigs.io/2021/08/27/k3s_use_nfs/</link><pubDate>Fri, 27 Aug 2021 16:30:00 +0800</pubDate><guid>https://eightpigs.io/2021/08/27/k3s_use_nfs/</guid><description>在上一篇文章《K3s 上手 - 集群搭建》 我有提到容器的所有数据存储均使用 NFS：在我的 TrueNAS 有一块 1T SSD 作为容器数据的专用硬盘，并通过 NFS 共享给 K3s。</description></item><item><title>K3s 上手 - 集群搭建</title><link>https://eightpigs.io/2021/07/06/using_k3s/</link><pubDate>Tue, 06 Jul 2021 12:30:00 +0800</pubDate><guid>https://eightpigs.io/2021/07/06/using_k3s/</guid><description>在《PVE 中虚拟化万兆网卡》中我有提到自己攒了台双路的机器放在家里，长期以来作为我远程的 Power 机器，在上面用 Docker-Compose 跑我的各种服务。从攒好机器到现在，</description></item><item><title>PVE 中虚拟化万兆网卡</title><link>https://eightpigs.io/2021/07/05/pve_10g_nic/</link><pubDate>Mon, 05 Jul 2021 12:30:00 +0800</pubDate><guid>https://eightpigs.io/2021/07/05/pve_10g_nic/</guid><description>去年自己攒了一台 E5 2680v4 * 2, 16G RECC * 8 的机器，一开始主要作为远程开发机 &amp;amp; Docker-Compose。 最近跑 k3s 集群并把 Docker-Compose 的服务迁到 k3s 上，于是重新规</description></item><item><title>Gitlab API 自动拉取有权限的所有仓库</title><link>https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/</link><pubDate>Thu, 10 Jun 2021 18:37:00 +0800</pubDate><guid>https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/</guid><description>Gitlab 提供了完善的 HTTP API 来获取分组、项目信息。 API 信息 获取分组: GET /api/v4/groups 文档 获取分组下的项目: GET /api/v4/groups/:id/projects 文档 依赖 jq: 安装jq 脚本 获取分组列表 依次获取每个分组下的</description></item><item><title>选购钻石的基本知识</title><link>https://eightpigs.io/2020/10/17/diamond/</link><pubDate>Sat, 17 Oct 2020 10:00:00 +0800</pubDate><guid>https://eightpigs.io/2020/10/17/diamond/</guid><description>一直以来我都有买东西看详细参数的习惯，最近开始选购钻戒，所以就学习并记录了选择钻石的基本知识，当然了，品质很重要，钱包更重要，买钻戒怕是没法</description></item><item><title>两人一机的搭建方案</title><link>https://eightpigs.io/2019/12/15/two_people_use_one_machine/</link><pubDate>Sun, 15 Dec 2019 14:30:00 +0800</pubDate><guid>https://eightpigs.io/2019/12/15/two_people_use_one_machine/</guid><description>动机 家里的台式机装了双系统: Windows / Archlinux，使用rEFInd在开机时选择要启动的系统。因笔记本长时间放公司且女友总占用电脑，遂萌生了</description></item><item><title>简单谈谈VIM设计的优点</title><link>https://eightpigs.io/2019/03/12/vim_vim_vim/</link><pubDate>Tue, 12 Mar 2019 23:00:00 +0000</pubDate><guid>https://eightpigs.io/2019/03/12/vim_vim_vim/</guid><description>我接触VIM的时间较短，从正式学习到现在也就一年半不到的时间，期间我将所有使用到的编辑器、IDE的键位都修改为了VIM模式，这对我快速掌握V</description></item><item><title>常见的统一标识符算法（UUID、NUID、Snowflake）</title><link>https://eightpigs.io/2019/02/28/unique_identifier/</link><pubDate>Thu, 28 Feb 2019 20:52:00 +0000</pubDate><guid>https://eightpigs.io/2019/02/28/unique_identifier/</guid><description>在日常开发过程中，肯定少不了接触“统一标识符”，一般我们都直接使用各个语言标准库中的实现，例如在Java中可以使用java.util.UUI</description></item><item><title>关于</title><link>https://eightpigs.io/pages/about/</link><pubDate>Thu, 28 Feb 2019 20:52:00 +0800</pubDate><guid>https://eightpigs.io/pages/about/</guid><description>本博客基于 Hugo 搭建，主题是参考 hexo-theme-cactus 自己实现的 hugo-clean。 本博客不提供评论，可以通过发送邮件与我交流。 爱好 跑步 音乐 骑行（太久不骑了） 编程</description></item><item><title>使用Drone进行持续集成</title><link>https://eightpigs.io/2019/02/23/upgrade_drone/</link><pubDate>Sat, 23 Feb 2019 17:48:00 +0000</pubDate><guid>https://eightpigs.io/2019/02/23/upgrade_drone/</guid><description>介绍 Drone is a Container-Native, Continuous Delivery Platform. Drone 是一个基于容器的持续交付平台。 工作原理 通过Web Hook接受相关事件（推送、创建分支、合并请求等&amp;hellip;) 读取并</description></item><item><title>排序算法 - 选择、冒泡、插入、快排、希尔、归并、堆</title><link>https://eightpigs.io/2019/02/23/sort_algorithm/</link><pubDate>Sat, 23 Feb 2019 13:38:00 +0000</pubDate><guid>https://eightpigs.io/2019/02/23/sort_algorithm/</guid><description>&lt;p>在编码过程中肯定少不了对数据进行排序，通常做法是使用标准库的实现、使用熟悉的排序算法或直接网上扒一个排序算法，然而却对排序算法的特点和适应场景了解得非常少。本文将从代码实现和不同量级数据的测试两个角度来说说各个排序算法。&lt;/p></description></item><item><title>JAVA 虚拟机栈</title><link>https://eightpigs.io/2018/08/10/java_virtual_machine_stack/</link><pubDate>Fri, 10 Aug 2018 21:21:00 +0000</pubDate><guid>https://eightpigs.io/2018/08/10/java_virtual_machine_stack/</guid><description>概念 JVM 虚拟机栈与程序计数器和[本地方法栈]一样都是线程私有的。 栈帧可以理解为一个方法的运行空间 栈帧（Stack Frame） 栈帧是用于支持虚拟</description></item><item><title>自建家用NAS记录 - 硬件篇</title><link>https://eightpigs.io/2018/08/10/create_yourself_nas/</link><pubDate>Fri, 10 Aug 2018 21:21:00 +0000</pubDate><guid>https://eightpigs.io/2018/08/10/create_yourself_nas/</guid><description>缘由 NAS是种草很久了，迟迟没下手的原因是还差一根“稻草”。终于最近自己乞丐版的 MBP 15 用起来硬盘有些吃紧&amp;hellip; 作用 文档存储 下载机 TimeMachine 准</description></item><item><title>在 MacOS 和 Windows 上的效率工具</title><link>https://eightpigs.io/2018/04/20/efficiency_tools_on_macos_and_windows/</link><pubDate>Fri, 20 Apr 2018 10:14:00 +0000</pubDate><guid>https://eightpigs.io/2018/04/20/efficiency_tools_on_macos_and_windows/</guid><description>终端模拟器 Windows Cmder WSL Hyper(Electron) MacOS Iterm2 + zsh(oh-my-zsh) Hyper(Electron) 查找 Windows Everything MacOS Alfred Shell Command 快速启动 Windows Listary (可以配合EveryThing） Wox（插件多） MacOS Alfred 快捷键（自动化） Windows AHK （AutoH</description></item><item><title>腾讯视频客户端（MacOS）缓存文件合成/导出</title><link>https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/</link><pubDate>Sat, 14 Apr 2018 13:02:00 +0000</pubDate><guid>https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/</guid><description>年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有 TV 版的缘故，其他版本没有给开放投屏</description></item><item><title>Groovy 基础 - 语法</title><link>https://eightpigs.io/2018/04/12/groovy-grammar/</link><pubDate>Thu, 12 Apr 2018 23:04:00 +0000</pubDate><guid>https://eightpigs.io/2018/04/12/groovy-grammar/</guid><description>介绍 Groovy&amp;hellip; is an agile and dynamic language for the Java Virtual Machine builds upon the strengths of Java but has additional power features inspired by languages like Python, Ruby and Smalltalk makes modern programming features available to Java developers with almost-zero learning curve provides the ability to statically type check and statically compile your code for robustness and performance supports Domain-Specific Languages and other compact syntax so your</description></item><item><title>Go语言学习 - 复合数据类型：数组、slice</title><link>https://eightpigs.io/2018/03/19/go_notes_array_and_slice/</link><pubDate>Mon, 19 Mar 2018 14:26:00 +0000</pubDate><guid>https://eightpigs.io/2018/03/19/go_notes_array_and_slice/</guid><description>复合数据类型 主要分为4种复合数据类型： 数组 slice map 结构体 本次先将数组和slice的相关知识点及理解记录下来，后续再慢慢看Map和结构体。 数组 数组</description></item><item><title>Go学习笔记 - 基本结构</title><link>https://eightpigs.io/2018/02/10/go_notes_basic_structure/</link><pubDate>Sat, 10 Feb 2018 17:15:00 +0000</pubDate><guid>https://eightpigs.io/2018/02/10/go_notes_basic_structure/</guid><description>基本结构 package main import &amp;quot;fmt&amp;quot; // 变量 // 函数 func main(){ fmt.Println(&amp;quot;Hello Go&amp;quot;) } 每一个.go的文件以package声明开头，表名文件属于哪个包 package 声明后面是import声明 然后是包级别</description></item><item><title>Vim 基础使用</title><link>https://eightpigs.io/2018/02/04/vim_basic/</link><pubDate>Sun, 04 Feb 2018 13:29:00 +0000</pubDate><guid>https://eightpigs.io/2018/02/04/vim_basic/</guid><description>接触 Vim 快一个月了，喜欢上了 Vim 多模式操作的特性。 在艰难地适应 Vim 后（其他开发工具使用插件模拟 Vim 键位），效率有明显的提高。 Vim 快捷键文字版 Vim 快捷键图</description></item><item><title>Spring Colud 之 统一配置中心</title><link>https://eightpigs.io/2017/12/29/spring_cloud_config_server/</link><pubDate>Fri, 29 Dec 2017 19:40:00 +0000</pubDate><guid>https://eightpigs.io/2017/12/29/spring_cloud_config_server/</guid><description>在我们Java项目开发过程中，对于配置文件的多环境配置一般会采用以下方案： 使用maven等构建工具基于resources自定义多环境 使用市面</description></item><item><title>centos 编译安装mysql 5.6</title><link>https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/</link><pubDate>Fri, 05 Feb 2016 11:55:00 +0000</pubDate><guid>https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/</guid><description>1. 检测mysql rpm -qa | grep mysql 如果有的话 , 执行以下命令卸载 rpm -e mysql //普通删除模式 rpm -e --nodeps mysql // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它</description></item><item><title>C# 写的 Windows 下快捷管理VPN工具</title><link>https://eightpigs.io/2015/07/23/windows_vpn_tools_by_csharp/</link><pubDate>Thu, 23 Jul 2015 06:14:00 +0000</pubDate><guid>https://eightpigs.io/2015/07/23/windows_vpn_tools_by_csharp/</guid><description>简介 使用 C# 写的 Windows 下快捷管理 VPN 工具，可以实现对本地 VPN 的增加,修改,删除管理 原理 Windows 有自带的连接管理工具 rasphone ,可以实现对链接进行新建/修改/连接/删</description></item><item><title>豆瓣FM第三方客户端</title><link>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</link><pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate><guid>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</guid><description>&lt;h2 id="更新说明">更新说明&lt;/h2>
-&lt;p>2018-03-15：该代码在14年下半年完成，所以略丑陋。已经转网易云音乐多年了，如果有人在使用本客户端或想使用，可以给我提issues，会花时间重构代码。&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Eightpigs</title><link>https://eightpigs.io/</link><description>Recent content on Eightpigs</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 28 Mar 2022 20:30:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/index.xml" rel="self" type="application/rss+xml"/><item><title>迁移 Gitea 到 Gitea-rootless</title><link>https://eightpigs.io/2022/03/28/migrate_gitea_to_rootless/</link><pubDate>Mon, 28 Mar 2022 20:30:00 +0800</pubDate><guid>https://eightpigs.io/2022/03/28/migrate_gitea_to_rootless/</guid><description>&lt;p>最近重新配置过一遍 Homelab 环境（PVE、NFS、Kubernetes），粗略检查各个自建服务的 Web 访问后迁移工作就告一段落了。直到今天提交代码到 Gitea 时出现 SSH 无法访问，排查后得知是因为无权限读取 keys 导致 SSH 服务启动失败：&lt;/p>
+&lt;pre>&lt;code class="language-log">$ kubectl logs -f -n selfhosts deploy/gitea
+chown: /data/ssh/ssh_host_dsa_key: Operation not permitted
+chown: /data/ssh/ssh_host_dsa_key.pub: Operation not permitted
+...
+Unable to load host key: /data/ssh/ssh_host_ed25519_key
+Unable to load host key: /data/ssh/ssh_host_dsa_key
+sshd: no hostkeys available -- exiting.
+&lt;/code>&lt;/pre>
+&lt;p>查看 &lt;code>/data/ssh/&lt;/code> 目录后发现里面 key 的所有者都是 root，直接改为 1000:1000 是无效的，因为容器中进程是默认以 root 权限运行的，并且在 Gitea 源码 &lt;a href="https://github.com/go-gitea/gitea/blob/d4c789dfc1c341413b77a2f21fe7339982102bed/docker/root/etc/s6/openssh/setup#L57">docker/root/etc/s6/openssh/setup#L57&lt;/a> 显式将 &lt;code>/data/ssh/&lt;/code> 设置为所有者设置为 root: &lt;code>chown root:root /data/ssh/*&lt;/code>。&lt;/p>
+&lt;p>本想着先简单将权限问题解决好就行，但想着 Gitea 有 rootless 的镜像，之前迟迟犯懒不肯更换，正好借着本次机会做个迁移。&lt;/p>
+&lt;h2 id="备份">备份&lt;/h2>
+&lt;p>做任何迁移前肯定少不了都原数据的备份， Gitea 主要备份步骤为：&lt;/p>
+&lt;ol>
+&lt;li>导出数据库SQL&lt;/li>
+&lt;li>备份 NFS 挂载的 /data/ 目录&lt;/li>
+&lt;/ol>
+&lt;p>具体备份操作就不一一展开了，数据库可以运行个 mysql-client 进去 dump 出来，/data/ 目录可以打个包或者创建个 Snapshot。&lt;/p>
+&lt;h2 id="迁移">迁移&lt;/h2>
+&lt;p>思路很简单：相关目录和端口普通用户有权限管理。&lt;/p>
+&lt;p>官方文档中有关于 &lt;a href="https://docs.gitea.io/en-us/install-with-docker-rootless/#upgrading-from-standard-image">从标准镜像迁移到 rootless 镜像的步骤&lt;/a>，主要变更为:&lt;/p>
+&lt;ul>
+&lt;li>镜像
+&lt;ul>
+&lt;li>gitea/gitea:latest -&amp;gt; gitea/gitea:latest-rootless&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>目录结构
+&lt;ul>
+&lt;li>/data/ -&amp;gt; /var/lib/gitea&lt;/li>
+&lt;li>/data/gitea -&amp;gt; /var/lib/gitea/custom&lt;/li>
+&lt;li>/data/gitea/conf/app.ini -&amp;gt; /etc/gitea/app.ini&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>使用内置的 SSH
+&lt;ul>
+&lt;li>START_SSH_SERVER = true&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>先贴出本次迁移 pod-gitea.yaml 的变更：&lt;/p>
+&lt;pre>&lt;code class="language-diff">diff --git a/selfhosts/gitea/pod-gitea.yaml b/selfhosts/gitea/pod-gitea.yaml
+index 380636f..112bdae 100644
+--- a/selfhosts/gitea/pod-gitea.yaml
++++ b/selfhosts/gitea/pod-gitea.yaml
+@@ -13,7 +13,7 @@ spec:
+kind: Rule
+services:
+- name: gitea-ssh
+- port: 22
++ port: 2222
+weight: 10
+terminationDelay: 400
+@@ -85,8 +85,8 @@ spec:
+ports:
+- name: gitea-ssh
+protocol: TCP
+- port: 22
+- targetPort: 22
++ port: 2222
++ targetPort: 2222
+---
+@@ -111,17 +111,19 @@ spec:
+spec:
+containers:
+- name: gitea
+- image: gitea/gitea:latest
++ image: gitea/gitea:latest-rootless
+ports:
+- name: gitea-web
+containerPort: 3000
+protocol: TCP
+- name: gitea-ssh
+- containerPort: 22
++ containerPort: 2222
+protocol: TCP
+volumeMounts:
+- name: nfs
+- mountPath: /data
++ mountPath: /var/lib/gitea
++ - name: nfs
++ mountPath: /etc/gitea
+volumes:
+- name: nfs
+persistentVolumeClaim:
+&lt;/code>&lt;/pre>
+&lt;h3 id="目录结构调整">目录结构调整&lt;/h3>
+&lt;p>先根据官方文档的描述，将原来卷中的 gitea 目录更名为 custom。&lt;/p>
+&lt;p>rootless 镜像将配置文件和数据目录拆分到了两个卷，由于我的数据目录是走 NFS，并且是一个 PVC，虽然可以按正常步骤再单独创建一个 PVC 并挂载来实现，但我还是想将 Gitea 的数据按原来一个 PVC 方式管理（nfs-provisioner 的 配置为: &lt;code>storageClass.pathPattern=&amp;quot;\${.PVC.namespace}/\${.PVC.name}&amp;quot;&lt;/code>），于是就对配置文件目录做了个调整：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>将原来卷中 /gitea/conf/app.ini 复制到 gitea 同级目录：保证配置在 NFS 挂载的根目录&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>使用一个 PVC，挂载两次：保证数据和 app.ini 可以同时被读取到:&lt;/p>
+&lt;pre>&lt;code class="language-yaml">...
+spec:
+containers:
+- name: gitea
+image: gitea/gitea:latest-rootless
+volumeMounts:
+- name: nfs
+mountPath: /var/lib/gitea
+- name: nfs
+mountPath: /etc/gitea
+volumes:
+- name: nfs
+persistentVolumeClaim:
+claimName: gitea-pvc
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;/ul>
+&lt;p>修改完卷挂载后，还需要调整原配置文件 app.ini 中关于目录的相关配置项:&lt;/p>
+&lt;pre>&lt;code class="language-bash"># 直接使用正则将原来的 /data/ 目录替换为 /var/lib/gitea/
+$ vim app.ini
+:%s/\/data/\/var\/lib\/gitea/g
+&lt;/code>&lt;/pre>
+&lt;p>最后确认下 app.ini 的权限(1000:1000)，若权限不正确，会遇到以下日志：&lt;/p>
+&lt;pre>&lt;code class="language-log">2022/03/28 20:03:19 ...nvironment-to-ini.go:106:runEnvironmentToIni() [F] Failed to load custom conf '/etc/gitea/app.ini': open /etc/gitea/app.ini: permission denied
+&lt;/code>&lt;/pre>
+&lt;h3 id="端口调整">端口调整&lt;/h3>
+&lt;p>在 Linux 中 1024 以下的端口默认只能由 root 帐号使用，切换到 rootless 镜像后，原来给 gitea 配置的默认 22 端口将无法使用：&lt;/p>
+&lt;pre>&lt;code class="language-log">2022/03/28 20:15:20 ...s/graceful/server.go:61:NewServer() [I] Starting new SSH server: tcp::22 on PID: 1
+2022/03/28 20:15:20 ...s/graceful/server.go:87:ListenAndServe() [E] Unable to GetListener: listen tcp :22: bind: permission denied
+2022/03/28 20:15:20 .../ssh/ssh_graceful.go:26:listen() [F] Failed to start SSH server: listen tcp :22: bind: permission denied
+&lt;/code>&lt;/pre>
+&lt;p>需要将端口改为 &amp;gt; 1024 的端口：&lt;/p>
+&lt;pre>&lt;code class="language-yaml"># 批量将 22 端口 改为 2222 端口
+$ vim pod-gitea.yaml
+:%s/: 22/: 2222/g
+&lt;/code>&lt;/pre></description></item><item><title>PVE 直通网卡</title><link>https://eightpigs.io/2022/03/20/pve_passthrough_network/</link><pubDate>Sun, 20 Mar 2022 10:30:00 +0800</pubDate><guid>https://eightpigs.io/2022/03/20/pve_passthrough_network/</guid><description>&lt;p>今天梳理并重新配置了一遍机器及虚拟机，对 &lt;code>Supermicro X10DRL-i&lt;/code> 主板的2个可用网口进行了调整：从原来直通给 Dev（开发环境虚拟机），更换到直通给 TrueNAS，本文简单记录了定位网卡和直通的过程。&lt;/p>
+&lt;h2 id="定位网卡">定位网卡&lt;/h2>
+&lt;h3 id="确定使用中的网卡">确定使用中的网卡&lt;/h3>
+&lt;p>可以使用 &lt;code>ip&lt;/code> 命令先定位当前系统正在使用的网卡，也&lt;strong>可以直接跳过本步骤，直接使用第二步中的 &lt;a href="https://github.com/lyonel/lshw">lshw&lt;/a> 查看&lt;/strong>。&lt;/p>
+&lt;p>使用 &lt;code>ip addr&lt;/code> 命令先查看当前宿主系统正在使用的网卡，可以通过 ip: 192.168.1.3/24 直观定位网卡: vmbr0。vmbr0 是一个桥接网卡，以命名等规则来看可以直接确定出 eno1 是物理网卡，当然也可以通过 &lt;code>ip link show master vmbr0&lt;/code> 查看对应的物理网卡。&lt;/p>
+&lt;pre>&lt;code># 查看使用的网卡信息
+# 1. 直接过滤: ip addr show | grep &amp;quot;inet 192.168&amp;quot; -B 2
+# 2. 使用 jq 结构化过滤:
+root@pve:~# ip -j addr show | jq -r 'map(.addr_info) | map(map(select(.family == &amp;quot;inet&amp;quot; and .label != &amp;quot;lo&amp;quot;))) | flatten | .[]'
+{
+&amp;quot;family&amp;quot;: &amp;quot;inet&amp;quot;,
+&amp;quot;local&amp;quot;: &amp;quot;192.168.1.3&amp;quot;,
+&amp;quot;prefixlen&amp;quot;: 24,
+&amp;quot;scope&amp;quot;: &amp;quot;global&amp;quot;,
+&amp;quot;label&amp;quot;: &amp;quot;vmbr0&amp;quot;,
+&amp;quot;valid_life_time&amp;quot;: 4294967295,
+&amp;quot;preferred_life_time&amp;quot;: 4294967295
+}
+...
+# 确定 vmbr0 对应的物理网卡
+# 1. 使用 awk 匹配: ip link show master vmbr0 | awk -F ' ' '{print $2}' | head -n 1
+# 2. 使用 jq 结构化过滤:
+root@pve:~# ip -j link show master vmbr0 | jq -r 'map(.)[0].ifname'
+eno1
+&lt;/code>&lt;/pre>
+&lt;h3 id="确定网卡所属设备id">确定网卡所属设备ID&lt;/h3>
+&lt;p>&lt;a href="https://github.com/lyonel/lshw">lshw&lt;/a> 是一个方便查看硬件配置的工具，可以通过该工具快速定位网卡使用的具体PCI ID，PVE 7.1 版本未默认携带，需自行安装:&lt;/p>
+&lt;pre>&lt;code class="language-bash">root@pve:~# apt install lshw -y
+&lt;/code>&lt;/pre>
+&lt;p>使用 lshw 查看网卡相关的硬件信息:&lt;/p>
+&lt;pre>&lt;code class="language-bash">root@pve:~# lshw -class network
+*-network
+description: Ethernet interface
+product: I210 Gigabit Network Connection
+vendor: Intel Corporation
+physical id: 0
+bus info: pci@0000:09:00.0
+logical name: eno1
+...
+*-network
+description: Ethernet controller
+product: I210 Gigabit Network Connection
+vendor: Intel Corporation
+physical id: 0
+bus info: pci@0000:0a:00.0
+...
+*-network:0
+description: Ethernet interface
+physical id: 3
+logical name: vmbr0
+...
+....
+&lt;/code>&lt;/pre>
+&lt;p>存在两张网卡：&lt;code>pci@0000:09:00.0&lt;/code> 和 &lt;code>pci@0000:0a:00.0&lt;/code>，通过查看 &lt;code>logical name&lt;/code> 和 &lt;code>bus info&lt;/code> 可以确定宿主正在使用的 eno1 对应的网卡 PCI ID 为: &lt;code>0000:09:00.0&lt;/code>。&lt;/p>
+&lt;h2 id="直通到虚拟机">直通到虚拟机&lt;/h2>
+&lt;p>若之前配置支持热插拔网卡则可以不关闭虚拟机直接给添加网卡，可以通过: Options - Hotplug - Network 查看是否开启了网卡热插拔。若未开启，可以先关闭虚拟机。&lt;/p>
+&lt;p>在PVE WEB UI 中直通 &lt;code>pci@0000:0a:00.0&lt;/code> 给虚拟机：&lt;/p>
+&lt;ol>
+&lt;li>指定虚拟机&lt;/li>
+&lt;li>Hardware&lt;/li>
+&lt;li>Add&lt;/li>
+&lt;li>PCI Device&lt;/li>
+&lt;li>找到 pci@0000:0a:00.0，并添加。&lt;/li>
+&lt;/ol>
+&lt;p>添加完成后，重启进入虚拟机也可以通过 &lt;code>lshw -class network&lt;/code> 查看每张网卡的使用情况。&lt;/p></description></item><item><title>K3s 上手 - NFS 存储配置</title><link>https://eightpigs.io/2021/08/27/k3s_use_nfs/</link><pubDate>Fri, 27 Aug 2021 16:30:00 +0800</pubDate><guid>https://eightpigs.io/2021/08/27/k3s_use_nfs/</guid><description>&lt;p>在上一篇文章&lt;a href="https://eightpigs.io/2021/07/06/using_k3s/">《K3s 上手 - 集群搭建》&lt;/a> 我有提到容器的所有数据存储均使用 NFS：在我的 TrueNAS 有一块 1T SSD 作为容器数据的专用硬盘，并通过 NFS 共享给 K3s。本文分享下 TrueNAS 的配置及 K3s 使用 NFS 的方式。&lt;/p>
+&lt;h2 id="创建-nfs-服务">创建 NFS 服务&lt;/h2>
+&lt;p>在 TrueNAS 创建 NFS 服务时，需要注意下权限配置，主要有两个方式：&lt;/p>
+&lt;ol>
+&lt;li>添加一个专属用户&lt;/li>
+&lt;li>使用 ACL 设置 Everyone Read/Write&lt;/li>
+&lt;/ol>
+&lt;h3 id="方式一专属用户方式">方式一：专属用户方式&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>创建 uid: 1000 和 gid: 1000 的用户，以对应大部分容器默认的 uid:gid&lt;/strong>&lt;/p>
+&lt;p>&lt;code>操作路径: Accounts - Groups &amp;amp; Users&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>为 K3s 的 Pool 设置 1000:1000 对应的用户和组&lt;/strong>&lt;/p>
+&lt;p>&lt;code>操作路径: Storage - Pool - 你的DataSet - Edit Permissions - Owner &amp;amp; Group&lt;/code>&lt;/p>
+&lt;p>&lt;img src="storage_k3s_permissions.jpg#thumbnail" alt="stroage_k3s_permissions">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>将 DataSet 添加到 NFS 共享&lt;/strong>&lt;/p>
+&lt;p>&lt;code>操作路径: Sharing - Unix Sharing(NFS) - Add - 选择DataSet路径 - Mapall User &amp;amp; Mapall Group 设置为 1000:1000 对应的用户和组&lt;/code>&lt;/p>
+&lt;p>&lt;img src="sharing_nfs_k3s.jpg#thumbnail" alt="sharing_nfs_k3s">&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="方式二acl-配置">方式二：ACL 配置&lt;/h3>
+&lt;p>在 Pool 中找到自己指定的 DataSet -&amp;gt; Edit Permissions，添加一个 ACL为：&lt;code>everyone &amp;amp; Allow &amp;amp; Basic &amp;amp; Full Control &amp;amp; Basic &amp;amp; Inherit&lt;/code> 的配置。
+Permissions 可以是 Full Control 也可以设置为指定的读或写权限，具体看自己这个 DataSet 分享出去的作用。&lt;/p>
+&lt;p>例如我的音乐文件夹需要映射给 Jellyfin 读/写，则可以添加一个如下配置：&lt;/p>
+&lt;p>&lt;img src="./nfs_dataset_acl.jpg#thumbnail" alt="nfs_dataset_acl">&lt;/p>
+&lt;h2 id="k3s-配置-nfs">K3s 配置 NFS&lt;/h2>
+&lt;p>在 Kubernetes 中使用 NFS 有两种方式:&lt;/p>
+&lt;ol>
+&lt;li>使用 nfs-subdir-external-provisioner&lt;/li>
+&lt;li>使用 ansible 为每个 Worker mount nfs 作为本地目录，然后 k3s 使用 local-path。&lt;/li>
+&lt;/ol>
+&lt;p>Pod 应该避免依赖宿主，能在 Kubernetes 配置的，应该都在 Kubernetes 中进行，所以建议采用第一种方案。&lt;/p>
+&lt;p>使用 helm 添加 &lt;a href="https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner/blob/master/charts/nfs-subdir-external-provisioner/README.md">nfs-subdir-external-provisioner&lt;/a> 来为集群提供 NFS 存储支持。&lt;/p>
+&lt;pre>&lt;code class="language-bash">helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+helm repo update
+helm install nfs-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
+--set nfs.server=nas \
+--set nfs.path=/mnt/ssd-doc-01/k3s \
+--set &amp;quot;nfs.mountOptions={nfsvers=4.1,rsize=1048576,wsize=1048576}&amp;quot; \
+--set storageClass.name=nfs-ssd-doc-01 \
+--set storageClass.reclaimPolicy=Delete \
+--set storageClass.accessModes=ReadWriteMany \
+--set storageClass.pathPattern=&amp;quot;\${.PVC.namespace}/\${.PVC.name}&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>&lt;code>nfs.server=nas&lt;/code>: 你的 NFS server 的地址，可以用 ansible 给所有 Worker 配置上 hosts，也可以在路由器层面绑定。&lt;/li>
+&lt;li>&lt;code>nfs.path=/mnt/ssd-doc-01/k3s&lt;/code>: 你的 NFS 服务共享的路径&lt;/li>
+&lt;li>&lt;code>nfs.mountOptions={nfsvers=4.1,rsize=1048576,wsize=1048576}&lt;/code>: NFS 挂载参数&lt;/li>
+&lt;li>&lt;code>storageClass.name=nfs-ssd-doc-01&lt;/code>: 自定义的 storageClass，定义 PVC 时使用&lt;/li>
+&lt;li>&lt;code>storageClass.reclaimPolicy=Delete&lt;/code>: 回收废弃卷的方式，默认为 Delete&lt;/li>
+&lt;li>&lt;code>storageClass.accessModes=ReadWriteMany&lt;/code>: PV 的访问方式&lt;/li>
+&lt;li>&lt;code>storageClass.pathPattern=&amp;quot;\${.PVC.namespace}/\${.PVC.name}&amp;quot;&lt;/code>: 在 NFS 使用时创建路径的规则&lt;/li>
+&lt;/ul>
+&lt;p>执行完成后，可以通过 &lt;code>kubectl get storageclasses.storage.k8s.io&lt;/code> 查看目前支持的 PROVISIONER&lt;/p>
+&lt;pre>&lt;code>~ &amp;gt; kubectl get storageclasses.storage.k8s.io
+NAME PROVISIONER RECLAIMPOLICY VOLUMEBINDINGMODE ALLOWVOLUMEEXPANSION AGE
+local-path (default) rancher.io/local-path Delete WaitForFirstConsumer false 46d
+nfs-ssd-doc-01 cluster.local/nfs-provisioner-nfs-subdir-external-provisioner Delete Immediate true 3d19h
+&lt;/code>&lt;/pre>
+&lt;h2 id="使用-nfs">使用 NFS&lt;/h2>
+&lt;p>例如 Gitea 服务，需要使用 NFS 做存储，可以如下定义:&lt;/p>
+&lt;pre>&lt;code># gitea-pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+name: gitea-pvc
+namespace: selfhosts
+spec:
+accessModes:
+- ReadWriteMany
+storageClassName: nfs-ssd-doc-01 # 上一步定义的 storageClass
+resources:
+requests:
+storage: 80Gi
+---
+# pod-gitea.yaml
+...
+spec:
+containers:
+- name: gitea
+image: gitea/gitea:latest
+...
+volumeMounts:
+- name: nfs
+mountPath: /data
+volumes:
+- name: nfs
+persistentVolumeClaim:
+claimName: gitea-pvc
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-bash"># 查看pvc
+$ → kubectl get pvc -n selfhosts
+NAME STATUS VOLUME CAPACITY ACCESS MODES STORAGECLASS AGE
+gitea-pvc Bound pvc-ad30480c-45db-49bf-b3fa-4e730a5bf189 80Gi RWX nfs-ssd-doc-01 46h
+&lt;/code>&lt;/pre></description></item><item><title>K3s 上手 - 集群搭建</title><link>https://eightpigs.io/2021/07/06/using_k3s/</link><pubDate>Tue, 06 Jul 2021 12:30:00 +0800</pubDate><guid>https://eightpigs.io/2021/07/06/using_k3s/</guid><description>&lt;p>在&lt;a href="https://eightpigs.io/2021/07/05/pve_10g_nic/">《PVE 中虚拟化万兆网卡》&lt;/a>中我有提到自己攒了台双路的机器放在家里，长期以来作为我远程的 Power 机器，在上面用 Docker-Compose 跑我的各种服务。从攒好机器到现在，反复多次搭建 Kubernetes，最终都放弃了：&lt;strong>上手成本的确高&lt;/strong>。&lt;/p>
+&lt;blockquote>
+&lt;p>是否要用 Kubernetes 取代 Docker-Compose ?&lt;/p>
+&lt;/blockquote>
+&lt;p>从理性的角度来说，Docker-Compose 完全胜任，简单，好用，完全没必要。然而在 Kubernetes 大行其道的今天，感性方面告诉我一定要跟着大家上高端的 Kubernetes&amp;hellip;&lt;/p>
+&lt;p>最近有又冒出了想用 Kubernetes 的想法，在几经犹豫之后，最终决定本次一定不能中途放弃！！！为了减少搭建复杂度和资源的占用，本次选择了&lt;a href="https://k3s.io/">K3s&lt;/a>。&lt;/p>
+&lt;blockquote>
+&lt;p>The certified Kubernetes distribution built for IoT &amp;amp; Edge computing.&lt;/p>
+&lt;/blockquote>
+&lt;p>K3s 是一个 Kubernetes 认证的发行版，可以理解为一个轻量级的 K8s，K3s 的架构如下:&lt;/p>
+&lt;p>&lt;img src="./how-it-works-k3s.svg" alt="Hot it works - k3s">&lt;/p>
+&lt;h2 id="集群规划">集群规划&lt;/h2>
+&lt;p>集群规划有两点需要考虑：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>是否要上HA&lt;/strong>：不需要，所有 VM 都通过 PVE 跑在一台物理机上，没必要上 HA。&lt;/li>
+&lt;li>&lt;strong>数据如何存储&lt;/strong>：各节点的所有数据均通过 NFS 存储到 NAS 中，每个节点仅提供操作系统必须的磁盘空间即可。&lt;/li>
+&lt;/ol>
+&lt;p>我的规划中，共4个节点，每个节点相同配置：4C 8G，细节如下：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">HostName&lt;/th>
+&lt;th style="text-align:center">CPU&lt;/th>
+&lt;th style="text-align:center">Memory&lt;/th>
+&lt;th style="text-align:center">Disk&lt;/th>
+&lt;th style="text-align:center">OS&lt;/th>
+&lt;th style="text-align:center">IP&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">k3s-server&lt;/td>
+&lt;td style="text-align:center">4&lt;/td>
+&lt;td style="text-align:center">8G&lt;/td>
+&lt;td style="text-align:center">5G&lt;/td>
+&lt;td style="text-align:center">Debian 10 (5.10.40-1~bpo10+1)&lt;/td>
+&lt;td style="text-align:center">192.168.2.21&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">k3s-worker-01&lt;/td>
+&lt;td style="text-align:center">4&lt;/td>
+&lt;td style="text-align:center">8G&lt;/td>
+&lt;td style="text-align:center">5G&lt;/td>
+&lt;td style="text-align:center">Debian 10 (5.10.40-1~bpo10+1)&lt;/td>
+&lt;td style="text-align:center">192.168.2.22&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">k3s-worker-02&lt;/td>
+&lt;td style="text-align:center">4&lt;/td>
+&lt;td style="text-align:center">8G&lt;/td>
+&lt;td style="text-align:center">5G&lt;/td>
+&lt;td style="text-align:center">Debian 10 (5.10.40-1~bpo10+1)&lt;/td>
+&lt;td style="text-align:center">192.168.2.23&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">k3s-worker-03&lt;/td>
+&lt;td style="text-align:center">4&lt;/td>
+&lt;td style="text-align:center">8G&lt;/td>
+&lt;td style="text-align:center">5G&lt;/td>
+&lt;td style="text-align:center">Debian 10 (5.10.40-1~bpo10+1)&lt;/td>
+&lt;td style="text-align:center">192.168.2.24&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="前期准备">前期准备&lt;/h2>
+&lt;h3 id="节点间互相访问">节点间互相访问&lt;/h3>
+&lt;p>以下为 k3s-server 的配置，其他 worker 节点同理，手动配置略麻烦，有兴趣的可以使用 ansible 批量操作。&lt;/p>
+&lt;pre>&lt;code class="language-shell">k3s-server # cat /etc/hosts
+...
+192.168.2.6 nas # 我自建的NAS
+192.168.2.22 k3s-worker-01
+192.168.2.23 k3s-worker-02
+192.168.2.24 k3s-worker-03
+...
+&lt;/code>&lt;/pre>
+&lt;h3 id="能顺畅访问-docker-hub-gcrio-k8s-gcrio">能顺畅访问 docker-hub, gcr.io, k8s-gcr.io&lt;/h3>
+&lt;p>网络问题真的令人头疼，虽然 K3s 跑起来很简单，但避免不了后续需要从以上几个 Registry 中拉取镜像，所以建议第一步先
+自建一个统一的代理，可以使用我整理的一键安装脚本，详见: &lt;a href="https://github.com/eightpigs/proxy_registry_k3s">registry on k3s&lt;/a>&lt;/p>
+&lt;p>以下为该安装脚本的使用步骤：&lt;/p>
+&lt;blockquote>
+&lt;ol>
+&lt;li>
+&lt;p>拥有一台可以访问 gcr.io, k8s-gcr.io&amp;hellip; 并且有公网 IP 的机器&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>在机器上拉取本仓库: &lt;code>git clone https://github.com/eightpigs/proxy_registry_k3s&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>根据代理情况修改 &lt;code>run.sh&lt;/code> 的前几行配置，默认创建 hub.docker.io, gcr.io, k8s-gcr.io 3个代理&lt;/p>
+&lt;p>如果要代理 &lt;strong>hub.docker.io&lt;/strong> 请自行更换以下信息:&lt;/p>
+&lt;ul>
+&lt;li>UserName : &lt;code>pod-hub-registry.yaml:72&lt;/code>&lt;/li>
+&lt;li>Password: &lt;code>pod-hub-registry.yaml:74&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>运行: &lt;code>./run.sh&lt;/code>，运行结束后会有如下输出表示相关仓库配置成功:&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;pre>&lt;code class="language-shell">hub-k3s.io =&amp;gt; HTTP/1.1 200 OK
+gcr-k3s.io =&amp;gt; HTTP/1.1 200 OK
+k8s-gcr-k3s.io =&amp;gt; HTTP/1.1 200 OK
+&lt;/code>&lt;/pre>
+&lt;ol start="5">
+&lt;li>
+&lt;p>使用 ansible 对自有 K3s 集群的所有节点配置代理&lt;/p>
+&lt;ul>
+&lt;li>记得在 &lt;code>$ANSIBLE_INVENTORY&lt;/code> 中配置 k3s 相关 hosts&lt;/li>
+&lt;li>运行过程中，会询问 第一步 服务器的公网IP，填入即可&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;pre>&lt;code class="language-shell">ansible-playbook ansible-add-registry.yaml -K
+&lt;/code>&lt;/pre>
+&lt;ol start="6">
+&lt;li>&lt;strong>Enjoy it&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;/blockquote>
+&lt;h2 id="搭建-k3s-单-master-集群">搭建 K3s 单 Master 集群&lt;/h2>
+&lt;p>相比使用 kubeadm 搭建 K8s 集群的复杂度而言，K3s 集群搭建是真的简单，仅一行命令:&lt;/p>
+&lt;pre>&lt;code class="language-shell"># 创建 server
+k3s-server # curl -sfL https://get.k3s.io | sh -
+# 运行 worker 并加入 集群
+k3s-workers # curl -sfL https://get.k3s.io | K3S_URL=https://k3s-server:6443 K3S_TOKEN=mynodetoken sh -
+&lt;/code>&lt;/pre>
+&lt;p>看起来如此简单，但当我将集群配置好开始运行 Pod 时，不同节点的 Pod 无论如何也不能互相访问，困扰了我好几天，最终我选择放弃研究（开始萌生退意了），打算不再使用官方的一键安装脚本，转而手动安装并使用 Wireguard 来做 flannel-backend。&lt;/p>
+&lt;blockquote>
+&lt;p>由于安装脚本较长，限于篇幅，可以在此 Github 仓库查看整理好的 Playbook，详见: &lt;a href="https://github.com/eightpigs/k3s-ansible-playbooks">k3s-ansible-playbooks&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>K3s 运行仅需要一个编译好的单文件，所以手动搭建过程主要分为2步:&lt;/p>
+&lt;ol>
+&lt;li>下载 k3s 二进制文件 &amp;amp;&amp;amp; 安装 Wireguard&lt;/li>
+&lt;li>配置 Systemd&lt;/li>
+&lt;/ol>
+&lt;pre>&lt;code class="language-yaml"># 下载 k3s 二进制文件 &amp;amp;&amp;amp; 安装 Wireguard
+- hosts: k3s
+remote_user: dev
+become: yes
+gather_facts: False
+tasks:
+- set_fact:
+k3s_version: &amp;quot;v1.21.2+k3s1&amp;quot;
+ip_link: ens18
+- name: Output K3s Version
+debug: msg=&amp;quot;{{ k3s_version }}&amp;quot;
+when: k3s_version is defined
+- name: Download K3s
+shell: |
+ls /usr/local/bin/k3s &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 || wget &amp;quot;https://github.com/k3s-io/k3s/releases/download/{{ k3s_version }}/k3s&amp;quot; -O /usr/local/bin/k3s
+chmod +x /usr/local/bin/k3s
+when: k3s_version is defined
+- name: Install Wireguard
+shell: |
+which wg &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 || apt install wireguard -y
+&lt;/code>&lt;/pre>
+&lt;p>以下仅是 k3s-server，k3s-workers 安装详见 Github 仓库: &lt;a href="https://github.com/eightpigs/k3s-ansible-playbooks">k3s-ansible-playbooks&lt;/a>&lt;/p>
+&lt;pre>&lt;code class="language-yaml"># 配置 k3s-server Systemd
+- hosts: k3s-master
+remote_user: dev
+become: yes
+gather_facts: False
+tasks:
+- name: Check K3s Server Installed
+shell: ls /etc/systemd/system/k3s.service &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 &amp;amp;&amp;amp; echo 1 || echo 0
+register: server_installed
+- name: Get IP
+shell: ip addr show {{ ip_link }} | grep inet | head -n 1 | awk '{print $2}' | sed -e 's/\/[0-9]\+//g'
+register: ip_addr
+- name: Output IP Addr
+debug: msg=&amp;quot;IP {{ ip_addr.stdout }}; Installed {{ server_installed.stdout }}&amp;quot;
+when: ip_addr is defined and ip_addr.rc == 0
+- name: Create K3s.service.env
+command: touch /etc/systemd/system/k3s.service.env
+when: server_installed is defined and server_installed.stdout == '0'
+- name: Create K3s Server System Unit
+when: ip_addr is defined and ip_addr.rc == 0 and server_installed is defined and server_installed.stdout == '0'
+shell: |
+cat &amp;gt; /etc/systemd/system/k3s.service &amp;lt;&amp;lt;EOF
+[Unit]
+Description=Lightweight Kubernetes
+Documentation=https://k3s.io
+Wants=network-online.target
+[Install]
+WantedBy=multi-user.target
+[Service]
+Type=notify
+EnvironmentFile=/etc/systemd/system/k3s.service.env
+KillMode=process
+Delegate=yes
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=1048576
+LimitNPROC=infinity
+LimitCORE=infinity
+TasksMax=infinity
+TimeoutStartSec=0
+Restart=always
+RestartSec=5s
+ExecStartPre=-/sbin/modprobe br_netfilter
+ExecStartPre=-/sbin/modprobe overlay
+ExecStart=/usr/local/bin/k3s \
+server \
+--tls-san {{ ip_addr.stdout }} \
+--node-ip {{ ip_addr.stdout }} \
+--node-external-ip {{ ip_addr.stdout }} \
+--no-deploy servicelb \
+--write-kubeconfig-mode=644 \
+--flannel-backend wireguard \
+--kube-proxy-arg &amp;quot;proxy-mode=ipvs&amp;quot; &amp;quot;masquerade-all=true&amp;quot; \
+--kube-proxy-arg &amp;quot;metrics-bind-address=0.0.0.0&amp;quot;
+EOF
+- name: Enable K3s Systemed
+command: systemctl enable k3s --now
+when: server_installed is defined and server_installed.stdout == '0'
+- name: get server token
+command: cat /var/lib/rancher/k3s/server/node-token
+register: server_token
+- name: output server token
+debug: msg=&amp;quot;{{ server_token.stdout }}&amp;quot;
+when: server_token is defined and server_token.rc == 0
+&lt;/code>&lt;/pre>
+&lt;p>安装完成后，可以使用 &lt;code>kubectl get nodes -o wide&lt;/code> 查看所有节点信息&lt;/p>
+&lt;pre>&lt;code class="language-shell">NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME
+k3s-worker-02 Ready &amp;lt;none&amp;gt; 46d v1.21.2+k3s1 192.168.2.23 &amp;lt;none&amp;gt; Debian GNU/Linux 10 (buster) 5.10.0-0.bpo.7-amd64 containerd://1.4.4-k3s2
+k3s-master Ready control-plane,master 46d v1.21.2+k3s1 192.168.2.21 &amp;lt;none&amp;gt; Debian GNU/Linux 10 (buster) 5.10.0-0.bpo.7-amd64 containerd://1.4.4-k3s2
+k3s-worker-01 Ready &amp;lt;none&amp;gt; 46d v1.21.2+k3s1 192.168.2.22 &amp;lt;none&amp;gt; Debian GNU/Linux 10 (buster) 5.10.0-0.bpo.7-amd64 containerd://1.4.4-k3s2
+k3s-worker-03 Ready &amp;lt;none&amp;gt; 46d v1.21.2+k3s1 192.168.2.24 &amp;lt;none&amp;gt; Debian GNU/Linux 10 (buster) 5.10.0-0.bpo.7-amd64 containerd://1.4.4-k3s2
+&lt;/code>&lt;/pre>
+&lt;p>Next: &lt;a href="https://eightpigs.io/2021/08/27/k3s_use_nfs/">K3s 上手 - NFS 存储配置&lt;/a>&lt;/p></description></item><item><title>PVE 中虚拟化万兆网卡</title><link>https://eightpigs.io/2021/07/05/pve_10g_nic/</link><pubDate>Mon, 05 Jul 2021 12:30:00 +0800</pubDate><guid>https://eightpigs.io/2021/07/05/pve_10g_nic/</guid><description>&lt;p>去年自己攒了一台 &lt;code>E5 2680v4 * 2, 16G RECC * 8&lt;/code> 的机器，一开始主要作为远程开发机 &amp;amp; Docker-Compose。
+最近跑 k3s 集群并把 Docker-Compose 的服务迁到 k3s 上，于是重新规划系统资源，本文记录在搭建过程中关于在PVE中网络的配置。&lt;/p>
+&lt;p>&lt;strong>在配置虚拟网卡前建议使用 iperf3 或其他工具测试 Linux Bridge 提供的网络性能是否满足需求。&lt;/strong>&lt;/p>
+&lt;h2 id="安装open_vswitch">安装Open_vSwitch&lt;/h2>
+&lt;p>PVE 宿主安装 &lt;code>Open_vSwitch&lt;/code>，具体可参考&lt;a href="https://pve.proxmox.com/wiki/Open_vSwitch">官方文档&lt;/a>。&lt;/p>
+&lt;pre>&lt;code class="language-shell">apt update
+apt install openvswitch-switch
+&lt;/code>&lt;/pre>
+&lt;h2 id="创建虚拟网卡">创建虚拟网卡&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>宿主机的 &lt;strong>System - Network&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>点击 &lt;strong>Create&lt;/strong> 创建 &lt;strong>OVS Bridge&lt;/strong>，默认名称应该是 &lt;strong>vmbr1&lt;/strong>，可以调整或直接保存&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="./pve_10g_nic_step_01.png" alt="创建 OVS Bridge">&lt;/p>
+&lt;ol start="3">
+&lt;li>点击 &lt;strong>Create&lt;/strong> 创建 &lt;strong>OVS IntPort&lt;/strong>
+&lt;ul>
+&lt;li>Name: internal（可调整）&lt;/li>
+&lt;li>OVS Bridge 选择 刚刚创建的 OVS Bridge 名称: vmbr1&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="./pve_10g_nic_step_02.png" alt="创建 OVS IntPort">&lt;/p>
+&lt;h2 id="为虚拟机添加网卡">为虚拟机添加网卡&lt;/h2>
+&lt;p>到指定虚拟机的 Hardware 中添加 Network Device&lt;/p>
+&lt;ul>
+&lt;li>Bridge: vmbr1&lt;/li>
+&lt;li>Model: VirtIO (paravirtualized)&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="./pve_10g_nic_step_03.png" alt="为虚拟机添加网卡">&lt;/p>
+&lt;h2 id="虚拟机配置多网卡">虚拟机配置多网卡&lt;/h2>
+&lt;p>虚拟机系统以 debian 10 为例，shell 进入虚拟机系统内。&lt;/p>
+&lt;pre>&lt;code class="language-shell"># 查看网卡情况
+$ ip link
+1: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: ens18: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+link/ether 4e:70:ec:64:03:41 brd ff:ff:ff:ff:ff:ff
+3: ens19: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+link/ether a2:76:5e:67:9b:cc brd ff:ff:ff:ff:ff:ff
+&lt;/code>&lt;/pre>
+&lt;p>其中 ens18 是默认的 Linux Bridge 网卡，也就是vmbr0。ens19 是刚刚绑定的 OVS Bridge。&lt;/p>
+&lt;p>编辑网卡配置: &lt;code>sudo vim /etc/network/interfaces&lt;/code>，使两个网卡正常工作: &lt;strong>vmbr0 用外部网络访问，vmbr1 用于虚拟机内部通信。&lt;/strong>&lt;/p>
+&lt;pre>&lt;code class="language-shell"># This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+source /etc/network/interfaces.d/*
+# The loopback network interface
+auto lo
+iface lo inet loopback
+# The primary network interface
+allow-hotplug ens18
+iface ens18 inet dhcp
+# This is an autoconfigured IPv6 interface
+iface ens18 inet6 auto
+# 设置 ens19
+allow-hotplug ens19
+iface ens19 inet static
+# 绑定静态IP
+address 10.0.0.2/24
+gateway 10.0.0.1
+netmask 255.255.255.0
+up ip route del default dev ens19
+&lt;/code>&lt;/pre>
+&lt;p>其中，最后一个配置项: &lt;code>up ip route del default dev ens19&lt;/code>， 意思是：当该网卡被启用时，删除该网卡的 default 路由。 可以通过 &lt;code>ip route show&lt;/code> 查看路由情况。
+若不删除 ens19 的 default 路由，重启网络/系统后，虚拟机将无法访问外部网络。因为存在两张网卡，系统将生成两个 default 路由，所有流量将被 ens19 接管，由于 ens19 是内部网卡，无法访问外部网络，导致虚拟机也无法访问外部网络。&lt;/p>
+&lt;h2 id="测试虚拟速度">测试虚拟速度&lt;/h2>
+&lt;p>在任意两个虚拟机上安装&lt;code>iperf3&lt;/code>：&lt;/p>
+&lt;ul>
+&lt;li>一台执行: &lt;code>iperf3 -s&lt;/code>，运行 server 模式&lt;/li>
+&lt;li>另一台执行: &lt;code>iperf3 -c 10.0.0.9 -t 10 -i 1&lt;/code>，其中 10.0.0.9 是前一台的 ens19 上的IP&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-shell">Connecting to host 10.0.0.9, port 5201
+[ 5] local 10.0.0.9 port 50026 connected to 10.0.0.9 port 5201
+[ ID] Interval Transfer Bitrate Retr Cwnd
+[ 5] 0.00-1.00 sec 2.47 GBytes 21.2 Gbits/sec 0 1.48 MBytes
+[ 5] 1.00-2.00 sec 2.27 GBytes 19.5 Gbits/sec 0 1.48 MBytes
+[ 5] 2.00-3.00 sec 2.10 GBytes 18.0 Gbits/sec 0 1.65 MBytes
+[ 5] 3.00-4.00 sec 2.01 GBytes 17.3 Gbits/sec 0 1.65 MBytes
+[ 5] 4.00-5.00 sec 2.00 GBytes 17.2 Gbits/sec 0 1.80 MBytes
+[ 5] 5.00-6.00 sec 2.04 GBytes 17.5 Gbits/sec 0 1.80 MBytes
+[ 5] 6.00-7.00 sec 2.00 GBytes 17.1 Gbits/sec 0 1.80 MBytes
+[ 5] 7.00-8.00 sec 2.01 GBytes 17.3 Gbits/sec 0 1.80 MBytes
+[ 5] 8.00-9.00 sec 1.88 GBytes 16.1 Gbits/sec 0 1.80 MBytes
+[ 5] 9.00-10.00 sec 1.93 GBytes 16.6 Gbits/sec 0 1.80 MBytes
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval Transfer Bitrate Retr
+[ 5] 0.00-10.00 sec 20.7 GBytes 17.8 Gbits/sec 0 sender
+[ 5] 0.00-10.00 sec 20.7 GBytes 17.8 Gbits/sec receiver
+iperf Done.
+&lt;/code>&lt;/pre></description></item><item><title>Gitlab API 自动拉取有权限的所有仓库</title><link>https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/</link><pubDate>Thu, 10 Jun 2021 18:37:00 +0800</pubDate><guid>https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/</guid><description>&lt;p>Gitlab 提供了完善的 HTTP API 来获取分组、项目信息。&lt;/p>
+&lt;h3 id="api-信息">API 信息&lt;/h3>
+&lt;ul>
+&lt;li>获取分组: &lt;code>GET /api/v4/groups&lt;/code> &lt;a href="https://docs.gitlab.com/ee/api/groups.html#list-groups">文档&lt;/a>&lt;/li>
+&lt;li>获取分组下的项目: &lt;code>GET /api/v4/groups/:id/projects&lt;/code> &lt;a href="https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects">文档&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="依赖">依赖&lt;/h3>
+&lt;ul>
+&lt;li>jq: &lt;a href="https://stedolan.github.io/jq/download/">安装jq&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="脚本">脚本&lt;/h3>
+&lt;ol>
+&lt;li>获取分组列表&lt;/li>
+&lt;li>依次获取每个分组下的有权限的所有仓库&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>暂不支持翻页: 若分组超过100或者分组下的项目超过100个，则会被忽略。&lt;/strong>&lt;/p>
+&lt;pre>&lt;code class="language-bash">#!/bin/bash
+# Gitlab 服务地址
+GITLAB_HOST=&amp;quot;Gitlab.org&amp;quot;
+# 去 $GITLAB_HOST/profile/personal_access_tokens 创建一个TOKEN
+TOKEN=&amp;quot;你的TOKEN&amp;quot;
+QUERY_PARAM=&amp;quot;min_access_level=30&amp;amp;simple=true&amp;amp;per_page=100&amp;amp;page=1&amp;quot;
+GROUPS_URL=&amp;quot;$GITLAB_HOST/api/v4/groups?all_available=false&amp;amp;top_level_only=false&amp;amp;$QUERY_PARAM&amp;quot;
+PROJECTS_URL=&amp;quot;$GITLAB_HOST/api/v4/groups/%s/projects?$QUERY_PARAM&amp;quot;
+fetch() {
+curl --silent --header &amp;quot;PRIVATE-TOKEN: $TOKEN&amp;quot; &amp;quot;$GROUPS_URL&amp;quot; \
+| jq .[].name | sed 's/&amp;quot;//g' | sort | uniq \
+| xargs printf $PROJECTS_URL'\n' $1 \
+| xargs curl --silent --header &amp;quot;PRIVATE-TOKEN: $TOKEN&amp;quot; $1 \
+| jq '. | select(type == &amp;quot;array&amp;quot;) | .[] | select(has(&amp;quot;ssh_url_to_repo&amp;quot;)) | .ssh_url_to_repo' \
+| sed 's/&amp;quot;//g' | sort | uniq \
+| awk -F'[:/]' '{ url=$0; project=sub(&amp;quot;.git&amp;quot;,&amp;quot;&amp;quot;,$3); cmd=&amp;quot;mkdir -p &amp;quot;$2&amp;quot; &amp;amp;&amp;amp; git clone --depth 1 &amp;quot;url&amp;quot; &amp;quot;$2&amp;quot;/&amp;quot;$3; system(cmd)}'
+}
+fetch
+&lt;/code>&lt;/pre></description></item><item><title>选购钻石的基本知识</title><link>https://eightpigs.io/2020/10/17/diamond/</link><pubDate>Sat, 17 Oct 2020 10:00:00 +0800</pubDate><guid>https://eightpigs.io/2020/10/17/diamond/</guid><description>&lt;p>一直以来我都有买东西看详细参数的习惯，最近开始选购钻戒，所以就学习并记录了选择钻石的基本知识，当然了，品质很重要，钱包更重要，买钻戒怕是没法做加钱党了&amp;hellip;&lt;/p>
+&lt;p>&lt;strong>买东西就一定要对它有了解，知道如何确定它的品质、价格范围，这样才不至于买到次品（被商家忽悠）&lt;/strong> 。&lt;/p>
+&lt;h2 id="品质">品质&lt;/h2>
+&lt;p>确定钻石的品质目前主要基于GIA的质量检验报告。GIA 是一家国际公认的非盈利性宝石研究机构，GIA 钻石鉴定证书是使用最广泛、认可度最高的钻石质量检验方式。&lt;/p>
+&lt;p>&lt;strong>在购买钻石时，为了确保钻石品质，建议查看GIA证书并结合工作人员的讲解理解钻石品质。&lt;/strong>&lt;/p>
+&lt;p>下图是GIA的质量检验报告，报告中反映了钻石加工的3个维度： &lt;code>Cut Grade（钻石切工）&lt;/code>、&lt;code>Polish（抛光）&lt;/code>、&lt;code>Symmetry（对称性） &lt;/code>都是极优（Excellent, EX），也就是常见的: 3EX（即：加工极优，抛光极优，对称性极优）。&lt;/p>
+&lt;p>&lt;img src="gia-report.jpg" alt="GIA Report">&lt;/p>
+&lt;h3 id="4c标准">4C标准&lt;/h3>
+&lt;p>4C标准是GIA创立的，在上面的GIA质量校验报告中，第二栏: &amp;ldquo;&lt;strong>GRADING RESULTS&lt;/strong>&amp;rdquo; 下的内容就是该钻石在4C标准的等级结果。&lt;/p>
+&lt;p>4C标准中的4个C分别是指：&lt;/p>
+&lt;ol>
+&lt;li>Caratage（克拉）&lt;/li>
+&lt;li>Color （颜色）&lt;/li>
+&lt;li>Clarity （净度）&lt;/li>
+&lt;li>Cut (切工）&lt;/li>
+&lt;/ol>
+&lt;h4 id="caratage克拉">Caratage（克拉）&lt;/h4>
+&lt;p>钻石一般以克拉（CT）为单位，表示的是重量（&lt;strong>1克拉 = 200毫克 = 0.2克 = 100分&lt;/strong>）。&lt;/p>
+&lt;p>&lt;strong>在其他3个C保持不变的情况下，重量越大越值钱。&lt;/strong>&lt;/p>
+&lt;p>表示方式:&lt;/p>
+&lt;ul>
+&lt;li>重量小于1克拉的钻石可以直接用“&lt;strong>分&lt;/strong>”来描述，例如: 0.5克拉 = 50分, 0.25克拉 = 25分。&lt;/li>
+&lt;li>重量大于1克拉的钻石只能用精确到百分位的“&lt;strong>克拉&lt;/strong>”来描述，例如: 1.08克拉的钻石只能用 “一点零八克拉” 来说明其重量。&lt;/li>
+&lt;/ul>
+&lt;p>标准圆钻与直径对照表:&lt;/p>
+&lt;p>&lt;img src="diameter-and-weight-table.jpeg" alt="标准圆钻与直径对照表">&lt;/p>
+&lt;h4 id="color颜色">Color（颜色）&lt;/h4>
+&lt;p>GIA 的 D 到 Z 颜色分级系统可用于衡量钻石的无色程度。字母“D”代表无色钻石，后面各个字母则代表略带黄色或褐色的钻石。&lt;/p>
+&lt;p>GIA 将钻石颜色分成五组：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>无色 (D-F)&lt;/strong> ：最罕见，因此也最珍贵&lt;/li>
+&lt;li>&lt;strong>近无色 (G-J)&lt;/strong>：除受过训练的分级师外，其他人难以察觉的颜色&lt;/li>
+&lt;li>&lt;strong>微 (K-M)&lt;/strong> ：未受过训练的人士仍旧难以看出的颜色&lt;/li>
+&lt;li>&lt;strong>极淡 (N-R)&lt;/strong> ：未受过训练的人士可凭肉眼在更大钻石中看到的微弱颜色&lt;/li>
+&lt;li>&lt;strong>淡 (S-Z)&lt;/strong> ：在各种大小的钻石中均可看到的颜色。钻石呈现淡淡的黄色或褐色，但是其颜色不足以被视为“彩色”钻石&lt;/li>
+&lt;/ol>
+&lt;p>下图是白钻D-Z的颜色示例:&lt;/p>
+&lt;p>&lt;img src="diamond-color.jpg" alt="钻石D-Z的颜色">&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>建议选择J以上的颜色，J以下的颜色已经开始变黄&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;h4 id="clarity净度">Clarity（净度）&lt;/h4>
+&lt;p>天然钻石是碳元素在高温高压的环境下形成的，而这一过程，也导致了每颗钻石有内部的特征，称为 “内含物”， 在钻石表面的则称为“表面特征”。钻石净度（Clarity）是指其无内含物和表面特征的程度，&lt;/p>
+&lt;p>尽管世上没有绝对完美无瑕的天然钻石，但净度越高的钻石，价值越高。&lt;/p>
+&lt;p>&lt;strong>GIA 的钻石净度标准分为 6 个类别，11 个等级:&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>无瑕级 (FL)&lt;/strong>: 在 10 倍放大镜下观察，钻石没有任何内含物或表面特征&lt;/li>
+&lt;li>&lt;strong>内无瑕级 (IF)&lt;/strong>: 在 10 倍放大镜下观察，无可见内含物&lt;/li>
+&lt;li>&lt;strong>极轻微内含级（VVS1 和 VVS2）&lt;/strong>: 在 10 倍放大镜下观察，钻石内部有极微小的内含物，即使是专业鉴定师也很难看到&lt;/li>
+&lt;li>&lt;strong>轻微内含级（VS1 和 VS 2）&lt;/strong>: 在 10 倍放大镜下观察，钻石的内部可以看到微小的内含物&lt;/li>
+&lt;li>&lt;strong>微内含级（SI1 和 SI2）&lt;/strong>: 在 10 倍放大镜下观察，钻石有可见的内含物&lt;/li>
+&lt;li>&lt;strong>内含级（I 1、I2 和 I3）&lt;/strong>: 钻石的内含物在 10 倍放大镜下明显可见，并且可能会影响钻石的透明度和亮泽度&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="diamond-color.jpg" alt="钻石的净度">&lt;/p>
+&lt;blockquote>
+&lt;p>VVS 钻石和 VS 钻石均带有几乎所有情况下肉眼都不可见的净度特征。但是，这两种钻石之间的价格差异可能高达 30%。例如，根据大部分批发商和零售商所使用的 2018 年钻石定价表，一颗 1.00 克拉 (ct)、D 颜色等级的 VVS1 钻石比相同重量和颜色的 VS1 钻石要贵 20%–30%。一颗 1.00 克拉、G 到 H 颜色等级的 VVS1 钻石比类似的 VS1 或 VS2 钻石贵 15%–20%。&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="cut切工">CUT（切工）&lt;/h4>
+&lt;p>切工质量是决定钻石火彩、闪烁和亮度的因素。一颗特定的钻石如要具有独特的魅力和美丽，切工质量最为重要。&lt;/p>
+&lt;blockquote>
+&lt;p>针对颜色等级范围为 D 到 Z 的标准圆型明亮式钻石，GIA 钻石切工分级系统基于七个要素的评估。 前三个要素涉及外观，即亮光（钻石反射的光量总和）、火彩（色散出的七彩光芒）和闪光（移动钻石时光亮与阴暗区域的分布以及光的闪烁）。 其余四个要素涉及钻石的设计和工艺，即重量比、坚固性、抛光和对称性。&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>钻石的切工决定了钻石的闪烁程度，切工被视为一颗钻石最重要的指。&lt;/strong>&lt;/p>
+&lt;p>切工等级划分:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>极优（Excellent, EX）&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>优良（Very Good, VG）&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>良好（Good, GD）&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>尚可（Fair）&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>不良（Poor）&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="diamond-cut-quality-chinese.jpg" alt="钻石的切工">
+&lt;img src="diamond-cut-sc.jpg" alt="钻石的切工">&lt;/p>
+&lt;h3 id="fluorescence荧光">Fluorescence（荧光）&lt;/h3>
+&lt;p>在GIA质量校验报告中的&lt;strong>Fluorescence&lt;/strong>结果为荧光检测的结果，文章顶部的检测报告中Fluorescence为None，表示无荧光。荧光的等级分为:&lt;/p>
+&lt;ul>
+&lt;li>NONE（无）&lt;/li>
+&lt;li>FAINT（微弱）&lt;/li>
+&lt;li>MEDIUM BLUE（中等蓝） / MEDIUM YELLOW（中等黄）&lt;/li>
+&lt;li>STRONG BLUE（强蓝） / STRONG YELLOW（强黄）&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="fluorescence.jpg" alt="钻石的荧光">&lt;/p>
+&lt;blockquote>
+&lt;p>关于钻石荧光的选择，是比较私人的，全凭喜好，但不管怎么选，你要知道有荧光的会比没荧光的便宜，警惕高价购买了强荧光的钻石！&lt;sup id="fnref:3">&lt;a href="#fn:3" class="footnote-ref" role="doc-noteref">3&lt;/a>&lt;/sup>&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="奶咖绿">奶咖绿&lt;/h3>
+&lt;p>奶咖绿和荧光类似，影响价格并且影响观感，具体描述可查看底部关于奶咖绿的相关链接。&lt;/p>
+&lt;ul>
+&lt;li>奶：就是指那些钻石看起来不透亮很蒙的，很浑浊，白色的雾严重影响了钻石的火彩，这就是“奶钻”。&lt;/li>
+&lt;li>咖、绿：是指在钻石带有出黄色调以外的其他色调，咖就是指带褐色色调的钻石，绿就是指带绿色调的钻石。&lt;/li>
+&lt;li>黑：是指钻石内部的黑色包裹体，很明显的那种情况，通常都是SI2级别的钻石，内部黑色包裹体很明显会严重的影响钻石的亮度跟火彩的，价值相应低很多。&lt;/li>
+&lt;/ul>
+&lt;h2 id="形状">形状&lt;/h2>
+&lt;p>具体形状就不一一介绍了，形状主要还是看个人的喜好程度，当然，网上也有不同形状对应不同寓意的解释，可以自行参考。
+此处提及下钻石的切割面，常见的钻石切割面是：57、58个，也是主流圆形钻石的切割面，不同形状的切割面可能不同。除了常见圆形的切割面外，82、89、100+的切割面也有，并不是切割面越多越好，主要还是看形状和自己的主观喜好。&lt;/p>
+&lt;p>&lt;img src="shape-of-diamond.jpg" alt="钻石的形状">&lt;/p>
+&lt;h2 id="ha八心八箭">H&amp;amp;A（八心八箭）&lt;/h2>
+&lt;p>&lt;strong>钻石台面向上可见从中心呈放射型的八箭图案，亭部向上时可观察到八颗心的图案，心的尖部朝中心&lt;/strong>。&lt;/p>
+&lt;p>一直都不知道这个词的意思，不过以前倒是总听到（电视广告）。以下说明来自知乎&lt;sup id="fnref1:3">&lt;a href="#fn:3" class="footnote-ref" role="doc-noteref">3&lt;/a>&lt;/sup>:&lt;/p>
+&lt;blockquote>
+&lt;p>H&amp;amp;A也就是人们常说的八心八箭并不是一种特殊的钻石切工！只是普通圆钻的切工等级达到一定标准所呈现出的图案效果。&lt;br>
+并不能说H&amp;amp;A钻石比一般非H&amp;amp;A的3EX钻石贵是因为商业炒作，它确实要贵一点！&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>H&amp;amp;A钻石在切工上的实现难度非常大，其要求的切工比例范围比普通的EX更小，更精确。 任何一点的不对称或者比例达不到要求都不能达到H&amp;amp;A的评价。这样在打磨的时候就需要更长的时间，更大的难度。而且，H&amp;amp;A钻石的加工也比一般的3EX钻石更消耗原石，更高的原石耗损成本加上更高的人工成本、时间成本造成了H&amp;amp;A钻石更高的价位。&lt;/p>
+&lt;/blockquote>
+&lt;p>如果钻石是八心八箭，则GIA的质量检验报告中会有&lt;strong>H&amp;amp;A&lt;/strong>字样，具体看下图。&lt;/p>
+&lt;p>&lt;img src="gia-h_and_a.png" alt="GIA - H&amp;amp;A">&lt;/p>
+&lt;h2 id="参考资料">参考资料&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://4cs.gia.edu/zh-cn/%e9%92%bb%e7%9f%b3%e8%b4%ad%e4%b9%b0%e6%8c%87%e5%8d%97/">GIA: 钻石购买指南&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://www.zhihu.com/question/28925119">知乎: 钻石的形状有哪些&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://4cs.gia.edu/zh-cn/blog/%E7%9C%9F%E7%9B%B8-%E6%8F%AD%E7%A7%98-%E9%92%BB%E7%9F%B3-%E8%8D%A7%E5%85%89-%E6%BE%84%E6%B8%85-%E8%AF%AF%E8%A7%A3/">GIA: 钻石荧光揭秘：澄清 11 个误解&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://baike.baidu.com/item/%E5%85%AB%E5%BF%83%E5%85%AB%E7%AE%AD">百度百科: 八心八箭&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>颜色&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://4cs.gia.edu/zh-cn/%E9%92%BB%E7%9F%B3%E9%A2%9C%E8%89%B2/">GIA: 4C 钻石颜色&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://4cs.gia.edu/zh-cn/blog/%E5%85%B3%E4%BA%8E-%E9%92%BB%E7%9F%B3-%E9%A2%9C%E8%89%B2-%E7%9A%84-%E4%B8%83%E4%B8%AA-%E6%B3%A8%E6%84%8F-%E4%BA%8B%E9%A1%B9/">GIA: 4C 钻石颜色：七个注意事项&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>净度&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://www.gia.edu/CN/gia-about/4cs-clarity">GIA: 4C 标准净度&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://zhuanlan.zhihu.com/p/87673599">知乎: 钻戒净度等级实物参照图，教你分辨钻石净度&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>切工&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://www.gia.edu/CN/gia-about/4cs-cut">GIA: 4C 标准切工&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://4cs.gia.edu/zh-cn/blog/gia-%E9%92%BB%E7%9F%B3%E9%89%B4%E5%AE%9A%E8%AF%81%E4%B9%A6%E4%BA%86%E8%A7%A3%E9%92%BB%E7%9F%B3%E5%88%87%E5%B7%A5%E7%AD%89%E7%BA%A7/">GIA: 钻石鉴定证书：了解钻石切工等级&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>奶咖绿&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://zhuanlan.zhihu.com/p/145261909">知乎: 看完这篇科普-不会再买到 “奶钻” 、“咖钻” 和 “绿钻”&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.zhihu.com/question/38570319">知乎: 什么是钻石的奶咖绿？对钻石的价值有什么影响？&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;div class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1">
+&lt;p>&lt;a href="https://4cs.gia.edu/zh-cn/blog/vvs-%E9%92%BB%E7%9F%B3-%E4%B8%8E-vs-%E9%92%BB%E7%9F%B3/">GIA: 钻石净度 VVS 钻石与 VS 钻石：钻石净度等级之间有何区别？&lt;/a>&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:2">
+&lt;p>&lt;a href="https://www.gia.edu/CN/gia-about/4cs-cut">GIA: 4C 标准切工&lt;/a>&amp;#160;&lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:3">
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/22875413">知乎:【干货】买钻石，只知道4C远远不够，最全钻石攻略在这里！&lt;/a>&amp;#160;&lt;a href="#fnref:3" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&amp;#160;&lt;a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item><item><title>两人一机的搭建方案</title><link>https://eightpigs.io/2019/12/15/two_people_use_one_machine/</link><pubDate>Sun, 15 Dec 2019 14:30:00 +0800</pubDate><guid>https://eightpigs.io/2019/12/15/two_people_use_one_machine/</guid><description>&lt;h2 id="动机">动机&lt;/h2>
+&lt;p>家里的台式机装了双系统: Windows / Archlinux，使用&lt;a href="https://wiki.archlinux.org/index.php/REFInd">rEFInd&lt;/a>在开机时选择要启动的系统。因笔记本长时间放公司且女友总占用电脑，遂萌生了搭建多人一机的想法（不可否认有&lt;del>Linus&lt;/del>白嫖王的影响）。&lt;/p>
+&lt;h2 id="方案">方案&lt;/h2>
+&lt;p>除CPU和主板外其余设备完全独立: 基于&lt;a href="https://pve.proxmox.com/wiki/Main_Page">Proxmox Virtual Environment(PVE)&lt;/a>虚拟化并为两个不同的系统直通硬盘、显卡、鼠标、键盘等外设，以达到完全独立的配置。&lt;/p>
+&lt;h3 id="当前硬件配置">当前硬件配置&lt;/h3>
+&lt;ul>
+&lt;li>显示器: U2718Q&lt;/li>
+&lt;li>SSD: 500G 970 Evo Plus&lt;/li>
+&lt;li>CPU: i7 9700K&lt;/li>
+&lt;li>显卡: RTX 2070 + 核显&lt;/li>
+&lt;li>鼠标: Master 2s&lt;/li>
+&lt;li>桌子: 120 * 80 * 75&lt;/li>
+&lt;/ul>
+&lt;p>在当前配置基础上还需要增加一台显示器、一把键盘、一只鼠标、一张大桌子和增加硬盘容量。其中显卡不需要再购买，独显+核显正好为两个不同系统服务，PVE提供WEB管理界面，所以不需要单独显示器。&lt;/p>
+&lt;h3 id="最终配置">最终配置&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">类型&lt;/th>
+&lt;th style="text-align:center">型号&lt;/th>
+&lt;th style="text-align:center">数量&lt;/th>
+&lt;th style="text-align:center">说明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">SSD&lt;/td>
+&lt;td style="text-align:center">Samsung 970 EVO Plus 500 G&lt;/td>
+&lt;td style="text-align:center">2&lt;/td>
+&lt;td style="text-align:center">各一块500G SSD&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">SSD&lt;/td>
+&lt;td style="text-align:center">Lenovo 120G SSD&lt;/td>
+&lt;td style="text-align:center">1&lt;/td>
+&lt;td style="text-align:center">PVE 系统SSD&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">显示器&lt;/td>
+&lt;td style="text-align:center">Dell U2718Q&lt;/td>
+&lt;td style="text-align:center">1&lt;/td>
+&lt;td style="text-align:center">-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">显示器&lt;/td>
+&lt;td style="text-align:center">Samsung U32H850UMC&lt;/td>
+&lt;td style="text-align:center">1&lt;/td>
+&lt;td style="text-align:center">-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">鼠标&lt;/td>
+&lt;td style="text-align:center">Logitech MX Master 2S&lt;/td>
+&lt;td style="text-align:center">1&lt;/td>
+&lt;td style="text-align:center">-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">鼠标&lt;/td>
+&lt;td style="text-align:center">Logitech MX Anywhere 2S&lt;/td>
+&lt;td style="text-align:center">1&lt;/td>
+&lt;td style="text-align:center">-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">键盘&lt;/td>
+&lt;td style="text-align:center">IKBC Poker 2&lt;/td>
+&lt;td style="text-align:center">1&lt;/td>
+&lt;td style="text-align:center">-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">键盘&lt;/td>
+&lt;td style="text-align:center">IKBC C104&lt;/td>
+&lt;td style="text-align:center">1&lt;/td>
+&lt;td style="text-align:center">-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">显卡&lt;/td>
+&lt;td style="text-align:center">RTX 2070 + 核显&lt;/td>
+&lt;td style="text-align:center">2&lt;/td>
+&lt;td style="text-align:center">2070 直通给Windows，核显给Archlinux&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">CPU&lt;/td>
+&lt;td style="text-align:center">i7 9700K&lt;/td>
+&lt;td style="text-align:center">1&lt;/td>
+&lt;td style="text-align:center">共享&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">内存&lt;/td>
+&lt;td style="text-align:center">G.SKILL 幻光戟 8G&lt;/td>
+&lt;td style="text-align:center">4&lt;/td>
+&lt;td style="text-align:center">各14G&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">主板&lt;/td>
+&lt;td style="text-align:center">ROG STRIX Z390-E GAMING&lt;/td>
+&lt;td style="text-align:center">1&lt;/td>
+&lt;td style="text-align:center">共享&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">电源&lt;/td>
+&lt;td style="text-align:center">USCorsair RM850x&lt;/td>
+&lt;td style="text-align:center">1&lt;/td>
+&lt;td style="text-align:center">共享&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">散热&lt;/td>
+&lt;td style="text-align:center">NOCTUA NH-D15&lt;/td>
+&lt;td style="text-align:center">1&lt;/td>
+&lt;td style="text-align:center">共享&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">散热&lt;/td>
+&lt;td style="text-align:center">NOCTUA NF-A12x15&lt;/td>
+&lt;td style="text-align:center">2&lt;/td>
+&lt;td style="text-align:center">共享&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">机箱&lt;/td>
+&lt;td style="text-align:center">JONSBO UMX4&lt;/td>
+&lt;td style="text-align:center">1&lt;/td>
+&lt;td style="text-align:center">共享&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">桌子&lt;/td>
+&lt;td style="text-align:center">200 * 80 * 75 5cm 厚&lt;/td>
+&lt;td style="text-align:center">1&lt;/td>
+&lt;td style="text-align:center">共享&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="创建虚拟机">创建虚拟机&lt;/h2>
+&lt;p>我的目标是装两个系统: Windows、Archlinux，PVE安装虚拟机很简单:&lt;/p>
+&lt;ol>
+&lt;li>上传ISO到PVE硬盘并在虚拟机添加CD ROM 选择ISO镜像&lt;/li>
+&lt;li>在USB烧录一个Live ISO之后选择通过外置USB启动&lt;/li>
+&lt;/ol>
+&lt;p>任选一种即可，我采用的第二种方案。&lt;/p>
+&lt;p>例如安装Archlinux系统:&lt;/p>
+&lt;ol>
+&lt;li>将下载好的ISO写入到U盘&lt;/li>
+&lt;/ol>
+&lt;pre>&lt;code class="language-bash">sudo dd if=archlinux-2019.11.01-x86_64.iso of=/dev/rdisk2 bs=1m
+&lt;/code>&lt;/pre>
+&lt;ol start="2">
+&lt;li>将U盘插入到PVE宿主机&lt;/li>
+&lt;li>创建一个虚拟机&lt;/li>
+&lt;li>记住虚拟机的编号（或者查看详情）&lt;/li>
+&lt;li>硬盘随意设置，创建完成后删除刚刚创建的硬盘&lt;/li>
+&lt;/ol>
+&lt;h2 id="pve的直通配置">PVE的直通配置&lt;/h2>
+&lt;blockquote>
+&lt;p>直通: 将硬件设备直接给虚拟机使用，不采用虚拟化方式。&lt;/p>
+&lt;/blockquote>
+&lt;p>在PVE中直通需要修改系统配置，&lt;a href="https://pve.proxmox.com/wiki/Pci_passthrough">官方文档&lt;/a>，以下给出Intel CPU的改动：&lt;/p>
+&lt;h3 id="1-编辑引导">1. 编辑引导&lt;/h3>
+&lt;p>修改 &lt;code>/etc/default/grub&lt;/code>中的 &lt;code>GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet&amp;quot;&lt;/code> 为: &lt;code>GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;quiet intel_iommu=on&amp;quot;&lt;/code>&lt;/p>
+&lt;h3 id="2-添加内核模块">2. 添加内核模块&lt;/h3>
+&lt;p>添加以下内容到&lt;code>/etc/modules&lt;/code>底部&lt;/p>
+&lt;pre>&lt;code class="language-bash">vfio
+vfio_iommu_type1
+vfio_pci
+vfio_virqfd
+&lt;/code>&lt;/pre>
+&lt;p>改动之后需要重启系统。&lt;/p>
+&lt;h2 id="硬盘直通">硬盘直通&lt;/h2>
+&lt;p>将硬盘直接挂载到虚拟机中，不走虚拟化方式，提高硬盘读写性能。&lt;/p>
+&lt;h3 id="查看所有硬盘设备">查看所有硬盘设备&lt;/h3>
+&lt;pre>&lt;code class="language-bash">root@fighter:~# lsblk
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+sda 8:0 0 111.8G 0 disk
+├─sda1 8:1 0 1007K 0 part
+├─sda2 8:2 0 512M 0 part /boot/efi
+└─sda3 8:3 0 111.3G 0 part
+├─pve-swap 253:0 0 8G 0 lvm [SWAP]
+├─pve-root 253:1 0 27.8G 0 lvm /
+├─pve-data_tmeta 253:2 0 1G 0 lvm
+│ └─pve-data-tpool 253:4 0 59.7G 0 lvm
+│ └─pve-data 253:5 0 59.7G 0 lvm
+└─pve-data_tdata 253:3 0 59.7G 0 lvm
+└─pve-data-tpool 253:4 0 59.7G 0 lvm
+└─pve-data 253:5 0 59.7G 0 lvm
+sdb 8:16 1 58.4G 0 disk
+├─sdb1 8:17 1 635M 0 part
+└─sdb2 8:18 1 64M 0 part
+nvme0n1 259:0 0 465.8G 0 disk
+nvme1n1 259:1 0 465.8G 0 disk
+├─nvme1n1p1 259:2 0 499M 0 part
+├─nvme1n1p2 259:3 0 100M 0 part
+├─nvme1n1p3 259:4 0 16M 0 part
+├─nvme1n1p4 259:5 0 264.2G 0 part
+├─nvme1n1p5 259:6 0 4G 0 part
+└─nvme1n1p6 259:7 0 197G 0 part
+&lt;/code>&lt;/pre>
+&lt;p>其中 nvme0n1 是我的一块新硬盘，还未使用，打算将此盘直通到新虚拟机中&lt;/p>
+&lt;h3 id="确认硬盘id">确认硬盘ID&lt;/h3>
+&lt;pre>&lt;code class="language-bash">root@fighter:~# ls -als /dev/disk/by-id | grep nvme0n1
+0 lrwxrwxrwx 1 root root 13 Nov 23 17:06 nvme-eui.0025385791b32198 -&amp;gt; ../../nvme0n1
+0 lrwxrwxrwx 1 root root 13 Nov 23 17:06 nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF0M758708E -&amp;gt; ../../nvme0n1
+&lt;/code>&lt;/pre>
+&lt;p>通过nvme0n1 查询到硬盘ID为: &lt;code>nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF0M758708E&lt;/code>&lt;/p>
+&lt;h3 id="执行直通">执行直通&lt;/h3>
+&lt;p>使用的Qemu/KVM虚拟机管理器的set命令来挂载物理磁盘到虚拟机中，命令格式如下:&lt;/p>
+&lt;p>&lt;strong>qm set &amp;lt;vm_id&amp;gt; –&amp;lt;disk_type&amp;gt;[n] /dev/disk/by-id/&lt;!-- raw HTML omitted -->-$brand-$model_$serial_number&lt;/strong>&lt;/p>
+&lt;pre>&lt;code class="language-bash">root@fighter:~# qm set 100 -sata1 /dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF0M758708E
+update VM 100: -sata1 /dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNF0M758708E
+&lt;/code>&lt;/pre>
+&lt;p>返回update 消息后，刷新网页查看直通情况，其中我最初的安装步骤将USB也直通进去，所以下图有两块硬盘：&lt;/p>
+&lt;p>&lt;img src="./disks.png" alt="刷新网页查看直通情况">&lt;/p>
+&lt;p>硬盘直通完成后，启动虚拟机按正常装系统的方式配置即可。&lt;/p>
+&lt;p>在我装好系统使用过程中，发现：&lt;/p>
+&lt;p>&lt;strong>如果为每个系统单独分配一个硬盘，该系统可脱离PVE直接物理机BIOS启动: 【既可以作为PVE的虚拟机使用，又可以作为物理机的单系统使用】。&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>多人使用时，可以进入PVE以虚拟机方式启动（虚拟机模式）&lt;/li>
+&lt;li>单人使用时，可以直接BIOS启动单个系统（物理机模式）&lt;/li>
+&lt;/ul>
+&lt;p>上面这个特性给我特别大的惊喜，之前都是通VMWare、Virtual Box安装虚拟，虚拟机的磁盘是以文件形式存在硬盘上的，没想到安装到直通的硬盘上后竟然可以非虚拟机方式启动。&lt;/p>
+&lt;p>&lt;strong>所以建议给每个系统直通一个独占的硬盘，增加使用灵活性。&lt;/strong>&lt;/p>
+&lt;h2 id="显卡usb">显卡、USB&lt;/h2>
+&lt;p>直通显卡和USB不需要像直通硬盘那样麻烦，直接在虚拟机详情的“硬件”页面中点击添加，选择PCI-E或者USB/串口即可。&lt;/p>
+&lt;p>在白嫖王的视频中有讲到每个虚拟机的外部设备不能是相同（键鼠），会冲突，但实际上是可以的（可能是他使用的Unraid系统不支）：我的两个鼠标都使用罗技优联接收器来连接，&lt;strong>可以通过PVE的串口直通功能，将不同的USB口直通到不同的虚拟机中，使每个虚拟机独占该USB口&lt;/strong>。唯一麻烦的是需要一一测试每个USB口对应的串口。&lt;/p>
+&lt;p>在显卡方面，PVE启动时默认会使用核显来做输出，一般会认为核显此时已经没法使用了。实际上可以配置指定虚拟机使用核显，当启动该虚拟机时，核显会被虚拟机占用，从而重新输出虚拟机的画面。&lt;/p>
+&lt;p>可通过 &lt;code>lspci&lt;/code> 命令查看不同PCI-E设备的信息找到核显和独显。&lt;/p>
+&lt;h2 id="网卡">网卡&lt;/h2>
+&lt;p>暂时没有考虑为每个系统配置独立网卡，原因有3个:&lt;/p>
+&lt;ol>
+&lt;li>虚拟化的网卡速度影响较小&lt;/li>
+&lt;li>家里有NAS，在虚拟机大量下载的情况较少&lt;/li>
+&lt;li>若对网卡性能有需求，虚拟机可以直接通过BIOS物理启动&lt;/li>
+&lt;/ol>
+&lt;h2 id="结语">结语&lt;/h2>
+&lt;ul>
+&lt;li>实现了资源最大化地利用&lt;/li>
+&lt;li>可以多种模式启动系统: 虚拟化、物理机&lt;/li>
+&lt;li>再也不用担心电脑被独占&lt;/li>
+&lt;/ul></description></item><item><title>简单谈谈VIM设计的优点</title><link>https://eightpigs.io/2019/03/12/vim_vim_vim/</link><pubDate>Tue, 12 Mar 2019 23:00:00 +0000</pubDate><guid>https://eightpigs.io/2019/03/12/vim_vim_vim/</guid><description>&lt;p>我接触VIM的时间较短，从正式学习到现在也就一年半不到的时间，期间我将所有使用到的编辑器、IDE的键位都修改为了VIM模式，这对我快速掌握VIM很有帮助（相当于强行适应+学习）。&lt;/p>
+&lt;p>在VIM的使用过程中，VIM设计的优点随处可见：&lt;/p>
+&lt;ul>
+&lt;li>组合（模式切换、按键映射）&lt;/li>
+&lt;li>精细（按键映射控制）&lt;/li>
+&lt;li>开放（插件）&lt;/li>
+&lt;/ul>
+&lt;h2 id="模式切换">模式切换&lt;/h2>
+&lt;p>VIM模式编辑的设计真的是非常惊艳，通过模式编辑可以使手几乎不离开键盘。当然，如果仅仅是实现了大多数的键盘流操作，那VIM被称为“编辑器之神”肯定是不够格的。&lt;/p>
+&lt;p>VIM的模式编辑之所以惊艳，主要有有以下亮点：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>一个键可以在不同模式下拥有不同的行为。&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>可以通过组合的形式实现更复杂的操作。&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;p>VIM中的模式有：&lt;/p>
+&lt;ul>
+&lt;li>插入模式: Insert&lt;/li>
+&lt;li>正常模式: Normal&lt;/li>
+&lt;li>可视模式: Visual
+&lt;ul>
+&lt;li>普通可视模式: plain visual mode&lt;/li>
+&lt;li>块级可视模式: block visual mode&lt;/li>
+&lt;li>行级可视模式: linewise visual mode&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>命令行: Command line&lt;/li>
+&lt;/ul>
+&lt;p>其中，前三个模式（Insert、Normal、可视化）是我们通常编辑过程中最常用的模式。使用VIM打开一个文件后是进入Normal模式，该模式可以使用h、j、k、l来表示光标移动的：左、下、上、右。&lt;/p>
+&lt;p>Normal模式是VIM的基本操作，要掌握不少按键在该模式下的行为（快捷键），这也是大多数人接触VIM后的第一感觉：要背快捷键、太难。&lt;/p>
+&lt;p>下图是经常用来调侃第一次使用VIM的遭遇：不会退出VIM。我想第一次接触VIM的人，都会至少搜索一次：如何退出VIM，StackOverflow也统计过：问题“&lt;a href="https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/">how-to-exit-the-vim-editor&lt;/a>”帮助了至少一百万开发者退出VIM。&lt;/p>
+&lt;p>&lt;img src="exit-vim-for-the-first-time.png" alt="exit-vim-for-the-first-time"> &lt;img src="how-to-exit-vim.jpg" alt="how-to-exit-vim">&lt;/p>
+&lt;p>其实Normal模式下的快捷键没有想象中的那么复杂，因为大多都是有规律的，例如：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>j&lt;/strong> 代表光标向下移动一行，&lt;strong>20j&lt;/strong> 则代表光标向下移动20行。&lt;/li>
+&lt;li>&lt;strong>dd&lt;/strong> 代表删除当前行，&lt;strong>20dd&lt;/strong> 则代表删除当前行和当前行下面的19行。&lt;/li>
+&lt;/ul>
+&lt;p>当然，以上举的例子虽然比较简单，但可以体现出Normal模式下各个按键的行为是设计得非常优秀，大多情况下只需要记住基础按键的行为，其余都是根据需要自行&lt;strong>组合&lt;/strong>。&lt;/p>
+&lt;h2 id="按键映射">按键映射&lt;/h2>
+&lt;p>VIM作为一个成熟的编辑器，自定义按键行为肯定是少不了的，在VIM中可以对一个按键在多个模式映射不同的行为：&lt;/p>
+&lt;ul>
+&lt;li>nmap: Normal Mode&lt;/li>
+&lt;li>imap: Insert Mode&lt;/li>
+&lt;li>vmap: Visual Mode&lt;/li>
+&lt;li>map: Normal + Visual Mode&lt;/li>
+&lt;/ul>
+&lt;p>如想实现在Normal模式下按&lt;code>-&lt;/code>删除当前行，那么可以定义&lt;code>nmap - dd&lt;/code>来实现。每个&lt;code>*map&lt;/code>都有一个对应的非递归按键映射&lt;code>*noremap&lt;/code>（&lt;code>noremap&lt;/code>, &lt;code>nnoremap&lt;/code>, &lt;code>vnoremap&lt;/code>, 和 &lt;code>inoremap&lt;/code>）。使用&lt;code>*noremap&lt;/code>来定义快捷键，将不会将按键事件继续传递下去，可以理解为只执行当前noremap定义的映射。&lt;/p>
+&lt;p>VIM按键系统中还设计了一个非常优秀的按键：&lt;strong>Leader Key（前缀键）&lt;/strong>。顾名思义，前缀键就是在你按其他键之前先按的一个键，可以通过Leader Key + 其他按键实现自定义的按键组合。刚接触VIM时可能不好理解Leader Key是什么，我们可以将Leader Key比作在VIM中的功能键，例如系统中&lt;code>Ctrl&lt;/code>、&lt;code>Alt&lt;/code>等功能键。&lt;/p>
+&lt;p>在使用Leader Key之前，首先需要定义Leader Key，一般我们会选择一个非常方便的位置，例如我使用&lt;code>&amp;lt;Space&amp;gt;&lt;/code>来作为Leader Key的。&lt;/p>
+&lt;pre>&lt;code class="language-vim">&amp;quot; 定义快捷键的前缀，即&amp;lt;leader&amp;gt;
+let mapleader=&amp;quot;\&amp;lt;Space&amp;gt;&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;p>定义好Leader Key之后，我们可以定义&lt;code>nnoremap &amp;lt;silent&amp;gt; &amp;lt;leader&amp;gt;fj ddp&lt;/code>来实现在Normal模式下按“空格fj”将当前行与下一行交换位置。&lt;/p>
+&lt;p>可以通过&lt;code>verbose map&lt;/code>来查看具体定义好的快捷键：&lt;/p>
+&lt;pre>&lt;code class="language-vim">&amp;quot; 查看&amp;lt;Leader&amp;gt;fj映射的行为
+verbose map &amp;lt;Leader&amp;gt;fj
+&amp;quot; 输出如下：
+n &amp;lt;Space&amp;gt;fj * ddp&amp;gt;fj
+Last set from ~/.dotfiles/vim/keymappings.vim
+&lt;/code>&lt;/pre>
+&lt;h2 id="插件">插件&lt;/h2>
+&lt;p>在VIM中除了通过组合实现操作外，还可以通过VimScript来编写VIM的插件。VIM之所以能够脱离编辑器，迈向IDE很大程度是靠VimScript来实现的。例如可以在VIM中实现目录树侧边栏、文档结构显示、Git history、文件搜索等一系列复杂的操作。&lt;/p>
+&lt;p>以下是我Neovim在Iterm2中的展示效果，有左侧的目录树、右边还展示了语法提示的窗口。&lt;/p>
+&lt;p>&lt;img src="vim-interface.png" alt="vim复杂界面">&lt;/p>
+&lt;p>VIM8之前的插件管理比较简陋，在8.0版本之后，官方提供了&lt;code>package&lt;/code>概念来管理插件，并且开源社区也有非常多的插件管理：&lt;a href="https://github.com/VundleVim/Vundle.vim">Vundle&lt;/a>、&lt;a href="https://github.com/MarcWeber/vim-addon-manager">VAM&lt;/a>、&lt;a href="https://github.com/junegunn/vim-plug">vim-plug&lt;/a>等&lt;/p>
+&lt;p>通过官方或者开源社区提供的优秀插件管理，可以非常方便安装、更新插件。并且像vim-plug这样的插件还提供了按需加载，不但提供了高级的特性还优化了速度。&lt;/p>
+&lt;p>正是因为VIM的优秀设计，使软件几乎可以控制VIM中的所有内容，也就是说，VIM中的插件几乎可以实现任何事情。&lt;/p>
+&lt;p>只要愿意花时间，将VIM配置为一个IDE也是完全没有问题的。&lt;/p></description></item><item><title>常见的统一标识符算法（UUID、NUID、Snowflake）</title><link>https://eightpigs.io/2019/02/28/unique_identifier/</link><pubDate>Thu, 28 Feb 2019 20:52:00 +0000</pubDate><guid>https://eightpigs.io/2019/02/28/unique_identifier/</guid><description>&lt;p>在日常开发过程中，肯定少不了接触“统一标识符”，一般我们都直接使用各个语言标准库中的实现，例如在Java中可以使用&lt;code>java.util.UUID.randomUUID()&lt;/code>来获取。使用UUID的场景各不相同，那该怎么选择统一标识符算法呢？&lt;/p>
+&lt;h2 id="uuid">UUID&lt;/h2>
+&lt;blockquote>
+&lt;p>通用唯一识别码（英语：Universally Unique Identifier，UUID），是用于计算机体系中以识别信息数目的一个128位标识符，还有相关的术语：全局唯一标识符（GUID）。
+根据标准方法生成，不依赖中央机构的注册和分配，UUID具有唯一性，这与其他大多数编号方案不同。重复UUID码概率接近零，可以忽略不计。 - &lt;a href="https://zh.wikipedia.org/wiki/%E9%80%9A%E7%94%A8%E5%94%AF%E4%B8%80%E8%AF%86%E5%88%AB%E7%A0%81">《通用唯一识别码》 - Wikipedia&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>UUID共36位（32个字符+4个连接符号），格式为： xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx, M表示版本，N表示变体。变体是为了保持向后兼容以及能应对未来的变更，在&lt;a href="https://tools.ietf.org/html/rfc4122#section-4.1.1">RFC4122&lt;/a>标准中有明确定义了变体的取值和作用：&lt;/p>
+&lt;blockquote>
+&lt;p>The following table lists the contents of the variant field, where the letter &amp;ldquo;x&amp;rdquo; indicates a &amp;ldquo;don&amp;rsquo;t-care&amp;rdquo; value.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Msb0&lt;/th>
+&lt;th>Msb1&lt;/th>
+&lt;th>Msb2&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>0&lt;/td>
+&lt;td>x&lt;/td>
+&lt;td>x&lt;/td>
+&lt;td>Reserved, NCS backward compatibility.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>x&lt;/td>
+&lt;td>The variant specified in this document.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>Reserved, Microsoft Corporation backward compatibility&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>Reserved for future definition.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/blockquote>
+&lt;p>UUID目前一共5个版本，每个版本的实现的方式不同，具体每个版本的定义建议看:&lt;a href="https://zh.wikipedia.org/wiki/%E9%80%9A%E7%94%A8%E5%94%AF%E4%B8%80%E8%AF%86%E5%88%AB%E7%A0%81#%E7%89%88%E6%9C%AC">《UUID版本》- Wikipedia&lt;/a>&lt;/p>
+&lt;p>使用的最多的应该是版本4，例如在Java中的&lt;code>java.util.UUID.randomUUID()&lt;/code>就是一个版本4的实现，在多数情况下我们都直接使用该方法获取UUID。&lt;/p>
+&lt;p>各版本的特点：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>版本1&lt;/p>
+&lt;ul>
+&lt;li>基于时间+MAC地址，实现了全局唯一，很适用于分布式系统，几乎不会生成相同的UUID&lt;/li>
+&lt;li>MAC地址直接暴露在UUID中，可被追溯&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>版本2&lt;/p>
+&lt;ul>
+&lt;li>在RFC4122标准中没有明确的定义，大多UUID库根据DCE 1.1的定义实现的或者直接不实现，例如&lt;a href="https://github.com/satori/go.uuid/blob/b2ce2384e17bbe0c6d34077efa39dbab3e09123b/generator.go#L135">satori/go.uuid&lt;/a>库有基于V1实现了V2，而Java中的&lt;code>java.util.UUID&lt;/code>则没有实现V2&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>版本3、版本5&lt;/p>
+&lt;ul>
+&lt;li>版本3和版本5除了使用的算法（版本三使用了MD5，而版本5使用了SHA-1）不同外，其余部分都相同&lt;/li>
+&lt;li>基于命名空间，不同命名空间生成的UUID一定不会相同&lt;/li>
+&lt;li>相同命名空间，不同Name生成的值有机率会出现相同&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>适用场景&lt;/p>
+&lt;blockquote>
+&lt;ul>
+&lt;li>Version 1/2适合应用于分布式计算环境下，具有高度的唯一性；&lt;/li>
+&lt;li>Version 3/5适合于一定范围内名字唯一，且需要或可能会重复生成UUID的环境下；&lt;/li>
+&lt;li>至于Version 4，个人的建议是最好不用（虽然它是最简单最方便的）。&lt;/li>
+&lt;/ul>
+&lt;p>通常我们建议使用UUID来标识对象或持久化数据，但以下情况最好不使用UUID：&lt;/p>
+&lt;ul>
+&lt;li>映射类型的对象。比如只有代码及名称的代码表。&lt;/li>
+&lt;li>人工维护的非系统生成对象。比如系统中的部分基础数据。&lt;/li>
+&lt;li>对于具有名称不可重复的自然特性的对象，最好使用Version 3/5的UUID。比如系统中的用户。如果用户的UUID是Version 1的，如果你不小心删除了再重建用户，你会发现人还是那个人，用户已经不是那个用户了。（虽然标记为删除状态也是一种解决方案，但会带来实现上的复杂性。）&lt;/li>
+&lt;/ul>
+&lt;p>引用至：&lt;a href="https://www.jiangbianwanghai.com/2018/08/25/The-magical-effect-of-UUID-in-user-tracking/">《UUID在用户跟踪的妙用》- 江邊望海的笔记&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="nuid">NUID&lt;/h2>
+&lt;p>&lt;a href="https://github.com/nats-io/nuid">NUID&lt;/a>是CNCF组织下NATS项目的一个UID库（从commit来看，应该是2018-03-17才变更到NATS下面的）。项目主页上介绍很简单“A highly performant unique identifier generator.”，看样子在性能方面是极有信心的。该算法的实现代码极少，包含注释一共才135行。&lt;/p>
+&lt;p>NUID使用62个字符（0-9a-zA-Z）生成22位的结果，结果分为2部分：&lt;/p>
+&lt;ul>
+&lt;li>前12位为真随机数：crypto/rand包（&lt;a href="https://blog.sqrtthree.com/articles/random-number-in-golang/">《GoLang中的随机数》- 根号三&lt;/a>)&lt;/li>
+&lt;li>后10是伪随机数&lt;/li>
+&lt;/ul>
+&lt;p>主要逻辑有：&lt;/p>
+&lt;ol>
+&lt;li>使用真随机数或者当前时间的纳秒作为伪随机数的随机种子&lt;/li>
+&lt;li>前12位使用真随机数&lt;/li>
+&lt;li>后10位使用伪随机数（使用对伪随机数 /= base 获取到下一次的伪随机数，然后对数进行取余操作获取具体的字符）&lt;/li>
+&lt;/ol>
+&lt;p>前12位的真随机数：&lt;/p>
+&lt;pre>&lt;code class="language-go">// Generate a new prefix from crypto/rand.
+// This call *can* drain entropy and will be called automatically when we exhaust the sequential range.
+// Will panic if it gets an error from rand.Int()
+func (n *NUID) RandomizePrefix() {
+var cb [preLen]byte
+cbs := cb[:]
+if nb, err := rand.Read(cbs); nb != preLen || err != nil {
+panic(fmt.Sprintf(&amp;quot;nuid: failed generating crypto random number: %v\n&amp;quot;, err))
+}
+for i := 0; i &amp;lt; preLen; i++ {
+n.pre[i] = digits[int(cbs[i])%base]
+}
+}
+&lt;/code>&lt;/pre>
+&lt;p>后10位的伪随机数：&lt;/p>
+&lt;pre>&lt;code class="language-go">// Generate the next NUID string.
+func (n *NUID) Next() string {
+// Increment and capture.
+n.seq += n.inc
+if n.seq &amp;gt;= maxSeq {
+n.RandomizePrefix()
+n.resetSequential()
+}
+seq := n.seq
+// Copy prefix
+var b [totalLen]byte
+bs := b[:preLen]
+copy(bs, n.pre)
+// copy in the seq in base36.
+for i, l := len(b), seq; i &amp;gt; preLen; l /= base {
+i -= 1
+b[i] = digits[l%base]
+}
+return string(b[:])
+}
+&lt;/code>&lt;/pre>
+&lt;p>生成的结果示例: &lt;code>M4bZr7xyO3toV6T6iC7lWB&lt;/code>&lt;/p>
+&lt;p>Benchmark结果：&lt;/p>
+&lt;p>&lt;img src="nuid_benchmark.png" alt="nuid benchmark">&lt;/p>
+&lt;p>适用场景&lt;/p>
+&lt;ul>
+&lt;li>仅用来做标识符，无其他作用（例如排序）&lt;/li>
+&lt;li>支持高并发&lt;/li>
+&lt;/ul>
+&lt;h2 id="snowflake">Snowflake&lt;/h2>
+&lt;p>Snowflake（雪花算法）是Twitter推出的在分布式环境生成唯一ID的算法。&lt;/p>
+&lt;p>雪花算法的组成格式如下（1+41+10+12 = 64）：&lt;/p>
+&lt;p>&lt;img src="snowflake.jpg" alt="Snowflake">&lt;/p>
+&lt;p>关于雪花算法的文章很多，本文最后贴出了相关文章，我就不再赘述了。以下主要说说雪花算法的特点：&lt;/p>
+&lt;ul>
+&lt;li>有序&lt;/li>
+&lt;li>支持分布式（最大分布式节点为1023台）&lt;/li>
+&lt;li>一毫秒内可以产生4095个ID&lt;/li>
+&lt;li>基于系统时钟&lt;/li>
+&lt;/ul>
+&lt;p>基于以上特点，Snowflake的适用场景很明确：&lt;/p>
+&lt;ul>
+&lt;li>能支持排序&lt;/li>
+&lt;li>大规模的分布式环境&lt;/li>
+&lt;li>能支持高并发&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>需要注意的是：由于中间主要的41位是根据系统时钟生成的，如果某机器的系统时钟发生了调整（回拨），那么可能导致生成重复的ID。&lt;/strong>&lt;/p>
+&lt;h2 id="leaf">Leaf&lt;/h2>
+&lt;p>&lt;a href="https://github.com/Meituan-Dianping/Leaf">Leaf&lt;/a>是美团开源的分布式UID生成服务，支持两种生成ID的模式：&lt;/p>
+&lt;ol>
+&lt;li>号段模式（segment，基于数据库)&lt;/li>
+&lt;li>雪花算法模式（Snowflake）&lt;/li>
+&lt;/ol>
+&lt;p>其中，基于Snowflake的实现使用了Zookeeper来尝试避免因系统时钟回拨导致可能生成重复ID的问题，具体逻辑如下图所示：&lt;/p>
+&lt;p>&lt;img src="meituan-leaf.png" alt="美团 - Leaf">&lt;/p>
+&lt;p>关于美团Leaf以及其他UID方案的优缺点可以看看&lt;a href="https://tech.meituan.com/2017/04/21/mt-leaf.html">《Leaf——美团点评分布式ID生成系统》- 美团技术团队&lt;/a>&lt;/p>
+&lt;h2 id="相关引用">相关引用&lt;/h2>
+&lt;p>&lt;strong>UUID&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://zh.wikipedia.org/wiki/%E9%80%9A%E7%94%A8%E5%94%AF%E4%B8%80%E8%AF%86%E5%88%AB%E7%A0%81">《通用唯一识别码》 - Wikipedia&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://tools.ietf.org/html/rfc4122">RFC4122标准&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.jiangbianwanghai.com/2018/08/25/The-magical-effect-of-UUID-in-user-tracking/">《UUID在用户跟踪的妙用》- 江邊望海的笔记&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>NUID&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://semieye.github.io/post/2018/03/guid-uuid-nuid/">《xUID 三种唯一ID生成》- Nothing lasts forever&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Snowflake&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://www.lanindex.com/twitter-snowflake%EF%BC%8C64%E4%BD%8D%E8%87%AA%E5%A2%9Eid%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/">《Twitter-Snowflake，64位自增ID算法详解》- 漫漫路&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.biaodianfu.com/snowflake.html">《高并发环境下生成订单唯一流水号方法:SnowFlake》- 标点符&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://segmentfault.com/a/1190000011282426">《理解分布式id生成算法SnowFlake》- 煲煲菜&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Leaf&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://tech.meituan.com/2017/04/21/mt-leaf.html">《Leaf——美团点评分布式ID生成系统》- 美团技术团队&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Go&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://blog.sqrtthree.com/articles/random-number-in-golang/">《GoLang中的随机数》- 根号三&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>关于</title><link>https://eightpigs.io/pages/about/</link><pubDate>Thu, 28 Feb 2019 20:52:00 +0800</pubDate><guid>https://eightpigs.io/pages/about/</guid><description>&lt;p>本博客基于 &lt;a href="https://github.com/gohugoio/hugo">Hugo&lt;/a> 搭建，主题是参考 &lt;a href="https://github.com/probberechts/hexo-theme-cactus">hexo-theme-cactus&lt;/a> 自己实现的 &lt;a href="https://github.com/eightpigs/hugo-clean">hugo-clean&lt;/a>。&lt;/p>
+&lt;p>本博客不提供评论，可以通过&lt;a href="mailto:eightpigs@outlook.com">发送邮件&lt;/a>与我交流。&lt;/p>
+&lt;hr>
+&lt;p>&lt;strong>爱好&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>跑步&lt;/li>
+&lt;li>音乐&lt;/li>
+&lt;li>&lt;del>骑行（太久不骑了）&lt;/del>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>编程语言&lt;/strong>（参考&lt;a href="https://manateelazycat.github.io">懒猫&lt;/a>的个人介绍）&lt;/p>
+&lt;ul>
+&lt;li>顶级水准: 暂无&lt;/li>
+&lt;li>超级熟练: &lt;del>Java（不那么认为了）&lt;/del>&lt;/li>
+&lt;li>商业代码水准: Go、JavaScript、Dart、Groovy、SQL&lt;/li>
+&lt;li>StackOverflow水准: Scala、Python、Swift、Lua、C#&lt;/li>
+&lt;li>学习中: Rust&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>擅长工具&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Vim (Neovim &amp;amp; Lua)&lt;/li>
+&lt;li>IntelliJ IDEA&lt;/li>
+&lt;li>Emacs&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>作业系统&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Laptop (MacOS): &lt;del>MBP 2015 2.2 GHz&lt;/del> MacBook Air M2 24+512&lt;/li>
+&lt;li>PC (Windows): &lt;code>i7 9700K&lt;/code> &amp;amp; &lt;code>32G&lt;/code> &amp;amp; &lt;code>Nvidia RTX 2070&lt;/code>&lt;/li>
+&lt;li>Homelab (PVE &amp;amp; Debian &amp;amp; K3s): &lt;code>E5 2680v4 * 2&lt;/code> &amp;amp; &lt;code>128G&lt;/code>&lt;/li>
+&lt;/ul></description></item><item><title>使用Drone进行持续集成</title><link>https://eightpigs.io/2019/02/23/upgrade_drone/</link><pubDate>Sat, 23 Feb 2019 17:48:00 +0000</pubDate><guid>https://eightpigs.io/2019/02/23/upgrade_drone/</guid><description>&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;blockquote>
+&lt;p>Drone is a Container-Native, Continuous Delivery Platform.
+Drone 是一个基于容器的持续交付平台。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="工作原理">工作原理&lt;/h2>
+&lt;ol>
+&lt;li>通过Web Hook接受相关事件（推送、创建分支、合并请求等&amp;hellip;)&lt;/li>
+&lt;li>读取并执行该仓库根目录下的.drone.yaml文件&lt;/li>
+&lt;/ol>
+&lt;h2 id="特性">特性&lt;/h2>
+&lt;ol>
+&lt;li>支持多种仓库类型（GitHub, GitLab, Gitea, Gogs, Bitbucket Cloud, Bitbucket Server）&lt;/li>
+&lt;li>支持插件&lt;/li>
+&lt;li>支持分布式构建&lt;/li>
+&lt;li>支持多操作系统构建&lt;/li>
+&lt;li>基于Docker&lt;/li>
+&lt;li>基于Go语言&lt;/li>
+&lt;/ol>
+&lt;h2 id="安装">安装&lt;/h2>
+&lt;p>&lt;a href="https://cloud.drone.io/drone/hello-world">Demo 地址&lt;/a>&lt;/p>
+&lt;p>使用Drone进行持续集成已经8个月了，因为功能基本满足我的需求，所以一直停留在0.8版本。今天正好有时间，遂打算升级到1.0.0版本并记录下Drone的升级+使用。&lt;/p>
+&lt;p>我一直使用 Docker Compose 运行Drone，本文也将主要讲基于Docker Compose升级启动过程。在配置中，我以集成Gogs为例，要集成其他其他平台（如Github、GitLab）配置也很简单，具体请参照官网的 &lt;strong>Installation Guide&lt;/strong> 下的各平台配置说明。&lt;/p>
+&lt;p>1.0版本与0.8版本不兼容，需要修改各个配置项的名称，在1.0版本找到对应的配置名称即可。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://docs.drone.io/reference/server/">drone-server 配置项文档&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.drone.io/reference/agent/">drone-agent 配置项文档&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-yaml"># file name: docker-compose.yaml
+version: '2'
+services:
+drone-server:
+image: drone/drone:1.0.0-rc.5 # 使用最新的版本
+ports:
+- &amp;quot;8888:80&amp;quot; # web 访问的端口
+- 9000 # 用于与drone-agent通信
+volumes:
+- /data/drone:/var/lib/drone/ # 持久化到宿主的/data/drone目录下
+- /var/run/docker.sock:/var/run/docker.sock # 与docker进行通信
+restart: &amp;quot;always&amp;quot;
+environment:
+- DRONE_GIT_ALWAYS_AUTH=false
+- DRONE_GOGS_SERVER=http://gogs.admin.com # 集成gogs
+- DRONE_RUNNER_CAPACITY=2
+- DRONE_SERVER_HOST=drone.admin.com
+- DRONE_SERVER_PROTO=https
+- DRONE_RPC_SECRET=da19cfd2-33ed-44d2-8e60-5c987e780f36
+- DRONE_USER_CREATE=username:zhangsan,admin:true # 设置用户zhangsan为管理员
+- DRONE_LOGS_DEBUG=true
+drone-agent:
+image: drone/agent:1.0.0-rc.5
+restart: &amp;quot;always&amp;quot;
+depends_on:
+- drone-server
+volumes:
+- /var/run/docker.sock:/var/run/docker.sock # 与docker进行通信
+environment:
+- DRONE_RPC_SERVER=drone-server:9000 # 连接到drone-server服务
+- DRONE_RPC_SECRET=da19cfd2-33ed-44d2-8e60-5c987e780f36 # 与drone-server保持一致
+- DRONE_LOGS_DEBUG=true
+&lt;/code>&lt;/pre>
+&lt;hr>
+&lt;p>执行 &lt;strong>docker-compose up&lt;/strong> 启动server和agent，启动完成后可以访问在配置中指定的地址进入后台管理，由于前面配置了Gogs集成，所以登录的帐号和密码均是Gogs的帐号和密码。&lt;/p>
+&lt;p>每个项目的设置界面分为4个设置区域：Main、Secrets、Cron Jobs、Badges。&lt;/p>
+&lt;p>&lt;strong>注意&lt;/strong>：_如果该项目的Project Settings 一栏没有 &lt;strong>Trusted&lt;/strong> 选项，代表在Docker Compose的启动配置中未将当前登录用户设置为Drone的管理员。若项目不设置为 &lt;strong>Trusted&lt;/strong>，则不能进行构建。&lt;/p>
+&lt;p>&lt;img src="drone-settings.png" alt="drone settings">&lt;/p>
+&lt;hr>
+&lt;p>具体构建详情，其中，左边列出了构建步骤，点击可以查看各个构建步骤的详细日志。&lt;/p>
+&lt;p>&lt;img src="drone-pipeline.png" alt="drone pipeline">&lt;/p>
+&lt;h2 id="构建配置">构建配置&lt;/h2>
+&lt;p>项目的构建配置在官网给出了详细的示例：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://docs.drone.io/examples/language/">Language Examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.drone.io/examples/service/">Service Examples&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-yaml"># node构建并挂载目录的示例
+kind: pipeline
+name: default
+steps:
+- name: build
+image: node:8-alpine # 使用 node:8-alpine 镜像
+volumes: # 挂载目录
+- name: volData
+path: /data/
+commands: # 所有linux命令（正确说法是：镜像所支持的所有命令）
+- npm install
+- npm test
+- ls -als /data/
+- echo Hello
+# 挂载目录的具体配置
+volumes:
+- name: volData
+host:
+path: /data/
+&lt;/code>&lt;/pre></description></item><item><title>排序算法 - 选择、冒泡、插入、快排、希尔、归并、堆</title><link>https://eightpigs.io/2019/02/23/sort_algorithm/</link><pubDate>Sat, 23 Feb 2019 13:38:00 +0000</pubDate><guid>https://eightpigs.io/2019/02/23/sort_algorithm/</guid><description>&lt;p>在编码过程中肯定少不了对数据进行排序，通常做法是使用标准库的实现、使用熟悉的排序算法或直接网上扒一个排序算法，然而却对排序算法的特点和适应场景了解得非常少。本文将从代码实现和不同量级数据的测试两个角度来说说各个排序算法。&lt;/p>
+&lt;p>&lt;a href="https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95#%E7%AE%80%E8%A6%81%E6%AF%94%E8%BE%83">各排序算法的复杂度一览表&lt;/a>&lt;/p>
+&lt;p>&lt;img src="sort_algorithm_table.png" alt="各排序算法的复杂度一览表">&lt;/p>
+&lt;h2 id="选择排序">选择排序&lt;/h2>
+&lt;blockquote>
+&lt;p>选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理如下。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。 &lt;a href="https://zh.wikipedia.org/wiki/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F">《选择排序 - Wikipedia》&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>主要逻辑&lt;/strong>: 找到数组中最值（小、大）的数，依次交换位置&lt;/p>
+&lt;h3 id="实现">实现&lt;/h3>
+&lt;pre>&lt;code class="language-java">public static void sort(Comparable[] arr) {
+if (arr != null &amp;amp;&amp;amp; arr.length &amp;gt; 1) {
+for (int i = 0; i &amp;lt; arr.length; i++) {
+// 记录下当前遍历的最小值
+int minIndex = i;
+// 依次从当前元素向后比较，如果有比该元素小的值，则更新最小值的索引
+for (int j = i + 1; j &amp;lt; arr.length; j++) {
+// 如果当前元素比后面的某一个元素大，则当前元素不是最小值，记录下目前找到的最小值
+if (arr[minIndex].compareTo(arr[j]) &amp;gt; 0) {
+minIndex = j;
+}
+}
+// 如果minIndex发生了变化，代表当前元素不是最小的，则交换当前元素和minIndex所在值的位置
+if (i != minIndex) {
+Comparable temp = arr[i];
+arr[i] = arr[minIndex];
+arr[minIndex] = temp;
+}
+}
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="冒泡排序">冒泡排序&lt;/h2>
+&lt;blockquote>
+&lt;p>冒泡排序（英语：Bubble Sort）是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。&lt;strong>这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端&lt;/strong>。&lt;a href="https://zh.wikipedia.org/wiki/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F">《冒泡排序》- Wikipedia&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="实现-1">实现&lt;/h3>
+&lt;pre>&lt;code class="language-java">public static void sort(Comparable[] arr) {
+if (arr != null &amp;amp;&amp;amp; arr.length &amp;gt; 0) {
+// 依次比较每一个元素
+for (int i = 0; i &amp;lt; arr.length; i++) {
+// 依次比较当前元素后面的每一个元素
+for (int j = i + 1; j &amp;lt; arr.length; j++) {
+// 如果当前元素大于后面的元素，则交换位置
+if (arr[i].compareTo(arr[j]) &amp;gt; 0) {
+Comparable temp = arr[i];
+arr[i] = arr[j];
+arr[j] = temp;
+}
+}
+}
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="插入排序">插入排序&lt;/h2>
+&lt;blockquote>
+&lt;p>插入排序（英语：Insertion Sort）是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用in-place排序（原地排序：即只需用到$O(1)$的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。&lt;/p>
+&lt;p>具体算法描述如下：&lt;/p>
+&lt;ol>
+&lt;li>从第一个元素开始，该元素可以认为已经被排序&lt;/li>
+&lt;li>取出下一个元素，在已经排序的元素序列中从后向前扫描&lt;/li>
+&lt;li>如果该元素（已排序）大于新元素，将该元素移到下一位置&lt;/li>
+&lt;li>重复步骤3，直到找到已排序的元素小于或者等于新元素的位置&lt;/li>
+&lt;li>将新元素插入到该位置后&lt;/li>
+&lt;li>重复步骤2~5&lt;/li>
+&lt;/ol>
+&lt;p>&lt;a href="https://zh.wikipedia.org/wiki/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F">《插入排序》- Wikipedia&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="版本1">版本1&lt;/h3>
+&lt;p>每次都与前面的所有元素比较，遇到比当前元素大的元素就交换双方位置，直到找到第一个元素&lt;/p>
+&lt;pre>&lt;code class="language-java">public static void sort(Comparable[] arr) {
+if (arr != null &amp;amp;&amp;amp; arr.length &amp;gt; 0) {
+// 因为默认第一个元素（下标为0的元素）是已经排序的，所以直接从第二个元素（下标为1的元素）开始进行比较
+for (int i = 1; i &amp;lt; arr.length; i++) {
+// 当前元素与已经排序的元素（前面的元素）进行比较，如果当前元素小于前面的元素，则交换两个元素的位置
+// 因为交换了位置，此时 j-1 的值依旧等于原来j的值，
+// 所以内层遍历一直都是在用j的值进行比较，只是在比较过程中，下标变化了
+// 只有在j的值比前一个值小的时候，才会进行多次循环比较，否则只是一个if判断的作用
+for (int j = i; j &amp;gt; 0 &amp;amp;&amp;amp; arr[j].compareTo(arr[j - 1]) &amp;lt; 0; j--) {
+Comparable temp = arr[j - 1];
+arr[j - 1] = arr[j];
+arr[j] = temp;
+}
+}
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h3 id="版本2">版本2&lt;/h3>
+&lt;p>该版本算是比较有意思的一种，主要做两件事：&lt;/p>
+&lt;ol>
+&lt;li>将比当前元素大的元素全部往后移&lt;/li>
+&lt;li>找到该元素符合的位置&lt;/li>
+&lt;/ol>
+&lt;pre>&lt;code class="language-java">public static void sort(Comparable[] arr) {
+int j;
+// 每次实际的比较元素
+Comparable temp;
+for (int i = 1; i &amp;lt; arr.length; i++) {
+// 数组中的每一个元素
+temp = arr[i];
+// 使用当前元素（下标i的元素）与前一个元素（下标j-1的元素）进行比较
+// 如果当前元素小于前一个元素，那么将前一个元素往后移一位（也就是放到当前元素现处的位置上）
+// 继续遍历前面的元素，如果比前一个元素小，重复上一步操作（也就是说，只要比当前元素大的元素，都将往后移）。
+// 如果当前元素大于等于前一个元素，代表该元素已经找到合适的位置了，
+// 那么循环的条件不成立，执行 arr[j] = temp 设置当前元素到合适的索引
+for (j = i; j &amp;gt; 0 &amp;amp;&amp;amp; temp.compareTo(arr[j - 1]) &amp;lt; 0; j--) {
+// 将比当前元素小的元素向后移
+arr[j] = arr[j - 1];
+}
+arr[j] = temp;
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="希尔排序">希尔排序&lt;/h2>
+&lt;blockquote>
+&lt;p>希尔排序，也称递减增量排序算法，是插入排序的一种更高效的改进版本。希尔排序是非稳定排序算法。&lt;/p>
+&lt;p>希尔排序是基于插入排序的以下两点性质而提出改进方法的：&lt;/p>
+&lt;ol>
+&lt;li>插入排序在对几乎已经排好序的数据操作时，效率高，即可以达到线性排序的效率&lt;/li>
+&lt;li>但插入排序一般来说是低效的，因为插入排序每次只能将数据移动一位&lt;/li>
+&lt;/ol>
+&lt;p>&lt;a href="https://zh.wikipedia.org/wiki/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F">《希尔排序》- Wikipedia&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>希尔排序的实现是将一个数组以递减长度（步长）来分为多个子数组，对这多个子数组进行插入排序。当步长为1时，该数据已经大致保持顺序了，只需要较少得调整顺序就能保持有序。&lt;/p>
+&lt;p>实际上，可以把希尔排序理解为在插入排序的外层再套了一个实现递减步长的循环。&lt;/p>
+&lt;p>在希尔排序中最重要的部分就是确定步长值，步长值将影响算法执行的时间。步长值每次的变化形成了一个步长序列，例如步长定义为n/2，则步长序列为&lt;code>[ n/2, (n/2)/2, ((n/2)/2)/2 ]&lt;/code>。步长序列的相关定义和说明可以看&lt;a href="https://zh.wikipedia.org/wiki/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F#%E6%AD%A5%E9%95%BF%E5%BA%8F%E5%88%97">《希尔排序 - 步长序列》- Wikipedia&lt;/a>&lt;/p>
+&lt;h3 id="实现-2">实现&lt;/h3>
+&lt;pre>&lt;code class="language-java">/**
+* 希尔排序 - 版本1
+* 版本说明：每次都对比较的两个元素交互位置
+*
+* @param arr 需要排序的数组
+*/
+public static void sort(Comparable[] arr) {
+if (arr != null &amp;amp;&amp;amp; arr.length &amp;gt; 1) {
+// 定义步长值为41
+int step = 41;
+// 每次循环递减步长值
+for (int len = arr.length / step; len &amp;gt; 0; len /= step) {
+// 对通过步长值计算出来的子数组进行插入排序
+for (int i = len; i &amp;lt; arr.length; i++) {
+for (int j = i; j &amp;gt; 0 &amp;amp;&amp;amp; arr[j].compareTo(arr[j - 1]) &amp;lt; 0; j--) {
+Comparable temp = arr[j - 1];
+arr[j - 1] = arr[j];
+arr[j] = temp;
+}
+}
+}
+}
+}
+/**
+* 希尔排序 - 版本2
+* 版本说明：比较时，将较大的值一直往前移，减少交换次数
+*
+* @param arr 需要排序的数组
+*/
+public static void sort1(Comparable[] arr) {
+if (arr != null &amp;amp;&amp;amp; arr.length &amp;gt; 1) {
+int step = 41;
+int j;
+for (int len = arr.length / step; len &amp;gt; 0; len /= step) {
+for (int i = len; i &amp;lt; arr.length; i++) {
+Comparable temp = arr[i];
+for (j = i; j &amp;gt; 0 &amp;amp;&amp;amp; arr[j].compareTo(arr[j - 1]) &amp;lt; 0; j--) {
+arr[j - 1] = arr[j];
+}
+arr[j] = temp;
+}
+}
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="快速排序">快速排序&lt;/h2>
+&lt;blockquote>
+&lt;p>快速排序采用分支法（Divide and conquer）策略来把一个序列（list）分为两个子序列（sub-lists）。&lt;/p>
+&lt;p>步骤为：&lt;/p>
+&lt;ol>
+&lt;li>从数列中挑出一个元素，称为“&lt;strong>基准&lt;/strong>”（pivot）。&lt;/li>
+&lt;li>重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面（相同的数可以到任何一边）。在这个分割结束之后，该基准就处于数列的中间位置。这个称为**分割（partition）**操作。&lt;/li>
+&lt;li>**递归地（recursively）**把小于基准值元素的子数列和大于基准值元素的子数列排序。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;a href="https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F#%E6%BC%94%E7%AE%97%E6%B3%95">《快速排序》- Wikipedia&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>快速排序有三个核心，分别是：&lt;/p>
+&lt;ol>
+&lt;li>找基准&lt;/li>
+&lt;li>从基准分割&lt;/li>
+&lt;li>递归处理分割的子序列&lt;/li>
+&lt;/ol>
+&lt;h3 id="实现-3">实现&lt;/h3>
+&lt;pre>&lt;code class="language-java">/**
+* 快速排序
+*
+* @param arr 要排序的数据
+* @param head 前部分的索引值，初次传入应该为0
+* @param tail 后部分的索引值，初次传入应该为arr.length
+*/
+public static void sort(Comparable[] arr, int head, int tail) {
+// 判断执行后续步骤的先决条件。
+// 其中判断条件并不是随意写的：因为该方法是一个递归方法，所以 head &amp;gt;= tail 放到前面是一个优化措施
+if (head &amp;gt;= tail || arr == null || arr.length &amp;lt;= 1) {
+return;
+}
+// 用i,j分别记录head和tail的值，因为后面需要继续使用传入的head和tail，所以要有个备份
+int i = head, j = tail;
+// 选出本次排序需要的基准（中间值）：pivot，计算方式为 (head + tail)/2
+Comparable pivot = arr[(head + tail) / 2];
+// 如果i &amp;lt;= j，表示还有子序列没有被排序，因为还存在 j - i 个元素没有被排序
+while (i &amp;lt;= j) {
+// 如果索引i的元素小于选出来的基准，那么表示应该继续使用后面的值与基准比较
+// 直到找到 &amp;gt;= 基准的值
+while (arr[i].compareTo(pivot) &amp;lt; 0) {
+++i;
+}
+// 如果索引j的元素还大于选出来的基准，那么表示应该继续使用前面的值与基准比较
+// 直到直到 &amp;lt;= 基准的值
+while (arr[j].compareTo(pivot) &amp;gt; 0) {
+--j;
+}
+// 走到这里，代表i，j的索引已经是 &amp;gt;= 基准的值和 &amp;lt;= 基准的值
+// 既然i，j都找到了符合条件的值，那么这个情况下，只有两种可能：
+// 1. i &amp;lt; j 表示i对应的值（&amp;gt;=基准的值）在基准的后面，j对应的值（&amp;lt;=基准的值）在基准的前面
+// 那么交换i和j元素的位置，并向后移动i，向前移动j
+// 2. i == j 表示i和j对应的索引是一致的，都等于 (head + tail) / 2，也就是找到了基准自己
+// 那么i往后移动一位，表示使外层while条件不成立，跳出循环，接下来处理两个子序列
+if (i &amp;lt; j) {
+Comparable temp = arr[i];
+arr[i] = arr[j];
+arr[j] = temp;
+++i;
+--j;
+} else if (i == j) {
+++i;
+}
+}
+// 递归部分，处理以本次确定i，j拆分的前后两个子序列
+// 处理head -&amp;gt; j的子序列
+sort(arr, head, j);
+// 处理i-&amp;gt; tail的子序列
+sort(arr, i, tail);
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="归并排序">归并排序&lt;/h2>
+&lt;blockquote>
+&lt;p>归并排序（英语：Merge sort，或mergesort），是创建在归并操作上的一种有效的排序算法，效率为 $O(n log n)$ 。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。&lt;/p>
+&lt;p>采用分治法:&lt;/p>
+&lt;ul>
+&lt;li>分割（分）：递归地把当前序列平均分割成两半。&lt;/li>
+&lt;li>集成（治）：在保持元素顺序的同时将上一步得到的子序列集成到一起（归并）。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a href="https://zh.wikipedia.org/wiki/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F">《归并排序》- Wikipedia&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="实现-4">实现&lt;/h3>
+&lt;pre>&lt;code class="language-java">/**
+* 归并排序
+*
+* @param arr 要排序的数据
+*/
+public static void sort(Comparable[] arr) {
+// 创建一个临时数组，长度为目标数组的长度（因为最后的一次排序+合并会将所有数据暂存在该数据，所以需要以最大的长度来创建）
+Comparable[] temp = new Comparable[arr.length];
+sort(arr, 0, arr.length - 1, temp);
+}
+/**
+* 归并排序
+* 支持递归部分，不对外提供访问
+*
+* @param arr 要排序的数组
+* @param head 分割为子数组的起始索引
+* @param tail 分割为子数组的结束索引
+* @param temp 临时数组，用于存储子数组排序后的结果
+*/
+private static void sort(Comparable[] arr, int head, int tail, Comparable[] temp) {
+if (head &amp;lt; tail) {
+// 从中间分割：基准
+int pivot = (head + tail) / 2;
+// 递归：对分割的前部分进行分割并排序
+sort(arr, head, pivot, temp);
+// 对分割的后部分进行分割并排序
+sort(arr, pivot + 1, tail, temp);
+// 排序并合并两个数组
+merge(arr, head, tail, pivot, temp);
+}
+}
+/**
+* 主要的排序+合并逻辑
+*
+* @param arr 原始数组
+* @param head 分割为子数组的起始索引
+* @param tail 分割为子数组的结束索引
+* @param pivot 每次确定下来的基准索引
+* @param temp 临时数组，用于存储子数组排序后的结果
+*/
+private static void merge(Comparable[] arr, int head, int tail, int pivot, Comparable[] temp) {
+// i 表示基准左边数组的起始下标，左边数组最后一个元素的索引是pivot
+// j 表示基准右边数组的起始下标（也就是基准的下标+1)，右边数组最后一个元素的索引是tail
+// ti 表示在临时数组中的索引
+int i = head, j = pivot + 1, ti = 0;
+// 将左边与右边的所有值进行遍历
+while (i &amp;lt;= pivot &amp;amp;&amp;amp; j &amp;lt;= tail) {
+// 判断左右两边元素的大小，把小的元素放入临时数据中
+// 并且需要自增双方的索引（自增ti表示下个元素放入到后面，自增i/j表示开始计算下一个元素）
+if (arr[i].compareTo(arr[j]) &amp;lt; 0) {
+temp[ti++] = arr[i++];
+} else {
+temp[ti++] = arr[j++];
+}
+// 将左边剩余的元素依次添加到临时数组的后面
+while (i &amp;lt;= pivot) {
+temp[ti++] = arr[i++];
+}
+// 将右边剩余的元素依次添加到临时数组的后面
+while (j &amp;lt;= tail) {
+temp[ti++] = arr[j++];
+}
+// 此时，temp中元素是左边和右边元素的有序排列
+// 则需要将temp排列好的元素放回原数组中
+// ti已经使用完毕，可以将ti重置为0，后面使用ti的索引变化来取对应临时数组中的元素
+// head 和 tail 对应着原数组中的左右两个子数组的起始和结束索引
+ti = 0;
+// 将head -&amp;gt; tail的所有元素覆盖为排序好的元素
+while (head &amp;lt;= tail) {
+arr[head++] = temp[ti++];
+}
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="堆排序">堆排序&lt;/h2>
+&lt;blockquote>
+&lt;p>堆排序（英语：Heapsort）是指利用堆这种数据结构所设计的一种排序算法。
+堆是一个近似完全二叉树的结构，并同时满足堆积的性质：即子节点的键值或索引总是小于（或者大于）它的父节点。
+通常堆是通过一维数组来实现的。
+&lt;a href="https://zh.wikipedia.org/wiki/%E5%A0%86%E6%8E%92%E5%BA%8F">《堆排序》- Wikipedia&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>在数组起始位置为0的情形中，父子节点的关系如下：&lt;/p>
+&lt;ul>
+&lt;li>父节点i的左子节点在位置: $(2i+1)$&lt;/li>
+&lt;li>父节点i的右子节点在位置: $(2i+2)$&lt;/li>
+&lt;li>子节点i的父节点在位置: $floor((i-1)/2)$&lt;/li>
+&lt;li>最后一个非叶子节点在位置: $(n / 2 - 1)$&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>堆排序的基本思想是&lt;a href="https://www.cnblogs.com/chengxiao/p/6129630.html">《图解排序算法(三)之堆排序》- dreamcatcher-cx&lt;/a> ：将待排序序列构造成一个大顶堆，此时，整个序列的最大值就是堆顶的根节点。将其与末尾元素进行交换，此时末尾就为最大值。然后将剩余n-1个元素重新构造成一个堆，这样会得到n个元素的次小值。如此反复执行，便能得到一个有序序列了。&lt;/p>
+&lt;/blockquote>
+&lt;pre>&lt;code class="language-java">/**
+* 堆排序
+*
+* @param arr 需要排序的数据
+*/
+public static void sort(Comparable[] arr) {
+// 从当前堆中取出最后一个非叶子节点，从下往上构建一个大顶堆
+for (int i = arr.length / 2 - 1; i &amp;gt; 0; i--) {
+buildMaxHeap(arr, i, arr.length);
+}
+// 初次构建完大顶堆之后，交换堆顶和最后一个叶子节点的值，也就是将最大的值放到后面
+// 交换完成后，继续使用剩余节点构建一个大顶堆并再次交换
+for (int i = arr.length - 1; i &amp;gt; 0; i--) {
+Comparable temp = arr[0];
+arr[0] = arr[i];
+arr[i] = temp;
+buildMaxHeap(arr, 0, i);
+}
+}
+/**
+* 构建一个大顶堆
+*
+* @param arr 数据
+* @param i 当前的父节点
+* @param len 构建的元素范围
+*/
+private static void buildMaxHeap(Comparable[] arr, int i, int len) {
+// 循环从传入节点的左子节点开始：int j = 2 * i + 1;（取出i的左子节点）
+// 循环后，以左子节点为父节点继续往下处理：j = 2 * j + 1;（取出j的左子节点）
+for (int j = 2 * i + 1; j &amp;lt; len; j = 2 * j + 1) {
+// 找出大的子节点
+// 如果右节点大于左节点，则将右节点索引记录下来
+if (j + 1 &amp;lt; len &amp;amp;&amp;amp; arr[j].compareTo(arr[j + 1]) &amp;lt; 0) {
+j++;
+}
+// 使用大的子节点与父节点比较，如果子节点大于父节点，则交换位置
+if (arr[j].compareTo(arr[i]) &amp;gt; 0) {
+Comparable temp = arr[i];
+arr[i] = arr[j];
+arr[j] = temp;
+} else {
+// 因为是从下向上进行交换位置的，如果父节点大于子节点，那么表示该节点和该节点的所有子孙节点已经构成了一个大顶堆
+break;
+}
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="测试">测试&lt;/h2>
+&lt;p>&lt;strong>测试说明&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>使用Java随机数(0-999999999)生成的测试数据&lt;/li>
+&lt;li>每个数据量级都对所有算法测试一遍&lt;/li>
+&lt;li>只测试了不同量级各个排序算法的耗时&lt;/li>
+&lt;li>运行在4核8G服务器上（GCP）&lt;/li>
+&lt;li>本想测试到500W数据的，但部分算法耗时太长，所以只测试到50W&lt;/li>
+&lt;li>由于冒泡排序太耗时，数据量 &amp;gt; 10W 则直接跳过冒泡排序&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="sort_benchmark.png" alt="数据量测试">&lt;/p>
+&lt;h2 id="参考资料">参考资料&lt;/h2>
+&lt;p>&lt;strong>希尔排序&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://www.cnblogs.com/chengxiao/p/6104371.html">《图解排序算法(二)之希尔排序》- dreamcatcher-cx&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>归并排序&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://www.cnblogs.com/chengxiao/p/6194356.html">《图解排序算法(四)之归并排序》- dreamcatcher-cx&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>堆排序&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://www.cnblogs.com/chengxiao/p/6129630.html">《图解排序算法(三)之堆排序》- dreamcatcher-cx&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>JAVA 虚拟机栈</title><link>https://eightpigs.io/2018/08/10/java_virtual_machine_stack/</link><pubDate>Fri, 10 Aug 2018 21:21:00 +0000</pubDate><guid>https://eightpigs.io/2018/08/10/java_virtual_machine_stack/</guid><description>&lt;h2 id="概念">概念&lt;/h2>
+&lt;ul>
+&lt;li>JVM 虚拟机栈与程序计数器和[本地方法栈]一样都是线程私有的。&lt;/li>
+&lt;li>栈帧可以理解为一个方法的运行空间&lt;/li>
+&lt;/ul>
+&lt;h2 id="栈帧stack-frame">栈帧（Stack Frame）&lt;/h2>
+&lt;p>栈帧是&lt;strong>用于支持虚拟机进行方法调用和方法执行的数据结构&lt;/strong>。每个方法从调用至执行完成的过程，都对应着一个栈帧在虚拟机栈里面从入栈到出栈的过程。&lt;/p>
+&lt;h3 id="构成">构成&lt;/h3>
+&lt;ul>
+&lt;li>局部变量表&lt;/li>
+&lt;li>操作数栈&lt;/li>
+&lt;li>动态连接&lt;/li>
+&lt;li>方法出口&lt;/li>
+&lt;/ul>
+&lt;p>在代码编译时，栈帧需要多大的局部变量表、多深的操作数栈都是完全确定的（写入到方法表的Code属性中：虚拟机执行子系统 - 类文件构成 - 属性表集合）&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;p>在活动线程中，只有位于栈顶的栈帧才有效，称为&lt;strong>当前栈(Current Stack Frame)&lt;/strong>，与这个栈帧相关联的方法称为当前方法(Current Method)。&lt;/p>
+&lt;h3 id="局部变量表local-variable-table">局部变量表（Local Variable Table）&lt;/h3>
+&lt;p>局部变量表**用于存放方法参数和方法内部定义的局部变量。**方法表的Code属性: max_locals 数据项指明了该方法所需要分配的局部变量表的最大容量。&lt;/p>
+&lt;p>局部变量表的容量以Slot（Variable Slot：变量槽）为最小单位，其中64位长度的long和double类型的数据占用2个Slot，其余数据类型（boolean、byte、char、short、int、float、reference、returnAddress）占用一个Slot（一个Slot可以存放32位以内的数据类型）&lt;/p>
+&lt;p>虚拟机通过&lt;strong>索引&lt;/strong>定位的方式使用局部变量表，索引值的范围是从0到局部变量表最大Slot数量。32位数据类型的变量，索引n就代表使用第n个Slot，如果是64位数据类型的变量，则说明会同时使用n和n+1两个Slot。&lt;/p>
+&lt;p>在方法执行时，虚拟机是使用局部变量表完成参数值到参数变量列表的传递过程，如果是实例方法（非static的方法）那么局部变量表中第0位的Slot默认是用于传递方法所属实例对象的引用，在方法中可以通过 &lt;strong>this&lt;/strong> 关键字来访问到这个隐含的参数，其余参数则按参数表顺序排列，占用从索引1开始的局部变量Slot。参数列表分配完毕后，再根据方法体内部定义的变量顺序和作用域分配其余的Slot。&lt;/p>
+&lt;pre>&lt;code class="language-java">// 关于局部变量表索引与 方法是否被 static 修饰的示例
+// 可以通过方法的字节码看到第一次执行store操作的索引值
+// 方法 add1 被 static 修饰，则第0位可以直接用于存储参数或者局部变量
+public static void add1() {
+int a = 0;
+int b = 3;
+int c = a + b;
+}
+// 方法 add2 未被 static 修饰，是一个实例变量，则第0位将是方法所属示例对象的引用：this
+public void add2() {
+int a = 0;
+int b = 3;
+int c = a + b;
+}
+// 方法 add1 的字节码，第一次执行istore时，索引为0
+0: iconst_0
+1: istore_0
+2: iconst_3
+3: istore_1
+4: iload_0
+5: iload_1
+6: iadd
+7: istore_2
+8: return
+// 方法 add2 的字节码，第一次执行istore时，索引为1，0的位置存放着this
+0: iconst_0
+1: istore_1
+2: iconst_3
+3: istore_2
+4: iload_1
+5: iload_2
+6: iadd
+7: istore_3
+8: return
+&lt;/code>&lt;/pre>
+&lt;h4 id="slot-复用">Slot 复用&lt;/h4>
+&lt;p>为了节省栈帧空间，局部变量表中的Slot是可以复用的，当方法执行位置已经（程序计数器在字节码的值）超过了某个变量，那么这个变量的Slot可以被其他变量复用。除了能节省栈帧空间，还伴随着可能会影响到系统垃圾收集的行为。&lt;/p>
+&lt;pre>&lt;code class="language-java">
+// 示例一
+public static void main(String[] args) {
+// 向内存填充64M的数据
+byte[] placeholder = new byte[64 * 1024 * 1024];
+System.gc();
+}
+// 示例二
+public static void main(String[] args) {
+// 向内存填充64M的数据
+{
+byte[] placeholder = new byte[64 * 1024 * 1024];
+}
+System.gc();
+}
+// 示例三
+public static void main(String[] args) {
+// 向内存填充64M的数据
+{
+byte[] placeholder = new byte[64 * 1024 * 1024];
+}
+int a = 0;
+System.gc();
+}
+&lt;/code>&lt;/pre>
+&lt;p>编译以上代码添加：&lt;code>verbose:gc&lt;/code> 参数查看 GC 收集情况，会发现示例一和示例二的占用并没有被回收，而示例三被成功回收了。&lt;/p>
+&lt;p>能否被回收的原因在于：局部变量表中的 Slot 是否还存在有关于 placeholder 数组的关联。在示例三中，变量a复用了已经不再使用的 placeholder 变量的Slot，在 GC 执行时，就可以正常回收 placeholder 除去a复用的空间。&lt;/p>
+&lt;p>所以，在部分情况下给不在使用变量设置为null，也不能算完全没有意义。不过应当以恰当的作用域来避免使用手动设置null的方式（实际上在经过JIT的编译优化后，手动设置为null语句将被消除掉）。&lt;/p>
+&lt;h4 id="局部变量表大小对调用的影响">局部变量表大小对调用的影响&lt;/h4>
+&lt;p>局部变量表是存在栈帧中的，如果方法的参数列表和局部变量比较多，那么调用一次会占用更多的栈空间，将会导致在栈空间内存一定下调用次数减少。&lt;/p>
+&lt;pre>&lt;code class="language-java">public class TestLocalVariableTimes {
+private static int count = 0;
+public static void recursion(int a, int b, int c) {
+long l1 = 12;
+short sl = 1;
+byte b1 = 1;
+String s = &amp;quot;1&amp;quot;;
+System.out.println(&amp;quot;count=&amp;quot; + count);
+count++;
+recursion(1, 2, 3);
+}
+public static void recursion() {
+System.out.println(&amp;quot;count=&amp;quot; + count);
+count++;
+recursion();
+}
+public static void main(String[] args) {
+recursion(1, 2, 3);
+}
+}
+&lt;/code>&lt;/pre>
+&lt;p>以上代码中，第一个方法有3个参数4个变量，由于long是占用2个slot，所以占用8个Slot，而第二个方法没有参数和局部变量，则不占用Slot。可以通过 &lt;code>javap -verbose TestLocalVariableTimes&lt;/code> 查看每个方法的locals值。&lt;/p>
+&lt;p>通过 &lt;code>java -Xss160K TestLocalVariableTimes&lt;/code> 运行调用不同方法时可以发现，无参数无局部变量的方法明显比有参数的方法执行的次数多，所以局部变量表的大小对调用次数是有直接关系的。&lt;/p>
+&lt;h3 id="操作数栈operand-stack">操作数栈（Operand Stack）&lt;/h3>
+&lt;p>操作数栈也常被称为操作栈，它是一个后入先出（Last In First Out：LIFO）栈。同局部变量表一样，操作数栈的最大深度也在编译的时候就写入到了Code属性的 &lt;strong>max_stacks&lt;/strong> 数据项中。&lt;/p>
+&lt;p>操作数栈的每一个元素可以是任意的 Java 数据类型，包括 long 和 double。32位数据类型所占的栈容量为1，64位数据类型所占用栈容量为2。&lt;/p>
+&lt;p>**CPU 执行时是通过从寄存器取指令，而 JVM 的指令主要是从操作数栈取的，因此 JVM 是一个基于栈而不是基于寄存器的执行引擎。**当执行到一个方法时，这个方法的操作数栈是空的，方法的执行也就对应着相关指令的入栈、出栈。&lt;/p>
+&lt;h4 id="基本执行逻辑">基本执行逻辑&lt;/h4>
+&lt;p>主要是对变量值的入栈、出栈、运算、入栈&amp;hellip;&lt;/p>
+&lt;p>例如将两个int类型的局部变量相加再将结果保存至第三个局部变量：&lt;/p>
+&lt;pre>&lt;code class="language-java">// 源代码
+public static void main (String[] args) {
+int a = 0;
+int b = 3;
+int c = a + b;
+}
+// 字节码
+0: iconst_0 // 将常量加载到操作数栈中
+1: istore_1 // 将上一步加载到操作数栈的常量数值存储到局部变量表中
+2: iconst_3 // 同0
+3: istore_2 // 同1
+4: iload_1 // 将局部变量表索引为1的值加载到操作数栈中
+5: iload_2 // 同4
+6: iadd // 对最接近栈顶的两个值出栈并进行求和然后将结果入栈
+7: istore_3 // 将相加的结果从操作数栈存储到局部变量表
+8: return // 方法正常返回，结束
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>操作数栈中元素的类型必须与字节码指令的序列严格匹配&lt;/strong>，例如上面的iadd操作时，不能出现iadd操作需要的值第一个为long 第二个为 float 的情况。&lt;/p>
+&lt;h2 id="参考资料">参考资料&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="http://www.importnew.com/26842.html">探究 Java 虚拟机栈&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://blog.csdn.net/qq_30739519/article/details/51043512">java虚拟机 jvm 局部变量表实战&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>自建家用NAS记录 - 硬件篇</title><link>https://eightpigs.io/2018/08/10/create_yourself_nas/</link><pubDate>Fri, 10 Aug 2018 21:21:00 +0000</pubDate><guid>https://eightpigs.io/2018/08/10/create_yourself_nas/</guid><description>&lt;h2 id="缘由">缘由&lt;/h2>
+&lt;p>NAS是种草很久了，迟迟没下手的原因是还差一根“稻草”。终于最近自己乞丐版的 MBP 15 用起来硬盘有些吃紧&amp;hellip;&lt;/p>
+&lt;h2 id="作用">作用&lt;/h2>
+&lt;ul>
+&lt;li>文档存储&lt;/li>
+&lt;li>下载机&lt;/li>
+&lt;li>TimeMachine&lt;/li>
+&lt;/ul>
+&lt;h2 id="准备">准备&lt;/h2>
+&lt;p>看了不少关于NAS的帖子，有推荐群辉、万由等一系列完善的商业产品，也有推荐自建NAS上黑群辉或者FreeNAS。从自身喜欢折腾的情况出发，还是决定自建NAS，满足我的折腾欲。&lt;/p>
+&lt;h3 id="主板">主板&lt;/h3>
+&lt;p>自建NAS的第一步肯定是要先选择最重要的主板，主板有了才能对应选择其他配件。&lt;/p>
+&lt;p>对家用NAS的基本要求是：&lt;/p>
+&lt;ol>
+&lt;li>低功耗&lt;/li>
+&lt;li>静音&lt;/li>
+&lt;li>占地小&lt;/li>
+&lt;/ol>
+&lt;p>基于以上，优先考虑了集成CPU并有良好被动散热的ITX主板。且自己手里闲置了2条 DDR3L 1600 的笔记本内存条，要是能支持现有内存那肯定是最好不过了。最终看上了&lt;a href="https://www.asrock.com/mb/Intel/J3455-ITX/index.cn.asp?cat=Specifications">华擎J3455-ITX主板&lt;/a>:&lt;/p>
+&lt;ul>
+&lt;li>支持DDR3L 1600 内存&lt;/li>
+&lt;li>千兆网卡&lt;/li>
+&lt;li>支持远程唤醒 (Wake-On-WAN)&lt;/li>
+&lt;li>支持网络唤醒功能 (Wake-On-LAN)&lt;/li>
+&lt;li>4个SATA3 接口&lt;/li>
+&lt;li>主板有设计被动散热&lt;/li>
+&lt;/ul>
+&lt;p>可惜没有 M.2 SSD 接口。&lt;/p>
+&lt;h3 id="机箱">机箱&lt;/h3>
+&lt;p>选择好了主板自然需要先选择符合的机箱才行，对于一个NAS机箱来说，硬盘位、散热、体积、热插拔都是比较重要的。不过，我肯定还是先从颜值入手。在选择过程中，确定了两款机箱：IN WIN（迎广）MS04和乔思伯 C2。&lt;/p>
+&lt;p>IN WIN（迎广）MS04机箱在看到配置时确觉得比较满意，支持热插拔、多盘位、自带电源等，但是价格颇高(860+¥)，作为整机预算只有1.5K的我，肯定是与这个机箱无缘了。&lt;/p>
+&lt;p>乔思伯 C2 俗称乞丐版机箱，在很久之前看时就喜欢这种简洁设计。C2不是为NAS设计的，在多盘位和热插拔方面支持得不是很好。不过价格是相当的美丽，正好我对热插拔的需求不是很高，多盘位也可以买硬盘支架解决，所以最终选择了这款。&lt;/p>
+&lt;h3 id="硬盘">硬盘&lt;/h3>
+&lt;p>1.5K的预算与RAID肯定是无缘的，硬盘选择一块不错的NAS盘作为资料盘和一块可用的硬盘作为下载盘就行。不过没有 RAID 仅一块磁盘来存储资料是肯定不安全的，比较可取的方法是将资料盘的内容定时打包+加密做云端和冷备。（具体同步方案后期再说）&lt;/p>
+&lt;p>&lt;strong>资料盘&lt;/strong>：我用西数硬盘比较多，在选择NAS盘时发现西数红盘维修率特别高，希捷的酷狼系列倒是评价不错，观望几天后京东降价150，毫不犹豫入了一块2T的酷狼。&lt;/p>
+&lt;p>&lt;strong>下载盘&lt;/strong>：之前笔记本电脑还遗留下来两块2.5寸硬盘，正好可以用来做系统盘和下载盘。反正下载的数据也不怕丢，重要的就备份到资料盘去。&lt;/p>
+&lt;h3 id="电源">电源&lt;/h3>
+&lt;p>电源最初计划入一个200W应该差不多，不过电源这个东西在机器中可以说是重中之重，不能出现问题，所以在最后下单时买了一个台达300W的电源。&lt;/p>
+&lt;p>NAS 有电源肯定是不够的，为了防止突然断电给硬盘造成伤害，UPS肯定是不能少的。不过鉴于目前的预算有限，UPS只能再等等了。&lt;/p>
+&lt;p>差评：买的电源没有送电源线，这让我有点郁闷，组装当天临时用的电饭煲的电源线。&lt;/p>
+&lt;h2 id="配置清单148990">配置清单（1489.90¥）&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>类型&lt;/th>
+&lt;th>简称&lt;/th>
+&lt;th>总价&lt;/th>
+&lt;th>单价&lt;/th>
+&lt;th>优惠&lt;/th>
+&lt;th>数量&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>CPU&lt;/td>
+&lt;td>板载 J3455&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>主板&lt;/td>
+&lt;td>华擎 J3455-ITX&lt;/td>
+&lt;td>599&lt;/td>
+&lt;td>599&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>内存&lt;/td>
+&lt;td>三星 DDR3L 1600Mhz&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>硬盘1&lt;/td>
+&lt;td>希捷酷狼 2T&lt;/td>
+&lt;td>549&lt;/td>
+&lt;td>549&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>硬盘2&lt;/td>
+&lt;td>坏掉笔记本上的2.5寸&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>机箱&lt;/td>
+&lt;td>乔思伯 C2&lt;/td>
+&lt;td>165&lt;/td>
+&lt;td>169&lt;/td>
+&lt;td>4&lt;/td>
+&lt;td>0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>电源线&lt;/td>
+&lt;td>电源线&lt;/td>
+&lt;td>17.90&lt;/td>
+&lt;td>17.90&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>电源&lt;/td>
+&lt;td>台达 VX300&lt;/td>
+&lt;td>159&lt;/td>
+&lt;td>199&lt;/td>
+&lt;td>40&lt;/td>
+&lt;td>1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>在 MacOS 和 Windows 上的效率工具</title><link>https://eightpigs.io/2018/04/20/efficiency_tools_on_macos_and_windows/</link><pubDate>Fri, 20 Apr 2018 10:14:00 +0000</pubDate><guid>https://eightpigs.io/2018/04/20/efficiency_tools_on_macos_and_windows/</guid><description>&lt;h2 id="终端模拟器">终端模拟器&lt;/h2>
+&lt;h5 id="windows">Windows&lt;/h5>
+&lt;ul>
+&lt;li>&lt;a href="http://cmder.net/">Cmder&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://zh.wikipedia.org/wiki/%E9%80%82%E7%94%A8%E4%BA%8E_Linux_%E7%9A%84_Windows_%E5%AD%90%E7%B3%BB%E7%BB%9F">WSL&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://hyper.is/">Hyper&lt;/a>(Electron)&lt;/li>
+&lt;/ul>
+&lt;h5 id="macos">MacOS&lt;/h5>
+&lt;ul>
+&lt;li>&lt;a href="https://www.iterm2.com/">Iterm2&lt;/a> + &lt;a href="https://github.com/robbyrussell/oh-my-zsh">zsh(oh-my-zsh)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://hyper.is/">Hyper&lt;/a>(Electron)&lt;/li>
+&lt;/ul>
+&lt;h2 id="查找">查找&lt;/h2>
+&lt;h5 id="windows-1">Windows&lt;/h5>
+&lt;ul>
+&lt;li>&lt;a href="https://xbeta.info/everything-search-tool.htm">Everything&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h5 id="macos-1">MacOS&lt;/h5>
+&lt;ul>
+&lt;li>&lt;a href="http://wellsnake.com/jekyll/update/2014/06/15/001/">Alfred&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://www.cnblogs.com/peida/archive/2012/11/16/2773289.html">Shell Command&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="快速启动">快速启动&lt;/h2>
+&lt;h5 id="windows-2">Windows&lt;/h5>
+&lt;ul>
+&lt;li>&lt;a href="https://xuanwo.org/2015/07/28/listary/">Listary&lt;/a> (可以配合EveryThing）&lt;/li>
+&lt;li>&lt;a href="http://www.wox.one/">Wox&lt;/a>（插件多）&lt;/li>
+&lt;/ul>
+&lt;h5 id="macos-2">MacOS&lt;/h5>
+&lt;ul>
+&lt;li>&lt;a href="http://wellsnake.com/jekyll/update/2014/06/15/001/">Alfred&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="快捷键自动化">快捷键（自动化）&lt;/h2>
+&lt;h5 id="windows-3">Windows&lt;/h5>
+&lt;ul>
+&lt;li>&lt;a href="http://xbeta.info/tag/ahk">AHK&lt;/a> （AutoHotKey）&lt;/li>
+&lt;/ul>
+&lt;h5 id="macos-3">MacOS&lt;/h5>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/ashfinal/awesome-hammerspoon">Hammerspoon&lt;/a> (Lua脚本)&lt;/li>
+&lt;li>&lt;a href="https://sspai.com/post/36442">Keyboard Maestro&lt;/a>（快捷键 + 自动化）&lt;/li>
+&lt;/ul></description></item><item><title>腾讯视频客户端（MacOS）缓存文件合成/导出</title><link>https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/</link><pubDate>Sat, 14 Apr 2018 13:02:00 +0000</pubDate><guid>https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/</guid><description>&lt;p>年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有 TV 版的缘故，其他版本没有给开放投屏功能。那么这就很尴尬了，TV 版会员太贵并且也没必要买，普通客户端不支持投屏并且缓存的资源也不是一个正常可以直接用其他播放器观看的格式。&lt;/p>
+&lt;h2 id="思路">思路&lt;/h2>
+&lt;p>通过查看客户端缓存的目录发现，视频是被切割为单个小的 ts 文件，也就是并没有做任何处理，只是一个切割操作而已。最重要的是切割的 ts 文件是有序的，文件名是以0,1,2,3,4这样的顺序命名的，所以只要想办法把文件按顺序合成就可以正常用其他播放器投屏观看了。&lt;/p>
+&lt;p>那么写个简单的 shell 脚本就可以实现这个操作（将ts文件按顺序合成为单文件)&lt;/p>
+&lt;h2 id="步骤">步骤&lt;/h2>
+&lt;p>最初尝试使用递归获取 .ts 文件并合并，这也是最简单的方式，但是由于直接使用 &lt;strong>find . -name &amp;lsquo;*.ts&amp;rsquo;&lt;/strong> 的结果是无序的，导致最终合成的视频顺序不正确&lt;/p>
+&lt;p>所以最终决定按以下最稳的方式实现&lt;/p>
+&lt;ol>
+&lt;li>将指定视频子目录下的所有ts文件放到一个临时目录下，方便处理（因为文件名是有序的）&lt;/li>
+&lt;li>进入临时目录，获取文件的数量&lt;/li>
+&lt;li>根据文件数量遍历将文件合成到指定文件&lt;/li>
+&lt;li>删除临时目录&lt;/li>
+&lt;/ol>
+&lt;h2 id="脚本">脚本&lt;/h2>
+&lt;h3 id="视频路径">视频路径&lt;/h3>
+&lt;p>腾讯视频的缓存目录在：&lt;/p>
+&lt;pre>&lt;code class="language-bash">~/Library/Containers/com.tencent.tenvideo/Data/Library/Application\ Support/Download/video/
+&lt;/code>&lt;/pre>
+&lt;p>video 目录下除了 ad 文件夹之外的所有文件夹都是已经缓存的视频，可以查看子文件夹中 .ts 文件的内容（可以空格键直接预览）然后确定具体是哪个视频的缓存资源&lt;/p>
+&lt;h3 id="使用示例">使用示例&lt;/h3>
+&lt;p>&lt;a href="https://asciinema.org/a/zWKx9uhvxpUlWsbyZtLo3WSMl">&lt;img src="https://asciinema.org/a/zWKx9uhvxpUlWsbyZtLo3WSMl.png" alt="asciicast">&lt;/a>&lt;/p>
+&lt;pre>&lt;code class="language-bash">merge.sh b0025s0ph00.321004.hls ~/Downloads/合成视频1.mp4
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>第一个参数是缓存视频文件夹名称&lt;/li>
+&lt;li>第二个参数是合成文件的保存路径&lt;/li>
+&lt;/ul>
+&lt;h3 id="脚本内容">脚本内容&lt;/h3>
+&lt;pre>&lt;code class="language-bash">#!/bin/bash
+clear
+cat &amp;lt;&amp;lt; EOF
+################### 腾讯视频(MacOS)缓存文件合成脚本 ###################
+Author: eightpigs &amp;lt;isme@lyinlong.me&amp;gt;
+Date: 2018-04-14
+EOF
+echo -n &amp;quot;=&amp;gt; 准备数据... &amp;quot;
+# 生成的目标文件
+target=$2
+# 源文件（.ts文件的目录）
+source='/Users/'$USER'/Library/Containers/com.tencent.tenvideo/Data/Library/Application Support/Download/video/'$1'/'
+# 使用时间戳来做临时目录
+tmpDir='/tmp/merge_tencent/'`date +%s`'/'
+mkdir -p $tmpDir
+# 进入到视频的ts目录
+cd &amp;quot;$source&amp;quot;
+echo &amp;quot;完成&amp;quot;
+echo -n &amp;quot;=&amp;gt; 合并文件夹... &amp;quot;
+# 将文件递归移动到临时目录
+for i in $(find ./ -name '*.ts');
+do
+cp -vf $i $tmpDir &amp;gt; /dev/null 2&amp;gt;&amp;amp;1;
+done
+echo &amp;quot;完成&amp;quot;
+cd $tmpDir
+echo -n &amp;quot;=&amp;gt; 获取需要合成文件数... &amp;quot;
+# 总共有多少文件
+# 因为ts 文件是有顺序的（文件名)
+count=`ls -l $tmpDir |grep &amp;quot;^-&amp;quot;|wc -l | sed 's/[[:space:]]//g'`
+echo &amp;quot;完成&amp;quot;
+echo -n &amp;quot;=&amp;gt; 合成文件... &amp;quot;
+# 按顺序合并
+for ((i=0; i&amp;lt;$count; i ++))
+do
+cat &amp;quot;$tmpDir&amp;quot;$i'.ts'&amp;gt;&amp;gt;&amp;quot;$target&amp;quot;
+done
+echo &amp;quot;完成&amp;quot;
+cat &amp;lt;&amp;lt; EOF
+结果：
+文件数: $count
+大小: `ls -lh $target | awk '{print $5}'`
+路径：$target
+######################################################################
+EOF
+rm -rf $tmpDir
+&lt;/code>&lt;/pre></description></item><item><title>Groovy 基础 - 语法</title><link>https://eightpigs.io/2018/04/12/groovy-grammar/</link><pubDate>Thu, 12 Apr 2018 23:04:00 +0000</pubDate><guid>https://eightpigs.io/2018/04/12/groovy-grammar/</guid><description>&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;p>Groovy&amp;hellip;&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>is an agile and dynamic language for the Java Virtual Machine&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>builds upon the strengths of Java but has additional power features inspired by languages like Python, Ruby and Smalltalk&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>makes modern programming features available to Java developers with almost-zero learning curve&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>provides the ability to statically type check and statically compile your code for robustness and performance&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>supports Domain-Specific Languages and other compact syntax so your code becomes easy to read and maintain&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>makes writing shell and build scripts easy with its powerful processing primitives, OO abilities and an Ant DSL&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>increases developer productivity by reducing scaffolding code when developing web, GUI, database or console applications&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>simplifies testing by supporting unit testing and mocking out-of-the-box&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>seamlessly integrates with all existing Java classes and libraries&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>compiles straight to Java bytecode so you can use it anywhere you can use Java&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>以下内容大部分来自官方文档（version: 2.4.15），可以理解为删减后的翻译版&amp;hellip;&lt;/p>
+&lt;h2 id="语法">语法&lt;/h2>
+&lt;p>Groovy是一个基于Java 虚拟机的语言，Groovy语法特性源自于Java并参考了Ruby、Python、Smalltalk等语言的特性&lt;/p>
+&lt;h3 id="注释">注释&lt;/h3>
+&lt;p>因为在Groovy中可以完全使用Java语法，所以在Groovy中，注释与Java一致，其中唯一不同的是Groovy增加了一个特殊的注释：&lt;/p>
+&lt;pre>&lt;code class="language-groovy">#!/usr/bin/env groovy
+println &amp;quot;Hello from the shebang line&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;p>这个注释主要给unix系统用的，用于声明脚本运行的环境。&lt;/p>
+&lt;h3 id="关键字">关键字&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>as&lt;/th>
+&lt;th>assert&lt;/th>
+&lt;th>break&lt;/th>
+&lt;th>case&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>catch&lt;/td>
+&lt;td>class&lt;/td>
+&lt;td>const&lt;/td>
+&lt;td>continue&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>def&lt;/td>
+&lt;td>default&lt;/td>
+&lt;td>do&lt;/td>
+&lt;td>else&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>enum&lt;/td>
+&lt;td>extends&lt;/td>
+&lt;td>false&lt;/td>
+&lt;td>finally&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>for&lt;/td>
+&lt;td>goto&lt;/td>
+&lt;td>if&lt;/td>
+&lt;td>implements&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>import&lt;/td>
+&lt;td>in&lt;/td>
+&lt;td>instanceof&lt;/td>
+&lt;td>interface&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>new&lt;/td>
+&lt;td>null&lt;/td>
+&lt;td>package&lt;/td>
+&lt;td>return&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>super&lt;/td>
+&lt;td>switch&lt;/td>
+&lt;td>this&lt;/td>
+&lt;td>throw&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>throws&lt;/td>
+&lt;td>trait&lt;/td>
+&lt;td>true&lt;/td>
+&lt;td>try&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>while&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="命名规则">命名规则&lt;/h3>
+&lt;p>标识符以字母，$或下划线开头。不能以数字开头。&lt;/p>
+&lt;p>在定义变量时，可以不必指明变量类型，直接使用 &lt;strong>def&lt;/strong>关键字或者不写来声明&lt;/p>
+&lt;pre>&lt;code class="language-groovy">
+// 使用def
+def name = &amp;quot;张三&amp;quot;
+// 直接定义
+age = 20
+// 使用类型
+boolean male = true
+&lt;/code>&lt;/pre>
+&lt;p>在Groovy中，存在一种比较特殊的标识符：引号标识符。引号标识符用于解决在Java语法规范中禁止但Grovvy却支持的操作&lt;/p>
+&lt;pre>&lt;code class="language-groovy">// 定义一个Map
+def map = [:]
+// Map允许以.的方式调用，但由于Map的Key存在空格， Java语法将直接报错，所以groovy使用引号来处理
+map.&amp;quot;an identifier with a space and double quotes&amp;quot; = &amp;quot;ALLOWED&amp;quot;
+map.'with-dash-signs-and-single-quotes' = &amp;quot;ALLOWED&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;h3 id="与java-的不同">与Java 的不同&lt;/h3>
+&lt;h4 id="默认引入的包">默认引入的包&lt;/h4>
+&lt;p>在Groovy中，默认引入了以下包：&lt;/p>
+&lt;ul>
+&lt;li>java.io.*&lt;/li>
+&lt;li>java.lang.*&lt;/li>
+&lt;li>java.math.BigDecimal&lt;/li>
+&lt;li>java.math.BigInteger&lt;/li>
+&lt;li>java.net.*&lt;/li>
+&lt;li>java.util.*&lt;/li>
+&lt;li>groovy.lang.*&lt;/li>
+&lt;li>groovy.util.*&lt;/li>
+&lt;/ul>
+&lt;p>所以在代码中时，可以直接使用对象而不用引包&lt;/p>
+&lt;blockquote>
+&lt;p>其余不同可以看&lt;a href="http://groovy-lang.org/differences.html">官方文档&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="字符串">字符串&lt;/h3>
+&lt;p>Groovy的字符串特别强大，提供了各种有意思的特性。Groovy的字符串有两个对象：&lt;strong>java.lang.String&lt;/strong> 和 &lt;strong>groovy.lang.GString&lt;/strong>，其中 GString 是一种升级的String类型，支持类似与模板变量的定义。&lt;/p>
+&lt;h4 id="单引号">单引号&lt;/h4>
+&lt;p>在Java中，单引号用于标识char类型，而在Groovy中，则可以直接与这样社用。单引号是不支持 插值（下面会讲到），仅仅是一个普通的String 类型&lt;/p>
+&lt;pre>&lt;code class="language-groovy">'这是单引号符串'
+&lt;/code>&lt;/pre>
+&lt;h4 id="三引号">三引号&lt;/h4>
+&lt;p>三引号字符串在Python中是很常见的，有时候写Java代码需要支持换行时，就非常苦恼，基本都采用+号连接。而在Groovy中，则可以直接与Python一样，使用三引号处理对行内容。&lt;/p>
+&lt;p>三引号字符串有点类似于HTML中的pre标签，如果三引号中存在缩进，使用println时，将会原封不动输出，也就是说，三引号会保留缩进内容。&lt;/p>
+&lt;pre>&lt;code class="language-groovy">'''
+行1
+行2
+这是三引号
+'''
+&lt;/code>&lt;/pre>
+&lt;h4 id="双引号">双引号&lt;/h4>
+&lt;p>双引号字符串中，如果双引号中没有包含插值，则双引号字符串类型是 &lt;strong>java.lang.String&lt;/strong> 类型，如果包含插值，则双引号字符串类型是 &lt;strong>groovy.lang.GString&lt;/strong>&lt;/p>
+&lt;h4 id="插值">插值&lt;/h4>
+&lt;p>插值实际是一种字符串的模板变量，也可以理解为占位符，插值使用${}包含变量名。插值是不可以在单引号和三引号中使用的，如果其中有插值，将不会被编译，而直接字面输出。&lt;/p>
+&lt;p>当字符串包含插值时，类型自动转换为 &lt;strong>groovy.lang.GString&lt;/strong> 可以使用 &lt;strong>toString()&lt;/strong> 方法转换为String类型(相当于执行完模板变量并返回最终的值)&lt;/p>
+&lt;pre>&lt;code class="language-groovy">def name = '张三'
+def helloStr = &amp;quot;Hello , ${name} .&amp;quot;
+// 插值中可以直接使用表达式
+def str2 = helloStr + &amp;quot;I am ${1 + 2 + 3 + 4} years old&amp;quot;
+// 插值也可以支持语句
+println &amp;quot;Hello, ${def a = 1; def b = 2; a + b}&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;p>除了使用${}来定义插值，还可以直接使用$符号来使用变量，但不可以用$来使用方法和算术运算符&lt;/p>
+&lt;pre>&lt;code class="language-groovy">def person = [name: 'Guillaume', age: 36]
+assert &amp;quot;$person.name is $person.age years old&amp;quot; == 'Guillaume is 36 years old'
+&lt;/code>&lt;/pre>
+&lt;h5 id="插值使用闭包">插值使用闭包&lt;/h5>
+&lt;p>闭包的概念可以先简单理解为一个没有方法声明的方法体内容（并不一定正确，但大致可以这样理解来看）&lt;/p>
+&lt;p>在Groovy中使用闭包作为插值，那么插值的最终结果是在每次调用该字符串时产生，而不是声明时产生。可以看一段官方实例代码理解&lt;/p>
+&lt;pre>&lt;code class="language-groovy">def number = 1
+// 普通插值
+def eagerGString = &amp;quot;value == ${number}&amp;quot;
+// 使用闭包
+def lazyGString = &amp;quot;value == ${ -&amp;gt; number }&amp;quot;
+assert eagerGString == &amp;quot;value == 1&amp;quot;
+assert lazyGString == &amp;quot;value == 1&amp;quot;
+number = 2
+assert eagerGString == &amp;quot;value == 1&amp;quot;
+assert lazyGString == &amp;quot;value == 2&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;p>上面实例代码中，lazyGString 变量会随着闭包引用变量的变化而变化，在官方的实例中，很形象得使用了：lazy来定义变量名，该插值会每次在调用时得到最终的字符串结果。&lt;/p>
+&lt;h5 id="与java代码糅合">与Java代码糅合&lt;/h5>
+&lt;p>因为当字符串使用闭包时，字符串类型将从 &lt;strong>java.lang.String&lt;/strong> 转换为 &lt;strong>groovy.lang.GString&lt;/strong> ，当一个Java或者Groovy方法需要一个 &lt;strong>java.lang.String&lt;/strong> 类型的参数时，传入 &lt;strong>groovy.lang.GString&lt;/strong> 将会自动转换为 &lt;strong>java.lang.String&lt;/strong>&lt;/p>
+&lt;h4 id="hashcode">hashCode&lt;/h4>
+&lt;p>因为 &lt;strong>groovy.lang.GString&lt;/strong> 的字符串内容是动态生成的，即便最终生成的值与 &lt;strong>String&lt;/strong> 类型的值一致，它们的hashCode也不同。&lt;/p>
+&lt;pre>&lt;code class="language-groovy">assert &amp;quot;one: ${1}&amp;quot;.hashCode() != &amp;quot;one: 1&amp;quot;.hashCode()
+&lt;/code>&lt;/pre>
+&lt;p>所以，因为上述结论，在Map中不应使用 &lt;strong>String&lt;/strong> 来作为Key，如果使用 &lt;strong>GString&lt;/strong> 来作为Key，使用字符串取值的时候，会找不到该Key。&lt;/p>
+&lt;h4 id="三重双引号">三重双引号&lt;/h4>
+&lt;p>三重双引号与双引号的作用类似，可以说是双引号和三引号的结合版，支持双引号和三引号的特性。&lt;/p>
+&lt;pre>&lt;code class="language-groovy">def name = 'Groovy'
+def template = &amp;quot;&amp;quot;&amp;quot;
+Dear Mr ${name},
+You're the winner of the lottery!
+Yours sincerly,
+Dave
+&amp;quot;&amp;quot;&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;h4 id="斜杠字符串">斜杠字符串&lt;/h4>
+&lt;p>在groovy中可以使用斜杠来定义字符串，使用斜杠字符串可以当双引号、三引号使用，也支持插值。斜杠字符串不需要转移反斜杠，可以更加方便编写正则表达式。&lt;/p>
+&lt;pre>&lt;code class="language-groovy">def hello = /Hello/
+&lt;/code>&lt;/pre>
+&lt;h4 id="美元斜杠字符串dollar-slashy-string">美元斜杠字符串(Dollar slashy string)&lt;/h4>
+&lt;p>美元斜杠通过 $/ 和 /$ 定义字符串，主要用于字符串中存在多种需要转义符号的情况下，支持多行、可以使用插值。&lt;/p>
+&lt;pre>&lt;code class="language-groovy">def name = &amp;quot;Groovy&amp;quot;
+def date = &amp;quot;April, 1st&amp;quot;
+def dollarSlashy = $/
+Hello $name,
+today we're ${date}.
+$ dollar sign
+$$ escaped dollar sign
+\ backslash
+/ forward slash
+$/ escaped forward slash
+$$$/ escaped opening dollar slashy
+$/$$ escaped closing dollar slashy
+/$
+&lt;/code>&lt;/pre>
+&lt;h4 id="characters">Characters&lt;/h4>
+&lt;p>很有意思的是，在Groovy中没有明确的字符串定义，因为单引号可以用于定义字符串。但是可以通过以下三种方式来声明一个char类型&lt;/p>
+&lt;pre>&lt;code class="language-groovy">// 使用char类型来声明
+char c1 = 'A'
+// 使用as转换为char类型
+def c2 = 'B' as char
+// 强制转换为char类型
+def c3 = (char)'C'
+&lt;/code>&lt;/pre>
+&lt;h3 id="数字">数字&lt;/h3>
+&lt;p>Groovy中可以使用Java的数字类型，在声明数字类型时，Groovy会根据数字的大小自动转换成相应的类型。&lt;/p>
+&lt;pre>&lt;code class="language-groovy">def a = 1
+assert a instanceof Integer
+// Integer.MAX_VALUE
+def b = 2147483647
+assert b instanceof Integer
+// Integer.MAX_VALUE + 1
+def c = 2147483648
+assert c instanceof Long
+// Long.MAX_VALUE
+def d = 9223372036854775807
+assert d instanceof Long
+// Long.MAX_VALUE + 1
+def e = 9223372036854775808
+assert e instanceof BigInteger
+&lt;/code>&lt;/pre>
+&lt;p>可以使用 ** 来做乘方运算。&lt;/p>
+&lt;pre>&lt;code class="language-groovy">2 ** 3 // 8
+10 ** -1 // 0.1
+&lt;/code>&lt;/pre>
+&lt;h4 id="其他进制的数字">其他进制的数字&lt;/h4>
+&lt;h5 id="二进制">二进制&lt;/h5>
+&lt;p>二进制数字以前缀 ： 0b 开头&lt;/p>
+&lt;pre>&lt;code class="language-groovy">int xInt = 0b10101111
+assert xInt == 175
+&lt;/code>&lt;/pre>
+&lt;h5 id="八进制">八进制&lt;/h5>
+&lt;p>八进制数字以前缀：0 开头&lt;/p>
+&lt;pre>&lt;code class="language-groovy">int xInt = 077
+assert xInt == 63
+&lt;/code>&lt;/pre>
+&lt;h5 id="16进制">16进制&lt;/h5>
+&lt;p>16进制数字以前缀：0x 开头&lt;/p>
+&lt;pre>&lt;code class="language-groovy">int xInt = 0x77
+assert xInt == 119
+&lt;/code>&lt;/pre>
+&lt;h4 id="浮点数">浮点数&lt;/h4>
+&lt;p>在Groovy中，浮点数的默认类型为BigDecimal，不过在方法参数是double或者float时，依旧可以传入BigDecimal&lt;/p>
+&lt;p>浮点数支持使用指数&lt;/p>
+&lt;pre>&lt;code class="language-groovy">assert 1e3 == 1_000.0
+assert 2E4 == 20_000.0
+assert 3e+1 == 30.0
+assert 4E-2 == 0.04
+assert 5e-1 == 0.5
+&lt;/code>&lt;/pre>
+&lt;p>在编写较长的数字时，Groovy允许使用下划线来分组数字，有点类似于我们数字里面常用的逗号&lt;/p>
+&lt;pre>&lt;code class="language-groovy">long creditCardNumber = 1234_5678_9012_3456L
+long socialSecurityNumbers = 999_99_9999L
+double monetaryAmount = 12_345_132.12
+long hexBytes = 0xFF_EC_DE_5E
+long hexWords = 0xFFEC_DE5E
+long maxLong = 0x7fff_ffff_ffff_ffffL
+long alsoMaxLong = 9_223_372_036_854_775_807L
+long bytes = 0b11010010_01101001_10010100_10010010
+&lt;/code>&lt;/pre>
+&lt;p>在定义数字时，可以通过给值定一个后缀强制定义为指定类型&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>类型&lt;/th>
+&lt;th>后缀&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>BigInteger&lt;/td>
+&lt;td>G 或 g&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Long&lt;/td>
+&lt;td>L 或 l&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Integer&lt;/td>
+&lt;td>I 或 i&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>BigDecimal&lt;/td>
+&lt;td>G 或 g&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Double&lt;/td>
+&lt;td>D 或 d&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Float&lt;/td>
+&lt;td>F 或 f&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="lists">Lists&lt;/h3>
+&lt;p>在Groovy中，集合默认使用的类型是 &lt;strong>java.util.List&lt;/strong> ，因为Groovy中没有自己实现集合类型。&lt;/p>
+&lt;p>使用Java中数组的形式定义集合&lt;/p>
+&lt;pre>&lt;code class="language-groovy">def numbers = [1, 2, 3]
+assert numbers instanceof List
+assert numbers.size() == 3
+// 类似于Java中二位数组的集合
+def multi = [[0, 1], [2, 3]]
+assert multi[1][0] == 2
+&lt;/code>&lt;/pre>
+&lt;p>通常，我们定义集合时会使用同一种类型，Groovy也提供了不同类型的集合定义&lt;/p>
+&lt;pre>&lt;code class="language-groovy">def values = [22, &amp;quot;张三&amp;quot;, true]
+&lt;/code>&lt;/pre>
+&lt;p>在集合时，可以使用Groovy中的关键字&lt;strong>as&lt;/strong>指定集合的类型&lt;/p>
+&lt;pre>&lt;code class="language-groovy">def linkedList = [2, 3, 4] as LinkedList
+&lt;/code>&lt;/pre>
+&lt;h4 id="取值">取值&lt;/h4>
+&lt;p>可以直接使用下标来取值，其中下标分为两种， 正向取值和逆向取值。正向取值意思是使用正数从前往后取，逆向取值意思是使用复数从后往前取&lt;/p>
+&lt;pre>&lt;code class="language-groovy">def letters = ['a', 'b', 'c', 'd']
+assert letters[0] == 'a'
+assert letters[1] == 'b'
+assert letters[-1] == 'd'
+assert letters[-2] == 'c'
+// 同时访问2个元素
+assert letters[1, 3] == ['b', 'd']
+// 访问指定范围的元素
+assert letters[2..4] == ['C', 'd', 'e']
+&lt;/code>&lt;/pre>
+&lt;h4 id="赋值">赋值&lt;/h4>
+&lt;p>给List某个元素赋值直接使用=号即可&lt;/p>
+&lt;pre>&lt;code class="language-groovy">letters[2] = 'C'
+&lt;/code>&lt;/pre>
+&lt;h4 id="添加">添加&lt;/h4>
+&lt;p>使用 **&amp;laquo;**给集合添加元素&lt;/p>
+&lt;pre>&lt;code class="language-groovy">letters &amp;lt;&amp;lt; 'e'
+&lt;/code>&lt;/pre>
+&lt;h3 id="数组">数组&lt;/h3>
+&lt;p>数组与List的定义方式一样，只不过在定义时需要指定类型&lt;/p>
+&lt;pre>&lt;code class="language-groovy">String[] arrStr = ['Ananas', 'Banana', 'Kiwi']
+def numArr = [1, 2, 3] as int[]
+&lt;/code>&lt;/pre>
+&lt;h3 id="map">Map&lt;/h3>
+&lt;p>Map的定义也是使用中括号，这与Groovy中大括号的使用有关：大括号用于闭包。所以可以使用如下方式创建一个Map&lt;/p>
+&lt;pre>&lt;code class="language-groovy">def colors = [red: '#FF0000', green: '#00FF00', blue: '#0000FF']
+&lt;/code>&lt;/pre>
+&lt;p>Map支持使用[key] 和 以对象打点的方式进行调用。&lt;/p>
+&lt;pre>&lt;code class="language-groovy">assert colors['red'] == '#FF0000'
+assert colors.green == '#00FF00'
+&lt;/code>&lt;/pre>
+&lt;p>支持使用变量作为Key，但需要使用()将变量包起来&lt;/p>
+&lt;pre>&lt;code class="language-groovy">
+def key = 'name'
+// 定义一个包含key为name的Map
+person = [(key): 'Guillaume']
+&lt;/code>&lt;/pre></description></item><item><title>Go语言学习 - 复合数据类型：数组、slice</title><link>https://eightpigs.io/2018/03/19/go_notes_array_and_slice/</link><pubDate>Mon, 19 Mar 2018 14:26:00 +0000</pubDate><guid>https://eightpigs.io/2018/03/19/go_notes_array_and_slice/</guid><description>&lt;h1 id="复合数据类型">复合数据类型&lt;/h1>
+&lt;p>主要分为4种复合数据类型：&lt;/p>
+&lt;ul>
+&lt;li>数组&lt;/li>
+&lt;li>slice&lt;/li>
+&lt;li>map&lt;/li>
+&lt;li>结构体&lt;/li>
+&lt;/ul>
+&lt;p>本次先将数组和slice的相关知识点及理解记录下来，后续再慢慢看Map和结构体。&lt;/p>
+&lt;h2 id="数组">数组&lt;/h2>
+&lt;p>数组是具有固定长度且拥有零个或多个相同数据类型元素的序列。由于数组的长度固定，所以在Go里面很少直接使用。&lt;/p>
+&lt;pre>&lt;code class="language-go">var arr [3]int // 3个整数的数组
+fmt.Println(arr[len(arr)-1]) // 输出数组最后一个元素
+// 遍历数组并输出索引和元素
+for i, v := range arr {
+fmt.Println(&amp;quot;%d %d\n&amp;quot;, i, v)
+}
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>数组支持在定义时初始化值&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-go">var arr [3]int = [3]{1, 2, 3}
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>数组支持根据定义时设置的初始化值自动推导数组长度&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-go">arr := [...]int{1, 2, 3}
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>
+&lt;p>数组的长度是数组类型的一部分，数组的长度不同，类型不相等。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>数组支持在定义时使用 {索引：值} 的形式定义，例如可以为指定索引赋值。如果在使用索引初始化时，数组的长度不按元素个数计
+算，而且根据最大索引值计算，例如：&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-go">// 定义一个长度100的数组，第99个元素(最后一个)的值为 2
+r := [...]int{99: 2}
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>如果一个数组的元素类型是可比的（元素类型一致），那么该数组
+也是可比的。数组可以使用 == 或者 != 进行比较，例如：&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-go">a := [2]int{1, 2}
+b := [...]int{1, 2}
+c := [3]int{1, 2, 3}
+fmt.Println( a == b ) // true
+fmt.Println( a == c ) // 编译错误：数组类型不一致
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>当调用一个函数时，每个传入的参数都会创建一个副本，然后赋值给对应的函数变量，所以函数接受的是一个副本，而不是原始的参数。使用这种方式传递大的数组会变得很低效，并且在函数内部对数组的任何修改都仅影响副本，而不是原始数组。这种情况下，Go把数组和其他的类型都看成了值传递。在其他语言中，例如Java数组是隐式地使用引用传递。需要传递数组引用可以使用指针方式&lt;/strong>&lt;/p>
+&lt;h2 id="slice">slice&lt;/h2>
+&lt;blockquote>
+&lt;p>理解：在看到slice前面部分时，自动带入了Java中List的概念去看，导致反复看也不是很清楚。最终看到make函数、append函数 让我理解了，的确可以理解为List来使用。&lt;/p>
+&lt;/blockquote>
+&lt;p>slice：切片，是对数组一段内容的引用。切片的定义与数组基本一致，但不需要在[]中填写数组的长度。&lt;/p>
+&lt;pre>&lt;code class="language-go">// 数组定义
+a := [...]int{1, 2, 3, 4, 5}
+// 切片定义
+s := []int{1, 2, 3, 4, 5}
+&lt;/code>&lt;/pre>
+&lt;p>slice有3个属性：指针、长度和容量。&lt;/p>
+&lt;ul>
+&lt;li>指针指向数组的第一个可以从slice中访问的元素（并不一定是数组的第一个元素，具体看切片如何“切” 的数组）&lt;/li>
+&lt;li>长度是指slice中的元素个数，它不能超过slice的容量&lt;/li>
+&lt;li>容量的大小通常是从slice的起始元素到底层数组（被切数组）的最后一个元素间的元素个数&lt;/li>
+&lt;/ul>
+&lt;p>可以使用内置的len() 和 cap() 函数来计算切片的长度和容量。&lt;/p>
+&lt;p>如果slice的引用超过了被引用对象的容量，即cap(被引用对象)，那么会导致程序报错。
+如果slice的引用超过了被引用都对象的长度，即len(被引用对象)，那么最终slice会比原slice长。&lt;/p>
+&lt;pre>&lt;code class="language-go">// 月份
+months := [...]string{1: &amp;quot;January&amp;quot;, 2: &amp;quot;February&amp;quot;, 3: &amp;quot;March&amp;quot;, 4: &amp;quot;April&amp;quot;, 5: &amp;quot;May&amp;quot;, 6: &amp;quot;June&amp;quot;, 7: &amp;quot;July&amp;quot;, 8: &amp;quot;August&amp;quot;, 9: &amp;quot;September&amp;quot;, 10: &amp;quot;October&amp;quot;, 11: &amp;quot;Novemeber&amp;quot;, 12: &amp;quot;Decemeber&amp;quot;}
+// 实际夏季的月份
+summer := months[6:9]
+// 超出cap(summer) ，报错
+fmt.Println(summer[:20])
+// 扩充长度
+summer1 := summer[:5] //summer1 = [June July August September October]
+&lt;/code>&lt;/pre>
+&lt;p>在看了上面最后一句代码，可以更清晰认为slice只是引用了数组，所有变化也是数组，所以slice可以理解为数组的一个别名（一个区域的别名）&lt;/p>
+&lt;h3 id="比较">比较&lt;/h3>
+&lt;p>slice和数组基本一致，除初始化方式不需要填写长度之外，slice也不可以直接用 == 或者 !=比较。如果是[]bytes的slice，可以使用bytes.Equal 进行比较，其余类型需要自己写函数实现。&lt;/p>
+&lt;p>slice不支持直接使用 == 或者 != 比较的原因有以下2点：&lt;/p>
+&lt;ol>
+&lt;li>和数组不同，slice的元素是非直接的，有可能slice可以包含它本身&lt;/li>
+&lt;li>因为slice的元素不是直接的，所以如果底层数组元素改变，同一个slice在不同的时间会拥有不同的元素。&lt;/li>
+&lt;/ol>
+&lt;h3 id="make-函数">make 函数&lt;/h3>
+&lt;p>内置的make函数可以创建一个具有指定元素类型、长度和容量的slice。如果省略容量参数，则容量 == 长度。&lt;/p>
+&lt;p>在make函数的内部实现中，make函数创建了一个无名的数组并返回了它的一个slice，这个数组进可以通过这个slice访问。&lt;/p>
+&lt;pre>&lt;code class="language-go">// slice引用的无名数组长度 == 传入的len
+make([]T, len)
+// slice引用的无名数组长度 == cap, 并返回指定len的slice
+make([]T, len, cap)
+&lt;/code>&lt;/pre>
+&lt;h3 id="append-函数">append 函数&lt;/h3>
+&lt;p>内置的append函数用于将元素追加到slice的后面。append函数可以同时给slice添加多个元素，甚至添加另一个slice里的所有元素。&lt;/p>
+&lt;p>通过slice.go源码中的growslice函数查看slice的扩充策略：当旧的容量小于1024，则新容量直接*2 (doublecap := newcap + newcap )，反之，每次增加1/4。&lt;/p>
+&lt;pre>&lt;code class="language-go">newcap := old.cap
+doublecap := newcap + newcap
+if cap &amp;gt; doublecap {
+newcap = cap
+} else {
+if old.len &amp;lt; 1024 {
+newcap = doublecap
+} else {
+// Check 0 &amp;lt; newcap to detect overflow
+// and prevent an infinite loop.
+for 0 &amp;lt; newcap &amp;amp;&amp;amp; newcap &amp;lt; cap {
+newcap += newcap / 4
+}
+// Set newcap to the requested cap when
+// the newcap calculation overflowed.
+if newcap &amp;lt;= 0 {
+newcap = cap
+}
+}
+}
+&lt;/code>&lt;/pre>
+&lt;p>在slice每次扩充时，会返回一个新的slice，而旧的slice有可能指向了底层数组，也有可能没有指向底层数组，如果slice的容量完全能够存在新的内容，则指向了旧数组，否则返回的新slice与原slice不一致（底层数组不一致）。所以为了保证在后面能够继续使用变量操作，可以将append的结果赋值给原slice&lt;/p>
+&lt;pre>&lt;code class="language-go">runes = append(runes, r)
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-go">// 思考以下代码的输出
+func main() {
+s := []int{3}
+s = append(s, 4)
+s = append(s, 5)
+x := append(s, 6)
+y := append(s, 7)
+fmt.Println(s, x, y)
+}
+&lt;/code>&lt;/pre>
+&lt;p>// @TODO 后面学完Go基础后，将slice.go源码仔细阅读一遍。&lt;/p></description></item><item><title>Go学习笔记 - 基本结构</title><link>https://eightpigs.io/2018/02/10/go_notes_basic_structure/</link><pubDate>Sat, 10 Feb 2018 17:15:00 +0000</pubDate><guid>https://eightpigs.io/2018/02/10/go_notes_basic_structure/</guid><description>&lt;h2 id="基本结构">基本结构&lt;/h2>
+&lt;pre>&lt;code class="language-Go">package main
+import &amp;quot;fmt&amp;quot;
+// 变量
+// 函数
+func main(){
+fmt.Println(&amp;quot;Hello Go&amp;quot;)
+}
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>每一个.go的文件以&lt;strong>package&lt;/strong>声明开头，表名文件属于哪个包&lt;/li>
+&lt;li>package 声明后面是import声明&lt;/li>
+&lt;li>然后是&lt;strong>包级别&lt;/strong>的类型、变量、常量、函数的声明，不区分顺序&lt;/li>
+&lt;li>main函数代表入口函数，固定写法&lt;/li>
+&lt;/ul>
+&lt;h2 id="名称规范">名称规范&lt;/h2>
+&lt;ul>
+&lt;li>名称的开头是一个字母（Unicode 中的字符即可）或下划线，后面可以跟任意数量的字符、数字和下划线，并区分大小写&lt;/li>
+&lt;li>名称以大写字母开头，是可以被外部使用的（导出），意味着对包外是可见和可访问的&lt;/li>
+&lt;li>采用“驼峰式”风格命名，而不是下划线。&lt;/li>
+&lt;li>有25个关键字&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>break default func interface select
+case defer go map struct
+chan else goto package switch
+const if range type fallthrough
+contine for import return var
+&lt;/code>&lt;/pre>
+&lt;h2 id="变量">变量&lt;/h2>
+&lt;h3 id="声明">声明&lt;/h3>
+&lt;p>使用关键字var声明变量。&lt;/p>
+&lt;pre>&lt;code class="language-Go">var name type = expression
+// 例如
+var name string = &amp;quot;张三&amp;quot;
+// 短变量声明, 使用 := 自动推导结果到变量
+name := expression
+// 例如
+name := &amp;quot;李四&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;h3 id="类型">类型&lt;/h3>
+&lt;h4 id="整数">整数&lt;/h4>
+&lt;p>Go 同时具备有符号整数和无符号整数，有符号可以理解为：支持表示正负数，无符号可以理解为全是正数。&lt;/p>
+&lt;p>有符号整数分4种大小：8位、16位、32位、64位，用int8、int16、int32、int64表示，对应的无符号整数是uint8、uint16、uint32、uint64。&lt;/p>
+&lt;p>还有两种类型int和uint。在特定的平台上，其大小与原生的有符号整数/无符号整数相同，或&lt;strong>等于该平台上的运算效率最高的值&lt;/strong>。这两种类型大小相等，都是32位或者64位，具体大小由编译器决定。&lt;/p>
+&lt;p>rune类型是int32类型的同义词，常常用于指明一个值是Unicode码点（code point)。这两个名称可以互相使用。同样，byte类型是unit8类型的同义词，强调一个值是原始数据，而非量值。&lt;/p>
+&lt;p>还有一种无符号整数 &lt;strong>uintptr&lt;/strong>，大小不明确，可以用于保存指针类型。仅用于底层编程。&lt;/p>
+&lt;h4 id="浮点数">浮点数&lt;/h4>
+&lt;p>Go具有两种大小的浮点数，float32 和 float64。可以通过math包的&lt;strong>math.MaxFloat32&lt;/strong> 和 &lt;strong>math.MaxFloat64&lt;/strong> 常量来查看两种类型的最大值。&lt;/p>
+&lt;p>十进制情况下，float32的有效数字大约是6位，float64的有效数字大约是15位。&lt;/p>
+&lt;pre>&lt;code class="language-Go">var f float32 = 2.3453
+// 支持小数点前后不写
+var f1 float32 = .234
+var f2 float32 = 2344.
+// 非常大或非常小的数字使用科学记数法，在数量级指数前写字母e或E
+const Avogadro = 6.0214553e23
+const Planck = 5.73245345e-34
+&lt;/code>&lt;/pre>
+&lt;h4 id="复数">复数&lt;/h4>
+&lt;p>Go 具备两种大小的复数 complex64 和 complex128，二者分别由float32和float64构成。内置的complex函数根据给定的实部和虚部创建复数，内置的real函数和imag函数分别提取复数的实部和虚部。&lt;/p>
+&lt;pre>&lt;code class="language-Go">var x complex128 = complex(1,2)
+&lt;/code>&lt;/pre>
+&lt;h3 id="指针">指针&lt;/h3>
+&lt;ul>
+&lt;li>指针的值是一个变量的地址。&lt;/li>
+&lt;li>使用&amp;amp;符(取地址操作符)获取一个变量的指针&lt;/li>
+&lt;li>使用*获取指针所指的向变量&lt;/li>
+&lt;li>指针是可以比较的，两个指针当且仅当指向同一个变量或者两者都是nil的情况下才相等。&lt;/li>
+&lt;/ul>
+&lt;h3 id="new-函数">new 函数&lt;/h3>
+&lt;ul>
+&lt;li>内置的new函数是另一种创建变量的方式&lt;/li>
+&lt;li>表达式new(T)创建一个未命名的T类型变量，初始化为T类型的零值，并返回其地址（*T)&lt;/li>
+&lt;li>new函数和直接创建变量的唯一区别就是new函数不需要声明一个变量，而是直接返回了其指针&lt;/li>
+&lt;li>new函数一种语法上的便利，不是基础概念&lt;/li>
+&lt;li>new是一个预声明函数，不是一个关键字，支持被覆盖&lt;/li>
+&lt;/ul>
+&lt;h3 id="变量的生命周期">变量的生命周期&lt;/h3>
+&lt;ul>
+&lt;li>生命周期指在程序执行过程中变量存在的时间段&lt;/li>
+&lt;li>变量的声明周期存在与该变量的外层执行区域&lt;/li>
+&lt;li>变量的声明周期通过指针等其他方式判断该变量是否可达（可以被访问），如果不可达，则被垃圾回收器收回&lt;/li>
+&lt;li>编译器会自动选择使用堆还是栈来给变量分配空间&lt;/li>
+&lt;li>当一个变量是局部变量时，默认会在栈上为变量分配空间。但是如果该变量最终可以在变量的声明周期外（外层执行区域）被访问，那么该变量会被创建在堆上。例如一个变量定义在函数中，但是在函数最后将该变量指针return到外部，那么该变量将创建在堆上，属于变量从函数逃逸。&lt;/li>
+&lt;li>在长生命周期对象中保持短生命周期对象不必要的指针，特别是全局变量中，会阻止垃圾回收器回收短变量，将会造成多余的内存消耗。&lt;/li>
+&lt;/ul>
+&lt;h2 id="赋值">赋值&lt;/h2>
+&lt;ul>
+&lt;li>赋值使用赋值符：= 来将右边的表达式赋值给左边的变量&lt;/li>
+&lt;li>每一个算术和二进制操作符都有一个对应的赋值符，例如* 的赋值符是*=&lt;/li>
+&lt;/ul>
+&lt;h3 id="多重赋值">多重赋值&lt;/h3>
+&lt;ul>
+&lt;li>多重赋值允许将几个变量一次性赋值, 例如 x , y = 2, 3&lt;/li>
+&lt;li>从风格上考虑，如果表达式复杂，则应避免使用多重赋值&lt;/li>
+&lt;/ul>
+&lt;h3 id="可赋值性">可赋值性&lt;/h3>
+&lt;ul>
+&lt;li>类型精准：左变量和右边表达式结果值的类型要一致&lt;/li>
+&lt;li>nil可以赋值给任何接口类型或引用类型变量&lt;/li>
+&lt;/ul>
+&lt;h2 id="类型声明">类型声明&lt;/h2>
+&lt;p>使用type关键字声明命名类型，它和某个已有的类型使用相同的底层类型。语法如下&lt;/p>
+&lt;pre>&lt;code class="language-go">type name underlying-type
+// 示例
+// 定义一个摄氏度的类型
+type Celsius float64
+// 定义一个华氏度的类型
+type Fahrenheit float64
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>type定义的命名类型是一种语法和逻辑上的便利，方便使用相同底层类型控制不同的逻辑。&lt;/li>
+&lt;li>命名类型提供了类型转换：typeName(T) ， 将T转换为typeName 类型&lt;/li>
+&lt;/ul>
+&lt;h2 id="包和文件">包和文件&lt;/h2>
+&lt;ul>
+&lt;li>每一个包给它的声明提供独立的命名空间&lt;/li>
+&lt;li>导入声明可以给导入的包定义一个短名称&lt;/li>
+&lt;li>Go要求每一个导入的包都需要被使用，否则将在编译时报错&lt;/li>
+&lt;li>任何一个文件可以包含多个init() 函数，该函数用于初始化操作，不能被调用和引用。init() 函数会按照声明顺序自动执行。&lt;/li>
+&lt;li>包的初始化是按照依赖顺序进行的，每次初始化一个包。&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-Go">
+// 方式1
+import &amp;quot;fmt&amp;quot;
+import &amp;quot;math&amp;quot;
+// 方式2
+import (
+&amp;quot;fmt&amp;quot;
+&amp;quot;math&amp;quot;
+)
+// 方式3:短名称（解决多个包名相同冲突问题
+// 其中，使用. 代表直接可以调用，不需要用包名（不推荐）
+import (
+std &amp;quot;fmt&amp;quot;
+. &amp;quot;math&amp;quot;
+)
+&lt;/code>&lt;/pre></description></item><item><title>Vim 基础使用</title><link>https://eightpigs.io/2018/02/04/vim_basic/</link><pubDate>Sun, 04 Feb 2018 13:29:00 +0000</pubDate><guid>https://eightpigs.io/2018/02/04/vim_basic/</guid><description>&lt;p>接触 Vim 快一个月了，喜欢上了 Vim 多模式操作的特性。&lt;/p>
+&lt;p>在艰难地适应 Vim 后（其他开发工具使用插件模拟 Vim 键位），效率有明显的提高。&lt;/p>
+&lt;p>&lt;a href="https://github.com/rtorr/vim-cheat-sheet">Vim 快捷键文字版&lt;/a>
+&lt;a href="http://cenalulu.github.io/linux/all-vim-cheatsheat/">Vim 快捷键图，多个版本&lt;/a>&lt;/p>
+&lt;h2 id="光标移动">光标移动&lt;/h2>
+&lt;h3 id="字符间跳转">字符间跳转&lt;/h3>
+&lt;p>在 Vim 中，使用 &lt;strong>h, j, k, l&lt;/strong> 实现字符间的移动，也就是正常使用中的方向键。具体对应关系为：&lt;/p>
+&lt;ul>
+&lt;li>h : 左&lt;/li>
+&lt;li>j : 下&lt;/li>
+&lt;li>k : 上&lt;/li>
+&lt;li>l ：右&lt;/li>
+&lt;/ul>
+&lt;p>看键盘布局，可以发现这4个方向键布局有以下规律, 可以更方便记住键位：&lt;/p>
+&lt;ol>
+&lt;li>h 和 l 是左、右，而 h 和 l 处于这4个方向键的第一个和最后一个位置，也就是在首、尾。&lt;/li>
+&lt;li>j 和 k 是下、上，在中间&lt;/li>
+&lt;/ol>
+&lt;p>如果方向键仅仅只能有以上操作就谈不上高效了，Vim 部分操作支持配合数字操作，上下左右加上数字后可以实现光标往某个方向移动提移动几个字符，例如：&lt;/p>
+&lt;ul>
+&lt;li>10h : 向坐移动10个字符&lt;/li>
+&lt;li>10j : 向下移动10个字符&lt;/li>
+&lt;li>20k : 向上移动20个字符&lt;/li>
+&lt;li>30l : 向右移动30个字符&lt;/li>
+&lt;/ul>
+&lt;p>因为是通过相对行号移动光标，我们直接开启 &lt;strong>set number&lt;/strong> 后，是需要自己去算跳转几行，这样反而降低了效率。在7.3版本中，Vim 加入了相对行号的支持：&lt;strong>set relativenumber&lt;/strong> 。开启相对行号后，光标所有行的上、下行都是相对当前行显示行号的。&lt;/p>
+&lt;h3 id="词句间跳转">词、句间跳转&lt;/h3>
+&lt;ul>
+&lt;li>$ : 跳转至行的末尾&lt;/li>
+&lt;li>^ : 跳转至本行第一个非空的字符处&lt;/li>
+&lt;li>0 : (数字0），跳转到本行开头&lt;/li>
+&lt;li>B : &lt;strong>向前&lt;/strong> 跳转到有空格开头的每个&lt;strong>单词首字母&lt;/strong>&lt;/li>
+&lt;li>b : &lt;strong>向前&lt;/strong> 依次跳转到每个&lt;strong>单词的首字母&lt;/strong>&lt;/li>
+&lt;li>W : &lt;strong>向后&lt;/strong> 跳转到有空格开头的每个&lt;strong>单词首字母&lt;/strong>&lt;/li>
+&lt;li>w : &lt;strong>向后&lt;/strong> 依次跳转到每个&lt;strong>单词的首字母&lt;/strong>&lt;/li>
+&lt;li>e : &lt;strong>向后&lt;/strong> 依次跳转到每个单词的&lt;strong>最后一个字母&lt;/strong>&lt;/li>
+&lt;li>E : &lt;strong>向后&lt;/strong> 跳转到有空格结尾的每个单词的&lt;strong>最后一个字母&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;h3 id="行间跳转">行间跳转&lt;/h3>
+&lt;ul>
+&lt;li>H : 移动到本屏幕内容的首行&lt;/li>
+&lt;li>M : 移动到本屏幕内容的中间&lt;/li>
+&lt;li>L : 移动到本屏幕内容的尾行&lt;/li>
+&lt;li>G : 移动内容的尾行&lt;/li>
+&lt;li>gg : 移动到文档首行&lt;/li>
+&lt;li>Ctrl+b : 向下翻页（光标还在本行)&lt;/li>
+&lt;li>Ctrl+f : 向上翻页（光标还在本行)&lt;/li>
+&lt;li>Ctrl+d : 取屏幕的1/2向下翻页&lt;/li>
+&lt;li>Ctrl+u : 取屏幕的1/2向上翻页&lt;/li>
+&lt;li>Ctrl+e : 按行向下滚动，效果与j 类似，j 会将光标往下移动，而Ctrl+e会让光标一直在首行&lt;/li>
+&lt;li>Ctrl+y : 按行向上滚动，同上&lt;/li>
+&lt;/ul>
+&lt;p>行间移动除了使用快捷键外，还可以使用命令，例如：&lt;/p>
+&lt;ul>
+&lt;li>:100 : 跳转到100行&lt;/li>
+&lt;/ul>
+&lt;h3 id="展示区域">展示区域&lt;/h3>
+&lt;ul>
+&lt;li>zz : 将当前行置于屏幕可视区域中间，居中显示当前行&lt;/li>
+&lt;li>zb : 将当前行置于屏幕可视区域末行&lt;/li>
+&lt;li>zt : 将当前行置于屏幕可视区域首行&lt;/li>
+&lt;/ul>
+&lt;h2 id="内容操作">内容操作&lt;/h2>
+&lt;h3 id="常用的内容操作">常用的内容操作&lt;/h3>
+&lt;ul>
+&lt;li>yy : 复制本行&lt;/li>
+&lt;li>dd : 删除本行&lt;/li>
+&lt;li>d10d : 删除从本行开始的往下10行&lt;/li>
+&lt;li>y10y : 复制从本行开始的往下10行&lt;/li>
+&lt;li>p : 粘贴到本行下面&lt;/li>
+&lt;li>P : 粘贴到本行上面&lt;/li>
+&lt;li>u : 撤销&lt;/li>
+&lt;li>Ctrl+r ：恢复撤销&lt;/li>
+&lt;li>x ：删除当前光标下的字符&lt;/li>
+&lt;li>r : 替换当前光标下的字符&lt;/li>
+&lt;li>J : 合并下一行&lt;/li>
+&lt;/ul>
+&lt;p>如果需要更强大的内容操作，可以看看下面与跳转指令结合的方式，仅列举部分删除操作，可以自己尝试其他组合&lt;/p>
+&lt;ul>
+&lt;li>dw : 删除后面的一个单词&lt;/li>
+&lt;li>dW : 从当前位置删除到第一个末尾出现空格单词的位置&lt;/li>
+&lt;li>d$ : 从当前位置删除到本行末尾&lt;/li>
+&lt;li>dG : 从当前删除到文档的最后一行&lt;/li>
+&lt;li>dgg : ？？？？？？ You can try !!!&lt;/li>
+&lt;/ul>
+&lt;p>可以自己尝试将复制+跳转实现多行快捷复制！！！&lt;/p>
+&lt;h3 id="批量替换">批量替换&lt;/h3>
+&lt;p>在 Vim 中，批量替换可以使用正则实现。
+例如要将 &amp;ldquo;学习要多看看&amp;rdquo; 替换为 &amp;ldquo;学习要多试试&amp;rdquo;&lt;/p>
+&lt;pre>&lt;code class="language-vim">:%s/学习要多看看/学习要多试试/g
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>替换的多种方式&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>:%s/原内容/新内容/g : 全局替换&lt;/li>
+&lt;li>:s/原内容/新内容/g : 替换本行&lt;/li>
+&lt;li>:10, 100s/原内容/新内容/g : 替换10 到 100 行的内容&lt;/li>
+&lt;/ul>
+&lt;h3 id="查找">查找&lt;/h3>
+&lt;p>在 Vim 中，使用 / 开始查找，如需要查找 Hello , 则在 Normal 下输入 /Hello 即可。使用&lt;/p>
+&lt;ul>
+&lt;li>n : 下一个查找结果&lt;/li>
+&lt;li>N : 上一个查找结果&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>查找的多种方式&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>/Hello\c : 不区分大小写&lt;/li>
+&lt;li>/Hello\C : 区分大小写&lt;/li>
+&lt;/ul>
+&lt;h2 id="部分情况处理">部分情况处理&lt;/h2>
+&lt;h3 id="无权限保存">无权限保存&lt;/h3>
+&lt;p>在编辑无权限操作的文件后，提示无权限保存，在最开始我都是复制修改的内容，然后重新 sudo 打开。
+其实在 Vim 内部可以实现直接保存：&lt;/p>
+&lt;pre>&lt;code class="language-vim">:w !sudo tee %
+&lt;/code>&lt;/pre>
+&lt;p>具体实现方式请自行了解&lt;/p></description></item><item><title>Spring Colud 之 统一配置中心</title><link>https://eightpigs.io/2017/12/29/spring_cloud_config_server/</link><pubDate>Fri, 29 Dec 2017 19:40:00 +0000</pubDate><guid>https://eightpigs.io/2017/12/29/spring_cloud_config_server/</guid><description>&lt;p>在我们Java项目开发过程中，对于配置文件的多环境配置一般会采用以下方案：&lt;/p>
+&lt;ol>
+&lt;li>使用maven等构建工具基于resources自定义多环境&lt;/li>
+&lt;li>使用市面上开源的统一配置中心，例如百度的disconf、淘宝的Diamond等&lt;/li>
+&lt;/ol>
+&lt;p>那么本文将讲述第二个方案中一个能为任何项目提供统一配置的管理方式：Spring Cloud Config。&lt;/p>
+&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;p>客户端和服务端上映射的概念与Spring Environment和PropertySource抽象相同，因此适用于任何Spring应用程序。&lt;/p>
+&lt;p>由于配置文件通常是可读文本格式，所以Spring Cloud Config理论能为任何应用程序提供支持。&lt;/p>
+&lt;h2 id="核心">核心&lt;/h2>
+&lt;p>Spring Colud Config 作为 Spring Cloud 中不可缺少的一份子，拥有以下核心功能：&lt;/p>
+&lt;ul>
+&lt;li>多存储方式&lt;/li>
+&lt;li>提供服务端和客户端支持&lt;/li>
+&lt;li>支持任何程序&lt;/li>
+&lt;li>修改实时同步&lt;/li>
+&lt;li>版本管理（与存储方式）&lt;/li>
+&lt;li>支持加密&lt;/li>
+&lt;/ul>
+&lt;p>接下来，我们就一一讲解以上特性。&lt;/p>
+&lt;h2 id="多存储方式">多存储方式&lt;/h2>
+&lt;p>Spring Cloud Config 支持将配置文件存放在以下环境：&lt;/p>
+&lt;ul>
+&lt;li>GIT（默认）&lt;/li>
+&lt;li>SVN&lt;/li>
+&lt;li>FileSystem&lt;/li>
+&lt;li>Vault&lt;/li>
+&lt;/ul>
+&lt;p>使用 Spring Cloud Config 管理配置文件，使配置文件与具体应用程序分离，有助于更加清晰对项目进行管理。&lt;/p>
+&lt;p>下面，通过Spring Cloud Config的主要功能以及代码实现来了解并掌握Spring Cloud Config的基本使用。&lt;/p>
+&lt;h1 id="quick-start">Quick Start&lt;/h1>
+&lt;p>Spring Cloud Config 是对多环境配置文件进行统一管理，我们先把配置文件准备好。在目前开发中，我们使用最多的肯定是Git作为版本管理，Spring Cloud Config默认也使用Git进行配置文件的版本管理。&lt;/p>
+&lt;h2 id="git-backend">Git Backend&lt;/h2>
+&lt;p>新建一个配置文件存放的仓库，选择有很多：Github、Gitlab、码云，按自己喜欢选
+择即可。&lt;/p>
+&lt;p>创建好仓库后，我们以开发中常见的4中环境（dev、test、pre、prod）作为例子，创建以下4个不同环境的配置文件并提交到仓库。&lt;/p>
+&lt;p>本文为了测试简单方便，只加入了一个name配置，不同环境显示不同name值。&lt;/p>
+&lt;p>&lt;strong>mimosa-dev.properties&lt;/strong>&lt;/p>
+&lt;pre>&lt;code class="language-properties">name=dev
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>mimosa-test.properties&lt;/strong>&lt;/p>
+&lt;pre>&lt;code class="language-properties">name=test
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>mimosa-pre.properties&lt;/strong>&lt;/p>
+&lt;pre>&lt;code class="language-properties">name=pre
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>mimosa-prod.properties&lt;/strong>&lt;/p>
+&lt;pre>&lt;code class="language-properties">name=prod
+&lt;/code>&lt;/pre>
+&lt;h2 id="config-server">Config Server&lt;/h2>
+&lt;p>Config Server 是管理配置文件并对外提供配置文件的地方。&lt;/p>
+&lt;h2 id="gradle-config">Gradle Config&lt;/h2>
+&lt;p>除了强制指定使用Maven外，所有项目我都使用Gradle，配置更简单、明了。&lt;/p>
+&lt;blockquote>
+&lt;p>较之于Maven或者Ant的XML配置脚本，Gradle使用的Grovvy脚本杀伤力太大了，爱美之心，人皆有之，相比于七旬老妇松松垮垮的皱纹，大家肯定都喜欢少女紧致的脸蛋，XML就是那老妇的皱纹。(引用至&lt;a href="http://www.infoq.com/cn/news/2011/04/xxb-maven-6-gradle">Gradle，构建工具的未来？&lt;/a>)&lt;/p>
+&lt;/blockquote>
+&lt;pre>&lt;code class="language-Groovy">group 'me.lyinlong.mimosa'
+version '1.0-SNAPSHOT'
+repositories {
+maven {
+url 'https://repo.spring.io/libs-snapshot'
+}
+}
+buildscript {
+ext {
+springBootVersion = '2.0.0.M3'
+}
+repositories {
+mavenCentral()
+maven{url 'https://repo.spring.io/libs-snapshot'}
+maven{ url 'https://repo.spring.io/snapshot' }
+}
+dependencies {
+classpath(&amp;quot;org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}&amp;quot;)
+}
+}
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: &amp;quot;io.spring.dependency-management&amp;quot;
+dependencyManagement {
+imports {
+mavenBom ':spring-cloud-dependencies:Finchley.BUILD-SNAPSHOT'
+}
+}
+dependencies {
+compile group: 'org.springframework.cloud', name: 'spring-cloud-config-server', version: '2.0.0.M2'
+}
+repositories {
+maven { url 'https://repo.spring.io/libs-snapshot' }
+maven{ url 'https://repo.spring.io/snapshot' }
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="配置">配置&lt;/h2>
+&lt;p>在项目的resources目录新建：&lt;strong>application.yml&lt;/strong> 文件并写入以下内容，如果创建的仓库是公共的，可以删除 &lt;strong>username&lt;/strong> 和 &lt;strong>password&lt;/strong> 配置项。
+当然，如果你觉得直接使用密码不是你的做事风格，我们也可以使用ssh方式：只需要将uri改为具体的ssh风格地址。(&lt;a href="#">使用SSH可能会遇到的问题&lt;/a> , &lt;a href="http://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html#_git_ssh_configuration_using_properties">更详细的SSH配置&lt;/a> )&lt;/p>
+&lt;pre>&lt;code class="language-yml">spring:
+cloud:
+config:
+server:
+git:
+uri: https://github.com/eightpigs/spring-cloud-config-repo.git
+username: admin
+password: 123
+application:
+name: config-server
+server:
+port: 8888
+&lt;/code>&lt;/pre>
+&lt;h2 id="application">Application&lt;/h2>
+&lt;p>Spring Boot以开箱即用为理念，在配置好Gradle引入配置之后，只需添加一个启动类并添加好相应的注解即可。使用&lt;code>@EnableConfigServer&lt;/code> 启用Spring Config Server。&lt;/p>
+&lt;pre>&lt;code class="language-java">package me.lyinlong.mimosa;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.config.server.EnableConfigServer;
+@EnableConfigServer
+@SpringBootApplication
+public class Application {
+public static void main(String[] args) {
+SpringApplication.run(Application.class, args);
+}
+}
+&lt;/code>&lt;/pre>
+&lt;p>以上配置正确后，供配置中心正常运行的配置项就已经完全写完了。访问 http://localhost:8888/mimosa/dev/ 即可得到Spring Cloud Config转换后的配置内容：&lt;/p>
+&lt;pre>&lt;code class="language-json">{
+&amp;quot;name&amp;quot;: &amp;quot;mimosa&amp;quot;,
+&amp;quot;profiles&amp;quot;: [&amp;quot;dev&amp;quot;],
+&amp;quot;label&amp;quot;: null,
+&amp;quot;version&amp;quot;: &amp;quot;4d1561220245ab2ed56a6a39a070e16c5cd20ea4&amp;quot;,
+&amp;quot;state&amp;quot;: null,
+&amp;quot;propertySources&amp;quot;: [{
+&amp;quot;name&amp;quot;: &amp;quot;github:eightpigs/spring-cloud-config-repo.git/mimosa-dev.properties&amp;quot;,
+&amp;quot;source&amp;quot;: {
+&amp;quot;name&amp;quot;: &amp;quot;dev&amp;quot;
+}
+}]
+}
+&lt;/code>&lt;/pre>
+&lt;p>其中：&lt;strong>propertySources.source&lt;/strong> 部分就是刚刚我们配置文件的具体内容。&lt;/p>
+&lt;p>当然，如果你想更获取精简的内容，你可以直接使用文件名访问 http://localhost:8888/mimosa-dev.properties
+得到的内容将会是这样的：&lt;/p>
+&lt;pre>&lt;code class="language-java">name: dev
+&lt;/code>&lt;/pre>
+&lt;p>带着成功的喜悦，我们接下来好好看看其中的一些细节和其他特性。&lt;/p>
+&lt;h2 id="实时更新">实时更新&lt;/h2>
+&lt;p>启动Config Server之后，在不停止项目的情况下，修改 &lt;strong>mimosa-dev.properties&lt;/strong> 配置文件：&lt;/p>
+&lt;pre>&lt;code class="language-properties">name=dev
+intro=这是开发环境的配置
+&lt;/code>&lt;/pre>
+&lt;p>刷新页面看看内容是不是也实时变化了？通过Config Server 的实时更新特性，大大降低了以前更动配置文件必须重启系统的次数。&lt;/p>
+&lt;h2 id="占位符">占位符&lt;/h2>
+&lt;p>Spring Cloud Config 在对应多系统多环境的情况下，提供以下占位符，增加系统的灵活性：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>{application}&lt;/strong> 应用名称占位符&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>{profile}&lt;/strong> 可以理解为一个项目的附属信息占位，可以用于对应用程序的环境区分（dev、test、prod等）&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>{label}&lt;/strong> 可选的git标签，可以是git的commit id、分支名、和标签&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>配置中心是对其他应用程序提供配置服务，每个配置信息应该要标识出属于哪个应用、属于应用的哪个环境，所以不难理解 &lt;strong>{application}&lt;/strong> 和 &lt;strong>{profile}&lt;/strong> 的具体作用。当然，&lt;strong>{profile}&lt;/strong> 不一定是作为应用部署环境的标识，在上面也说明了，&lt;strong>{profile}&lt;/strong> 可以理解为应用程序的附属信息，你可以用它来标识任何内容。&lt;/p>
+&lt;h3 id="资源格式在请求地址中使用占位符">资源格式（在请求地址中使用占位符）&lt;/h3>
+&lt;p>因为统一配置中心是对其他应用程序提供服务的，所以在资源请求方面制定了非常清晰的规范（Web接口的访问形式）：&lt;/p>
+&lt;ul>
+&lt;li>/{application}/{profile}[/{label}]&lt;/li>
+&lt;li>/{application}-{profile}.yml&lt;/li>
+&lt;li>/{label}/{application}-{profile}.yml&lt;/li>
+&lt;li>/{application}-{profile}.properties&lt;/li>
+&lt;li>/{label}/{application}-{profile}.properties&lt;/li>
+&lt;/ul>
+&lt;p>其中，&lt;strong>yml&lt;/strong> 和 &lt;strong>properties&lt;/strong> 的各两种方式是一样的，这是因为Spring Boot开始，配置文件就只有 &lt;strong>properties&lt;/strong> 和 &lt;strong>yml&lt;/strong> 两种格式。所以，不同的资源格式排除资源的扩展名后只有3种。&lt;/p>
+&lt;p>我更为推荐使用第一种方式，除了提供更多信息供程序处理外，该资源的访问形式也是更加清晰明了，因为我们使用 Config Server 之后，并不是特别关心资源的文件格式，最终的返回内容格式都是一致的。&lt;/p>
+&lt;p>回过头看看之前为了获取精简内容而使用的方式，是不是能够对应上。&lt;/p>
+&lt;h2 id="模式匹配">模式匹配&lt;/h2>
+&lt;p>模式匹配使用&lt;strong>pattern&lt;/strong>配置项进行配置。我们来看看官方的例子：&lt;/p>
+&lt;pre>&lt;code class="language-yml">spring:
+cloud:
+config:
+server:
+git:
+uri: https://github.com/spring-cloud-samples/config-repo
+repos:
+simple: https://github.com/simple/config-repo
+special:
+pattern: special*/dev*,*special*/dev*
+uri: https://github.com/special/config-repo
+local:
+pattern: local*
+uri: file:/home/configsvc/config-repo
+&lt;/code>&lt;/pre>
+&lt;p>我们先理解一下模式匹配的基本规则：
+&lt;strong>pattern&lt;/strong> 配置项的内容是通配符 与 &lt;strong>{application}&lt;/strong> 和 &lt;strong>{profile}&lt;/strong> 组合的一组匹配规则，将调用配置中心的应用程序（调用方 / config client）与具体仓库匹配起来。如果调用方的 &lt;strong>{application}&lt;/strong> 与定义的仓库模式没有一个匹配上，则使用默认的仓库地址，也就是 &lt;code>spring.cloud.config.server.git.uri&lt;/code>&lt;/p>
+&lt;p>知道了上面的基本规则，很好理解上面3个仓库的匹配模式：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>simple&lt;/strong> 仅匹配 &lt;strong>{application}&lt;/strong> 为 simple 的调用方&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>special&lt;/strong> 匹配 &lt;strong>{application}&lt;/strong> 以 &amp;ldquo;special&amp;rdquo; 开头 或者 &lt;strong>{application}&lt;/strong> 包含 &amp;ldquo;special&amp;rdquo; 和 &lt;strong>{profile}&lt;/strong> 以 &amp;ldquo;dev&amp;rdquo; 开头 的调用方&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>local&lt;/strong> 匹配 &lt;strong>{application}&lt;/strong> 以 &amp;ldquo;local&amp;rdquo; 开头的所有调用方&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>以上的pattern的内容可以使用YAML数组语法改写为一下样子：&lt;/p>
+&lt;pre>&lt;code class="language-yml">spring:
+cloud:
+config:
+server:
+git:
+uri: https://github.com/spring-cloud-samples/config-repo
+repos:
+special:
+pattern:
+- 'special*/dev*'
+- '*special*/dev*'
+uri: https://github.com/special/config-repo
+&lt;/code>&lt;/pre>
+&lt;p>推荐使用YAML数组的形式，配置文件的结果更清晰。&lt;/p>
+&lt;h2 id="启动时检查">启动时检查&lt;/h2>
+&lt;pre>&lt;code class="language-yml">spring:
+cloud:
+config:
+server:
+git:
+uri: https://github.com/eightpigs/spring-cloud-config-repo.git
+clone-on-start: true
+application:
+name: config-server
+server:
+port: 8888
+&lt;/code>&lt;/pre>
+&lt;p>可以看到在上面的配置中，使用了 &lt;strong>clone-on-start&lt;/strong> 配置项，该配置项的作用是在启动是就克隆仓库信息，可以实现在启动是检测配置的仓库是否能够正常访问。&lt;/p>
+&lt;p>如果是一个不可访问的仓库，系统将无法正常系统。&lt;/p>
+&lt;p>如果没有使用该配置项，仓库将会在被首次请求时克隆。&lt;/p>
+&lt;h2 id="security">Security&lt;/h2>
+&lt;p>Spring Cloud Config Server 可以很方便与同系的 &lt;code>spring security&lt;/code> 集成。只需要在添加在gradle中添加引入 &lt;code>spring-boot-starter-security&lt;/code> 依赖并在 &lt;code>application.yml&lt;/code> 中加入以下代码：&lt;/p>
+&lt;pre>&lt;code class="language-yml">security:
+user:
+name: root
+password: root
+&lt;/code>&lt;/pre>
+&lt;p>然后打开浏览器访问，即可看到需要输入用户名、密码的效果了。&lt;/p></description></item><item><title>centos 编译安装mysql 5.6</title><link>https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/</link><pubDate>Fri, 05 Feb 2016 11:55:00 +0000</pubDate><guid>https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/</guid><description>&lt;h2 id="1-检测mysql">1. 检测mysql&lt;/h2>
+&lt;pre>&lt;code class="language-bash">rpm -qa | grep mysql
+&lt;/code>&lt;/pre>
+&lt;p>如果有的话 , 执行以下命令卸载&lt;/p>
+&lt;pre>&lt;code class="language-bash">rpm -e mysql //普通删除模式
+rpm -e --nodeps mysql // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除
+&lt;/code>&lt;/pre>
+&lt;h2 id="2-安装依赖">2. 安装依赖&lt;/h2>
+&lt;pre>&lt;code class="language-bash">yum -y install make gcc-c++ cmake bison-devel ncurses-devel
+&lt;/code>&lt;/pre>
+&lt;h2 id="3-下载mysql-源码">3. 下载mysql 源码&lt;/h2>
+&lt;p>进入 &lt;a href="ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/">mysql 5.6 下载地址&lt;/a> , 找到 &amp;ldquo;mysql-5.6.xx.tar.gz&amp;rdquo; , 我目前下载的是&lt;a href="ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/mysql-5.6.28.tar.gz">5.6.28&lt;/a>&lt;/p>
+&lt;pre>&lt;code class="language-bash"># 下载
+wget ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/mysql-5.6.28.tar.gz
+# 解压
+tar zxvf mysql-5.6.28.tar.gz
+# 进入mysql目录
+cd mysql-5.6.28
+&lt;/code>&lt;/pre>
+&lt;h2 id="4-编译">4. 编译&lt;/h2>
+&lt;pre>&lt;code class="language-bash"># 设置编译参数
+# 以下内容其实是一句 , 由于写了注释 ,所以使用\分成多行,便于理解.在使用时, 改成自己需要的后请将注释删除执行.(保留斜杠)
+cmake \
+-DCMAKE_INSTALL_PREFIX=/usr/local/mysql \ #安装路径
+-DMYSQL_DATADIR=/usr/local/mysql/data \ #数据文件存放位置
+-DSYSCONFDIR=/etc \ #my.cnf路径
+-DWITH_MYISAM_STORAGE_ENGINE=1 \ #支持MyIASM引擎
+-DWITH_INNOBASE_STORAGE_ENGINE=1 \ #支持InnoDB引擎
+-DWITH_MEMORY_STORAGE_ENGINE=1 \ #支持Memory引擎
+-DWITH_READLINE=1 \ #快捷键功能(我没用过)
+-DMYSQL_UNIX_ADDR=/tmp/mysqld.sock \ #连接数据库socket路径
+-DMYSQL_TCP_PORT=3306 \ #端口
+-DENABLED_LOCAL_INFILE=1 \ #允许从本地导入数据
+-DWITH_PARTITION_STORAGE_ENGINE=1 \ #安装支持数据库分区
+-DEXTRA_CHARSETS=all \ #安装所有的字符集
+-DDEFAULT_CHARSET=utf8 \ #默认字符
+-DDEFAULT_COLLATION=utf8_general_ci
+# 编译&amp;amp;安装
+make &amp;amp;&amp;amp; make install
+&lt;/code>&lt;/pre>
+&lt;h2 id="5-配置">5. 配置&lt;/h2>
+&lt;p>查看是否有mysql用户/用户组&lt;/p>
+&lt;pre>&lt;code class="language-bash"># 查看用户列表
+cat /etc/passwd
+# 查看用户组列表
+cat /etc/group
+&lt;/code>&lt;/pre>
+&lt;p>没有 , 就创建&lt;/p>
+&lt;pre>&lt;code class="language-bash">groupadd mysql
+useradd -g mysql mysql
+&lt;/code>&lt;/pre>
+&lt;p>修改/usr/local/mysql权限&lt;/p>
+&lt;pre>&lt;code class="language-bash">chown -R mysql:mysql /usr/local/mysql
+&lt;/code>&lt;/pre>
+&lt;p>初始化配置 , 初始化配置脚本，创建系统自带的数据库和表&lt;/p>
+&lt;pre>&lt;code class="language-bash">cd /usr/local/mysql
+scripts/mysql_install_db --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --user=mysql
+&lt;/code>&lt;/pre>
+&lt;p>添加mysql服务并设置自启&lt;/p>
+&lt;pre>&lt;code class="language-bash">cp support-files/mysql.server /etc/init.d/mysql
+chkconfig mysql on
+service mysql start --启动MySQL
+&lt;/code>&lt;/pre>
+&lt;p>设置环境变量&lt;/p>
+&lt;pre>&lt;code class="language-bash"># 编译环境变量文件
+vim /etc/profile
+# 追加mysql 环境变量
+PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:$PATH
+export PATH
+# 保存并退出 ,生效环境变量
+source /etc/profile
+&lt;/code>&lt;/pre>
+&lt;p>为root用户设置新密码&lt;/p>
+&lt;pre>&lt;code class="language-bash">mysql
+UPDATE mysql.user SET password=PASSWORD('新密码') WHERE User='root';
+# 刷新权限
+FLUSH PRIVILEGES;
+&lt;/code>&lt;/pre>
+&lt;p>开启远程访问&lt;/p>
+&lt;pre>&lt;code class="language-bash">GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
+# 刷新权限
+FLUSH PRIVILEGES;
+&lt;/code>&lt;/pre>
+&lt;h2 id="6-可能遇到的问题">6. 可能遇到的问题&lt;/h2>
+&lt;pre>&lt;code class="language-bash">Starting MySQL..The server quit without updating PID file ([FAILED]/mysql/AY1404111053020733e2Z.pid).
+# 解决办法 :
+修改/etc/my.cnf 中datadir,指向正确的mysql数据库文件目录
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-bash">ERROR 2002 (HY000): Can\'t connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+# 解决办法 :
+新建一个链接或在mysql中加入-S参数，直接指出mysql.sock位置。
+1. ln -s /usr/local/mysql/data/mysql.sock /tmp/mysql.sock
+2. /usr/local/mysql/bin/mysql -u root -S /usr/local/mysql/data/mysql.sock
+&lt;/code>&lt;/pre>
+&lt;h2 id="7-扩展阅读">7. 扩展阅读&lt;/h2>
+&lt;ol>
+&lt;li>&lt;a href="http://www.cnblogs.com/xiongpq/p/3384681.html">CentOS 6.4下编译安装MySQL 5.6.14&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://www.centoscn.com/mysql/2014/0924/3833.html">CentOS6.5下编译安装MySQL 5.6.16&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://dev.mysql.com/doc/refman/5.5/en/source-configuration-options.html">mysql cmake 参数&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;p>此文主要参考扩展阅读的1, 2.&lt;/p></description></item><item><title>C# 写的 Windows 下快捷管理VPN工具</title><link>https://eightpigs.io/2015/07/23/windows_vpn_tools_by_csharp/</link><pubDate>Thu, 23 Jul 2015 06:14:00 +0000</pubDate><guid>https://eightpigs.io/2015/07/23/windows_vpn_tools_by_csharp/</guid><description>&lt;h2 id="简介">简介&lt;/h2>
+&lt;p>使用 C# 写的 Windows 下快捷管理 VPN 工具，可以实现对本地 VPN 的增加,修改,删除管理&lt;/p>
+&lt;h2 id="原理">原理&lt;/h2>
+&lt;ul>
+&lt;li>Windows 有自带的连接管理工具 rasphone ,可以实现对链接进行新建/修改/连接/删除/断开等操作&lt;/li>
+&lt;/ul>
+&lt;p>在cmd 输入 : &lt;strong>rasphone /?&lt;/strong> 就可以查看所有命令操作信息&lt;/p>
+&lt;ul>
+&lt;li>查看现在是否有 VPN 连接可以使用 &lt;strong>rasdial&lt;/strong> 命令.&lt;/li>
+&lt;/ul>
+&lt;h2 id="使用">使用&lt;/h2>
+&lt;ul>
+&lt;li>由于对C#不是很熟悉,新增vpn时需要给名称前面添加 vpn 作为前缀 &amp;hellip;&lt;/li>
+&lt;li>鼠标悬停在每一个功能按钮都有相应提示.操作非常简单.&lt;/li>
+&lt;li>鼠标移开窗体会自动隐藏,在屏幕的右上方显示当前状态线.(已连接:绿色 未连接:红色)&lt;/li>
+&lt;li>工具条固定在屏幕有上方.X轴大约在屏幕3/4的地方.&lt;/li>
+&lt;li>提供一个VPN列表和用户信息列表(VPN的帐号),VPN列表是通过获取系统的adsl连接&lt;/li>
+&lt;li>用户列表可以多个,具体在程序启动目录的app.config里面配置user节点.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="处理vpn的代码">处理VPN的代码&lt;/h3>
+&lt;pre>&lt;code class="language-cs">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace ConciseVPN
+{
+/**
+* VPN操作类
+*/
+class VPNTools
+{
+/**
+* 连接指定名称的VPN
+*/
+public static bool connect(string vpnName, string username, string password)
+{
+String command = &amp;quot;rasdial &amp;quot; + vpnName + &amp;quot; &amp;quot; + username + &amp;quot; &amp;quot; + password;
+String result = Command.execute(command);
+if (result.IndexOf(&amp;quot;已连接&amp;quot;) &amp;gt; 0)
+return true;
+return false;
+}
+/**
+* 断开指定VPN连接
+*/
+public static bool disConnect(String vpnName)
+{
+String command = &amp;quot;rasdial &amp;quot; + vpnName + &amp;quot; /disconnect&amp;quot;;
+String result = Command.execute(command);
+if (result.IndexOf(&amp;quot;没有连接&amp;quot;) &amp;gt; 0)
+return false;
+return true;
+}
+/**
+* 新建VPN连接
+*/
+public static void createConnection() {
+String command = &amp;quot;rasphone -a&amp;quot; ;
+Command.execute(command);
+}
+/**
+* 删除VPN连接
+*/
+public static void deleteConnection(String vpnName)
+{
+String command = &amp;quot;rasphone -r &amp;quot; + vpnName;
+Command.execute(command);
+}
+/**
+* 修改VPN连接
+*/
+public static void editConnection(String vpnName)
+{
+String command = &amp;quot;rasphone -e &amp;quot; + vpnName;
+Command.execute(command);
+}
+/**
+* 检测是否有VPN连接
+*/
+public static String checkCoonnect()
+{
+String result = Command.execute(&amp;quot;rasdial&amp;quot;);
+if (result.IndexOf(&amp;quot;没有连接&amp;quot;) != -1)
+return &amp;quot;false&amp;quot;;
+else{//返回连接中的VPN名称
+result = result.Replace(&amp;quot;已连接&amp;quot;, &amp;quot;&amp;quot;).Replace(&amp;quot;命令已完成。&amp;quot;,&amp;quot;&amp;quot;);
+result = result.Substring(result.IndexOf(&amp;quot;vpn_&amp;quot;));
+result = result.Substring(0, result.IndexOf(&amp;quot;\n\n\r\n&amp;quot;));
+return result;
+}
+}
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="截图">截图&lt;/h2>
+&lt;p>VPN 连接成功,在屏幕右上方显示的绿色状态条(不要说你看不到&amp;hellip;.)&lt;/p>
+&lt;p>&lt;img src="http://7j1zb7.com1.z0.glb.clouddn.com/csharevpnScreenshot_1.png" alt="连接成功">&lt;/p>
+&lt;p>鼠标放到状态条显示的软件主界面
+&lt;img src="http://7j1zb7.com1.z0.glb.clouddn.com/csharevpnScreenshot_2.png" alt="主界面">&lt;/p>
+&lt;p>VPN 和用户列表
+&lt;img src="http://7j1zb7.com1.z0.glb.clouddn.com/csharevpnScreenshot_3.png" alt="主界面的VPN/用户列表">&lt;/p>
+&lt;p>VPN 未连接状态
+&lt;img src="http://7j1zb7.com1.z0.glb.clouddn.com/csharevpnScreenshot_4.png" alt="未连接">&lt;/p>
+&lt;h2 id="下载">下载&lt;/h2>
+&lt;ul>
+&lt;li>源码 : &lt;a href="https://github.com/joylyl/ConciseVPN">https://github.com/joylyl/ConciseVPN&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>豆瓣FM第三方客户端</title><link>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</link><pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate><guid>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</guid><description>&lt;h2 id="更新说明">更新说明&lt;/h2>
+&lt;p>2018-03-15：该代码在14年下半年完成，所以略丑陋。已经转网易云音乐多年了，如果有人在使用本客户端或想使用，可以给我提issues，会花时间重构代码。&lt;/p>
+&lt;h2 id="由来">由来&lt;/h2>
+&lt;ul>
+&lt;li>非常喜欢豆瓣FM&lt;/li>
+&lt;li>非常喜欢豆瓣FM&lt;/li>
+&lt;li>非常喜欢豆瓣FM&lt;/li>
+&lt;li>重要的事说三遍&lt;/li>
+&lt;/ul>
+&lt;p>作为一个程序猿 , 想要什么还不是信手拈来? 于是乎 , 在没有用得习惯的豆瓣FM客户端的时候 ,我开始自己写客户端了. 这个客户端在去年就完成了 , 发表在以前博客的过 .&lt;/p>
+&lt;h2 id="简介">简介&lt;/h2>
+&lt;ul>
+&lt;li>使用C#完成的豆瓣FM第三方客户端&lt;/li>
+&lt;li>界面风格/操作与网页版基本相同&lt;/li>
+&lt;li>可以选择赫兹列表、登录用户并且对对歌曲红心/不再听/下载等操作&lt;/li>
+&lt;/ul>
+&lt;h2 id="原理">原理&lt;/h2>
+&lt;p>由于豆瓣FM是不公开API的 , 但是不公开就没有吗? 网上大神通过抓包把基本功能API都获取到了.于是我就基于现成的API写的.如果感兴趣可以去看看我使用的接口 : &lt;a href="https://github.com/zonyitoo/doubanfm-qt/wiki/%E8%B1%86%E7%93%A3FM-API">github&lt;/a>&lt;/p>
+&lt;h2 id="使用">使用&lt;/h2>
+&lt;ul>
+&lt;li>软件首次启动会在系统中的最大磁盘新建一个名为 &amp;ldquo;SimpleFM_Music&amp;rdquo; 的文件夹存放下载的音乐&lt;/li>
+&lt;li>只有登录用户才可对歌曲进行红心/不再听操作&lt;/li>
+&lt;li>双击封面显示赫兹列表,单击赫兹名称选择赫兹并显示封面&lt;/li>
+&lt;/ul>
+&lt;h2 id="快捷键">快捷键&lt;/h2>
+&lt;ul>
+&lt;li>Alt+Shift+C 关闭软件&lt;/li>
+&lt;li>Alt+Shift+S 显示/隐藏软件&lt;/li>
+&lt;li>Alt+Shift+N 切歌&lt;/li>
+&lt;li>Alt+Shift+U 不再听&lt;/li>
+&lt;li>Alt+Shift+L 添加或取消红心&lt;/li>
+&lt;li>Alt+Shift+H 显示行赫兹列表&lt;/li>
+&lt;li>Alt+Shift+P 播放/暂停&lt;/li>
+&lt;li>Alt+Shift+D 打开登录界面&lt;/li>
+&lt;li>Alt+Shift+D 打开登录界面&lt;/li>
+&lt;li>Alt+Shift+X 下载当前歌曲&lt;/li>
+&lt;li>Ctrl+Alt+Up 增大音量&lt;/li>
+&lt;li>Ctrl+Alt+Down 降低音量&lt;/li>
+&lt;/ul>
+&lt;h2 id="截图">截图&lt;/h2>
+&lt;p>软件启动后的主界面&lt;/p>
+&lt;p>&lt;img src="simplefmScreenshot_1.png" alt="主界面">&lt;/p>
+&lt;hr>
+&lt;h4 id="登录界面">登录界面&lt;/h4>
+&lt;p>&lt;img src="simplefmScreenshot_2.png" alt="登录界面">&lt;/p>
+&lt;hr>
+&lt;h4 id="赫兹列表">赫兹列表&lt;/h4>
+&lt;p>&lt;img src="simplefmScreenshot_3.png" alt="赫兹列表">&lt;/p>
+&lt;hr>
+&lt;h4 id="播放音乐">播放音乐&lt;/h4>
+&lt;h2 id="播放音乐simplefmscreenshot_4png">&lt;img src="simplefmScreenshot_4.png" alt="播放音乐">&lt;/h2>
+&lt;h4 id="加红心">加红心&lt;/h4>
+&lt;p>&lt;img src="simplefmScreenshot_5.png" alt="加红心">&lt;/p>
+&lt;hr>
+&lt;h4 id="音量控制">音量控制&lt;/h4>
+&lt;p>&lt;img src="simplefmScreenshot_6.png" alt="音量控制">&lt;/p>
+&lt;hr>
+&lt;h4 id="暂停播放">暂停播放&lt;/h4>
+&lt;p>&lt;img src="simplefmScreenshot_7.png" alt="暂停播放">&lt;/p>
+&lt;h2 id="代码">代码&lt;/h2>
+&lt;p>类比较多 , 就贴豆瓣FM处理的类&lt;/p>
+&lt;hr>
+&lt;pre>&lt;code class="language-cs">
+using System;
+using System.Net;
+using System.IO;
+using System.Text;
+namespace DesireFM
+{
+/// &amp;lt;summary&amp;gt;
+/// FM歌曲相关操作类
+/// 获取歌曲
+/// 获取赫兹
+/// 暂停歌曲
+/// 下一首
+/// 红心/取消红心
+/// 不再听
+/// 下载当前歌曲
+/// &amp;lt;/summary&amp;gt;
+class FMUtil
+{
+#region 需要重复使用的变量
+/// &amp;lt;summary&amp;gt;
+/// 需要用到的地址
+/// &amp;lt;/summary&amp;gt;
+private static string url;
+/// &amp;lt;summary&amp;gt;
+/// 请求响应对象
+/// &amp;lt;/summary&amp;gt;
+private static WebClient client;
+/// &amp;lt;summary&amp;gt;
+/// JSON结果
+/// &amp;lt;/summary&amp;gt;
+private static string jsonStr;
+#endregion
+#region 用户登录
+/// &amp;lt;summary&amp;gt;
+/// 用户登录
+/// &amp;lt;/summary&amp;gt;
+/// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt;
+public static string Login()
+{
+//登录地址
+url= String.Format(&amp;quot;http://www.douban.com/j/app/login?app_name=radio_desktop_win&amp;amp;version=100&amp;amp;email={0}&amp;amp;password={1}&amp;quot;,UserEntity.email,UserEntity.password);
+client = new WebClient();
+client.Credentials = CredentialCache.DefaultCredentials;
+//模拟IE的方式访问
+client.Headers.Add(&amp;quot;User-Agent&amp;quot;, &amp;quot;Microsoft Internet Explorer&amp;quot;);
+client.Encoding = new UTF8Encoding();
+jsonStr = client.DownloadString(url);
+//返回的Cookie.用来获取红心列表
+Global.Cookie = client.ResponseHeaders.Get(&amp;quot;Set-Cookie&amp;quot;);
+return jsonStr;
+}
+#endregion
+#region 获取所有赫兹
+/// &amp;lt;summary&amp;gt;
+/// 获取所有赫兹
+/// &amp;lt;/summary&amp;gt;
+public static string getChances()
+{
+url = &amp;quot;http://www.douban.com/j/app/radio/channels&amp;quot;;
+client=new WebClient();
+client.Credentials = CredentialCache.DefaultCredentials;
+//模拟IE的方式访问
+client.Headers.Add(&amp;quot;User-Agent&amp;quot;, &amp;quot;Microsoft Internet Explorer&amp;quot;);
+client.Encoding = new UTF8Encoding();
+jsonStr = client.DownloadString(url);
+return jsonStr;
+}
+#endregion
+#region 歌曲操作
+/// &amp;lt;summary&amp;gt;
+/// 歌曲操作
+/// &amp;lt;/summary&amp;gt;
+/// &amp;lt;param name=&amp;quot;channel_id&amp;quot;&amp;gt;&amp;lt;/param&amp;gt;
+public static String getSongs(int channel_id,string type,string sid)
+{
+//获取新歌曲
+if (type.Equals(&amp;quot;n&amp;quot;))
+{
+if(UserEntity.userName!=null)
+url = string.Format(&amp;quot;http://www.douban.com/j/app/radio/people?type=n&amp;amp;app_name=radio_desktop_win&amp;amp;version=100&amp;amp;channel={0}&amp;amp;user_id={1}&amp;amp;expire={2}&amp;amp;token={3}&amp;quot;, channel_id, UserEntity.userId, UserEntity.expire, UserEntity.token);
+else
+url = string.Format(&amp;quot;http://www.douban.com/j/app/radio/people?app_name=radio_desktop_win&amp;amp;version=100&amp;amp;type=n&amp;amp;channel={0}&amp;quot;, channel_id);
+client = new WebClient();
+client.Credentials = CredentialCache.DefaultCredentials;
+//模拟IE的方式访问
+client.Headers.Add(&amp;quot;User-Agent&amp;quot;, &amp;quot;Microsoft Internet Explorer&amp;quot;);
+client.Encoding = new UTF8Encoding();
+jsonStr = client.DownloadString(url);
+}
+//不再听
+else if (type.Equals(&amp;quot;b&amp;quot;))
+{
+url = string.Format(&amp;quot;http://www.douban.com/j/app/radio/people?app_name=radio_desktop_win&amp;amp;version=100&amp;amp;sid={0}&amp;amp;type=b&amp;amp;user_id={1}&amp;amp;expire={2}&amp;amp;token={3}&amp;amp;channel={4}&amp;quot;, sid, UserEntity.userId, UserEntity.expire, UserEntity.token, channel_id);
+client = new WebClient();
+client.Credentials = CredentialCache.DefaultCredentials;
+//模拟IE的方式访问
+client.Headers.Add(&amp;quot;User-Agent&amp;quot;, &amp;quot;Microsoft Internet Explorer&amp;quot;);
+client.Encoding = new UTF8Encoding();
+jsonStr = client.DownloadString(url);
+}
+//加红心
+else if (type.Equals(&amp;quot;r&amp;quot;))
+{
+url = string.Format(&amp;quot;http://www.douban.com/j/app/radio/people?app_name=radio_desktop_win&amp;amp;version=100&amp;amp;sid={0}&amp;amp;type=r&amp;amp;user_id={1}&amp;amp;expire={2}&amp;amp;token={3}&amp;amp;channel={4}&amp;quot;, sid, UserEntity.userId, UserEntity.expire, UserEntity.token,channel_id);
+client = new WebClient();
+client.Credentials = CredentialCache.DefaultCredentials;
+//模拟IE的方式访问
+client.Headers.Add(&amp;quot;User-Agent&amp;quot;, &amp;quot;Microsoft Internet Explorer&amp;quot;);
+client.Encoding = new UTF8Encoding();
+jsonStr = client.DownloadString(url);
+}
+//取消红心
+else if(type.Equals(&amp;quot;u&amp;quot;))
+{
+url = string.Format(&amp;quot;http://www.douban.com/j/app/radio/people?app_name=radio_desktop_win&amp;amp;version=100&amp;amp;sid={0}&amp;amp;type=u&amp;amp;user_id={1}&amp;amp;expire={2}&amp;amp;token={3}&amp;amp;channel={4}&amp;quot;, sid, UserEntity.userId, UserEntity.expire, UserEntity.token, channel_id);
+client = new WebClient();
+client.Credentials = CredentialCache.DefaultCredentials;
+//模拟IE的方式访问
+client.Headers.Add(&amp;quot;User-Agent&amp;quot;, &amp;quot;Microsoft Internet Explorer&amp;quot;);
+client.Encoding = new UTF8Encoding();
+jsonStr = client.DownloadString(url);
+}
+return jsonStr;
+}
+#endregion
+#region 下载单首
+/// &amp;lt;summary&amp;gt;
+/// 下载单首流并播放
+/// &amp;lt;/summary&amp;gt;
+/// &amp;lt;param name=&amp;quot;songUrl&amp;quot;&amp;gt;&amp;lt;/param&amp;gt;
+/// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt;
+public static void downOneSongStream()
+{
+client = new WebClient();
+client.Headers.Add(&amp;quot;User-Agent&amp;quot;, &amp;quot;Microsoft Internet Explorer&amp;quot;);
+client.Encoding = new UTF8Encoding();
+client.DownloadFile(Global.Songs[frmMain.SongListIndex].url, Global.downLoadPath+&amp;quot;/&amp;quot; + Global.Songs[frmMain.SongListIndex].title+&amp;quot;.mp3&amp;quot;);
+}
+#endregion
+#region 得到流
+/// &amp;lt;summary&amp;gt;
+/// 得到流
+/// &amp;lt;/summary&amp;gt;
+/// &amp;lt;param name=&amp;quot;streamUrl&amp;quot;&amp;gt;&amp;lt;/param&amp;gt;
+/// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt;
+public static Stream downStream(string streamUrl)
+{
+client = new WebClient();
+client.Headers.Add(&amp;quot;User-Agent&amp;quot;, &amp;quot;Microsoft Internet Explorer&amp;quot;);
+client.Encoding = new UTF8Encoding();
+return client.OpenRead(streamUrl);
+}
+#endregion
+#region 获取红心列表
+public static void GetRedHreats()
+{
+//登录地址
+url = String.Format(&amp;quot;http://douban.fm/mine#!type=liked&amp;amp;start=1&amp;quot;);
+client = new WebClient();
+client.Credentials = CredentialCache.DefaultCredentials;
+//模拟IE的方式访问
+client.Headers.Add(&amp;quot;User-Agent&amp;quot;, &amp;quot;Microsoft Internet Explorer&amp;quot;);
+client.Headers.Add(&amp;quot;Cookie&amp;quot;,Global.Cookie);
+client.Encoding = new UTF8Encoding();
+jsonStr = client.DownloadString(url);
+}
+#endregion
+}
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>如果有bug可以随时提出来 .^_^&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>需要 .Net 4 或 以上的环境&lt;/strong>&lt;/p>
+&lt;h2 id="下载">下载&lt;/h2>
+&lt;ul>
+&lt;li>程序 : &lt;a href="http://pan.baidu.com/s/1kTMm6oB">http://pan.baidu.com/s/1kTMm6oB&lt;/a> 密码：zdqx&lt;/li>
+&lt;li>源码 : &lt;a href="https://github.com/eightpigs/DouBanFM">https://github.com/eightpigs/DouBanFM&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>
