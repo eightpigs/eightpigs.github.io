@@ -3,7 +3,6 @@
 }
 
 .content .info * {
-  color: #212529;
   margin-right: 8px;
 }
 
@@ -25,10 +24,6 @@
   margin-bottom: 50px;
 }
 
-.content .changelogs * {
-  color: #333;
-}
-
 .content .changelogs .title {
    border-right: 1px solid #CCC;
    border-bottom: 1px solid #CCC;
@@ -43,5 +38,6 @@
   margin-left: 10px;
 }
 
-.content .changelogs span.time {
+.posts .item .date {
+  min-width: 70px !important;
 }

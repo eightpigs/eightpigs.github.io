@@ -7,6 +7,6 @@
 .posts .item .date {
   float: left;
   display: block;
-  min-width: 100px;
+  min-width: 120px;
   color: #6c757d;
 }

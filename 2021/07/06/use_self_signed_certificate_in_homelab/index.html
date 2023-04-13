@@ -1,0 +1,23 @@
+<head><meta charset=utf-8><meta name=generator content="Hugo 0.111.3"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=color-scheme content="light dark"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Eightpigs, eightpigs@outlook.com"><meta property="og:url" content="https://eightpigs.io/2021/07/06/use_self_signed_certificate_in_homelab/"><link rel=canonical href=https://eightpigs.io/2021/07/06/use_self_signed_certificate_in_homelab/><link rel=stylesheet href="/css/markdown-simple.css?t=1464395400000"><link rel=stylesheet href="/css/head.css?t=1464395400000"><link rel=stylesheet href="/css/style.css?t=1464395400000"><link rel=stylesheet href="/css/list.css?t=1464395400000"><title>K3s 上手 - 集群搭建 - Eightpigs</title><meta property="og:title" content="K3s 上手 - 集群搭建 - Eightpigs"><meta property="og:type" content="article"><meta property="og:description" content><meta name=description content><meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner"><link rel=stylesheet href=/css/highlight/github.css><link rel=stylesheet href=/css/highlight/gruvbox-dark.css media="(prefers-color-scheme: dark)"><link rel=stylesheet href="/css/post.css?t=1464395400000"></head><div class="content markdown-body"><h1>K3s 上手 - 集群搭建</h1><div class=info><span class=date>2021-07-06</span>
+<span class=categories style=font-weight:700><a data-real=Infrastructure href=/categories/infrastructure/ class=category>基础设施</a></span>
+<span class=tags><a data-real=K3s href=/tags/k3s/ class=tag>#K3s</a>
+<a data-real=K8s href=/tags/k8s/ class=tag>#K8s</a>
+<a data-real=Kubernetes href=/tags/kubernetes/ class=tag>#Kubernetes</a>
+<a data-real=Traefik href=/tags/traefik/ class=tag>#Traefik</a>
+<a data-real=Homelab href=/tags/homelab/ class=tag>#Homelab</a>
+<a data-real=Wireguard href=/tags/wireguard/ class=tag>#Wireguard</a></span></div></h1><br><br><hr>文章作者：eightpigs<br>创作时间：2021-07-06<br>更新时间：2021-08-27<br>许可协议：<a href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank class=cc>CC by-nc-nd 4.0</a><hr></div><div class=footer><div class=copyright>&copy; 2014 -
+2023
+Eightpigs</div><div class=navbar><ul><li><a href=/>首页</a></li><li><a href=/archives>归档</a></li><li><a href=/pages/about>关于</a></li></ul></div></div><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js></script>
+<script>hljs.initHighlightingOnLoad()</script><script type=text/javascript src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type=text/x-mathjax-config>
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', "sup"],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
