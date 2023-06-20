@@ -1,0 +1,179 @@
+<head><meta charset=utf-8><meta name=generator content="Hugo 0.111.3"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=color-scheme content="light dark"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Eightpigs, eightpigs@outlook.com"><meta property="og:url" content="https://eightpigs.io/2023/06/20/create_ca_certificate_for_homelab/"><link rel=canonical href=https://eightpigs.io/2023/06/20/create_ca_certificate_for_homelab/><link rel=stylesheet href="/css/markdown-simple.css?t=1464395400000"><link rel=stylesheet href="/css/head.css?t=1464395400000"><link rel=stylesheet href="/css/style.css?t=1464395400000"><link rel=stylesheet href="/css/list.css?t=1464395400000"><title>为内网 Homelab 创建 CA 证书和通配符证书 - Eightpigs</title><meta property="og:title" content="为内网 Homelab 创建 CA 证书和通配符证书 - Eightpigs"><meta property="og:type" content="article"><meta property="og:description" content="家里 Homelab 使用了 Let&rsquo;s Encrypt 的通配符证书提供外网的 HTTPS 访问，内网则是使用 HTTP 或者 IP 直接访问。最近把 Homelab 的外网完全关闭了，通过 VPN 回家以提高安全性。 当全切回内网后"><meta name=description content="家里 Homelab 使用了 Let&rsquo;s Encrypt 的通配符证书提供外网的 HTTPS 访问，内网则是使用 HTTP 或者 IP 直接访问。最近把 Homelab 的外网完全关闭了，通过 VPN 回家以提高安全性。 当全切回内网后"><meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner"><link rel=stylesheet href=/css/highlight/github.css><link rel=stylesheet href=/css/highlight/gruvbox-dark.css media="(prefers-color-scheme: dark)"><link rel=stylesheet href="/css/post.css?t=1464395400000"></head><div class="content markdown-body"><h1>为内网 Homelab 创建 CA 证书和通配符证书</h1><div class=info><span class=date>2023-06-20</span>
+<span class=categories style=font-weight:700><a data-real=infrastructure href=/categories/infrastructure/ class=category>基础设施</a></span>
+<span class=tags><a data-real=Homelab href=/tags/homelab/ class=tag>#Homelab</a>
+<a data-real=CA-certificate href=/tags/ca-certificate/ class=tag>#CA-certificate</a>
+<a data-real=OpenWrt href=/tags/openwrt/ class=tag>#OpenWrt</a>
+<a data-real=Network href=/tags/network/ class=tag>#Network</a></span></div></h1><p>家里 Homelab 使用了 Let&rsquo;s Encrypt 的通配符证书提供外网的 HTTPS 访问，内网则是使用 HTTP 或者 IP 直接访问。最近把 Homelab 的外网完全关闭了，通过 VPN 回家以提高安全性。</p><p>当全切回内网后，Bitwarden iOS 客户端无法正常使用，在登录时会提示错误。大概原因是 <a href=https://developer.apple.com/documentation/security/preventing_insecure_network_connections>Apple 会禁止使用不安全的连接</a>。</p><p>其实应该使用 HTTPS 的，毕竟是一个存储密码的服务，安全性还是很重要的。本文记录了给内网 Homelab 绑定自定与域名以及启用 HTTPS 证书的相关步骤，大致为：</p><ol><li>创建一个 CA 证书</li><li>创建一个 通配符证书</li><li>服务使用通配符证书</li><li>设备导入 CA 证书</li><li>Enjoy</li></ol><h2 id=1-创建证书>1. 创建证书</h2><p>我将创建证书的逻辑整理成了以下脚本，执行根据提示输入即可。</p><pre><code class=language-bash>#!/bin/bash
+
+function check_file() {
+    local file_path=&quot;$1&quot;
+    if [ -e &quot;${file_path}&quot; ]; then
+        read -p &quot;${file_path} 已存在，是否覆盖？(y/n)：&quot; yn
+        if [[ &quot;${yn}&quot; != &quot;y&quot; ]]; then
+            echo &quot;操作已取消。&quot;
+            exit 1
+        fi
+    fi
+}
+
+# 询问用户 CA 存储的目录
+read -p &quot;请输入 CA 存储的目录（例如：/root/my_ca）：&quot; ca_dir
+mkdir -p &quot;${ca_dir}&quot;
+cd &quot;${ca_dir}&quot;
+
+# 询问用户 CA 文件名（默认为 ca.key 和 ca.crt）
+read -p &quot;请输入 CA 私钥文件名（默认：ca.key）：&quot; ca_key
+ca_key=${ca_key:-ca.key}
+read -p &quot;请输入 CA 证书文件名（默认：ca.crt）：&quot; ca_crt
+ca_crt=${ca_crt:-ca.crt}
+read -p &quot;请输入 组织名（默认：Homelab.LAB）：&quot; org_name
+org_name=${org_name:-Homelab.LAB}
+
+check_file &quot;${ca_key}&quot;
+check_file &quot;${ca_crt}&quot;
+
+# 询问用户要创建通配符证书的域名（默认为 xxxx.lab）
+read -p &quot;请输入要创建通配符证书的域名（默认：xxxx.lab）：&quot; domain
+domain=${domain:-xxxx.lab}
+
+wildcard_key=&quot;wildcard.${domain}.key&quot;
+wildcard_csr=&quot;wildcard.${domain}.csr&quot;
+wildcard_crt=&quot;wildcard.${domain}.crt&quot;
+wildcard_ext=&quot;wildcard.ext&quot;
+
+check_file &quot;${wildcard_key}&quot;
+check_file &quot;${wildcard_csr}&quot;
+check_file &quot;${wildcard_crt}&quot;
+check_file &quot;${wildcard_ext}&quot;
+
+ca_openssl_cnf=&quot;ca_openssl.cnf&quot;
+check_file &quot;${ca_openssl_cnf}&quot;
+
+cat &gt; &quot;${ca_openssl_cnf}&quot; &lt;&lt; EOL
+[req]
+default_bits = 4096
+prompt = no
+default_md = sha256
+distinguished_name = dn
+
+[ dn ]
+C = ZZ
+ST = Utopia
+L = The Peach Garden
+O = ${org_name}
+OU = ${org_name}
+CN = CA.${domain}
+EOL
+
+# 创建 CA
+openssl genrsa -out &quot;${ca_key}&quot; 4096
+openssl req -x509 -new -nodes -key &quot;${ca_key}&quot; -sha256 -days 3650 -out &quot;${ca_crt}&quot; -config &quot;${ca_openssl_cnf}&quot;
+
+wildcard_openssl_cnf=&quot;wildcard_openssl.cnf&quot;
+check_file &quot;${wildcard_openssl_cnf}&quot;
+
+cat &gt; &quot;${wildcard_openssl_cnf}&quot; &lt;&lt; EOL
+[req]
+default_bits = 2048
+prompt = no
+default_md = sha256
+distinguished_name = dn
+req_extensions = req_ext
+
+[ dn ]
+C = ZZ
+ST = Utopia
+L = The Peach Garden
+O = ${org_name}
+OU = ${org_name}
+CN = *.${domain}
+
+[ req_ext ]
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = *.${domain}
+DNS.2 = ${domain}
+EOL
+
+# 为通配符证书创建私钥
+openssl genrsa -out &quot;${wildcard_key}&quot; 2048
+
+# 为通配符证书创建证书签名请求（CSR）
+openssl req -new -key &quot;${wildcard_key}&quot; -out &quot;${wildcard_csr}&quot; -config &quot;${wildcard_openssl_cnf}&quot;
+
+# 创建通配符证书的扩展文件
+# 其中需要注意参数：extendedKeyUsage = serverAuth 需要添加，
+cat &gt; &quot;${wildcard_ext}&quot; &lt;&lt; EOL
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+subjectAltName = @alt_names
+extendedKeyUsage = serverAuth
+
+[alt_names]
+DNS.1 = *.${domain}
+DNS.2 = ${domain}
+EOL
+
+# 使用 CA 对 CSR 文件进行签名，生成通配符证书
+openssl x509 -req -in &quot;${wildcard_csr}&quot; -CA &quot;${ca_crt}&quot; -CAkey &quot;${ca_key}&quot; -CAcreateserial -out &quot;${wildcard_crt}&quot; -days 820 -sha256 -extfile &quot;${wildcard_ext}&quot;
+
+echo &quot;创建完成，证书和私钥位于 ${ca_dir} 目录。&quot;
+</code></pre><p>代码执行完成后，会在第一步指定的目录生成几个证书文件:</p><ul><li>配置相关：<ul><li>ca_openssl.cnf</li><li>wildcard.ext</li><li>wildcard_openssl.cnf</li></ul></li><li>CA 相关:<ul><li>helloworld-ca.crt</li><li>helloworld-ca.key</li><li>helloworld-ca.srl</li></ul></li><li>通配符 相关：<ul><li>wildcard.helloword.lab.crt</li><li>wildcard.helloword.lab.crs</li><li>wildcard.helloword.lab.key</li></ul></li></ul><p>以上代码中，需要注意两个地方（<a href=https://support.apple.com/en-us/HT210176>Apple - Requirements for trusted certificates in iOS 13 and macOS 10.15</a>）：</p><ul><li>创建 wildcard_ext 时 <code>extendedKeyUsage = serverAuth</code> 参数，不添加的话 Safari 可能会提示：&ldquo;certificate is not standards compliant&rdquo;</li><li>创建通配符证书（最后一个 openssl 命令）中 <code>-days 820</code> 参数，天数不能大于 825 天，不然 Safari 也会有上面的提示。</li></ul><h2 id=2-kubernates-配置>2. Kubernates 配置</h2><h3 id=创建-secret>创建 secret</h3><p>在 Kubernates 中创建一个名为 helloworld-lab-tls 的通配符证书，需要注意下是使用了通配符的证书文件，而不是 CA 文件。</p><pre><code class=language-bash>kubectl create secret tls helloword-lab-tls \
+  --cert=wildcard.helloword.lab.crt \
+  --key=wildcard.helloword.lab.key
+</code></pre><h3 id=同步-secert-到其他命名空间>同步 Secert 到其他命名空间</h3><p>由于我是区分了 Namespace：</p><ul><li>infra: 证书等跟基础服务相关的</li><li>selfhosts: 自己跑的一些开源服务</li></ul><p>所以需要将证书同步到多个命名空间。我使用了 <a href=https://github.com/kubeops/config-syncer>kuberops/config-syncer</a> 来做多命名空间的同步。</p><p>安装 kuberops/config-syncer 比较简单，跟着这 <a href=https://github.com/kubeops/config-syncer#installation>#installation</a> 部分操作就行。</p><p>使用也比较简单，步骤是:</p><ol><li>给需要同步的内容打注解</li><li>给需要使用的命名空间添加 labels</li></ol><pre><code class=language-bash># 1. 给证书打注解，支持同步到其他命名空间
+kubectl annotate secret \
+  helloword-lab-tls \
+  kubed.appscode.com/sync=&quot;tls-certs=helloword.lab&quot; \
+  -n default
+</code></pre><pre><code class=language-yaml># 2. 给需要同步证书的命名空间添加 label，使能将证书同步到当前命名空间
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: infra
+  labels:
+    tls-certs: helloword.lab
+</code></pre><pre><code class=language-bash># 3. 查看证书是否已经同步到其他命名空间
+~/Workspace/kube [main] → kubectl get secret -A | grep helloword-lab-tls
+default           helloword-lab-tls                                                 kubernetes.io/tls                     2      44m
+selfhosts         helloword-lab-tls                                                 kubernetes.io/tls                     2      22m
+infra             helloword-lab-tls                                                 kubernetes.io/tls                     2      22m
+</code></pre><p><img src=kubernates_tls_secrets.png alt="tls secrets in kubernetes"></p><h3 id=服务使用通配符证书>服务使用通配符证书</h3><p>部署的相关服务需要使用证书也可以直接在 <code>Ignress</code> 配置上配置，如下：</p><pre><code class=language-yaml>apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: memos-ingress
+  namespace: selfhosts
+  annotations:
+    kubernetes.io/ingress.class: &quot;traefik&quot;
+spec:
+  tls:
+    - hosts:
+      - memo.helloword.lab
+      secretName: helloword-lab-tls
+  rules:
+    - host: memo.helloword.lab
+      http:
+        paths:
+        - path: /
+          pathType: ImplementationSpecific
+          backend:
+            service: 
+              name: memos-svc
+              port:
+                name: memos-web
+</code></pre><p>添加好配置记得应到 pod，完成以上步骤后，可以在浏览器访问下服务，应该会提示证书错误，接下来就需要给设备添加自签名的通配符证书。</p><h2 id=3-导入证书>3. 导入证书</h2><p>需要注意下，上面在绑定证书时是使用的通配符证书，而在设备上使用时是需要导入 CA 证书。</p><h3 id=macos>MacOS</h3><ol><li>MacOS - Keychain Access - 左侧选择系统 / System
+<img src=keychain_access_import.png alt=keychain_access_import>
+导入过程中请选择信任证书
+<img src=keychain_access_import_trust.png alt=keychain_access_import_trust></li></ol><p>导入并信任之后为：
+<img src=keychain_access_imported.png alt=keychain_access_imported></p><h3 id=linux-debian>Linux (Debian)</h3><pre><code class=language-bash>sudo cp wildcard.helloword.lab.crt /usr/local/share/ca-certificates
+sudo update-ca-certificates
+</code></pre><p>然后 curl 看一下是否有证书错误即可。</p><h3 id=浏览器证书导入>浏览器证书导入</h3><p>Firefox 访问依旧提示证书错误，Firefox 没有使用系统的证书存储，需要自己单独导入一次。
+<img src=firefox_warning.png alt=firefox_warning.png>
+<img src=firefox_importing_1.png alt=firefox_importing_1.png>
+<img src=firefox_importing.png alt=firefox_importing.png></p><p>之后再访问就正常了。</p><h3 id=手机导入证书>手机导入证书</h3><ul><li><p>iPhone</p><ol><li>下载 或者 AirDrop 传到手机后，系统设置中会有提示，按步骤导</li><li>打开 iPhone 的 &ldquo;设置&rdquo; 应用。</li><li>滚动到 &ldquo;通用&rdquo;，然后点击进入。</li><li>向下滚动，找到 &ldquo;关于本机&rdquo;，点击进入。</li><li>在 &ldquo;关于本机&rdquo; 页面中，找到 &ldquo;证书信任设置&rdquo;，点击进入。</li><li>在 &ldquo;证书信任设置&rdquo; 页面中，找到您刚刚导入的根证书（应该是您的 <code>ca.crt</code> 文件）。它应该在 &ldquo;针对根证书启用完全信任&rdquo; 部分。</li><li>打开根证书旁边的开关以启用信任。</li><li>系统会提示您确认此操作。点击 &ldquo;继续&rdquo; 以信任该证书。</li></ol></li><li><p>Android（以下来源为 <a href="https://support.google.com/pixelphone/answer/2844832?hl=en">Add & remove certificates - Google</a>）</p><ol><li>Open your device&rsquo;s Settings app.</li><li>Tap <strong>Security & privacy</strong> And then <strong>More security settings</strong> and then <strong>Encryption & credentials</strong>.</li><li>Tap <strong>Install a certificate</strong> And then <strong>Wi-Fi certificate</strong>.</li><li>Tap Menu Icon.</li><li>Tap where you saved the certificate.</li><li>Tap the file.<ul><li>If needed, enter the key store password. Tap <strong>OK</strong>.</li></ul></li><li>Enter a name for the certificate.</li><li>Tap <strong>OK</strong>.</li></ol></li></ul><h2 id=4-内网-dns-配置>4. 内网 DNS 配置</h2><p>我家庭网络的核心是 OpenWrt，所以这里贴出 OpenWrt 配置 DNS 的部分。</p><p>思路是将指定域名指定到 K3s 上（我的 Kubernates 是 K3s 版本），K3s 的 IP 为: <code>10.0.0.2</code>。</p><p>OpenWrt - Network - DHCP and DNS - Addresses 配置，格式如下：</p><pre><code>/git.helloworld.lab/10.0.0.2
+</code></pre><p>也可以直接通过登录到 OpenWrt 用命令行修改：</p><ol><li>编辑 <code>/etc/config/dhcp</code> 文件</li><li>在 <code>config dnsmasq</code> 部分的底部添加：<code>list address '/git.helloworld.lab/10.0.0.2'</code></li><li>重启 <code>/etc/init.d/dnsmasq restart</code></li></ol><p>给各个设备、路由器都配置好后，就可以完全无障碍访问自签名的 HTTPS 域名了。</p><br><br><hr>文章作者：eightpigs<br>创作时间：2023-06-20<br>更新时间：2023-06-20<br>许可协议：<a href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank class=cc>CC by-nc-nd 4.0</a><hr></div><div class=footer><div class=copyright>&copy; 2014 -
+2023
+Eightpigs</div><div class=navbar><ul><li><a href=/>首页</a></li><li><a href=/archives>归档</a></li><li><a href=/pages/about>关于</a></li></ul></div></div><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js></script>
+<script>hljs.initHighlightingOnLoad()</script>

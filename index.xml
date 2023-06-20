@@ -1,4 +1,276 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Eightpigs</title><link>https://eightpigs.io/</link><description>Recent content on Eightpigs</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 28 Mar 2022 20:30:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/index.xml" rel="self" type="application/rss+xml"/><item><title>迁移 Gitea 到 Gitea-rootless</title><link>https://eightpigs.io/2022/03/28/migrate_gitea_to_rootless/</link><pubDate>Mon, 28 Mar 2022 20:30:00 +0800</pubDate><guid>https://eightpigs.io/2022/03/28/migrate_gitea_to_rootless/</guid><description>&lt;p>最近重新配置过一遍 Homelab 环境（PVE、NFS、Kubernetes），粗略检查各个自建服务的 Web 访问后迁移工作就告一段落了。直到今天提交代码到 Gitea 时出现 SSH 无法访问，排查后得知是因为无权限读取 keys 导致 SSH 服务启动失败：&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Eightpigs</title><link>https://eightpigs.io/</link><description>Recent content on Eightpigs</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 20 Jun 2023 20:00:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/index.xml" rel="self" type="application/rss+xml"/><item><title>为内网 Homelab 创建 CA 证书和通配符证书</title><link>https://eightpigs.io/2023/06/20/create_ca_certificate_for_homelab/</link><pubDate>Tue, 20 Jun 2023 20:00:00 +0800</pubDate><guid>https://eightpigs.io/2023/06/20/create_ca_certificate_for_homelab/</guid><description>&lt;p>家里 Homelab 使用了 Let&amp;rsquo;s Encrypt 的通配符证书提供外网的 HTTPS 访问，内网则是使用 HTTP 或者 IP 直接访问。最近把 Homelab 的外网完全关闭了，通过 VPN 回家以提高安全性。&lt;/p>
+&lt;p>当全切回内网后，Bitwarden iOS 客户端无法正常使用，在登录时会提示错误。大概原因是 &lt;a href="https://developer.apple.com/documentation/security/preventing_insecure_network_connections">Apple 会禁止使用不安全的连接&lt;/a>。&lt;/p>
+&lt;p>其实应该使用 HTTPS 的，毕竟是一个存储密码的服务，安全性还是很重要的。本文记录了给内网 Homelab 绑定自定与域名以及启用 HTTPS 证书的相关步骤，大致为：&lt;/p>
+&lt;ol>
+&lt;li>创建一个 CA 证书&lt;/li>
+&lt;li>创建一个 通配符证书&lt;/li>
+&lt;li>服务使用通配符证书&lt;/li>
+&lt;li>设备导入 CA 证书&lt;/li>
+&lt;li>Enjoy&lt;/li>
+&lt;/ol>
+&lt;h2 id="1-创建证书">1. 创建证书&lt;/h2>
+&lt;p>我将创建证书的逻辑整理成了以下脚本，执行根据提示输入即可。&lt;/p>
+&lt;pre>&lt;code class="language-bash">#!/bin/bash
+function check_file() {
+local file_path=&amp;quot;$1&amp;quot;
+if [ -e &amp;quot;${file_path}&amp;quot; ]; then
+read -p &amp;quot;${file_path} 已存在，是否覆盖？(y/n)：&amp;quot; yn
+if [[ &amp;quot;${yn}&amp;quot; != &amp;quot;y&amp;quot; ]]; then
+echo &amp;quot;操作已取消。&amp;quot;
+exit 1
+fi
+fi
+}
+# 询问用户 CA 存储的目录
+read -p &amp;quot;请输入 CA 存储的目录（例如：/root/my_ca）：&amp;quot; ca_dir
+mkdir -p &amp;quot;${ca_dir}&amp;quot;
+cd &amp;quot;${ca_dir}&amp;quot;
+# 询问用户 CA 文件名（默认为 ca.key 和 ca.crt）
+read -p &amp;quot;请输入 CA 私钥文件名（默认：ca.key）：&amp;quot; ca_key
+ca_key=${ca_key:-ca.key}
+read -p &amp;quot;请输入 CA 证书文件名（默认：ca.crt）：&amp;quot; ca_crt
+ca_crt=${ca_crt:-ca.crt}
+read -p &amp;quot;请输入 组织名（默认：Homelab.LAB）：&amp;quot; org_name
+org_name=${org_name:-Homelab.LAB}
+check_file &amp;quot;${ca_key}&amp;quot;
+check_file &amp;quot;${ca_crt}&amp;quot;
+# 询问用户要创建通配符证书的域名（默认为 xxxx.lab）
+read -p &amp;quot;请输入要创建通配符证书的域名（默认：xxxx.lab）：&amp;quot; domain
+domain=${domain:-xxxx.lab}
+wildcard_key=&amp;quot;wildcard.${domain}.key&amp;quot;
+wildcard_csr=&amp;quot;wildcard.${domain}.csr&amp;quot;
+wildcard_crt=&amp;quot;wildcard.${domain}.crt&amp;quot;
+wildcard_ext=&amp;quot;wildcard.ext&amp;quot;
+check_file &amp;quot;${wildcard_key}&amp;quot;
+check_file &amp;quot;${wildcard_csr}&amp;quot;
+check_file &amp;quot;${wildcard_crt}&amp;quot;
+check_file &amp;quot;${wildcard_ext}&amp;quot;
+ca_openssl_cnf=&amp;quot;ca_openssl.cnf&amp;quot;
+check_file &amp;quot;${ca_openssl_cnf}&amp;quot;
+cat &amp;gt; &amp;quot;${ca_openssl_cnf}&amp;quot; &amp;lt;&amp;lt; EOL
+[req]
+default_bits = 4096
+prompt = no
+default_md = sha256
+distinguished_name = dn
+[ dn ]
+C = ZZ
+ST = Utopia
+L = The Peach Garden
+O = ${org_name}
+OU = ${org_name}
+CN = CA.${domain}
+EOL
+# 创建 CA
+openssl genrsa -out &amp;quot;${ca_key}&amp;quot; 4096
+openssl req -x509 -new -nodes -key &amp;quot;${ca_key}&amp;quot; -sha256 -days 3650 -out &amp;quot;${ca_crt}&amp;quot; -config &amp;quot;${ca_openssl_cnf}&amp;quot;
+wildcard_openssl_cnf=&amp;quot;wildcard_openssl.cnf&amp;quot;
+check_file &amp;quot;${wildcard_openssl_cnf}&amp;quot;
+cat &amp;gt; &amp;quot;${wildcard_openssl_cnf}&amp;quot; &amp;lt;&amp;lt; EOL
+[req]
+default_bits = 2048
+prompt = no
+default_md = sha256
+distinguished_name = dn
+req_extensions = req_ext
+[ dn ]
+C = ZZ
+ST = Utopia
+L = The Peach Garden
+O = ${org_name}
+OU = ${org_name}
+CN = *.${domain}
+[ req_ext ]
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = *.${domain}
+DNS.2 = ${domain}
+EOL
+# 为通配符证书创建私钥
+openssl genrsa -out &amp;quot;${wildcard_key}&amp;quot; 2048
+# 为通配符证书创建证书签名请求（CSR）
+openssl req -new -key &amp;quot;${wildcard_key}&amp;quot; -out &amp;quot;${wildcard_csr}&amp;quot; -config &amp;quot;${wildcard_openssl_cnf}&amp;quot;
+# 创建通配符证书的扩展文件
+# 其中需要注意参数：extendedKeyUsage = serverAuth 需要添加，
+cat &amp;gt; &amp;quot;${wildcard_ext}&amp;quot; &amp;lt;&amp;lt; EOL
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+subjectAltName = @alt_names
+extendedKeyUsage = serverAuth
+[alt_names]
+DNS.1 = *.${domain}
+DNS.2 = ${domain}
+EOL
+# 使用 CA 对 CSR 文件进行签名，生成通配符证书
+openssl x509 -req -in &amp;quot;${wildcard_csr}&amp;quot; -CA &amp;quot;${ca_crt}&amp;quot; -CAkey &amp;quot;${ca_key}&amp;quot; -CAcreateserial -out &amp;quot;${wildcard_crt}&amp;quot; -days 820 -sha256 -extfile &amp;quot;${wildcard_ext}&amp;quot;
+echo &amp;quot;创建完成，证书和私钥位于 ${ca_dir} 目录。&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;p>代码执行完成后，会在第一步指定的目录生成几个证书文件:&lt;/p>
+&lt;ul>
+&lt;li>配置相关：
+&lt;ul>
+&lt;li>ca_openssl.cnf&lt;/li>
+&lt;li>wildcard.ext&lt;/li>
+&lt;li>wildcard_openssl.cnf&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>CA 相关:
+&lt;ul>
+&lt;li>helloworld-ca.crt&lt;/li>
+&lt;li>helloworld-ca.key&lt;/li>
+&lt;li>helloworld-ca.srl&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>通配符 相关：
+&lt;ul>
+&lt;li>wildcard.helloword.lab.crt&lt;/li>
+&lt;li>wildcard.helloword.lab.crs&lt;/li>
+&lt;li>wildcard.helloword.lab.key&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>以上代码中，需要注意两个地方（&lt;a href="https://support.apple.com/en-us/HT210176">Apple - Requirements for trusted certificates in iOS 13 and macOS 10.15&lt;/a>）：&lt;/p>
+&lt;ul>
+&lt;li>创建 wildcard_ext 时 &lt;code>extendedKeyUsage = serverAuth&lt;/code> 参数，不添加的话 Safari 可能会提示：&amp;ldquo;certificate is not standards compliant&amp;rdquo;&lt;/li>
+&lt;li>创建通配符证书（最后一个 openssl 命令）中 &lt;code>-days 820&lt;/code> 参数，天数不能大于 825 天，不然 Safari 也会有上面的提示。&lt;/li>
+&lt;/ul>
+&lt;h2 id="2-kubernates-配置">2. Kubernates 配置&lt;/h2>
+&lt;h3 id="创建-secret">创建 secret&lt;/h3>
+&lt;p>在 Kubernates 中创建一个名为 helloworld-lab-tls 的通配符证书，需要注意下是使用了通配符的证书文件，而不是 CA 文件。&lt;/p>
+&lt;pre>&lt;code class="language-bash">kubectl create secret tls helloword-lab-tls \
+--cert=wildcard.helloword.lab.crt \
+--key=wildcard.helloword.lab.key
+&lt;/code>&lt;/pre>
+&lt;h3 id="同步-secert-到其他命名空间">同步 Secert 到其他命名空间&lt;/h3>
+&lt;p>由于我是区分了 Namespace：&lt;/p>
+&lt;ul>
+&lt;li>infra: 证书等跟基础服务相关的&lt;/li>
+&lt;li>selfhosts: 自己跑的一些开源服务&lt;/li>
+&lt;/ul>
+&lt;p>所以需要将证书同步到多个命名空间。我使用了 &lt;a href="https://github.com/kubeops/config-syncer">kuberops/config-syncer&lt;/a> 来做多命名空间的同步。&lt;/p>
+&lt;p>安装 kuberops/config-syncer 比较简单，跟着这 &lt;a href="https://github.com/kubeops/config-syncer#installation">#installation&lt;/a> 部分操作就行。&lt;/p>
+&lt;p>使用也比较简单，步骤是:&lt;/p>
+&lt;ol>
+&lt;li>给需要同步的内容打注解&lt;/li>
+&lt;li>给需要使用的命名空间添加 labels&lt;/li>
+&lt;/ol>
+&lt;pre>&lt;code class="language-bash"># 1. 给证书打注解，支持同步到其他命名空间
+kubectl annotate secret \
+helloword-lab-tls \
+kubed.appscode.com/sync=&amp;quot;tls-certs=helloword.lab&amp;quot; \
+-n default
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-yaml"># 2. 给需要同步证书的命名空间添加 label，使能将证书同步到当前命名空间
+apiVersion: v1
+kind: Namespace
+metadata:
+name: infra
+labels:
+tls-certs: helloword.lab
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-bash"># 3. 查看证书是否已经同步到其他命名空间
+~/Workspace/kube [main] → kubectl get secret -A | grep helloword-lab-tls
+default helloword-lab-tls kubernetes.io/tls 2 44m
+selfhosts helloword-lab-tls kubernetes.io/tls 2 22m
+infra helloword-lab-tls kubernetes.io/tls 2 22m
+&lt;/code>&lt;/pre>
+&lt;p>&lt;img src="kubernates_tls_secrets.png" alt="tls secrets in kubernetes">&lt;/p>
+&lt;h3 id="服务使用通配符证书">服务使用通配符证书&lt;/h3>
+&lt;p>部署的相关服务需要使用证书也可以直接在 &lt;code>Ignress&lt;/code> 配置上配置，如下：&lt;/p>
+&lt;pre>&lt;code class="language-yaml">apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+name: memos-ingress
+namespace: selfhosts
+annotations:
+kubernetes.io/ingress.class: &amp;quot;traefik&amp;quot;
+spec:
+tls:
+- hosts:
+- memo.helloword.lab
+secretName: helloword-lab-tls
+rules:
+- host: memo.helloword.lab
+http:
+paths:
+- path: /
+pathType: ImplementationSpecific
+backend:
+service:
+name: memos-svc
+port:
+name: memos-web
+&lt;/code>&lt;/pre>
+&lt;p>添加好配置记得应到 pod，完成以上步骤后，可以在浏览器访问下服务，应该会提示证书错误，接下来就需要给设备添加自签名的通配符证书。&lt;/p>
+&lt;h2 id="3-导入证书">3. 导入证书&lt;/h2>
+&lt;p>需要注意下，上面在绑定证书时是使用的通配符证书，而在设备上使用时是需要导入 CA 证书。&lt;/p>
+&lt;h3 id="macos">MacOS&lt;/h3>
+&lt;ol>
+&lt;li>MacOS - Keychain Access - 左侧选择系统 / System
+&lt;img src="keychain_access_import.png" alt="keychain_access_import">
+导入过程中请选择信任证书
+&lt;img src="keychain_access_import_trust.png" alt="keychain_access_import_trust">&lt;/li>
+&lt;/ol>
+&lt;p>导入并信任之后为：
+&lt;img src="keychain_access_imported.png" alt="keychain_access_imported">&lt;/p>
+&lt;h3 id="linux-debian">Linux (Debian)&lt;/h3>
+&lt;pre>&lt;code class="language-bash">sudo cp wildcard.helloword.lab.crt /usr/local/share/ca-certificates
+sudo update-ca-certificates
+&lt;/code>&lt;/pre>
+&lt;p>然后 curl 看一下是否有证书错误即可。&lt;/p>
+&lt;h3 id="浏览器证书导入">浏览器证书导入&lt;/h3>
+&lt;p>Firefox 访问依旧提示证书错误，Firefox 没有使用系统的证书存储，需要自己单独导入一次。
+&lt;img src="firefox_warning.png" alt="firefox_warning.png">
+&lt;img src="firefox_importing_1.png" alt="firefox_importing_1.png">
+&lt;img src="firefox_importing.png" alt="firefox_importing.png">&lt;/p>
+&lt;p>之后再访问就正常了。&lt;/p>
+&lt;h3 id="手机导入证书">手机导入证书&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>iPhone&lt;/p>
+&lt;ol>
+&lt;li>下载 或者 AirDrop 传到手机后，系统设置中会有提示，按步骤导&lt;/li>
+&lt;li>打开 iPhone 的 &amp;ldquo;设置&amp;rdquo; 应用。&lt;/li>
+&lt;li>滚动到 &amp;ldquo;通用&amp;rdquo;，然后点击进入。&lt;/li>
+&lt;li>向下滚动，找到 &amp;ldquo;关于本机&amp;rdquo;，点击进入。&lt;/li>
+&lt;li>在 &amp;ldquo;关于本机&amp;rdquo; 页面中，找到 &amp;ldquo;证书信任设置&amp;rdquo;，点击进入。&lt;/li>
+&lt;li>在 &amp;ldquo;证书信任设置&amp;rdquo; 页面中，找到您刚刚导入的根证书（应该是您的 &lt;code>ca.crt&lt;/code> 文件）。它应该在 &amp;ldquo;针对根证书启用完全信任&amp;rdquo; 部分。&lt;/li>
+&lt;li>打开根证书旁边的开关以启用信任。&lt;/li>
+&lt;li>系统会提示您确认此操作。点击 &amp;ldquo;继续&amp;rdquo; 以信任该证书。&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>
+&lt;p>Android（以下来源为 &lt;a href="https://support.google.com/pixelphone/answer/2844832?hl=en">Add &amp;amp; remove certificates - Google&lt;/a>）&lt;/p>
+&lt;ol>
+&lt;li>Open your device&amp;rsquo;s Settings app.&lt;/li>
+&lt;li>Tap &lt;strong>Security &amp;amp; privacy&lt;/strong> And then &lt;strong>More security settings&lt;/strong> and then &lt;strong>Encryption &amp;amp; credentials&lt;/strong>.&lt;/li>
+&lt;li>Tap &lt;strong>Install a certificate&lt;/strong> And then &lt;strong>Wi-Fi certificate&lt;/strong>.&lt;/li>
+&lt;li>Tap Menu Icon.&lt;/li>
+&lt;li>Tap where you saved the certificate.&lt;/li>
+&lt;li>Tap the file.
+&lt;ul>
+&lt;li>If needed, enter the key store password. Tap &lt;strong>OK&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Enter a name for the certificate.&lt;/li>
+&lt;li>Tap &lt;strong>OK&lt;/strong>.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="4-内网-dns-配置">4. 内网 DNS 配置&lt;/h2>
+&lt;p>我家庭网络的核心是 OpenWrt，所以这里贴出 OpenWrt 配置 DNS 的部分。&lt;/p>
+&lt;p>思路是将指定域名指定到 K3s 上（我的 Kubernates 是 K3s 版本），K3s 的 IP 为: &lt;code>10.0.0.2&lt;/code>。&lt;/p>
+&lt;p>OpenWrt - Network - DHCP and DNS - Addresses 配置，格式如下：&lt;/p>
+&lt;pre>&lt;code>/git.helloworld.lab/10.0.0.2
+&lt;/code>&lt;/pre>
+&lt;p>也可以直接通过登录到 OpenWrt 用命令行修改：&lt;/p>
+&lt;ol>
+&lt;li>编辑 &lt;code>/etc/config/dhcp&lt;/code> 文件&lt;/li>
+&lt;li>在 &lt;code>config dnsmasq&lt;/code> 部分的底部添加：&lt;code>list address '/git.helloworld.lab/10.0.0.2'&lt;/code>&lt;/li>
+&lt;li>重启 &lt;code>/etc/init.d/dnsmasq restart&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p>给各个设备、路由器都配置好后，就可以完全无障碍访问自签名的 HTTPS 域名了。&lt;/p></description></item><item><title>迁移 Gitea 到 Gitea-rootless</title><link>https://eightpigs.io/2022/03/28/migrate_gitea_to_rootless/</link><pubDate>Mon, 28 Mar 2022 20:30:00 +0800</pubDate><guid>https://eightpigs.io/2022/03/28/migrate_gitea_to_rootless/</guid><description>&lt;p>最近重新配置过一遍 Homelab 环境（PVE、NFS、Kubernetes），粗略检查各个自建服务的 Web 访问后迁移工作就告一段落了。直到今天提交代码到 Gitea 时出现 SSH 无法访问，排查后得知是因为无权限读取 keys 导致 SSH 服务启动失败：&lt;/p>
 &lt;pre>&lt;code class="language-log">$ kubectl logs -f -n selfhosts deploy/gitea
 chown: /data/ssh/ssh_host_dsa_key: Operation not permitted
 chown: /data/ssh/ssh_host_dsa_key.pub: Operation not permitted
