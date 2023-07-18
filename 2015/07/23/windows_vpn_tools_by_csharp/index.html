@@ -2,7 +2,7 @@
 <span class=categories style=font-weight:700><a data-real=works href=/categories/works/ class=category>[输出/作品]</a></span>
 <span class=tags><a data-real=.Net href=/tags/.net/ class=tag>#.Net</a>
 <a data-real=VPN href=/tags/vpn/ class=tag>#VPN</a>
-<a data-real=Tools href=/tags/tools/ class=tag>#Tools</a></span></div></h1><div class=changelogs><div class=title>更新日志</div><div class=changelog><span class=time>2021-06-11</span>
+<a data-real=Tools href=/tags/tools/ class=tag>#Tools</a></span></div><div class=changelogs><div class=title>更新日志</div><div class=changelog><span class=time>2021-06-11</span>
 <span class=note>更新分类、标签</span></div><div class=changelog><span class=time>2022-03-21</span>
 <span class=note>更新文章中中英文间隔</span></div></div><h2 id=简介>简介</h2><p>使用 C# 写的 Windows 下快捷管理 VPN 工具，可以实现对本地 VPN 的增加,修改,删除管理</p><h2 id=原理>原理</h2><ul><li>Windows 有自带的连接管理工具 rasphone ,可以实现对链接进行新建/修改/连接/删除/断开等操作</li></ul><p>在cmd 输入 : <strong>rasphone /?</strong> 就可以查看所有命令操作信息</p><ul><li>查看现在是否有 VPN 连接可以使用 <strong>rasdial</strong> 命令.</li></ul><h2 id=使用>使用</h2><ul><li>由于对C#不是很熟悉,新增vpn时需要给名称前面添加 vpn 作为前缀 &mldr;</li><li>鼠标悬停在每一个功能按钮都有相应提示.操作非常简单.</li><li>鼠标移开窗体会自动隐藏,在屏幕的右上方显示当前状态线.(已连接:绿色 未连接:红色)</li><li>工具条固定在屏幕有上方.X轴大约在屏幕3/4的地方.</li><li>提供一个VPN列表和用户信息列表(VPN的帐号),VPN列表是通过获取系统的adsl连接</li><li>用户列表可以多个,具体在程序启动目录的app.config里面配置user节点.</li></ul><hr><h3 id=处理vpn的代码>处理VPN的代码</h3><pre><code class=language-cs>using System;
 using System.Collections.Generic;

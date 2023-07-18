@@ -5,7 +5,7 @@
 <a data-real=Passthrough href=/tags/passthrough/ class=tag>#Passthrough</a>
 <a data-real=Homelab href=/tags/homelab/ class=tag>#Homelab</a>
 <a data-real=TrueNAS href=/tags/truenas/ class=tag>#TrueNAS</a>
-<a data-real=Virtualization href=/tags/virtualization/ class=tag>#Virtualization</a></span></div></h1><p>今天梳理并重新配置了一遍机器及虚拟机，对 <code>Supermicro X10DRL-i</code> 主板的2个可用网口进行了调整：从原来直通给 Dev（开发环境虚拟机），更换到直通给 TrueNAS，本文简单记录了定位网卡和直通的过程。</p><h2 id=定位网卡>定位网卡</h2><h3 id=确定使用中的网卡>确定使用中的网卡</h3><p>可以使用 <code>ip</code> 命令先定位当前系统正在使用的网卡，也<strong>可以直接跳过本步骤，直接使用第二步中的 <a href=https://github.com/lyonel/lshw>lshw</a> 查看</strong>。</p><p>使用 <code>ip addr</code> 命令先查看当前宿主系统正在使用的网卡，可以通过 ip: 192.168.1.3/24 直观定位网卡: vmbr0。vmbr0 是一个桥接网卡，以命名等规则来看可以直接确定出 eno1 是物理网卡，当然也可以通过 <code>ip link show master vmbr0</code> 查看对应的物理网卡。</p><pre><code># 查看使用的网卡信息
+<a data-real=Virtualization href=/tags/virtualization/ class=tag>#Virtualization</a></span></div><p>今天梳理并重新配置了一遍机器及虚拟机，对 <code>Supermicro X10DRL-i</code> 主板的2个可用网口进行了调整：从原来直通给 Dev（开发环境虚拟机），更换到直通给 TrueNAS，本文简单记录了定位网卡和直通的过程。</p><h2 id=定位网卡>定位网卡</h2><h3 id=确定使用中的网卡>确定使用中的网卡</h3><p>可以使用 <code>ip</code> 命令先定位当前系统正在使用的网卡，也<strong>可以直接跳过本步骤，直接使用第二步中的 <a href=https://github.com/lyonel/lshw>lshw</a> 查看</strong>。</p><p>使用 <code>ip addr</code> 命令先查看当前宿主系统正在使用的网卡，可以通过 ip: 192.168.1.3/24 直观定位网卡: vmbr0。vmbr0 是一个桥接网卡，以命名等规则来看可以直接确定出 eno1 是物理网卡，当然也可以通过 <code>ip link show master vmbr0</code> 查看对应的物理网卡。</p><pre><code># 查看使用的网卡信息
 # 1. 直接过滤: ip addr show | grep &quot;inet 192.168&quot; -B 2
 # 2. 使用 jq 结构化过滤:
 root@pve:~# ip -j addr show | jq -r 'map(.addr_info) | map(map(select(.family == &quot;inet&quot; and .label != &quot;lo&quot;))) | flatten | .[]'
@@ -52,16 +52,4 @@ eno1
 </code></pre><p>存在两张网卡：<code>pci@0000:09:00.0</code> 和 <code>pci@0000:0a:00.0</code>，通过查看 <code>logical name</code> 和 <code>bus info</code> 可以确定宿主正在使用的 eno1 对应的网卡 PCI ID 为: <code>0000:09:00.0</code>。</p><h2 id=直通到虚拟机>直通到虚拟机</h2><p>若之前配置支持热插拔网卡则可以不关闭虚拟机直接给添加网卡，可以通过: Options - Hotplug - Network 查看是否开启了网卡热插拔。若未开启，可以先关闭虚拟机。</p><p>在PVE WEB UI 中直通 <code>pci@0000:0a:00.0</code> 给虚拟机：</p><ol><li>指定虚拟机</li><li>Hardware</li><li>Add</li><li>PCI Device</li><li>找到 pci@0000:0a:00.0，并添加。</li></ol><p>添加完成后，重启进入虚拟机也可以通过 <code>lshw -class network</code> 查看每张网卡的使用情况。</p><div class=cc>文章作者：eightpigs<br>创作时间：2022-03-20<br>更新时间：2022-03-20<br>许可协议：<a href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank style=text-transform:uppercase>CC by-nc-nd 4.0</a></div></div><div class=footer><div class=copyright>&copy; 2014 -
 2023
 Eightpigs</div><div class=navbar><ul><li><a href=/>首页</a></li><li><a href=/archives>归档</a></li><li><a href=/pages/about>关于</a></li></ul></div></div><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js></script>
-<script>hljs.initHighlightingOnLoad()</script><script type=text/javascript src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type=text/x-mathjax-config>
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$'], ['\[','\]']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', "sup"],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
-  }
-});
-</script>
+<script>hljs.initHighlightingOnLoad()</script>

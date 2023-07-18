@@ -3,7 +3,7 @@
 <span class=tags><a data-real=Go href=/tags/go/ class=tag>#Go</a>
 <a data-real=CI href=/tags/ci/ class=tag>#CI</a>
 <a data-real=Docker href=/tags/docker/ class=tag>#Docker</a>
-<a data-real="Docker Compose" href=/tags/docker-compose/ class=tag>#Docker Compose</a></span></div></h1><div class=changelogs><div class=title>更新日志</div><div class=changelog><span class=time>2021-06-11</span>
+<a data-real="Docker Compose" href=/tags/docker-compose/ class=tag>#Docker Compose</a></span></div><div class=changelogs><div class=title>更新日志</div><div class=changelog><span class=time>2021-06-11</span>
 <span class=note>更新所属分类</span></div></div><h2 id=介绍>介绍</h2><blockquote><p>Drone is a Container-Native, Continuous Delivery Platform.
 Drone 是一个基于容器的持续交付平台。</p></blockquote><h2 id=工作原理>工作原理</h2><ol><li>通过Web Hook接受相关事件（推送、创建分支、合并请求等&mldr;)</li><li>读取并执行该仓库根目录下的.drone.yaml文件</li></ol><h2 id=特性>特性</h2><ol><li>支持多种仓库类型（GitHub, GitLab, Gitea, Gogs, Bitbucket Cloud, Bitbucket Server）</li><li>支持插件</li><li>支持分布式构建</li><li>支持多操作系统构建</li><li>基于Docker</li><li>基于Go语言</li></ol><h2 id=安装>安装</h2><p><a href=https://cloud.drone.io/drone/hello-world>Demo 地址</a></p><p>使用Drone进行持续集成已经8个月了，因为功能基本满足我的需求，所以一直停留在0.8版本。今天正好有时间，遂打算升级到1.0.0版本并记录下Drone的升级+使用。</p><p>我一直使用 Docker Compose 运行Drone，本文也将主要讲基于Docker Compose升级启动过程。在配置中，我以集成Gogs为例，要集成其他其他平台（如Github、GitLab）配置也很简单，具体请参照官网的 <strong>Installation Guide</strong> 下的各平台配置说明。</p><p>1.0版本与0.8版本不兼容，需要修改各个配置项的名称，在1.0版本找到对应的配置名称即可。</p><ul><li><a href=https://docs.drone.io/reference/server/>drone-server 配置项文档</a></li><li><a href=https://docs.drone.io/reference/agent/>drone-agent 配置项文档</a></li></ul><pre><code class=language-yaml># file name: docker-compose.yaml
 
