@@ -1,15 +1,15 @@
-.site-info .name {
-  margin-top: -10px;
-  margin-bottom: 40px;
-  font-style: normal;
-  font-size: 2em;
-  line-height: 2rem;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: auto;
+header[role='banner'] {
+  margin-bottom: var(--space-md);
 }
 
-.navbar {
-  margin: 0 auto 2rem;
+.site-info .name {
+  margin-bottom: var(--space-sm);
+  font-style: normal;
+  font-weight: 700;
+  font-size: var(--font-size-xxl);
+  line-height: var(--space-lg);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: auto;
 }
 
 .navbar ul {
@@ -19,23 +19,32 @@
 
 .navbar ul li {
   display: inline-block;
-  border-right: 1px solid #eaecef;
-  vertical-align: middle;
+  border-right: 1px solid var(--color-border);
   text-align: center;
-  margin-right: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.navbar ul li:first-child {
+  padding-left: 0;
 }
 
 .navbar ul li:last-child {
-  border-right: 0px;
+  border-right: 0;
+  margin-right: 0;
+  padding-right: 0;
 }
 
 .navbar ul li a {
-  margin-right: 15px;
   color: unset !important;
 }
 
+.site-info .description {
+  margin-top: var(--space-md);
+}
+
 .site-info .socials {
-  margin-top: 0.5rem;
+  margin-top: var(--space-xs);
 }
 
 .site-info .socials a {

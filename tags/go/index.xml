@@ -1,1 +1,64 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Go on Eightpigs</title><link>https://eightpigs.io/tags/go/</link><description>Recent content in Go on Eightpigs</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 23 Feb 2019 17:48:00 +0000</lastBuildDate><atom:link href="https://eightpigs.io/tags/go/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Drone进行持续集成</title><link>https://eightpigs.io/2019/02/23/upgrade_drone/</link><pubDate>Sat, 23 Feb 2019 17:48:00 +0000</pubDate><guid>https://eightpigs.io/2019/02/23/upgrade_drone/</guid><description>介绍 Drone is a Container-Native, Continuous Delivery Platform. Drone 是一个基于容器的持续交付平台。 工作原理 通过Web Hook接受相关事件（推送、创建分支、合并请求等&amp;hellip;) 读取并</description></item><item><title>Go语言学习 - 复合数据类型：数组、slice</title><link>https://eightpigs.io/2018/03/19/go_notes_array_and_slice/</link><pubDate>Mon, 19 Mar 2018 14:26:00 +0000</pubDate><guid>https://eightpigs.io/2018/03/19/go_notes_array_and_slice/</guid><description>复合数据类型 主要分为4种复合数据类型： 数组 slice map 结构体 本次先将数组和slice的相关知识点及理解记录下来，后续再慢慢看Map和结构体。 数组 数组</description></item><item><title>Go学习笔记 - 基本结构</title><link>https://eightpigs.io/2018/02/10/go_notes_basic_structure/</link><pubDate>Sat, 10 Feb 2018 17:15:00 +0000</pubDate><guid>https://eightpigs.io/2018/02/10/go_notes_basic_structure/</guid><description>基本结构 package main import &amp;quot;fmt&amp;quot; // 变量 // 函数 func main(){ fmt.Println(&amp;quot;Hello Go&amp;quot;) } 每一个.go的文件以package声明开头，表名文件属于哪个包 package 声明后面是import声明 然后是包级别</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Go on 八只猪</title><link>https://eightpigs.io/tags/go/</link><description>Recent content in Go on 八只猪</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 11 Jun 2021 12:30:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/tags/go/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Drone进行持续集成</title><link>https://eightpigs.io/2019/02/23/upgrade_drone/</link><pubDate>Sat, 23 Feb 2019 17:48:00 +0000</pubDate><guid>https://eightpigs.io/2019/02/23/upgrade_drone/</guid><description>&lt;h2 id="介绍"&gt;介绍&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Drone is a Container-Native, Continuous Delivery Platform.
+Drone 是一个基于容器的持续交付平台。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="工作原理"&gt;工作原理&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;通过Web Hook接受相关事件（推送、创建分支、合并请求等&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;读取并执行该仓库根目录下的.drone.yaml文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="特性"&gt;特性&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;支持多种仓库类型（GitHub, GitLab, Gitea, Gogs, Bitbucket Cloud, Bitbucket Server）&lt;/li&gt;
+&lt;li&gt;支持插件&lt;/li&gt;
+&lt;li&gt;支持分布式构建&lt;/li&gt;
+&lt;li&gt;支持多操作系统构建&lt;/li&gt;
+&lt;li&gt;基于Docker&lt;/li&gt;
+&lt;li&gt;基于Go语言&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="安装"&gt;安装&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://cloud.drone.io/drone/hello-world"&gt;Demo 地址&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Go语言学习 - 复合数据类型：数组、slice</title><link>https://eightpigs.io/2018/03/19/go_notes_array_and_slice/</link><pubDate>Mon, 19 Mar 2018 14:26:00 +0000</pubDate><guid>https://eightpigs.io/2018/03/19/go_notes_array_and_slice/</guid><description>&lt;h1 id="复合数据类型"&gt;复合数据类型&lt;/h1&gt;
+&lt;p&gt;主要分为4种复合数据类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数组&lt;/li&gt;
+&lt;li&gt;slice&lt;/li&gt;
+&lt;li&gt;map&lt;/li&gt;
+&lt;li&gt;结构体&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本次先将数组和slice的相关知识点及理解记录下来，后续再慢慢看Map和结构体。&lt;/p&gt;
+&lt;h2 id="数组"&gt;数组&lt;/h2&gt;
+&lt;p&gt;数组是具有固定长度且拥有零个或多个相同数据类型元素的序列。由于数组的长度固定，所以在Go里面很少直接使用。&lt;/p&gt;</description></item><item><title>Go学习笔记 - 基本结构</title><link>https://eightpigs.io/2018/02/10/go_notes_basic_structure/</link><pubDate>Sat, 10 Feb 2018 17:15:00 +0000</pubDate><guid>https://eightpigs.io/2018/02/10/go_notes_basic_structure/</guid><description>&lt;h2 id="基本结构"&gt;基本结构&lt;/h2&gt;
+&lt;pre&gt;&lt;code class="language-Go"&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+// 变量
+
+// 函数
+func main(){
+ fmt.Println(&amp;quot;Hello Go&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;每一个.go的文件以&lt;strong&gt;package&lt;/strong&gt;声明开头，表名文件属于哪个包&lt;/li&gt;
+&lt;li&gt;package 声明后面是import声明&lt;/li&gt;
+&lt;li&gt;然后是&lt;strong&gt;包级别&lt;/strong&gt;的类型、变量、常量、函数的声明，不区分顺序&lt;/li&gt;
+&lt;li&gt;main函数代表入口函数，固定写法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="名称规范"&gt;名称规范&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;名称的开头是一个字母（Unicode 中的字符即可）或下划线，后面可以跟任意数量的字符、数字和下划线，并区分大小写&lt;/li&gt;
+&lt;li&gt;名称以大写字母开头，是可以被外部使用的（导出），意味着对包外是可见和可访问的&lt;/li&gt;
+&lt;li&gt;采用“驼峰式”风格命名，而不是下划线。&lt;/li&gt;
+&lt;li&gt;有25个关键字&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;break default func interface select
+case defer go map struct
+chan else goto package switch
+const if range type fallthrough
+contine for import return var
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="变量"&gt;变量&lt;/h2&gt;
+&lt;h3 id="声明"&gt;声明&lt;/h3&gt;
+&lt;p&gt;使用关键字var声明变量。&lt;/p&gt;</description></item></channel></rss>

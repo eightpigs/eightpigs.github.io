@@ -1,1 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker Compose on Eightpigs</title><link>https://eightpigs.io/tags/docker-compose/</link><description>Recent content in Docker Compose on Eightpigs</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 23 Feb 2019 17:48:00 +0000</lastBuildDate><atom:link href="https://eightpigs.io/tags/docker-compose/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Drone进行持续集成</title><link>https://eightpigs.io/2019/02/23/upgrade_drone/</link><pubDate>Sat, 23 Feb 2019 17:48:00 +0000</pubDate><guid>https://eightpigs.io/2019/02/23/upgrade_drone/</guid><description>介绍 Drone is a Container-Native, Continuous Delivery Platform. Drone 是一个基于容器的持续交付平台。 工作原理 通过Web Hook接受相关事件（推送、创建分支、合并请求等&amp;hellip;) 读取并</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker Compose on 八只猪</title><link>https://eightpigs.io/tags/docker-compose/</link><description>Recent content in Docker Compose on 八只猪</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 11 Jun 2021 12:30:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/tags/docker-compose/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Drone进行持续集成</title><link>https://eightpigs.io/2019/02/23/upgrade_drone/</link><pubDate>Sat, 23 Feb 2019 17:48:00 +0000</pubDate><guid>https://eightpigs.io/2019/02/23/upgrade_drone/</guid><description>&lt;h2 id="介绍"&gt;介绍&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Drone is a Container-Native, Continuous Delivery Platform.
+Drone 是一个基于容器的持续交付平台。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="工作原理"&gt;工作原理&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;通过Web Hook接受相关事件（推送、创建分支、合并请求等&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;读取并执行该仓库根目录下的.drone.yaml文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="特性"&gt;特性&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;支持多种仓库类型（GitHub, GitLab, Gitea, Gogs, Bitbucket Cloud, Bitbucket Server）&lt;/li&gt;
+&lt;li&gt;支持插件&lt;/li&gt;
+&lt;li&gt;支持分布式构建&lt;/li&gt;
+&lt;li&gt;支持多操作系统构建&lt;/li&gt;
+&lt;li&gt;基于Docker&lt;/li&gt;
+&lt;li&gt;基于Go语言&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="安装"&gt;安装&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://cloud.drone.io/drone/hello-world"&gt;Demo 地址&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

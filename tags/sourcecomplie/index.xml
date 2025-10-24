@@ -1,1 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SourceComplie on Eightpigs</title><link>https://eightpigs.io/tags/sourcecomplie/</link><description>Recent content in SourceComplie on Eightpigs</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 05 Feb 2016 11:55:00 +0000</lastBuildDate><atom:link href="https://eightpigs.io/tags/sourcecomplie/index.xml" rel="self" type="application/rss+xml"/><item><title>centos 编译安装mysql 5.6</title><link>https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/</link><pubDate>Fri, 05 Feb 2016 11:55:00 +0000</pubDate><guid>https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/</guid><description>1. 检测mysql rpm -qa | grep mysql 如果有的话 , 执行以下命令卸载 rpm -e mysql //普通删除模式 rpm -e --nodeps mysql // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SourceComplie on 八只猪</title><link>https://eightpigs.io/tags/sourcecomplie/</link><description>Recent content in SourceComplie on 八只猪</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 11 Jun 2021 12:30:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/tags/sourcecomplie/index.xml" rel="self" type="application/rss+xml"/><item><title>centos 编译安装mysql 5.6</title><link>https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/</link><pubDate>Fri, 05 Feb 2016 11:55:00 +0000</pubDate><guid>https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/</guid><description>&lt;h2 id="1-检测mysql"&gt;1. 检测mysql&lt;/h2&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;rpm -qa | grep mysql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果有的话 , 执行以下命令卸载&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;rpm -e mysql //普通删除模式
+rpm -e --nodeps mysql // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="2-安装依赖"&gt;2. 安装依赖&lt;/h2&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;yum -y install make gcc-c++ cmake bison-devel ncurses-devel
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="3-下载mysql-源码"&gt;3. 下载mysql 源码&lt;/h2&gt;
+&lt;p&gt;进入 &lt;a href="ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/"&gt;mysql 5.6 下载地址&lt;/a&gt; , 找到 &amp;ldquo;mysql-5.6.xx.tar.gz&amp;rdquo; , 我目前下载的是&lt;a href="ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/mysql-5.6.28.tar.gz"&gt;5.6.28&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

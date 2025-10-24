@@ -1,1 +1,37 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>devpractice on Eightpigs</title><link>https://eightpigs.io/categories/devpractice/</link><description>Recent content in devpractice on Eightpigs</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 23 Feb 2019 17:48:00 +0000</lastBuildDate><atom:link href="https://eightpigs.io/categories/devpractice/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Drone进行持续集成</title><link>https://eightpigs.io/2019/02/23/upgrade_drone/</link><pubDate>Sat, 23 Feb 2019 17:48:00 +0000</pubDate><guid>https://eightpigs.io/2019/02/23/upgrade_drone/</guid><description>介绍 Drone is a Container-Native, Continuous Delivery Platform. Drone 是一个基于容器的持续交付平台。 工作原理 通过Web Hook接受相关事件（推送、创建分支、合并请求等&amp;hellip;) 读取并</description></item><item><title>Spring Colud 之 统一配置中心</title><link>https://eightpigs.io/2017/12/29/spring_cloud_config_server/</link><pubDate>Fri, 29 Dec 2017 19:40:00 +0000</pubDate><guid>https://eightpigs.io/2017/12/29/spring_cloud_config_server/</guid><description>在我们Java项目开发过程中，对于配置文件的多环境配置一般会采用以下方案： 使用maven等构建工具基于resources自定义多环境 使用市面</description></item><item><title>centos 编译安装mysql 5.6</title><link>https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/</link><pubDate>Fri, 05 Feb 2016 11:55:00 +0000</pubDate><guid>https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/</guid><description>1. 检测mysql rpm -qa | grep mysql 如果有的话 , 执行以下命令卸载 rpm -e mysql //普通删除模式 rpm -e --nodeps mysql // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Devpractice on 八只猪</title><link>https://eightpigs.io/categories/devpractice/</link><description>Recent content in Devpractice on 八只猪</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 11 Jun 2021 12:30:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/categories/devpractice/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Drone进行持续集成</title><link>https://eightpigs.io/2019/02/23/upgrade_drone/</link><pubDate>Sat, 23 Feb 2019 17:48:00 +0000</pubDate><guid>https://eightpigs.io/2019/02/23/upgrade_drone/</guid><description>&lt;h2 id="介绍"&gt;介绍&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Drone is a Container-Native, Continuous Delivery Platform.
+Drone 是一个基于容器的持续交付平台。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="工作原理"&gt;工作原理&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;通过Web Hook接受相关事件（推送、创建分支、合并请求等&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;读取并执行该仓库根目录下的.drone.yaml文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="特性"&gt;特性&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;支持多种仓库类型（GitHub, GitLab, Gitea, Gogs, Bitbucket Cloud, Bitbucket Server）&lt;/li&gt;
+&lt;li&gt;支持插件&lt;/li&gt;
+&lt;li&gt;支持分布式构建&lt;/li&gt;
+&lt;li&gt;支持多操作系统构建&lt;/li&gt;
+&lt;li&gt;基于Docker&lt;/li&gt;
+&lt;li&gt;基于Go语言&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="安装"&gt;安装&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://cloud.drone.io/drone/hello-world"&gt;Demo 地址&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Spring Colud 之 统一配置中心</title><link>https://eightpigs.io/2017/12/29/spring_cloud_config_server/</link><pubDate>Fri, 29 Dec 2017 19:40:00 +0000</pubDate><guid>https://eightpigs.io/2017/12/29/spring_cloud_config_server/</guid><description>&lt;p&gt;在我们Java项目开发过程中，对于配置文件的多环境配置一般会采用以下方案：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用maven等构建工具基于resources自定义多环境&lt;/li&gt;
+&lt;li&gt;使用市面上开源的统一配置中心，例如百度的disconf、淘宝的Diamond等&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;那么本文将讲述第二个方案中一个能为任何项目提供统一配置的管理方式：Spring Cloud Config。&lt;/p&gt;</description></item><item><title>centos 编译安装mysql 5.6</title><link>https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/</link><pubDate>Fri, 05 Feb 2016 11:55:00 +0000</pubDate><guid>https://eightpigs.io/2016/02/05/compiled_mysql_on_centos/</guid><description>&lt;h2 id="1-检测mysql"&gt;1. 检测mysql&lt;/h2&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;rpm -qa | grep mysql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果有的话 , 执行以下命令卸载&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;rpm -e mysql //普通删除模式
+rpm -e --nodeps mysql // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="2-安装依赖"&gt;2. 安装依赖&lt;/h2&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;yum -y install make gcc-c++ cmake bison-devel ncurses-devel
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="3-下载mysql-源码"&gt;3. 下载mysql 源码&lt;/h2&gt;
+&lt;p&gt;进入 &lt;a href="ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/"&gt;mysql 5.6 下载地址&lt;/a&gt; , 找到 &amp;ldquo;mysql-5.6.xx.tar.gz&amp;rdquo; , 我目前下载的是&lt;a href="ftp://mirror.switch.ch/mirror/mysql/Downloads/MySQL-5.6/mysql-5.6.28.tar.gz"&gt;5.6.28&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

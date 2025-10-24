@@ -1,1 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on Eightpigs</title><link>https://eightpigs.io/pages/</link><description>Recent content in Pages on Eightpigs</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 28 Feb 2019 20:52:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/pages/index.xml" rel="self" type="application/rss+xml"/><item><title>关于</title><link>https://eightpigs.io/pages/about/</link><pubDate>Thu, 28 Feb 2019 20:52:00 +0800</pubDate><guid>https://eightpigs.io/pages/about/</guid><description>本博客基于 Hugo 搭建，主题是参考 hexo-theme-cactus 自己实现的 hugo-clean。 本博客不提供评论，可以通过发送邮件与我交流。 爱好 跑步 音乐 骑行（太久不骑了） 编程</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on 八只猪</title><link>https://eightpigs.io/pages/</link><description>Recent content in Pages on 八只猪</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 20 Mar 2022 14:20:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/pages/index.xml" rel="self" type="application/rss+xml"/><item><title>关于</title><link>https://eightpigs.io/pages/about/</link><pubDate>Thu, 28 Feb 2019 20:52:00 +0800</pubDate><guid>https://eightpigs.io/pages/about/</guid><description>&lt;p&gt;本博客基于 &lt;a href="https://github.com/gohugoio/hugo"&gt;Hugo&lt;/a&gt; 搭建，主题是参考 &lt;a href="https://github.com/probberechts/hexo-theme-cactus"&gt;hexo-theme-cactus&lt;/a&gt; 自己实现的 &lt;a href="https://github.com/eightpigs/hugo-clean"&gt;hugo-clean&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;本博客不提供评论，可以通过&lt;a href="mailto:eightpigs@outlook.com"&gt;&lt;strong&gt;发送邮件&lt;/strong&gt;&lt;/a&gt;与我交流。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;爱好&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;跑步&lt;/li&gt;
+&lt;li&gt;音乐&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;骑行（太久不骑了）&lt;/del&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;编程语言&lt;/strong&gt;（参考&lt;a href="https://manateelazycat.github.io"&gt;懒猫&lt;/a&gt;的个人介绍）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;顶级水准: 暂无&lt;/li&gt;
+&lt;li&gt;超级熟练: &lt;del&gt;Java（不那么认为了）&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;商业代码水准: Go、JavaScript、Dart、Groovy、SQL&lt;/li&gt;
+&lt;li&gt;StackOverflow水准: Scala、Python、Swift、Lua、C#&lt;/li&gt;
+&lt;li&gt;学习中: Rust&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;擅长工具&lt;/strong&gt;&lt;/p&gt;</description></item></channel></rss>

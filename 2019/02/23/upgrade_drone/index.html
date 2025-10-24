@@ -1,11 +1,50 @@
-<head><meta charset=utf-8><meta name=generator content="Hugo 0.120.4"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=color-scheme content="light dark"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Eightpigs, eightpigs@outlook.com"><meta property="og:url" content="https://eightpigs.io/2019/02/23/upgrade_drone/"><link rel=canonical href=https://eightpigs.io/2019/02/23/upgrade_drone/><link rel=stylesheet href="/css/markdown-simple.css?t=1464395400000"><link rel=stylesheet href="/css/head.css?t=1464395400000"><link rel=stylesheet href="/css/style.css?t=1464395400000"><link rel=stylesheet href="/css/list.css?t=1464395400000"><title>使用Drone进行持续集成 - Eightpigs</title>
-<meta property="og:title" content="使用Drone进行持续集成 - Eightpigs"><meta property="og:type" content="article"><meta property="og:description" content="介绍 Drone is a Container-Native, Continuous Delivery Platform. Drone 是一个基于容器的持续交付平台。 工作原理 通过Web Hook接受相关事件（推送、创建分支、合并请求等&mldr;) 读取并"><meta name=description content="介绍 Drone is a Container-Native, Continuous Delivery Platform. Drone 是一个基于容器的持续交付平台。 工作原理 通过Web Hook接受相关事件（推送、创建分支、合并请求等&mldr;) 读取并"><meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner"><link rel=stylesheet href=/css/highlight/github.css><link rel=stylesheet href=/css/highlight/gruvbox-dark.css media="(prefers-color-scheme: dark)"><link rel=stylesheet href="/css/post.css?t=1464395400000"></head><div class="content markdown-body"><h1>使用Drone进行持续集成</h1><div class=info><span class=date>2019-02-23
-</span><span class=categories style=font-weight:700><a data-real=devpractice href=/categories/devpractice/ class=category>[开发实践]</a>
-</span><span class=tags><a data-real=Go href=/tags/go/ class=tag>#Go</a>
-<a data-real=CI href=/tags/ci/ class=tag>#CI</a>
-<a data-real=Docker href=/tags/docker/ class=tag>#Docker</a>
-<a data-real="Docker Compose" href=/tags/docker-compose/ class=tag>#Docker Compose</a></span></div><div class=changelogs><div class=title>更新日志</div><div class=changelog><span class=time>2021-06-11</span>
-<span class=note>更新所属分类</span></div></div><h2 id=介绍>介绍</h2><blockquote><p>Drone is a Container-Native, Continuous Delivery Platform.
+<head><meta charset=utf-8><meta name=generator content="Hugo 0.152.1"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=color-scheme content="light dark"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="八只猪, eightpigs@outlook.com"><meta property="og:url" content="https://eightpigs.io/2019/02/23/upgrade_drone/"><link rel=canonical href=https://eightpigs.io/2019/02/23/upgrade_drone/><link rel=stylesheet href="/css/head.css?v=1761276523"><link rel=stylesheet href="/css/style.css?v=1761276523"><link rel=stylesheet href="/css/list.css?v=1761276523"><title>使用Drone进行持续集成 - 八只猪</title><meta property="og:title" content="使用Drone进行持续集成 - 八只猪"><meta property="og:type" content="article"><meta property="og:description" content="介绍
+
+Drone is a Container-Native, Continuous Delivery Platform.
+Drone 是一个基于容器的持续交付平台。
+
+工作原理
+
+通过Web Hook接受相关事件（推送、创建分支、合并请求等&mldr;)
+读取并执行该仓库根目录下的.drone.yaml文件
+
+特性
+
+支持多种仓库类型（GitHub, GitLab, Gitea, Gogs, Bitbucket Cloud, Bitbucket Server）
+支持插件
+支持分布式构建
+支持多操作系统构建
+基于Docker
+基于Go语言
+
+安装
+Demo 地址"><meta name=description content="介绍
+
+Drone is a Container-Native, Continuous Delivery Platform.
+Drone 是一个基于容器的持续交付平台。
+
+工作原理
+
+通过Web Hook接受相关事件（推送、创建分支、合并请求等&mldr;)
+读取并执行该仓库根目录下的.drone.yaml文件
+
+特性
+
+支持多种仓库类型（GitHub, GitLab, Gitea, Gogs, Bitbucket Cloud, Bitbucket Server）
+支持插件
+支持分布式构建
+支持多操作系统构建
+基于Docker
+基于Go语言
+
+安装
+Demo 地址"><meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner"><link rel=stylesheet href="/css/post.css?v=1761276523"><style>body{font-family:var(--font-serif)}</style></head><header role=banner><div class=site-info><div class=name>八只猪</div><nav class=navbar role=navigation aria-label="Main navigation"><ul><li><a href=/>首页</a></li><li><a href=/archives>归档</a></li><li><a href=/pages/about>关于</a></li></ul></nav></div></header><article class=content><header class=content-header><h1>使用Drone进行持续集成</h1><div class=info><time class=date datetime=2019-02-23T17:48:00Z>2019-02-23
+</time><span class=categories style=font-weight:700><a data-real=devpractice href=/categories/devpractice/ class=category rel=category>开发实践</a>
+</span><span class=tags><a data-real=Go href=/tags/go/ class=tag rel=tag><span style=font-weight:700;margin-right:2px;font-size:16px aria-hidden=true>#</span>Go</a>
+<a data-real=CI href=/tags/ci/ class=tag rel=tag><span style=font-weight:700;margin-right:2px;font-size:16px aria-hidden=true>#</span>CI</a>
+<a data-real=Docker href=/tags/docker/ class=tag rel=tag><span style=font-weight:700;margin-right:2px;font-size:16px aria-hidden=true>#</span>Docker</a>
+<a data-real="Docker Compose" href=/tags/docker-compose/ class=tag rel=tag><span style=font-weight:700;margin-right:2px;font-size:16px aria-hidden=true>#</span>Docker Compose</a></span></div><div class=changelogs><div class=title>Changelog</div><div class=changelog><span class=time>2021-06-11</span>
+<span class=note>更新所属分类</span></div></div></div></header><div class=content-body><h2 id=介绍>介绍</h2><blockquote><p>Drone is a Container-Native, Continuous Delivery Platform.
 Drone 是一个基于容器的持续交付平台。</p></blockquote><h2 id=工作原理>工作原理</h2><ol><li>通过Web Hook接受相关事件（推送、创建分支、合并请求等&mldr;)</li><li>读取并执行该仓库根目录下的.drone.yaml文件</li></ol><h2 id=特性>特性</h2><ol><li>支持多种仓库类型（GitHub, GitLab, Gitea, Gogs, Bitbucket Cloud, Bitbucket Server）</li><li>支持插件</li><li>支持分布式构建</li><li>支持多操作系统构建</li><li>基于Docker</li><li>基于Go语言</li></ol><h2 id=安装>安装</h2><p><a href=https://cloud.drone.io/drone/hello-world>Demo 地址</a></p><p>使用Drone进行持续集成已经8个月了，因为功能基本满足我的需求，所以一直停留在0.8版本。今天正好有时间，遂打算升级到1.0.0版本并记录下Drone的升级+使用。</p><p>我一直使用 Docker Compose 运行Drone，本文也将主要讲基于Docker Compose升级启动过程。在配置中，我以集成Gogs为例，要集成其他其他平台（如Github、GitLab）配置也很简单，具体请参照官网的 <strong>Installation Guide</strong> 下的各平台配置说明。</p><p>1.0版本与0.8版本不兼容，需要修改各个配置项的名称，在1.0版本找到对应的配置名称即可。</p><ul><li><a href=https://docs.drone.io/reference/server/>drone-server 配置项文档</a></li><li><a href=https://docs.drone.io/reference/agent/>drone-agent 配置项文档</a></li></ul><pre><code class=language-yaml># file name: docker-compose.yaml
 
 version: '2'
@@ -64,6 +103,5 @@ volumes:
   - name: volData
     host:
       path: /data/
-</code></pre><div class=cc>文章作者：eightpigs<br>创作时间：2019-02-23<br>更新时间：2021-06-11<br>许可协议：<a href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank style=text-transform:uppercase>CC by-nc-nd 4.0</a></div></div><div class=footer><div class=copyright>&copy; 2014 -
-2024
-Eightpigs</div><div class=navbar><ul><li><a href=/>首页</a></li><li><a href=/archives>归档</a></li><li><a href=/pages/about>关于</a></li></ul></div></div><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js></script><script>hljs.initHighlightingOnLoad()</script>
+</code></pre></div><footer class=content-footer><div class=cc>Author: eightpigs<br>Published: 2019-02-23<br>Updated:2021-06-11<br>License: <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank style=text-transform:uppercase>CC by-nc-nd 4.0</a></div></footer><div class=footer><div class=copyright>&copy; 2014 - 2025
+八只猪</div><nav class=navbar role=navigation aria-label="Main navigation"><ul><li><a href=/>首页</a></li><li><a href=/archives>归档</a></li><li><a href=/pages/about>关于</a></li></ul></nav></div></article>

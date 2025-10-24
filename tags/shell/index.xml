@@ -1,1 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Shell on Eightpigs</title><link>https://eightpigs.io/tags/shell/</link><description>Recent content in Shell on Eightpigs</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 10 Jun 2021 18:37:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/tags/shell/index.xml" rel="self" type="application/rss+xml"/><item><title>Gitlab API 自动拉取有权限的所有仓库</title><link>https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/</link><pubDate>Thu, 10 Jun 2021 18:37:00 +0800</pubDate><guid>https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/</guid><description>Gitlab 提供了完善的 HTTP API 来获取分组、项目信息。 API 信息 获取分组: GET /api/v4/groups 文档 获取分组下的项目: GET /api/v4/groups/:id/projects 文档 依赖 jq: 安装jq 脚本 获取分组列表 依次获取每个分组下的</description></item><item><title>腾讯视频客户端（MacOS）缓存文件合成/导出</title><link>https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/</link><pubDate>Sat, 14 Apr 2018 13:02:00 +0000</pubDate><guid>https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/</guid><description>年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有 TV 版的缘故，其他版本没有给开放投屏</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Shell on 八只猪</title><link>https://eightpigs.io/tags/shell/</link><description>Recent content in Shell on 八只猪</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 27 Mar 2023 19:30:00 +0800</lastBuildDate><atom:link href="https://eightpigs.io/tags/shell/index.xml" rel="self" type="application/rss+xml"/><item><title>Gitlab API 自动拉取有权限的所有仓库</title><link>https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/</link><pubDate>Thu, 10 Jun 2021 18:37:00 +0800</pubDate><guid>https://eightpigs.io/2021/06/10/quick_pull_gitlab_repos/</guid><description>&lt;p&gt;Gitlab 提供了完善的 HTTP API 来获取分组、项目信息。&lt;/p&gt;
+&lt;h3 id="api-信息"&gt;API 信息&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;获取分组: &lt;code&gt;GET /api/v4/groups&lt;/code&gt; &lt;a href="https://docs.gitlab.com/ee/api/groups.html#list-groups"&gt;文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;获取分组下的项目: &lt;code&gt;GET /api/v4/groups/:id/projects&lt;/code&gt; &lt;a href="https://docs.gitlab.com/ee/api/groups.html#list-a-groups-projects"&gt;文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="依赖"&gt;依赖&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;jq: &lt;a href="https://stedolan.github.io/jq/download/"&gt;安装jq&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="脚本"&gt;脚本&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;获取分组列表&lt;/li&gt;
+&lt;li&gt;依次获取每个分组下的有权限的所有仓库&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;暂不支持翻页: 若分组超过100或者分组下的项目超过100个，则会被忽略。&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>腾讯视频客户端（MacOS）缓存文件合成/导出</title><link>https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/</link><pubDate>Sat, 14 Apr 2018 13:02:00 +0000</pubDate><guid>https://eightpigs.io/2018/04/14/tencent_video_cache_file_to_mp4_in_macos/</guid><description>&lt;p&gt;年会时抽奖中了一个极米投影仪，现在看片大多都使用投影仪来播放。我是开通了腾讯视频的会员，但是因为腾讯视频有 TV 版的缘故，其他版本没有给开放投屏功能。那么这就很尴尬了，TV 版会员太贵并且也没必要买，普通客户端不支持投屏并且缓存的资源也不是一个正常可以直接用其他播放器观看的格式。&lt;/p&gt;</description></item></channel></rss>
