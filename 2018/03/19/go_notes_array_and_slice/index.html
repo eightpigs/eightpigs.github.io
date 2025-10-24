@@ -1,4 +1,4 @@
-<head><meta charset=utf-8><meta name=generator content="Hugo 0.152.1"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=color-scheme content="light dark"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="八只猪, eightpigs@outlook.com"><meta property="og:url" content="https://eightpigs.io/2018/03/19/go_notes_array_and_slice/"><link rel=canonical href=https://eightpigs.io/2018/03/19/go_notes_array_and_slice/><link rel=stylesheet href="/css/head.css?v=1761276523"><link rel=stylesheet href="/css/style.css?v=1761276523"><link rel=stylesheet href="/css/list.css?v=1761276523"><title>Go语言学习 - 复合数据类型：数组、slice - 八只猪</title><meta property="og:title" content="Go语言学习 - 复合数据类型：数组、slice - 八只猪"><meta property="og:type" content="article"><meta property="og:description" content="复合数据类型
+<head><meta charset=utf-8><meta name=generator content="Hugo 0.152.1"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=color-scheme content="light dark"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="八只猪, eightpigs@outlook.com"><meta property="og:url" content="https://eightpigs.io/2018/03/19/go_notes_array_and_slice/"><link rel=canonical href=https://eightpigs.io/2018/03/19/go_notes_array_and_slice/><link rel=stylesheet href="/css/head.css?v=1761322701"><link rel=stylesheet href="/css/style.css?v=1761322701"><link rel=stylesheet href="/css/list.css?v=1761322701"><title>Go语言学习 - 复合数据类型：数组、slice - 八只猪</title><meta property="og:title" content="Go语言学习 - 复合数据类型：数组、slice - 八只猪"><meta property="og:type" content="article"><meta property="og:description" content="复合数据类型
 主要分为4种复合数据类型：
 
 数组
@@ -18,10 +18,10 @@ map
 
 本次先将数组和slice的相关知识点及理解记录下来，后续再慢慢看Map和结构体。
 数组
-数组是具有固定长度且拥有零个或多个相同数据类型元素的序列。由于数组的长度固定，所以在Go里面很少直接使用。"><meta name=keywords content="IT,Java,Go,Web,Programmer,Algorithm,Runner"><link rel=stylesheet href="/css/post.css?v=1761276523"><style>body{font-family:var(--font-serif)}</style></head><header role=banner><div class=site-info><div class=name>八只猪</div><nav class=navbar role=navigation aria-label="Main navigation"><ul><li><a href=/>首页</a></li><li><a href=/archives>归档</a></li><li><a href=/pages/about>关于</a></li></ul></nav></div></header><article class=content><header class=content-header><h1>Go语言学习 - 复合数据类型：数组、slice</h1><div class=info><time class=date datetime=2018-03-19T14:26:00Z>2018-03-19
+数组是具有固定长度且拥有零个或多个相同数据类型元素的序列。由于数组的长度固定，所以在Go里面很少直接使用。"><meta name=keywords content="Programmer,Runner,Human"><link rel=stylesheet href="/css/post.css?v=1761322701"><style>body{font-family:var(--font-serif)}</style></head><header role=banner><div class=site-info><div class=name>八只猪</div><nav class=navbar role=navigation aria-label="Main navigation"><ul><li><a href=/>首页</a></li><li><a href=/archives>归档</a></li><li><a href=/pages/about>关于</a></li></ul></nav></div></header><article class=content><header class=content-header><h1>Go语言学习 - 复合数据类型：数组、slice</h1><div class=info><time class=date datetime=2018-03-19T14:26:00Z>2018-03-19
 </time><span class=categories style=font-weight:700><a data-real=devlang href=/categories/devlang/ class=category rel=category>编程语言</a>
 </span><span class=tags><a data-real=Go href=/tags/go/ class=tag rel=tag><span style=font-weight:700;margin-right:2px;font-size:16px aria-hidden=true>#</span>Go</a>
-<a data-real=Notes href=/tags/notes/ class=tag rel=tag><span style=font-weight:700;margin-right:2px;font-size:16px aria-hidden=true>#</span>Notes</a></span></div><div class=changelogs><div class=title>Changelog</div><div class=changelog><span class=time>2021-06-11</span>
+<a data-real=Notes href=/tags/notes/ class=tag rel=tag><span style=font-weight:700;margin-right:2px;font-size:16px aria-hidden=true>#</span>Notes</a></span></div><div class=changelogs><div class=title>Changelogs</div><div class=changelog><span class=time>2021-06-11</span>
 <span class=note>更新分类、标签</span></div></div></div></header><div class=content-body><h1 id=复合数据类型>复合数据类型</h1><p>主要分为4种复合数据类型：</p><ul><li>数组</li><li>slice</li><li>map</li><li>结构体</li></ul><p>本次先将数组和slice的相关知识点及理解记录下来，后续再慢慢看Map和结构体。</p><h2 id=数组>数组</h2><p>数组是具有固定长度且拥有零个或多个相同数据类型元素的序列。由于数组的长度固定，所以在Go里面很少直接使用。</p><pre><code class=language-go>var arr [3]int                  // 3个整数的数组
 fmt.Println(arr[len(arr)-1])    // 输出数组最后一个元素
 
@@ -92,5 +92,6 @@ func main() {
 	y := append(s, 7)
 	fmt.Println(s, x, y)
 }
-</code></pre><p>// @TODO 后面学完Go基础后，将slice.go源码仔细阅读一遍。</p></div><footer class=content-footer><div class=cc>Author: eightpigs<br>Published: 2018-03-19<br>Updated:2021-06-11<br>License: <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank style=text-transform:uppercase>CC by-nc-nd 4.0</a></div></footer><div class=footer><div class=copyright>&copy; 2014 - 2025
+</code></pre><p>// @TODO 后面学完Go基础后，将slice.go源码仔细阅读一遍。</p></div><footer class=content-footer><div class=cc>Author: eightpigs<br>Published: 2018-03-19<br>Updated:2021-06-11<br>License:
+<a href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank style=text-transform:uppercase>CC by-nc-nd 4.0</a></div></footer><div class=footer><div class=copyright>&copy; 2014 - 2025
 八只猪</div><nav class=navbar role=navigation aria-label="Main navigation"><ul><li><a href=/>首页</a></li><li><a href=/archives>归档</a></li><li><a href=/pages/about>关于</a></li></ul></nav></div></article>

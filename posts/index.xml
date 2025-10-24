@@ -178,5 +178,11 @@ rpm -e --nodeps mysql // 强力删除模式，如果使用上面命令删除时�
 &lt;ul&gt;
 &lt;li&gt;Windows 有自带的连接管理工具 rasphone ,可以实现对链接进行新建/修改/连接/删除/断开等操作&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;在cmd 输入 : &lt;strong&gt;rasphone /?&lt;/strong&gt; 就可以查看所有命令操作信息&lt;/p&gt;</description></item><item><title>豆瓣FM第三方客户端</title><link>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</link><pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate><guid>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</guid><description>&lt;h2 id="更新说明"&gt;更新说明&lt;/h2&gt;
-&lt;p&gt;2018-03-15：该代码在14年下半年完成，所以略丑陋。已经转网易云音乐多年了，如果有人在使用本客户端或想使用，可以给我提issues，会花时间重构代码。&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;在cmd 输入 : &lt;strong&gt;rasphone /?&lt;/strong&gt; 就可以查看所有命令操作信息&lt;/p&gt;</description></item><item><title>豆瓣FM第三方客户端</title><link>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</link><pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate><guid>https://eightpigs.io/2014/11/10/doubanfm_third_party_client/</guid><description>&lt;h2 id="由来"&gt;由来&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;非常喜欢豆瓣FM&lt;/li&gt;
+&lt;li&gt;非常喜欢豆瓣FM&lt;/li&gt;
+&lt;li&gt;非常喜欢豆瓣FM&lt;/li&gt;
+&lt;li&gt;重要的事说三遍&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;作为一个程序猿 , 想要什么还不是信手拈来? 于是乎 , 在没有用得习惯的豆瓣FM客户端的时候 ,我开始自己写客户端了. 这个客户端在去年就完成了 , 发表在以前博客的过 .&lt;/p&gt;</description></item></channel></rss>
